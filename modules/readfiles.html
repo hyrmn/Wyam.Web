@@ -57,40 +57,76 @@
                         <ul class="nav nav-pills nav-stacked" id="sub-nav">
                                 <li><a href="/modules\frontmatter">frontmatter</a></li>
                                 <li><a href="/modules\metadata">metadata</a></li>
-                                <li><a href="/modules\writefiles">writefiles</a></li>
                                 <li><a href="/modules\json">JSON</a></li>
                                 <li><a href="/modules\markdown">Markdown</a></li>
                                 <li><a href="/modules\razor">Razor</a></li>
                                 <li class="active"><a href="/modules\readfiles">ReadFiles</a></li>
+                                <li><a href="/modules\writefiles">WriteFiles</a></li>
                                 <li><a href="/modules\yaml">YAML</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
                         <p>Reads the content of files from the file system into the content of new documents.</p>
-<h2>Usage</h2>
+<h1>Usage</h1>
+<hr />
 <ul>
-<li><code>ReadFiles(string searchPattern, SearchOption searchOption = SearchOption.AllDirectories)</code>
-Reads all files that match the specified search pattern with the specified <code>SearchOption</code>. If the input metadata contains the key <code>InputPath</code> (which is usually set by default), it is used as the root path of the search.</li>
-<li><code>ReadFiles(Func&lt;IDocument, string&gt; path, SearchOption searchOption = SearchOption.AllDirectories)</code>
-Reads all files that match the specified search pattern with the specified <code>SearchOption</code>. This allows you to specify different search paths depending on the input.</li>
+<li><code>ReadFiles(string searchPattern, SearchOption searchOption = SearchOption.AllDirectories)</code></li>
 </ul>
-<h2>Metadata</h2>
+<p>Reads all files that match the specified search pattern with the specified <code>SearchOption</code>. If the input metadata contains the key <code>InputPath</code> (which is usually set by default), it is used as the root path of the search.</p>
+<ul>
+<li><code>ReadFiles(Func&lt;IDocument, string&gt; path, SearchOption searchOption = SearchOption.AllDirectories)</code></li>
+</ul>
+<p>Reads all files that match the specified search pattern with the specified <code>SearchOption</code>. This allows you to specify different search paths depending on the input.</p>
+<h2>Fluent Methods</h2>
+<p>Chain these methods together after the constructor to modify behavior.</p>
+<ul>
+<li><code>SearchOption(SearchOption searchOption)</code></li>
+</ul>
+<p>Specifies whether to search all directories or just the top directory.</p>
+<ul>
+<li><code>AllDirectories()</code></li>
+</ul>
+<p>Specifies that all directories should be searched.</p>
+<ul>
+<li><code>TopDirectoryOnly()</code></li>
+</ul>
+<p>Specifies that only the top-level directory should be searched.</p>
+<ul>
+<li><code>Where(Func&lt;string, bool&gt; predicate)</code></li>
+</ul>
+<p>Specifies a predicate that must be satisfied for the file to be read. The input to the predicate is the full path to the file.</p>
+<h1>Metadata</h1>
+<hr />
 <p>The following metadata is added to each new document:</p>
 <ul>
-<li><code>FileRoot</code>
-The root search path without any nested directories (useful for outputting documents at the same location relative to the root path).</li>
-<li><code>FilePath</code>
-The full path to the file.</li>
-<li><code>FileBase</code>
-Equivalent to <code>Path.GetFileNameWithoutExtension(FilePath)</code>.</li>
-<li><code>FileExt</code>
-Equivalent to <code>Path.GetExtension(FilePath)</code>.</li>
-<li><code>FileName</code>
-Equivalent to <code>Path.GetFileName(FilePath)</code>.</li>
-<li><code>FileDir</code>
-Equivalent to <code>Path.GetDirectoryName(FilePath)</code>.</li>
+<li><code>FileRoot</code></li>
 </ul>
+<p>The root search path without any nested directories (useful for outputting documents at the same location relative to the root path).</p>
+<ul>
+<li><code>FilePath</code></li>
+</ul>
+<p>The full path to the file.</p>
+<ul>
+<li><code>FileBase</code></li>
+</ul>
+<p>The file name without any extension. Equivalent to <code>Path.GetFileNameWithoutExtension(FilePath)</code>.</p>
+<ul>
+<li><code>FileExt</code></li>
+</ul>
+<p>The extension of the file. Equivalent to <code>Path.GetExtension(FilePath)</code>.</p>
+<ul>
+<li><code>FileName</code></li>
+</ul>
+<p>The full file name. Equivalent to <code>Path.GetFileName(FilePath)</code>.</p>
+<ul>
+<li><code>FileDir</code></li>
+</ul>
+<p>The full directory of the file. Equivalent to <code>Path.GetDirectoryName(FilePath)</code>.</p>
+<ul>
+<li><code>FileRelative</code></li>
+</ul>
+<p>The relative path to the file (including file name) from the Wyam input folder.</p>
 
 
                     </div>
