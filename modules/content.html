@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Metadata</title>
+        <title>Wyam - Content</title>
         <meta name="description" content="FluentBootstrap provides extensions, helper classes, model binding, and other goodies to help you use the Bootstrap CSS framework from .NET code." />
         <meta name="keywords" content="ASP.NET,MVC,ASP.NET MVC,C#,HTML,HtmlHelpers,Web Development,Bootstrap,Twitter Bootstrap,CSS" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Metadata</h1>
+                   <h1>Content</h1>
                </div>
             </div>
         
@@ -56,10 +56,10 @@
                     <div class="col-md-3">                        
                         <ul class="nav nav-pills nav-stacked" id="sub-nav">
                                 <li><a href="/modules\frontmatter">frontmatter</a></li>
-                                <li><a href="/modules\content">Content</a></li>
+                                <li class="active"><a href="/modules\content">Content</a></li>
                                 <li><a href="/modules\json">JSON</a></li>
                                 <li><a href="/modules\markdown">Markdown</a></li>
-                                <li class="active"><a href="/modules\metadata">Metadata</a></li>
+                                <li><a href="/modules\metadata">Metadata</a></li>
                                 <li><a href="/modules\razor">Razor</a></li>
                                 <li><a href="/modules\readfiles">ReadFiles</a></li>
                                 <li><a href="/modules\writefiles">WriteFiles</a></li>
@@ -68,21 +68,21 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Adds the specified metadata to each input document.</p>
+                        <p>Replaces the content of each input document with the string value of the specified content object. In the case where modules are provided, they are executed against an empty initial document and the results are applied to each input document.</p>
 <h1>Usage</h1>
 <hr />
 <ul>
-<li><code>Metadata(string key, object metadata)</code></li>
+<li><code>Content(object content)</code></li>
 </ul>
-<p>The specified object is added as metadata for the specified key for every input document.</p>
+<p>Uses the string value of the specified object as the new content for every input document.</p>
 <ul>
-<li><code>Metadata(string key, Func&lt;IDocument, object&gt; metadata)</code></li>
+<li><code>Content(Func&lt;IDocument, object&gt; content)</code></li>
 </ul>
-<p>Uses a function to determine an object to be added as metadata for each document. This allows you to specify different metadata for each document depending on the input.</p>
+<p>Uses the string value of the returned object as the new content for each document. This allows you to specify different content for each document depending on the input.</p>
 <ul>
-<li><code>Metadata(params IModule[] modules)</code></li>
+<li><code>Content(params IModule[] modules)</code></li>
 </ul>
-<p>The specified modules are executed against an empty initial document and all metadata that exists on the result documents from evaluating the entire child module chain are added as metadata to each input document.</p>
+<p>The specified modules are executed against an empty initial document and the results are applied to every input document (possibly creating more than one output document for each input document)</p>
 <h2>Fluent Methods</h2>
 <p>Chain these methods together after the constructor to modify behavior.</p>
 <ul>
