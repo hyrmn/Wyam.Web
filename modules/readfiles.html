@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - </title>
+        <title>Wyam - ReadFiles</title>
         <meta name="description" content="FluentBootstrap provides extensions, helper classes, model binding, and other goodies to help you use the Bootstrap CSS framework from .NET code." />
         <meta name="keywords" content="ASP.NET,MVC,ASP.NET MVC,C#,HTML,HtmlHelpers,Web Development,Bootstrap,Twitter Bootstrap,CSS" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1></h1>
+                   <h1>ReadFiles</h1>
                </div>
             </div>
         
@@ -57,17 +57,41 @@
                         <ul class="nav nav-pills nav-stacked" id="sub-nav">
                                 <li><a href="/modules\frontmatter">frontmatter</a></li>
                                 <li><a href="/modules\metadata">metadata</a></li>
-                                <li class="active"><a href="/modules\readfiles">readfiles</a></li>
                                 <li><a href="/modules\writefiles">writefiles</a></li>
                                 <li><a href="/modules\json">JSON</a></li>
                                 <li><a href="/modules\markdown">Markdown</a></li>
                                 <li><a href="/modules\razor">Razor</a></li>
+                                <li class="active"><a href="/modules\readfiles">ReadFiles</a></li>
                                 <li><a href="/modules\yaml">YAML</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        
+                        <p>Reads the content of files from the file system into the content of new documents.</p>
+<h2>Usage</h2>
+<ul>
+<li><code>ReadFiles(string searchPattern, SearchOption searchOption = SearchOption.AllDirectories)</code>
+Reads all files that match the specified search pattern with the specified <code>SearchOption</code>. If the input metadata contains the key <code>InputPath</code> (which is usually set by default), it is used as the root path of the search.</li>
+<li><code>ReadFiles(Func&lt;IDocument, string&gt; path, SearchOption searchOption = SearchOption.AllDirectories)</code>
+Reads all files that match the specified search pattern with the specified <code>SearchOption</code>. This allows you to specify different search paths depending on the input.</li>
+</ul>
+<h2>Metadata</h2>
+<p>The following metadata is added to each new document:</p>
+<ul>
+<li><code>FileRoot</code>
+The root search path without any nested directories (useful for outputting documents at the same location relative to the root path).</li>
+<li><code>FilePath</code>
+The full path to the file.</li>
+<li><code>FileBase</code>
+Equivalent to <code>Path.GetFileNameWithoutExtension(FilePath)</code>.</li>
+<li><code>FileExt</code>
+Equivalent to <code>Path.GetExtension(FilePath)</code>.</li>
+<li><code>FileName</code>
+Equivalent to <code>Path.GetFileName(FilePath)</code>.</li>
+<li><code>FileDir</code>
+Equivalent to <code>Path.GetDirectoryName(FilePath)</code>.</li>
+</ul>
+
 
                     </div>
                 </div>
