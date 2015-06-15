@@ -8,17 +8,22 @@
         <meta name="description" content="FluentBootstrap provides extensions, helper classes, model binding, and other goodies to help you use the Bootstrap CSS framework from .NET code." />
         <meta name="keywords" content="ASP.NET,MVC,ASP.NET MVC,C#,HTML,HtmlHelpers,Web Development,Bootstrap,Twitter Bootstrap,CSS" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
+        <script src="/Scripts/prettify.js"></script>
         <!--[if lt IE 9]>
         <script src="/Scripts/html5shiv.min.js"></script>
         <script src="/Scripts/respond.min.js"></script>
         <![endif]-->  
     </head>
-    <body>        
+    <body onload="prettyPrint()">        
         <nav class="navbar navbar-default navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -63,7 +68,6 @@
                                 <li><a href="/modules\execute">Execute</a></li>
                                 <li><a href="/modules\frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules\if">If</a></li>
-                                <li><a href="/modules\json">JSON</a></li>
                                 <li><a href="/modules\markdown">Markdown</a></li>
                                 <li><a href="/modules\metadata">Metadata</a></li>
                                 <li><a href="/modules\prepend">Prepend</a></li>
@@ -78,7 +82,46 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        
+                        <p>Razor is the templating language used by ASP.NET MVC. This module can parse and compile Razor templates and then render them to HTML.</p>
+<p>This module is based on the Razor code in the forthcoming ASP.NET 5 (vNext). It was written from the ground-up and doesn't use an intermediate library like <a href="https://github.com/Antaris/RazorEngine">RazorEngine</a> (which is a great library, I just wanted more control).</p>
+<p>Whenever possible, the same conventions as the Razor engine in ASP.NET MVC were used. It's important to keep in mind however, that this is <em>not</em> ASP.NET MVC. Many features you may be used to will not work (like most of the <code>HtmlHelper</code> extensions) and others just don't make sense (like the concept of <em>actions</em> and <em>controllers</em>). Also, while property names and classes in the two engines have similar names (such as <code>HtmlHelper</code>) they are not the same, and code intended to extend the capabilities of Razor in ASP.NET MVC probably won't work. That said, a lot of functionality does function the same as it does in ASP.NET MVC.</p>
+<h1>Usage</h1>
+<hr />
+<ul>
+<li>
+<p><code>Razor()</code></p>
+<p>Parses Razor templates in each input document and outputs documents with rendered HTML content.</p>
+</li>
+</ul>
+<h2>View Model</h2>
+<p>The view model for each page is set to the <code>IMetadata</code> of the input document. This allows you to write statements like <code>@Model.Get&lt;string&gt;(&quot;MyMetadataKey&quot;)</code>.</p>
+<h2>View Properties</h2>
+<p>You also have access to other Wyam information from your view. The following properties are available on every page:</p>
+<ul>
+<li>
+<p><code>Metadata</code></p>
+<p>Contains the metadata of the current document. This is the same as <code>Model</code>.</p>
+</li>
+<li>
+<p><code>ExecutionContext</code></p>
+<p>Contains the Wyam <code>IExecutionContext</code> which has information about the currently executing Wyam pipeline.</p>
+</li>
+<li>
+<p><code>Documents</code></p>
+<p>Contains the Wyam documents collection as a <code>IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IDocument&gt;&gt;</code>. The keys are pipeline names and the values are the list of documents for a given pipeline.</p>
+</li>
+<li>
+<p><code>AllDocuments</code></p>
+<p>Contains an aggregated sequence of all documents across all pipelines. This is useful for things like generating a list of blog posts, etc.</p>
+</li>
+</ul>
+<h2>ViewStart</h2>
+<p>You can place common Razor code to be executed at the start of every Razor page in a <code>_ViewStart.cshtml</code> file. This is typically used to specify a layout page.</p>
+<h2>Layouts</h2>
+<p>Layouts function much the same way as they do in ASP.NET MVC. Typically you place your layout code in a <code>_Layout.cshtml</code> file (though it can be named anything) and then set it in the <code>_ViewStart.cshtml</code> file. You can use <code>@RenderBody()</code> and <code>@RenderSection()</code> just as you would in ASP.NET MVC.</p>
+<h2>Partials</h2>
+<p>Partials also work as they do in ASP.NET MVC. Just use <code>@Html.Partial(&quot;_PartialName&quot;)</code> or <code>@Html.RenderPartial(&quot;_PartialName&quot;)</code>.</p>
+
 
                     </div>
                 </div>
@@ -86,7 +129,7 @@
         
         <hr />
         <div class="container">
-            <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. And yes, this site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> too.</small></p>
+            <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example.</small></p>
         </div>        
     </body>
     <script>
@@ -95,5 +138,13 @@
             active: 'active'
         });
       });
+      
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-54470483-4', 'auto');
+      ga('send', 'pageview');
     </script>
 </html>
