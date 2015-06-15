@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - JSON</title>
+        <title>Wyam - Prepend</title>
         <meta name="description" content="FluentBootstrap provides extensions, helper classes, model binding, and other goodies to help you use the Bootstrap CSS framework from .NET code." />
         <meta name="keywords" content="ASP.NET,MVC,ASP.NET MVC,C#,HTML,HtmlHelpers,Web Development,Bootstrap,Twitter Bootstrap,CSS" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>JSON</h1>
+                   <h1>Prepend</h1>
                </div>
             </div>
         
@@ -62,10 +62,10 @@
                                 <li><a href="/modules\execute">Execute</a></li>
                                 <li><a href="/modules\frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules\if">If</a></li>
-                                <li class="active"><a href="/modules\json">JSON</a></li>
+                                <li><a href="/modules\json">JSON</a></li>
                                 <li><a href="/modules\markdown">Markdown</a></li>
                                 <li><a href="/modules\metadata">Metadata</a></li>
-                                <li><a href="/modules\prepend">Prepend</a></li>
+                                <li class="active"><a href="/modules\prepend">Prepend</a></li>
                                 <li><a href="/modules\razor">Razor</a></li>
                                 <li><a href="/modules\readfiles">ReadFiles</a></li>
                                 <li><a href="/modules\replace">Replace</a></li>
@@ -77,7 +77,28 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        
+                        <p>Prepends the specified content to the existing content of each document.</p>
+<h1>Usage</h1>
+<hr />
+<ul>
+<li><code>Content(object content)</code></li>
+</ul>
+<p>Prepends the string value of the specified object to the content of every input document.</p>
+<ul>
+<li><code>Content(Func&lt;IDocument, object&gt; content)</code></li>
+</ul>
+<p>Prepends the string value of the returned object to to content of each document. This allows you to specify different content to prepend for each document depending on the input.</p>
+<ul>
+<li><code>Content(params IModule[] modules)</code></li>
+</ul>
+<p>The specified modules are executed against an empty initial document and the results are prepended to the content of every input document (possibly creating more than one output document for each input document).</p>
+<h2>Fluent Methods</h2>
+<p>Chain these methods together after the constructor to modify behavior.</p>
+<ul>
+<li><code>ForEachDocument()</code></li>
+</ul>
+<p>If child modules are specified in the constructor, this method indicates that the chain of child modules should be independently evaluated for each input document, otherwise the chain of child modules are evaluated once and the single result applied to each input document. The default behavior has better performance, but this provides additional control and flexibility. This has no effect if no child modules were specified in the constructor.</p>
+
 
                     </div>
                 </div>
