@@ -69,7 +69,22 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        
+                        <p>Writing a new module is easy:</p>
+<ol>
+<li>
+<p>Create a library and reference the latest <code>Wyam.Abstractions</code> <a href="https://www.nuget.org/packages/Wyam.Abstractions">NuGet package</a>. This includes all of the Wyam interfaces and should be the only package you need to include to extend Wyam.</p>
+</li>
+<li>
+<p>Derive your class from <code>IModule</code>.</p>
+</li>
+<li>
+<p>Implement the single method <code>IEnumerable&lt;IDocument&gt; Execute(IReadOnlyList&lt;IDocument&gt; inputs, IExecutionContext context)</code>. Your implementation should accept zero or more <code>IDocument</code> inputs and return zero or more <code>IDocument</code> outputs. To the extent you need to modify the input documents (which are immutable), use <code>IDocument.Clone(string content, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code> which returns a new <code>IDocument</code> with new content and additional metadata items. If you only need to add metadata items, use <code>IDocument.Clone(IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code>.</p>
+</li>
+<li>
+<p>Compile your library and place it somewhere Wyam will find it. You can manually put it in the Wyam directory (not recommended), tell Wyam to <a href="/getting-started/configuration#assemblies">reference your assemblies</a>, or create a NuGet package and <a href="/getting-started/configuration#nuget">tell Wyam to use it</a>. In all of these deployment scenarios, Wyam will scan the assembly for any modules, find your new module, and make it available.</p>
+</li>
+</ol>
+
 
                     </div>
                 </div>

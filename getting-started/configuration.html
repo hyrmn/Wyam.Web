@@ -93,7 +93,7 @@ Packages.Repository(&quot;https://www.myget.org/F/roslyn-nightly/&quot;)
 <li><code>Wyam.Modules.Razor</code></li>
 <li><code>Wyam.Modules.Yaml</code></li>
 </ul>
-<h2>Assemblies</h2>
+<h2><a name="assemblies"></a>Assemblies</h2>
 <p>In addition to NuGet packages you can also load assemblies. This is accomplished by using the <code>Assemblies</code> property. You can load all the assemblies in a directory with the <code>LoadDirectory(string path, SearchOption searchOption = SearchOption.AllDirectories)</code> method. The specified directory can either be relative to the active directory or absolute. You can also load a single assembly by location with the <code>LoadFile(string path)</code> method and by full name with the <code>Load(string name)</code> method. For example:</p>
 <pre class="prettyprint"><code>Assemblies
     .LoadDirectory(@&quot;lib&quot;)
