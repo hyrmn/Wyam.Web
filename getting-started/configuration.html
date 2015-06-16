@@ -64,6 +64,7 @@
                                 <li><a href="/getting-started\concepts">Concepts</a></li>
                                 <li><a href="/getting-started\installation">Installation</a></li>
                                 <li><a href="/getting-started\usage">Usage</a></li>
+                                <li><a href="/getting-started\defaults">Defaults</a></li>
                                 <li class="active"><a href="/getting-started\configuration">Configuration</a></li>
                                 <li><a href="/getting-started\examples">Examples</a></li>
                         </ul>
@@ -185,11 +186,7 @@ Pipelines.Add(&quot;Markdown&quot;,
 <h1>Example</h1>
 <hr />
 <p>The full configuration file for this site is given below as an example:</p>
-<pre class="prettyprint"><code>Assemblies
-    .LoadDirectory(@&quot;..\Wyam\Wyam.Modules.Markdown\bin\Debug&quot;)
-    .LoadDirectory(@&quot;..\Wyam\Wyam.Modules.Yaml\bin\Debug&quot;)
-    .LoadDirectory(@&quot;..\Wyam\Wyam.Modules.Razor\bin\Debug&quot;);
-Packages
+<pre class="prettyprint"><code>Packages
     .Install(&quot;Bootstrap&quot;)
     .Install(&quot;jQuery&quot;, &quot;[2.1.1]&quot;);
     
@@ -199,6 +196,7 @@ Pipelines.Add(&quot;Markdown&quot;,
     ReadFiles(@&quot;*.md&quot;),
     FrontMatter(Yaml()),
     Markdown(),
+    Replace(&quot;&lt;pre&gt;&lt;code&gt;&quot;, &quot;&lt;pre class=\&quot;prettyprint\&quot;&gt;&lt;code&gt;&quot;),
     Razor(),
     WriteFiles(&quot;.html&quot;)
 );
