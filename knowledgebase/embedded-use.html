@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Writing a Module</title>
+        <title>Wyam - Embedded Use</title>
         <meta name="description" content="FluentBootstrap provides extensions, helper classes, model binding, and other goodies to help you use the Bootstrap CSS framework from .NET code." />
         <meta name="keywords" content="ASP.NET,MVC,ASP.NET MVC,C#,HTML,HtmlHelpers,Web Development,Bootstrap,Twitter Bootstrap,CSS" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +40,7 @@
                 
                     <li><a href="/getting-started">Getting Started</a></li>
                     <li><a href="/modules">Modules</a></li>
-                    <li class="active"><a href="/advanced">Advanced</a></li>
+                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
               <ul class="nav navbar-nav navbar-right">                
@@ -52,7 +52,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Writing a Module</h1>
+                   <h1>Embedded Use</h1>
                </div>
             </div>
         
@@ -61,29 +61,17 @@
                 <div class="row">
                     <div class="col-md-3">                        
                         <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/advanced\continuous-integration">Continuous Integration</a></li>
-                                <li><a href="/advanced\embedded-use">Embedded Use</a></li>
-                                <li><a href="/advanced\helpers">Helpers</a></li>
-                                <li class="active"><a href="/advanced\writing-a-module">Writing a Module</a></li>
+                                <li><a href="/knowledgebase/continuous-integration">Continuous Integration</a></li>
+                                <li class="active"><a href="/knowledgebase/embedded-use">Embedded Use</a></li>
+                                <li><a href="/knowledgebase/helpers">Helpers</a></li>
+                                <li><a href="/knowledgebase/writing-a-module">Writing a Module</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Writing a new module is easy:</p>
-<ol>
-<li>
-<p>Create a library and reference the latest <code>Wyam.Abstractions</code> <a href="https://www.nuget.org/packages/Wyam.Abstractions">NuGet package</a>. This includes all of the Wyam interfaces and should be the only package you need to include to extend Wyam.</p>
-</li>
-<li>
-<p>Derive your class from <code>IModule</code>.</p>
-</li>
-<li>
-<p>Implement the single method <code>IEnumerable&lt;IDocument&gt; Execute(IReadOnlyList&lt;IDocument&gt; inputs, IExecutionContext context)</code>. Your implementation should accept zero or more <code>IDocument</code> inputs and return zero or more <code>IDocument</code> outputs. To the extent you need to modify the input documents (which are immutable), use <code>IDocument.Clone(string content, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code> which returns a new <code>IDocument</code> with new content and additional metadata items. If you only need to add metadata items, use <code>IDocument.Clone(IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code>.</p>
-</li>
-<li>
-<p>Compile your library and place it somewhere Wyam will find it. You can manually put it in the Wyam directory (not recommended), tell Wyam to <a href="/getting-started/configuration#assemblies">reference your assemblies</a>, or create a NuGet package and <a href="/getting-started/configuration#nuget">tell Wyam to use it</a>. In all of these deployment scenarios, Wyam will scan the assembly for any modules, find your new module, and make it available.</p>
-</li>
-</ol>
+                        <p>While Wyam is usually executed from the command line application, this is just a thin wrapper around a core library that you can include in your own applications. The core Wyam library is available on NuGet as <a href="https://www.nuget.org/packages/Wyam.Core">Wyam.Core</a>. Once you've included it in your application, you will need to create an instance of the <code>Wyam.Core.Engine</code> class.</p>
+<p>To configure the engine, you can call <code>Engine.Configure(string configScript = null, bool updatePackages = false)</code> with the optional text of a configuration file, which will be parsed and processed. Alternativly, you can configure the pipelines directly using the property <code>Engine.Pipelines</code>. Note that while all official modules are included in the command line distribution, any module that takes a dependency on other libraries are actually contained in extra NuGet packages and are not part of the Wyam.Core library. This is specifically to keep the core library light and allow you to include only those modules that you will need. <a href="https://www.nuget.org/packages?q=wyam">Search NuGet for &quot;wyam&quot;</a> in order to find additional module libraries. They are all named with the <code>Wyam.Modules.XYZ</code> convention.</p>
+<p>Once the engine is configured, execute it with a call to <code>Engine.Execute()</code>. This will start evaluation of the pipelines and any output messages will be sent to the configured trace endpoints.</p>
 
 
                     </div>

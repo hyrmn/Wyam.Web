@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Helpers</title>
+        <title>Wyam - Knowledgebase</title>
         <meta name="description" content="FluentBootstrap provides extensions, helper classes, model binding, and other goodies to help you use the Bootstrap CSS framework from .NET code." />
         <meta name="keywords" content="ASP.NET,MVC,ASP.NET MVC,C#,HTML,HtmlHelpers,Web Development,Bootstrap,Twitter Bootstrap,CSS" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +40,7 @@
                 
                     <li><a href="/getting-started">Getting Started</a></li>
                     <li><a href="/modules">Modules</a></li>
-                    <li class="active"><a href="/advanced">Advanced</a></li>
+                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
               <ul class="nav navbar-nav navbar-right">                
@@ -52,40 +52,22 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Helpers</h1>
+                   <h1>Knowledgebase</h1>
                </div>
             </div>
         
 
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/advanced\continuous-integration">Continuous Integration</a></li>
-                                <li><a href="/advanced\embedded-use">Embedded Use</a></li>
-                                <li class="active"><a href="/advanced\helpers">Helpers</a></li>
-                                <li><a href="/advanced\writing-a-module">Writing a Module</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg" />
-                    </div>
-                    <div class="col-md-9">
-                        <p>The <code>Wyam.Core.Helpers</code> namespaces contains several static helper classes that have useful methods.</p>
-<h1>PathHelper</h1>
-<hr />
-<ul>
-<li>
-<p><code>string GetRelativePath(string fromPath, string toPath)</code></p>
-<p>This computes a relative path between the supplied paths. If both paths are rooted or they have no common root, the <code>toPath</code> is returned.</p>
-</li>
-<li>
-<p><code>string RemoveExtension(string path)</code></p>
-<p>This removes the extension from a path or file. It returns the input path if no extension is present.</p>
-</li>
-</ul>
+                
+		<h3><strong><a href="/knowledgebase/continuous-integration">Continuous Integration</a></strong></h3>
+			<p>How to use GitHub Pages and AppVeyor to enable a free continuous integration environment for your site.</p>
+		<h3><strong><a href="/knowledgebase/embedded-use">Embedded Use</a></strong></h3>
+			<p>Wyam can be embedded into your own application.</p>
+		<h3><strong><a href="/knowledgebase/helpers">Helpers</a></strong></h3>
+			<p>Describes the available helper methods.</p>
+		<h3><strong><a href="/knowledgebase/writing-a-module">Writing a Module</a></strong></h3>
+			<p>How to write a module for Wyam.</p>
 
-
-                    </div>
-                </div>
             </div>
         
         <hr />
