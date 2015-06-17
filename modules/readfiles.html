@@ -5,8 +5,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         <title>Wyam - ReadFiles</title>
-        <meta name="description" content="FluentBootstrap provides extensions, helper classes, model binding, and other goodies to help you use the Bootstrap CSS framework from .NET code." />
-        <meta name="keywords" content="ASP.NET,MVC,ASP.NET MVC,C#,HTML,HtmlHelpers,Web Development,Bootstrap,Twitter Bootstrap,CSS" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -117,7 +117,7 @@
 </ul>
 <h1>Metadata</h1>
 <hr />
-<p>The following metadata is added to each new document:</p>
+<p>The following metadata is added to each document. Each key is available as a <code>const</code> string in the <a href="/knowledgebase/metadatakeys"><code>MetadataKeys</code> class</a>.</p>
 <ul>
 <li>
 <p><code>FileRoot</code></p>
@@ -125,7 +125,7 @@
 </li>
 <li>
 <p><code>FilePath</code></p>
-<p>The full path of the file.</p>
+<p>The full path of the file (including file name). Same as <code>SourcePath</code></p>
 </li>
 <li>
 <p><code>FileBase</code></p>
@@ -146,6 +146,10 @@
 <li>
 <p><code>FileRelative</code></p>
 <p>The relative path to the file (including file name) from the Wyam input folder.</p>
+</li>
+<li>
+<p><code>SourcePath</code></p>
+<p>The full path of the file (including file name). Same as <code>FilePath</code>.</p>
 </li>
 </ul>
 

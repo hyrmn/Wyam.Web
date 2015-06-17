@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Prepend</title>
+        <title>Wyam - Metadata Keys</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +39,8 @@
               <ul class="nav navbar-nav">
                 
                     <li><a href="/getting-started">Getting Started</a></li>
-                    <li class="active"><a href="/modules">Modules</a></li>
-                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                    <li><a href="/modules">Modules</a></li>
+                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
               <ul class="nav navbar-nav navbar-right">                
@@ -52,7 +52,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Prepend</h1>
+                   <h1>Metadata Keys</h1>
                </div>
             </div>
         
@@ -61,52 +61,21 @@
                 <div class="row">
                     <div class="col-md-3">                        
                         <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/modules/append">Append</a></li>
-                                <li><a href="/modules/branch">Branch</a></li>
-                                <li><a href="/modules/content">Content</a></li>
-                                <li><a href="/modules/copyfiles">CopyFiles</a></li>
-                                <li><a href="/modules/execute">Execute</a></li>
-                                <li><a href="/modules/frontmatter">FrontMatter</a></li>
-                                <li><a href="/modules/if">If</a></li>
-                                <li><a href="/modules/markdown">Markdown</a></li>
-                                <li><a href="/modules/metadata">Metadata</a></li>
-                                <li class="active"><a href="/modules/prepend">Prepend</a></li>
-                                <li><a href="/modules/razor">Razor</a></li>
-                                <li><a href="/modules/readfiles">ReadFiles</a></li>
-                                <li><a href="/modules/replace">Replace</a></li>
-                                <li><a href="/modules/replacein">ReplaceIn</a></li>
-                                <li><a href="/modules/trace">Trace</a></li>
-                                <li><a href="/modules/writefiles">WriteFiles</a></li>
-                                <li><a href="/modules/yaml">Yaml</a></li>
+                                <li><a href="/knowledgebase/continuous-integration">Continuous Integration</a></li>
+                                <li><a href="/knowledgebase/embedded-use">Embedded Use</a></li>
+                                <li><a href="/knowledgebase/helpers">Helpers</a></li>
+                                <li class="active"><a href="/knowledgebase/metadatakeys">Metadata Keys</a></li>
+                                <li><a href="/knowledgebase/writing-a-module">Writing a Module</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Prepends the specified content to the existing content of each document.</p>
-<h1>Usage</h1>
-<hr />
-<ul>
-<li>
-<p><code>Content(object content)</code></p>
-<p>Prepends the string value of the specified object to the content of every input document.</p>
-</li>
-<li>
-<p><code>Content(Func&lt;IDocument, object&gt; content)</code></p>
-<p>Prepends the string value of the returned object to to content of each document. This allows you to specify different content to prepend for each document depending on the input.</p>
-</li>
-<li>
-<p><code>Content(params IModule[] modules)</code></p>
-<p>The specified modules are executed against an empty initial document and the results are prepended to the content of every input document (possibly creating more than one output document for each input document).</p>
-</li>
-</ul>
-<h2>Fluent Methods</h2>
-<p>Chain these methods together after the constructor to modify behavior.</p>
-<ul>
-<li>
-<p><code>ForEachDocument()</code></p>
-<p>If child modules are specified in the constructor, this method indicates that the chain of child modules should be independently evaluated for each input document, otherwise the chain of child modules are evaluated once and the single result applied to each input document. The default behavior has better performance, but this provides additional control and flexibility. This has no effect if no child modules were specified in the constructor.</p>
-</li>
-</ul>
+                        <p>The <code>Wyam.Abstractions</code> assembly (which is automatically brought into scope) contains a static <code>MetadataKeys</code> class. This class contains <code>const</code> strings for all of the metadata keys that get set throughout the core Wyam modules. You can use these instead of magic strings when getting metadata values. For example, in a <a href="/modules/razor">Razor page</a> you would write:</p>
+<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(MetadataKeys.FileRelative)
+</code></pre>
+<p>instead of:</p>
+<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(&quot;FileRelative&quot;)
+</code></pre>
 
 
                     </div>
