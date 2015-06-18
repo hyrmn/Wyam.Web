@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Yaml</title>
+        <title>Wyam - Where</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +52,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Yaml</h1>
+                   <h1>Where</h1>
                </div>
             </div>
         
@@ -78,24 +78,20 @@
                                 <li><a href="/modules/replace">Replace</a></li>
                                 <li><a href="/modules/replacein">ReplaceIn</a></li>
                                 <li><a href="/modules/trace">Trace</a></li>
-                                <li><a href="/modules/where">Where</a></li>
+                                <li class="active"><a href="/modules/where">Where</a></li>
                                 <li><a href="/modules/writefiles">WriteFiles</a></li>
-                                <li class="active"><a href="/modules/yaml">Yaml</a></li>
+                                <li><a href="/modules/yaml">Yaml</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Parses YAML content for each input document and stores the result in it's metadata. This module uses <a href="http://aaubry.net/pages/yamldotnet.html">YamlDotNet</a>.</p>
+                        <p>Filters the current sequence of modules using a predicate. Only input documents that satisfy the predicate will be output.</p>
 <h1>Usage</h1>
 <hr />
 <ul>
 <li>
-<p><code>Yaml()</code></p>
-<p>The content of the input document is parsed as YAML. All root-level scalars are added to the input document's metadata. Any more complex YAML structures are ignored. This is best for simple key-value YAML documents.</p>
-</li>
-<li>
-<p><code>Yaml(string key, bool flatten = false)</code></p>
-<p>The content of the input document is parsed as YAML. A dynamic object representing the first YAML document is set as the value for the given metadata key. See <a href="https://github.com/aaubry/YamlDotNet.Dynamic">YamlDotNet.Dynamic</a> for more details about the dynamic YAML object. If <code>flatten</code> is <code>true</code>, all root-level scalars are also added to the input document's metadata.</p>
+<p><code>Where(Func&lt;IDocument, bool&gt; predicate)</code></p>
+<p>Specifies the predicate to use for filtering documents.</p>
 </li>
 </ul>
 

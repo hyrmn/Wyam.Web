@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Yaml</title>
+        <title>Wyam - ConcatDocuments</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +52,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Yaml</h1>
+                   <h1>ConcatDocuments</h1>
                </div>
             </div>
         
@@ -64,7 +64,7 @@
                                 <li><a href="/modules/append">Append</a></li>
                                 <li><a href="/modules/branch">Branch</a></li>
                                 <li><a href="/modules/concat">Concat</a></li>
-                                <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
+                                <li class="active"><a href="/modules/concatdocuments">ConcatDocuments</a></li>
                                 <li><a href="/modules/content">Content</a></li>
                                 <li><a href="/modules/copyfiles">CopyFiles</a></li>
                                 <li><a href="/modules/execute">Execute</a></li>
@@ -80,22 +80,26 @@
                                 <li><a href="/modules/trace">Trace</a></li>
                                 <li><a href="/modules/where">Where</a></li>
                                 <li><a href="/modules/writefiles">WriteFiles</a></li>
-                                <li class="active"><a href="/modules/yaml">Yaml</a></li>
+                                <li><a href="/modules/yaml">Yaml</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Parses YAML content for each input document and stores the result in it's metadata. This module uses <a href="http://aaubry.net/pages/yamldotnet.html">YamlDotNet</a>.</p>
+                        <p>This module <em>copies</em> documents from other pipelines and places them into the current pipeline after all input documents. Note that because this module does not remove the documents from their original pipeline it's likely you will end up with documents that have the same content and metadata in two different pipelines.</p>
 <h1>Usage</h1>
 <hr />
 <ul>
 <li>
-<p><code>Yaml()</code></p>
-<p>The content of the input document is parsed as YAML. All root-level scalars are added to the input document's metadata. Any more complex YAML structures are ignored. This is best for simple key-value YAML documents.</p>
+<p><code>ConcatDocuments(string pipeline = null)</code></p>
+<p>If <code>pipeline</code> is null then all existing documents from all pipelines (except the current one) will be concatenated with the input documents. Otherwise, the documents from the specified pipeline will be concatenated with the input documents.</p>
 </li>
+</ul>
+<h2>Fluent Methods</h2>
+<p>Chain these methods together after the constructor to modify behavior.</p>
+<ul>
 <li>
-<p><code>Yaml(string key, bool flatten = false)</code></p>
-<p>The content of the input document is parsed as YAML. A dynamic object representing the first YAML document is set as the value for the given metadata key. See <a href="https://github.com/aaubry/YamlDotNet.Dynamic">YamlDotNet.Dynamic</a> for more details about the dynamic YAML object. If <code>flatten</code> is <code>true</code>, all root-level scalars are also added to the input document's metadata.</p>
+<p><code>Where(Func&lt;IDocument, bool&gt; predicate)</code></p>
+<p>Only documents that satisfy the predicate will be concatenated with the input documents.</p>
 </li>
 </ul>
 

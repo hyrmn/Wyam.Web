@@ -71,37 +71,36 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>It's entirely possible to use Wyam without ever worring about configuration files. If you don't create or specify one, three pipelines are used by default:</p>
+                        <p>It's entirely possible to use Wyam without ever worring about configuration files. If you don't create or specify one, two pipelines are used by default:</p>
 <ul>
 <li>
-<p><strong>Markdown</strong> is run first. It searches for all <code>.md</code> Markdown files in the input folder (usually <code>.\Input</code>). Then it processes any YAML front matter and adds it to the document metadata. Then it renders HTML from the Markdown content. Finally, <em>it also runs the rendered HTML through the Razor engine</em> so that any layouts get applied. Once done, files are written in the output folder (usually <code>.\Output</code>) with the same base filename and a <code>.html</code> extension.</p>
+<p><strong>Content</strong> is run first. It can be thought of in three phases:</p>
+<ol>
+<li>First the <a href="/modules/ReadFiles">ReadFiles</a> module searches for all <code>.md</code> Markdown files in the input folder (usually <code>.\Input</code>). These are processed for any YAML front matter which is added to the document metadata by using the <a href="/modules/frontmatter">FrontMatter</a> module and passing the front matter to the <a href="/modules/yaml">Yaml</a> module. Then HTML is rendered from the Markdown content using the <a href="/modules/markdown">Markdown</a> module.</li>
+<li>The second phase adds documents to the sequence with the <a href="/modules/concat">Concat</a> module by using the <a href="/modules/ReadFiles">ReadFiles</a> module to search for all <code>.cshtml</code> Razor templates <em>that don't start with an underscore</em> (as these are usually layouts or partials). These are processed for any YAML front matter which is added to the document metadata by using the <a href="/modules/frontmatter">FrontMatter</a> module and passing the front matter to the <a href="/modules/yaml">Yaml</a> module.</li>
+<li>Finally, <em>both</em> the Markdown documents and the Razor documents are evaluated by the <a href="/modules/razor">Razor</a> module to convert Razor templates to HTML. The results are written to disk as <code>.html</code> files by the <a href="/modules/writefiles">WriteFiles</a> module.</li>
+</ol>
 </li>
 <li>
-<p><strong>Razor</strong> is run next. It searches for all <code>.cshtml</code> Razor templates <em>that don't start with an underscore</em> (as these are usually layouts or partials). Then it processes any YAML front matter and adds it to the document metadata. The Razor templates are then run through the Razor engine and the resulting HTML is written in the output folder (usually <code>.\Output</code>) with the same base filename and a <code>.html</code> extension.</p>
-</li>
-<li>
-<p><strong>Resources</strong> is run last and simply copies all files that don't end in <code>.md</code> or <code>.cshtml</code> from the input folder to the output folder.</p>
+<p><strong>Resources</strong> simply copies all files that don't end in <code>.md</code> or <code>.cshtml</code> from the input folder to the output folder.</p>
 </li>
 </ul>
 <p>Essentially this means that if you put a combination of Markdown, Razor, and other resource files in your input folder, they'll get handled correctly and a finished site will get placed in your output folder. The combined power of Razor (with layouts, etc.) and ease of Markdown make this default configuration a great publishing setup right off the bat. In fact, this site actually uses a minor modification of this very configuration.</p>
 <p>For reference, the full default configuration script is:</p>
-<pre class="prettyprint"><code>Pipelines.Add(&quot;Markdown&quot;,
-    ReadFiles(@&quot;*.md&quot;),
+<pre class="prettyprint"><code>Pipelines.Add(&quot;Content&quot;,
+    ReadFiles(&quot;*.md&quot;),
     FrontMatter(Yaml()),
     Markdown(),
+    Concat(
+        ReadFiles(&quot;*.cshtml&quot;).Where(x =&gt; Path.GetFileName(x)[0] != '_'),
+        FrontMatter(Yaml())     
+    ),
     Razor(),
-    WriteFiles(&quot;.html&quot;)
-);
-
-Pipelines.Add(&quot;Razor&quot;,
-    ReadFiles(@&quot;*.cshtml&quot;).Where(x =&gt; Path.GetFileName(x)[0] != '_'),
-    FrontMatter(Yaml()),
-    Razor(),
-    WriteFiles(&quot;.html&quot;)
+    WriteFiles(&quot;&quot;.html&quot;&quot;)
 );
 
 Pipelines.Add(&quot;Resources&quot;,
-    CopyFiles(@&quot;*&quot;).Where(x =&gt; Path.GetExtension(x) != &quot;.cshtml&quot; &amp;&amp; Path.GetExtension(x) != &quot;.md&quot;)
+    CopyFiles(&quot;*&quot;).Where(x =&gt; Path.GetExtension(x) != &quot;.cshtml&quot; &amp;&amp; Path.GetExtension(x) != &quot;.md&quot;)
 );
 </code></pre>
 
