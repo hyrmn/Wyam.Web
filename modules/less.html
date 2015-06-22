@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Yaml</title>
+        <title>Wyam - Less</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +52,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Yaml</h1>
+                   <h1>Less</h1>
                </div>
             </div>
         
@@ -70,7 +70,7 @@
                                 <li><a href="/modules/execute">Execute</a></li>
                                 <li><a href="/modules/frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules/if">If</a></li>
-                                <li><a href="/modules/less">Less</a></li>
+                                <li class="active"><a href="/modules/less">Less</a></li>
                                 <li><a href="/modules/markdown">Markdown</a></li>
                                 <li><a href="/modules/meta">Meta</a></li>
                                 <li><a href="/modules/prepend">Prepend</a></li>
@@ -81,22 +81,26 @@
                                 <li><a href="/modules/trace">Trace</a></li>
                                 <li><a href="/modules/where">Where</a></li>
                                 <li><a href="/modules/writefiles">WriteFiles</a></li>
-                                <li class="active"><a href="/modules/yaml">Yaml</a></li>
+                                <li><a href="/modules/yaml">Yaml</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Parses YAML content for each input document and stores the result in it's metadata. This module uses <a href="http://aaubry.net/pages/yamldotnet.html">YamlDotNet</a>.</p>
+                        <p>Compiles Less CSS files to CSS stylesheets. This module uses <a href="http://www.dotlesscss.org/">DotLess</a>.</p>
+<p>Some Less CSS files aren't intended to be output directly such as those that contain mixins or variables. For this reason, the <a href="/getting-started/defaults">default configuration</a> does not search for all <code>*.less</code> files and compile/output them. You will need to create a <a href="/getting-started/configuration">custom configuration file</a> that indicates exactly which Less CSS files should be compiled and output. For example, here is a pipeline that compiles two Less CSS files, one for Bootstrap (which contains a lot of includes) and a second for custom CSS:</p>
+<pre class="prettyprint"><code>Pipelines.Add(&quot;Less&quot;,
+  ReadFiles(&quot;master.less&quot;),
+  Concat(ReadFiles(&quot;bootstrap.less&quot;)),
+  Less(),
+  WriteFiles(&quot;.css&quot;)
+);
+</code></pre>
 <h1>Usage</h1>
 <hr />
 <ul>
 <li>
-<p><code>Yaml()</code></p>
-<p>The content of the input document is parsed as YAML. All root-level scalars are added to the input document's metadata. Any more complex YAML structures are ignored. This is best for simple key-value YAML documents.</p>
-</li>
-<li>
-<p><code>Yaml(string key, bool flatten = false)</code></p>
-<p>The content of the input document is parsed as YAML. A dynamic object representing the first YAML document is set as the value for the given metadata key. See <a href="https://github.com/aaubry/YamlDotNet.Dynamic">YamlDotNet.Dynamic</a> for more details about the dynamic YAML object. If <code>flatten</code> is <code>true</code>, all root-level scalars are also added to the input document's metadata.</p>
+<p><code>Less()</code></p>
+<p>The content of the input document is compiled to CSS and the content of the output document contains the compiled CSS stylesheet.</p>
 </li>
 </ul>
 

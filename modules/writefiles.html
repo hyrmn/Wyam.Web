@@ -70,6 +70,7 @@
                                 <li><a href="/modules/execute">Execute</a></li>
                                 <li><a href="/modules/frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules/if">If</a></li>
+                                <li><a href="/modules/less">Less</a></li>
                                 <li><a href="/modules/markdown">Markdown</a></li>
                                 <li><a href="/modules/meta">Meta</a></li>
                                 <li><a href="/modules/prepend">Prepend</a></li>
@@ -91,11 +92,11 @@
 <ul>
 <li>
 <p><code>WriteFiles()</code></p>
-<p>Writes the document content to disk with the same file name and relative path as the input file. This requires metadata for <code>FileRelative</code> to be set (which is done by default by the <a href="/modules/readfiles">ReadFiles</a> module).</p>
+<p>Writes the document content to disk with the same file name and relative path as the input file. This requires metadata for <code>RelativeFilePath</code> to be set (which is done by default by the <a href="/modules/readfiles">ReadFiles</a> module).</p>
 </li>
 <li>
 <p><code>WriteFiles(string extension)</code></p>
-<p>Writes the document content to disk with the specified extension with the same base file name and relative path as the input file. This requires metadata for <code>FileRelative</code> to be set (which is done by default by the <a href="/modules/readfiles">ReadFiles</a> module).</p>
+<p>Writes the document content to disk with the specified extension with the same base file name and relative path as the input file. This requires metadata for <code>RelativeFilePath</code> to be set (which is done by default by the <a href="/modules/readfiles">ReadFiles</a> module).</p>
 </li>
 <li>
 <p><code>WriteFiles(Func&lt;IDocument, string&gt; path)</code></p>
@@ -115,7 +116,7 @@
 <p>The following metadata is added to each document. Each key is available as a <code>const</code> string in the <a href="/knowledgebase/metadatakeys"><code>MetadataKeys</code> class</a>.</p>
 <ul>
 <li>
-<p><code>DestinationPath</code></p>
+<p><code>DestinationFilePath</code></p>
 <p>The full path (including file name) of the destination file.</p>
 </li>
 </ul>

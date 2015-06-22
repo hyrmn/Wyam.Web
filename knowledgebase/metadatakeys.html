@@ -71,10 +71,10 @@
                     </div>
                     <div class="col-md-9">
                         <p>The <code>Wyam.Abstractions</code> assembly (which is automatically brought into scope) contains a static <code>MetadataKeys</code> class. This class contains <code>const</code> strings for all of the metadata keys that get set throughout the core Wyam modules. You can use these instead of magic strings when getting metadata values. For example, in a <a href="/modules/razor">Razor page</a> you would write:</p>
-<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(MetadataKeys.FileRelative)
+<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(MetadataKeys.RelativeFilePath)
 </code></pre>
 <p>instead of:</p>
-<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(&quot;FileRelative&quot;)
+<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(&quot;RelativeFilePath&quot;)
 </code></pre>
 
 

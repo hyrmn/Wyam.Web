@@ -70,6 +70,7 @@
                                 <li><a href="/modules/execute">Execute</a></li>
                                 <li><a href="/modules/frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules/if">If</a></li>
+                                <li><a href="/modules/less">Less</a></li>
                                 <li><a href="/modules/markdown">Markdown</a></li>
                                 <li><a href="/modules/meta">Meta</a></li>
                                 <li><a href="/modules/prepend">Prepend</a></li>
@@ -123,36 +124,32 @@
 <p>The following metadata is added to each document. Each key is available as a <code>const</code> string in the <a href="/knowledgebase/metadatakeys"><code>MetadataKeys</code> class</a>.</p>
 <ul>
 <li>
-<p><code>FileRoot</code></p>
+<p><code>SourceFileRoot</code></p>
 <p>The root search path without any nested directories (useful for outputting documents at the same location relative to the root path).</p>
 </li>
 <li>
-<p><code>FilePath</code></p>
-<p>The full path of the file (including file name). Same as <code>SourcePath</code></p>
+<p><code>SourceFilePath</code></p>
+<p>The full path of the file (including file name).</p>
 </li>
 <li>
-<p><code>FileBase</code></p>
-<p>The file name without any extension. Equivalent to <code>Path.GetFileNameWithoutExtension(FilePath)</code>.</p>
+<p><code>SourceFileBase</code></p>
+<p>The file name without any extension. Equivalent to <code>Path.GetFileNameWithoutExtension(SourceFilePath)</code>.</p>
 </li>
 <li>
-<p><code>FileExt</code></p>
-<p>The extension of the file. Equivalent to <code>Path.GetExtension(FilePath)</code>.</p>
+<p><code>SourceFileExt</code></p>
+<p>The extension of the file. Equivalent to <code>Path.GetExtension(SourceFilePath)</code>.</p>
 </li>
 <li>
-<p><code>FileName</code></p>
-<p>The full file name. Equivalent to <code>Path.GetFileName(FilePath)</code>.</p>
+<p><code>SourceFileName</code></p>
+<p>The full file name. Equivalent to <code>Path.GetFileName(SourceFilePath)</code>.</p>
 </li>
 <li>
-<p><code>FileDir</code></p>
-<p>The full directory of the file. Equivalent to <code>Path.GetDirectoryName(FilePath)</code>.</p>
+<p><code>SourceFileDir</code></p>
+<p>The full directory of the file. Equivalent to <code>Path.GetDirectoryName(SourceFilePath)</code>.</p>
 </li>
 <li>
-<p><code>FileRelative</code></p>
+<p><code>RelativeFilePath</code></p>
 <p>The relative path to the file (including file name) from the Wyam input folder.</p>
-</li>
-<li>
-<p><code>SourcePath</code></p>
-<p>The full path of the file (including file name). Same as <code>FilePath</code>.</p>
 </li>
 </ul>
 
