@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Metadata Keys</title>
+        <title>Wyam - Documents</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +39,8 @@
               <ul class="nav navbar-nav">
                 
                     <li><a href="/getting-started">Getting Started</a></li>
-                    <li><a href="/modules">Modules</a></li>
-                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
+                    <li class="active"><a href="/modules">Modules</a></li>
+                    <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
               <ul class="nav navbar-nav navbar-right">                
@@ -52,7 +52,7 @@
         
             <div class="jumbotron">
     	       <div class="container">
-                   <h1>Metadata Keys</h1>
+                   <h1>Documents</h1>
                </div>
             </div>
         
@@ -61,21 +61,49 @@
                 <div class="row">
                     <div class="col-md-3">                        
                         <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/knowledgebase/continuous-integration">Continuous Integration</a></li>
-                                <li><a href="/knowledgebase/embedded-use">Embedded Use</a></li>
-                                <li><a href="/knowledgebase/helpers">Helpers</a></li>
-                                <li class="active"><a href="/knowledgebase/metadatakeys">Metadata Keys</a></li>
-                                <li><a href="/knowledgebase/writing-a-module">Writing a Module</a></li>
+                                <li><a href="/modules/append">Append</a></li>
+                                <li><a href="/modules/branch">Branch</a></li>
+                                <li><a href="/modules/concat">Concat</a></li>
+                                <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
+                                <li><a href="/modules/content">Content</a></li>
+                                <li><a href="/modules/copyfiles">CopyFiles</a></li>
+                                <li class="active"><a href="/modules/documents">Documents</a></li>
+                                <li><a href="/modules/execute">Execute</a></li>
+                                <li><a href="/modules/frontmatter">FrontMatter</a></li>
+                                <li><a href="/modules/if">If</a></li>
+                                <li><a href="/modules/less">Less</a></li>
+                                <li><a href="/modules/markdown">Markdown</a></li>
+                                <li><a href="/modules/meta">Meta</a></li>
+                                <li><a href="/modules/prepend">Prepend</a></li>
+                                <li><a href="/modules/razor">Razor</a></li>
+                                <li><a href="/modules/readfiles">ReadFiles</a></li>
+                                <li><a href="/modules/replace">Replace</a></li>
+                                <li><a href="/modules/replacein">ReplaceIn</a></li>
+                                <li><a href="/modules/trace">Trace</a></li>
+                                <li><a href="/modules/where">Where</a></li>
+                                <li><a href="/modules/writefiles">WriteFiles</a></li>
+                                <li><a href="/modules/yaml">Yaml</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>The <code>Wyam.Abstractions</code> assembly (which is automatically brought into scope) contains a static <code>MetadataKeys</code> class. This class contains <code>const</code> strings for all of the metadata keys that get set throughout the core Wyam modules. You can use these instead of magic strings when getting metadata values. For example, in a <a href="/modules/razor">Razor page</a> you would write:</p>
-<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(MetadataKeys.RelativeFilePath)
-</code></pre>
-<p>instead of:</p>
-<pre class="prettyprint"><code>Metadata.Get&lt;string&gt;(&quot;RelativeFilePath&quot;)
-</code></pre>
+                        <p>This module <em>copies</em> documents from other pipelines and places them into the current pipeline. Note that because this module does not remove the documents from their original pipeline it's likely you will end up with documents that have the same content and metadata in two different pipelines. Unlike <a href="/modules/concatdocuments">ConcatDocuments</a>, this module does not include the input documents are part of it's output.</p>
+<h1>Usage</h1>
+<hr />
+<ul>
+<li>
+<p><code>Documents(string pipeline = null)</code></p>
+<p>If <code>pipeline</code> is null then all existing documents from all pipelines (except the current one) will be output. Otherwise, the documents from the specified pipeline will be output.</p>
+</li>
+</ul>
+<h2>Fluent Methods</h2>
+<p>Chain these methods together after the constructor to modify behavior.</p>
+<ul>
+<li>
+<p><code>Where(Func&lt;IDocument, bool&gt; predicate)</code></p>
+<p>Only documents that satisfy the predicate will be output.</p>
+</li>
+</ul>
 
 
                     </div>

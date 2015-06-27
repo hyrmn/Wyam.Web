@@ -67,6 +67,7 @@
                                 <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
                                 <li><a href="/modules/content">Content</a></li>
                                 <li><a href="/modules/copyfiles">CopyFiles</a></li>
+                                <li><a href="/modules/documents">Documents</a></li>
                                 <li><a href="/modules/execute">Execute</a></li>
                                 <li><a href="/modules/frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules/if">If</a></li>
@@ -86,7 +87,7 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Writes the content of each input document to the file system.</p>
+                        <p>Writes the content of each input document to the file system. If the metadata keys <code>WriteFileName</code> or <code>WriteExtension</code> (which require <code>RelativeFilePath</code> to be set, usually by the <a href="/modules/readfiles">ReadFiles</a> module) or <code>WritePath</code> are set on an input document, that value will be used instead of what's specified in the module. For example, if you have a bunch of Razor <code>.cshtml</code> files that need to be rendered to <code>.html</code> files but one of them should be output as a <code>.xml</code> file instead, define the <code>WriteExtension</code> metadata value in the <a href="/modules/frontmatter">front matter</a> of the page.</p>
 <h1>Usage</h1>
 <hr />
 <ul>
@@ -113,7 +114,7 @@
 </ul>
 <h1>Metadata</h1>
 <hr />
-<p>The following metadata is added to each document. Each key is available as a <code>const</code> string in the <a href="/knowledgebase/metadatakeys"><code>MetadataKeys</code> class</a>.</p>
+<p>The following metadata is added to each document.</p>
 <ul>
 <li>
 <p><code>DestinationFilePath</code></p>

@@ -67,6 +67,7 @@
                                 <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
                                 <li><a href="/modules/content">Content</a></li>
                                 <li><a href="/modules/copyfiles">CopyFiles</a></li>
+                                <li><a href="/modules/documents">Documents</a></li>
                                 <li class="active"><a href="/modules/execute">Execute</a></li>
                                 <li><a href="/modules/frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules/if">If</a></li>
@@ -93,6 +94,10 @@
 <li>
 <p><code>Execute(Func&lt;IDocument, IEnumerable&lt;IDocument&gt;&gt; execute)</code></p>
 <p>This function is evaluated once for every input document. The return value should be an enumerable of output documents for each input document. If you want to execute some code and just pass the documents through, you should return an array with the input document as the single value. Otherwise, use <code>IDocument.Clone(IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code> to create new documents with additional metadata (and the same content) and/or <code>IDocument.Clone(string content, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code> to create new documents with new content and additional metadata.</p>
+</li>
+<li>
+<p><code>Execute(Func&lt;IDocument, IExecutionContext, IEnumerable&lt;IDocument&gt;&gt; execute)</code></p>
+<p>This function is evaluated once for every input document. The return value should be an enumerable of output documents for each input document. This overload allows you to execute code that requires the <code>IExecutionContext</code> (for example, if it needs to access previous documents or output trace information).</p>
 </li>
 </ul>
 

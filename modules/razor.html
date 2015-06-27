@@ -67,6 +67,7 @@
                                 <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
                                 <li><a href="/modules/content">Content</a></li>
                                 <li><a href="/modules/copyfiles">CopyFiles</a></li>
+                                <li><a href="/modules/documents">Documents</a></li>
                                 <li><a href="/modules/execute">Execute</a></li>
                                 <li><a href="/modules/frontmatter">FrontMatter</a></li>
                                 <li><a href="/modules/if">If</a></li>
@@ -87,14 +88,14 @@
                     </div>
                     <div class="col-md-9">
                         <p>Razor is the templating language used by ASP.NET MVC. This module can parse and compile Razor templates and then render them to HTML.</p>
-<p>This module is based on the Razor code in the forthcoming ASP.NET 5 (vNext). It was written from the ground-up and doesn't use an intermediate library like <a href="https://github.com/Antaris/RazorEngine">RazorEngine</a> (which is a great library, I just wanted more control).</p>
+<p>This module is based on the Razor code in the forthcoming ASP.NET 5 (vNext). It was written from the ground-up and doesn't use an intermediate library like <a href="https://github.com/Antaris/RazorEngine">RazorEngine</a> (which is a great library, implementing directly just provides more control). Note that for now, TagHelpers are not implemented in Wyam. Their API is still changing and it would have been too difficult to keep up. Support for TagHelpers may be introduced once ASP.NET MVC 5 becomes more stable.</p>
 <p>Whenever possible, the same conventions as the Razor engine in ASP.NET MVC were used. It's important to keep in mind however, that this is <em>not</em> ASP.NET MVC. Many features you may be used to will not work (like most of the <code>HtmlHelper</code> extensions) and others just don't make sense (like the concept of <em>actions</em> and <em>controllers</em>). Also, while property names and classes in the two engines have similar names (such as <code>HtmlHelper</code>) they are not the same, and code intended to extend the capabilities of Razor in ASP.NET MVC probably won't work. That said, a lot of functionality does function the same as it does in ASP.NET MVC.</p>
 <h1>Usage</h1>
 <hr />
 <ul>
 <li>
-<p><code>Razor()</code></p>
-<p>Parses Razor templates in each input document and outputs documents with rendered HTML content.</p>
+<p><code>Razor(Type basePageType = null)</code></p>
+<p>Parses Razor templates in each input document and outputs documents with rendered HTML content. If <code>basePageType</code> is specified, it will be used as the base type for Razor pages (see below).</p>
 </li>
 </ul>
 <h2>View Model</h2>
@@ -112,11 +113,7 @@
 </li>
 <li>
 <p><code>Documents</code></p>
-<p>Contains the Wyam documents collection as a <code>IReadOnlyDictionary&lt;string, IReadOnlyList&lt;IDocument&gt;&gt;</code>. The keys are pipeline names and the values are the list of documents for a given pipeline.</p>
-</li>
-<li>
-<p><code>AllDocuments</code></p>
-<p>Contains an aggregated sequence of all documents across all pipelines. This is useful for things like generating a list of blog posts, etc.</p>
+<p>Contains the Wyam <code>IDocumentCollection</code> which holds all processed documents and provides various means of accessing them.</p>
 </li>
 </ul>
 <h2>ViewStart</h2>
@@ -124,7 +121,50 @@
 <h2>Layouts</h2>
 <p>Layouts function much the same way as they do in ASP.NET MVC. Typically you place your layout code in a <code>_Layout.cshtml</code> file (though it can be named anything) and then set it in the <code>_ViewStart.cshtml</code> file. You can use <code>@RenderBody()</code> and <code>@RenderSection()</code> just as you would in ASP.NET MVC.</p>
 <h2>Partials</h2>
-<p>Partials also work as they do in ASP.NET MVC. Just use <code>@Html.Partial(&quot;_PartialName&quot;)</code> or <code>@Html.RenderPartial(&quot;_PartialName&quot;)</code>.</p>
+<p>Partials also work as they do in ASP.NET MVC. Just use <code>@Html.Partial(&quot;_PartialName&quot;)</code> or <code>@Html.RenderPartial(&quot;_PartialName&quot;)</code>. Note that you can't pass a model to the partial view (since the model is always set to the current <code>IMetadata</code>). To pass data to a partial view, use the <code>ViewData</code> collection, setting a value just before rendering the partial and then getting it within the partial.</p>
+<h2>HtmlHelpers</h2>
+<p>It's possible to define custom HtmlHelpers in your configuration file and then use them within your Razor page. This provides a great way to specify common behavior for all your views. In the <a href="/getting-started/configuration#declarations">declarations section</a> of your configuration file, add a static class (the name doesn't matter, but convention suggests you call it <code>HtmlHelperExtensions</code> or <code>HtmlExtensions</code>). Then add static extension methods for <code>HtmlHelper</code>. For example:</p>
+<pre class="prettyprint"><code>// Setup code
+// ...
+===
+// Declaration code
+
+public static class HtmlHelperExtensions
+{
+  public static string HelloWorld(this HtmlHelper helper)
+  {
+    return &quot;Hello World!&quot;;
+  }
+}
+---
+// Configuration code
+// ...
+</code></pre>
+<p>Then you can use it from your Razor pages by calling <code>@Html.HelloWorld()</code>.</p>
+<h2>Base Page</h2>
+<p>You can also specify a different base page for your Razor views. This lets you do things like define additional properties or behavior for every page. In the <a href="/getting-started/configuration#declarations">declarations section</a> of your configuration file, add an abstract class that derives from <code>BaseRazorPage</code>. Then page the <code>Type</code> of your new base class to the <code>Razor</code> module.</p>
+<pre class="prettyprint"><code>// Setup code
+// ...
+===
+// Declaration code
+
+public abstract class MyRazorPage : BaseRazorPage
+{
+  public string HelloWorld
+    {
+    get { return &quot;Hello World&quot;; }
+    }
+}
+---
+// Configuration code
+
+Pipelines.Add(&quot;Content&quot;,
+    ReadFiles(&quot;*.cshtml&quot;),
+    Razor(typeof(MyRazorPage)),
+    WriteFiles(&quot;.html&quot;)
+);
+</code></pre>
+<p>Then you can use any methods, properties, etc. you defined in your base class directly within your Razor pages - I.e., <code>@HelloWorld</code>.</p>
 
 
                     </div>
