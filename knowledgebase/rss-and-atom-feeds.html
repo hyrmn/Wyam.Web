@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <title>Wyam - RSS and Atom Feeds</title>
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <script src="/Scripts/jquery-2.1.1.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>    
+        <script src="/Scripts/tinynav.min.js"></script>        
+        <script src="/Scripts/prettify.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+    <body onload="prettyPrint()">        
+        <nav class="navbar navbar-default navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><img alt="Wyam" src="/Content/Images/nav-logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-main">
+              <ul class="nav navbar-nav">
+                
+                    <li><a href="/getting-started">Getting Started</a></li>
+                    <li><a href="/modules">Modules</a></li>
+                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+              </ul>              
+              <ul class="nav navbar-nav navbar-right">                
+                <li><a href="https://github.com/Wyamio/Wyam">GitHub</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        
+            <div class="jumbotron">
+    	       <div class="container">
+                   <h1>RSS and Atom Feeds</h1>
+               </div>
+            </div>
+        
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">                        
+                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
+                                <li><a href="/knowledgebase/continuous-integration">Continuous Integration</a></li>
+                                <li><a href="/knowledgebase/embedded-use">Embedded Use</a></li>
+                                <li><a href="/knowledgebase/helpers">Helpers</a></li>
+                                <li class="active"><a href="/knowledgebase/rss-and-atom-feeds">RSS and Atom Feeds</a></li>
+                                <li><a href="/knowledgebase/writing-a-module">Writing a Module</a></li>
+                        </ul>
+                        <hr class="hidden-md hidden-lg" />
+                    </div>
+                    <div class="col-md-9">
+                        <p>RSS and Atom are both syndication formats designed to publish updates to your website to clients such as feed readers. Most blog platforms have support for one or both, and like many things in Wyam there are multiple ways you can add support for RSS and/or Atom to your own site.</p>
+<h1>SyndicationFeed</h1>
+<p>Perhaps the easiest method is to use the <a href="https://msdn.microsoft.com/en-us/library/system.servicemodel.syndication.syndicationfeed.aspx"><code>SyndicationFeed</code></a> class provided by WCF. It allows you to programmatically build either type of feed and then output it as a string. To get started, you'll need to make sure you include the <code>System.ServiceModel</code> assembly in your configuration file (which must be loaded by full name since it's in the GAC):</p>
+<pre class="prettyprint"><code>Assemblies
+    .Load(&quot;System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot;)
+</code></pre>
+<p>Then, create a Razor page and add code similar to the following (this is the actual feed code from <a href="http://daveaglick.com">my blog</a>):</p>
+<pre class="prettyprint"><code>WriteFileName: feed.rss
+---
+@using System.ServiceModel.Syndication; 
+@using System.IO;
+@using System.Xml;
+@using AngleSharp;
+@using AngleSharp.Parser.Html;
+
+@{
+    Layout = string.Empty;
+    
+    Uri baseUri = new Uri(@&quot;http://daveaglick.com&quot;);  // This is the root URL to your site
+    SyndicationFeed feed = new SyndicationFeed()
+    {
+        Title = new TextSyndicationContent(&quot;Dave Glick&quot;),  // This should be the name of your site or feed
+        Description = new TextSyndicationContent(&quot;Latest blog posts by Dave Glick&quot;),  // This is a short description of your site or feed
+        BaseUri = baseUri,
+        Items = Documents
+            .Where(x =&gt; x.ContainsKey(&quot;Published&quot;))  // This should be the metadata field you use for storing item dates (make sure to replace it everywhere)
+            .OrderByDescending(x =&gt; x.Get&lt;DateTime&gt;(&quot;Published&quot;))
+            .Take(10)  // This is the number of recent items you want in your feed
+            .Select(x =&gt; {             
+                Uri uri = new Uri(baseUri, &quot;/&quot; + PathHelper.RemoveExtension(x.String(&quot;RelativeFilePath&quot;)));  // This is the URL for the feed item
+                SyndicationItem item = new SyndicationItem(
+                    x.String(&quot;Title&quot;) + (x.ContainsKey(&quot;Lead&quot;) ? &quot; - &quot; + x.String(&quot;Lead&quot;) : string.Empty),  // This is the title of the feed item
+                    new HtmlParser(x.Content).Parse().QuerySelector(&quot;div#post-content&quot;).InnerHtml,  // This uses AngleSharp to get the div with an id of &quot;post-content&quot;
+                    uri, uri.ToString(), x.Get&lt;DateTime&gt;(&quot;Published&quot;))
+                {
+                    PublishDate = x.Get&lt;DateTime&gt;(&quot;Published&quot;)
+                };
+
+                item.Authors.Add(new SyndicationPerson(&quot;&quot;, &quot;Dave Glick&quot;, &quot;&quot;));  // These are the authors for your feed item
+                return item;
+            })
+    };
+    feed.Links.Add(new SyndicationLink(feed.BaseUri));
+    using (XmlTextWriter writer = new XmlTextWriter(Output))
+    {
+        new Rss20FeedFormatter(feed).WriteTo(writer);
+    }        
+}
+</code></pre>
+<p>A couple things to note:</p>
+<ul>
+<li>
+<p>This uses <a href="/modules/yaml">YAML</a> <a href="/modules/frontmatter">front matter</a> to declare the <code>WriteFileName</code> metadata which the <a href="/modules/writefiles">WriteFiles</a> module will use for the file name. GitHub Pages recognizes files with the extension <code>.rss</code> and <code>.atom</code> and serves them with the correct content type. If you're not using GitHub Pages, you'll need to make sure your web server servers RSS feeds with the content type <code>application/rss+xml</code> and Atom feeds with <code>application/atom+xml</code>.</p>
+</li>
+<li>
+<p>My blog contains a date metadata key <code>Published</code>. You should replace references to it in the code above with whatever your site uses to store the post date.</p>
+</li>
+<li>
+<p>This code uses <a href="https://github.com/FlorianRappl/AngleSharp">AngleSharp</a> to find the <code>div</code> with an <code>id</code> of <code>post-content</code> in each item. In the layout file, this <code>div</code> contains the <code>@RenderBody()</code> call so this code essentially strips out everything but the content. If you want to do the same thing, make sure to include AngleSharp in your configuration file:</p>
+</li>
+</ul>
+<pre class="prettyprint"><code>Packages
+  .Install(&quot;AngleSharp&quot;);
+</code></pre>
+<ul>
+<li>This code produces an RSS feed using the <code>Rss20FeedFormatter</code> class. Just change this to <code>Atom10FeedFormatter</code> to output an Atom feed instead.</li>
+</ul>
+<h1>Directly</h1>
+<p>If you don't want to use <code>SyndicationFeed</code>, you can always create your feed from scratch using XML. In this case, you would create a Razor page that contains XML content that follows the feed format specification and then use normal Razor code to iterate your items, etc.</p>
+
+
+                    </div>
+                </div>
+            </div>
+        
+        <hr />
+        <div class="container">
+            <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example.</small></p>
+        </div>        
+    </body>
+    <script>
+      $(function () {
+        $("#sub-nav").tinyNav({
+            active: 'active'
+        });
+      });
+      
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-54470483-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+</html>
