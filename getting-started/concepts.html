@@ -40,6 +40,7 @@
                 
                     <li class="active"><a href="/getting-started">Getting Started</a></li>
                     <li><a href="/modules">Modules</a></li>
+                    <li><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -50,7 +51,7 @@
           </div>
         </nav>
         
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-title">
     	       <div class="container">
                    <h1>Concepts</h1>
                </div>
@@ -104,25 +105,7 @@
 <h2>Accessing Metadata</h2>
 <p>Metadata is available via the <code>Metadata</code> property of every <code>IDocument</code>. The <code>IMetadata</code> interface implements <code>IReadOnlyDictionary&lt;string, object&gt;</code> for easy access. Every <code>IDocument</code> also implements <code>IReadOnlyDictionary&lt;string, object&gt;</code> and passes any calls through to it's metadata (so you'll rarely actually use the <code>Metadata</code> property and just access metadata directly through the document).</p>
 <h2>Metadata Type Conversion</h2>
-<p>All metadata is represented internally as raw objects. This allows you to store not just strings, but more complex data as well. However, when you access metadata you probably don't want to think about how it's stored or what the orignal type was. For example, <a href="/modules/yaml">YAML</a> doesn't really distinguish between numbers and strings when it reads data, it's only when getting a value that you care. To make metadata as easy to work with as possible, Wyam includes a very powerful type conversion capability that let's you convert nearly any metadata value to any other compatible type. To access it, the <code>IMetadata</code> interface also contains the following methods:</p>
-<ul>
-<li>
-<p><code>object Get(string key, object defaultValue = null)</code></p>
-<p>Returns an <code>object</code> and never throws an exception. If the key is not found in the metadata dictionary, then <code>defaultValue</code> is returned.</p>
-</li>
-<li>
-<p><code>T Get&lt;T&gt;(string key)</code></p>
-<p>Attempts to convert the metadata value to type <code>T</code>. If no conversion can be performed or the metadata key is not found, <code>default(T)</code> is returned.</p>
-</li>
-<li>
-<p><code>T Get&lt;T&gt;(string key, T defaultValue)</code></p>
-<p>Attempts to convert the metadata value to type <code>T</code>. If no conversion can be performed or the metadata key is not found, <code>defaultValue</code> is returned.</p>
-</li>
-<li>
-<p><code>string String(string key, string defaultValue = null)</code></p>
-<p>Attempts to convert the metadata value to a string. If no conversion can be performed or the metadata key is not found, <code>defaultValue</code> is returned. This is equivalent to calling <code>IMetadata.Get&lt;string&gt;(key, defaultValue)</code>.</p>
-</li>
-</ul>
+<p>All metadata is represented internally as raw objects. This allows you to store not just strings, but more complex data as well. However, when you access metadata you probably don't want to think about how it's stored or what the orignal type was. For example, <a href="/modules/yaml">YAML</a> doesn't really distinguish between numbers and strings when it reads data, it's only when getting a value that you care. To make metadata as easy to work with as possible, Wyam includes a very powerful type conversion capability that lets you convert nearly any metadata value to any other compatible type.</p>
 <p>When converting metadata values, all .NET type conversion techniques are checked including <code>TypeConverter</code>, <code>IConvertible</code>, casting, etc. The conversion support is provided by the <a href="http://www.codeproject.com/Articles/248440/Universal-Type-Converter">UniversalTypeConverter</a> library.</p>
 <p>If you request an <code>IList&lt;T&gt;</code>, <code>IEnumerable&lt;T&gt;</code>, or array of <code>T</code> and the metadata value is also enumerable, all elements will be converted to the requested type <code>T</code> and those that cannot be converted will be omitted from the result. If the metadata value is not enumerable, it will be returned as a single element of the requested enumerable type.</p>
 <h2>Metadata Lookup</h2>

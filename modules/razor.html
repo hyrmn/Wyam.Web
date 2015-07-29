@@ -40,6 +40,7 @@
                 
                     <li><a href="/getting-started">Getting Started</a></li>
                     <li class="active"><a href="/modules">Modules</a></li>
+                    <li><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -50,7 +51,7 @@
           </div>
         </nav>
         
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-title">
     	       <div class="container">
                    <h1>Razor</h1>
                </div>
@@ -96,6 +97,22 @@
 <li>
 <p><code>Razor(Type basePageType = null)</code></p>
 <p>Parses Razor templates in each input document and outputs documents with rendered HTML content. If <code>basePageType</code> is specified, it will be used as the base type for Razor pages (see below).</p>
+</li>
+</ul>
+<h2>Fluent Methods</h2>
+<p>Chain these methods together after the constructor to modify behavior.</p>
+<ul>
+<li>
+<p><code>SetViewStart(string path)</code></p>
+<p>Specifies an alternate ViewStart file to use for all Razor pages processed by this module.</p>
+</li>
+<li>
+<p><code>SetViewStart(Func&lt;IDocument, string&gt; path)</code></p>
+<p>Specifies an alternate ViewStart file to use for all Razor pages processed by this module. This lets you specify a different ViewStart file for each document. For example, you could return a ViewStart based on document location or document metadata. Returning <code>null</code> from the function reverts back to the default ViewStart search behavior for that document.</p>
+</li>
+<li>
+<p><code>IgnorePrefix(string prefix)</code></p>
+<p>Specifies a file prefix to ignore. If a document has a metadata value for <code>SourceFileName</code> and that metadata value starts with the specified prefix, that document will not be processed or output by the module. By default, the Razor module ignores all documents prefixed with an underscore (<code>_</code>). Specifying <code>null</code> will result in no documents being ignored.</p>
 </li>
 </ul>
 <h2>View Model</h2>

@@ -40,6 +40,7 @@
                 
                     <li><a href="/getting-started">Getting Started</a></li>
                     <li class="active"><a href="/modules">Modules</a></li>
+                    <li><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -50,7 +51,7 @@
           </div>
         </nav>
         
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-title">
     	       <div class="container">
                    <h1>ReadFiles</h1>
                </div>
@@ -126,11 +127,15 @@
 <ul>
 <li>
 <p><code>SourceFileRoot</code></p>
-<p>The root search path without any nested directories (useful for outputting documents at the same location relative to the root path).</p>
+<p>The absolute root search path without any nested directories (I.e., the path that was searched, and possibly descended, for the given pattern).</p>
 </li>
 <li>
 <p><code>SourceFilePath</code></p>
-<p>The full path of the file (including file name).</p>
+<p>The full absolute path of the file (including file name).</p>
+</li>
+<li>
+<p><code>SourceFilePathBase</code></p>
+<p>The full absolute path of the file (including file name) without the file extension.</p>
 </li>
 <li>
 <p><code>SourceFileBase</code></p>
@@ -146,11 +151,19 @@
 </li>
 <li>
 <p><code>SourceFileDir</code></p>
-<p>The full directory of the file. Equivalent to <code>Path.GetDirectoryName(SourceFilePath)</code>.</p>
+<p>The full absolute directory of the file. Equivalent to <code>Path.GetDirectoryName(SourceFilePath)</code>.</p>
 </li>
 <li>
 <p><code>RelativeFilePath</code></p>
 <p>The relative path to the file (including file name) from the Wyam input folder.</p>
+</li>
+<li>
+<p><code>RelativeFilePathBase</code></p>
+<p>The relative path to the file (including file name) from the Wyam input folder without the file extension.</p>
+</li>
+<li>
+<p><code>RelativeFileDir</code></p>
+<p>The relative directory of the file from the Wyam input folder.</p>
 </li>
 </ul>
 

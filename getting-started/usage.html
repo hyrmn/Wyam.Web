@@ -40,6 +40,7 @@
                 
                     <li class="active"><a href="/getting-started">Getting Started</a></li>
                     <li><a href="/modules">Modules</a></li>
+                    <li><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -50,7 +51,7 @@
           </div>
         </nav>
         
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-title">
     	       <div class="container">
                    <h1>Usage</h1>
                </div>
@@ -92,8 +93,12 @@
 <p>The path to output files, can be absolute or relative to the current folder.</p>
 </li>
 <li>
-<p><code>--no-clean</code></p>
+<p><code>--noclean</code></p>
 <p>By default the output folder is cleaned on every execution and <em>all</em> files in the folder and all subfolders are deleted. This argument lets you prevent the cleaning and will keep all files in the output folder. Keep in mind that generated files will still get overwritten on every execution.</p>
+</li>
+<li>
+<p><code>--nocache</code></p>
+<p>This turns off the caching mechanism for all modules. It results in a lower memory footprint at the expense of much slower build times.</p>
 </li>
 <li>
 <p><code>--update-packages</code></p>

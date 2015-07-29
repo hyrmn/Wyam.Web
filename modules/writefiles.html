@@ -40,6 +40,7 @@
                 
                     <li><a href="/getting-started">Getting Started</a></li>
                     <li class="active"><a href="/modules">Modules</a></li>
+                    <li><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -50,7 +51,7 @@
           </div>
         </nav>
         
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-title">
     	       <div class="container">
                    <h1>WriteFiles</h1>
                </div>
@@ -87,7 +88,8 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>Writes the content of each input document to the file system. If the metadata keys <code>WriteFileName</code> or <code>WriteExtension</code> (which require <code>RelativeFilePath</code> to be set, usually by the <a href="/modules/readfiles">ReadFiles</a> module) or <code>WritePath</code> are set on an input document, that value will be used instead of what's specified in the module. For example, if you have a bunch of Razor <code>.cshtml</code> files that need to be rendered to <code>.html</code> files but one of them should be output as a <code>.xml</code> file instead, define the <code>WriteExtension</code> metadata value in the <a href="/modules/frontmatter">front matter</a> of the page.</p>
+                        <p>Writes the content of each input document to the file system.</p>
+<p>If the metadata keys <code>WriteFileName</code> (which requires <code>RelativeFileDir</code> to be set, usually by the <a href="/modules/readfiles">ReadFiles</a> module), <code>WriteExtension</code> (which requires <code>RelativeFilePath</code> to be set, usually by the <a href="/modules/readfiles">ReadFiles</a> module) or <code>WritePath</code> are set on an input document, that value will be used instead of what's specified in the module. For example, if you have a bunch of Razor <code>.cshtml</code> files that need to be rendered to <code>.html</code> files but one of them should be output as a <code>.xml</code> file instead, define the <code>WriteExtension</code> metadata value in the <a href="/modules/frontmatter">front matter</a> of the page.</p>
 <h1>Usage</h1>
 <hr />
 <ul>
@@ -118,7 +120,27 @@
 <ul>
 <li>
 <p><code>DestinationFilePath</code></p>
-<p>The full path (including file name) of the destination file.</p>
+<p>The full absolute path (including file name) of the destination file.</p>
+</li>
+<li>
+<p><code>DestinationFilePathBase</code></p>
+<p>The full absolute path (including file name) of the destination file without the file extension.</p>
+</li>
+<li>
+<p><code>DestinationFileBase</code></p>
+<p>The file name without any extension. Equivalent to <code>Path.GetFileNameWithoutExtension(DestinationFilePath)</code>.</p>
+</li>
+<li>
+<p><code>DestinationFileExt</code></p>
+<p>The extension of the file. Equivalent to <code>Path.GetExtension(DestinationFilePath)</code>.</p>
+</li>
+<li>
+<p><code>DestinationFileName</code></p>
+<p>The full file name. Equivalent to <code>Path.GetFileName(DestinationFilePath)</code>.</p>
+</li>
+<li>
+<p><code>DestinationFileDir</code></p>
+<p>The full absolute directory of the file. Equivalent to <code>Path.GetDirectoryName(DestinationFilePath)</code>.</p>
 </li>
 </ul>
 

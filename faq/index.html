@@ -40,6 +40,7 @@
                 
                     <li><a href="/getting-started">Getting Started</a></li>
                     <li><a href="/modules">Modules</a></li>
+                    <li><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li class="active"><a href="/faq">FAQ</a></li>
               </ul>              
@@ -50,15 +51,15 @@
           </div>
         </nav>
         
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-title">
     	       <div class="container">
                    <h1>FAQ</h1>
                </div>
             </div>
         
 
-            <div class="container">
-                <h3><a name="name"></a><strong>What's with the name?</strong></h3>
+                <div class="container">
+                    <h3><a name="name"></a><strong>What's with the name?</strong></h3>
 <p><em>Wyam</em> is a Native American name for the <a href="https://en.wikipedia.org/wiki/Celilo_Falls">Celilo Falls</a> area and is also roughly translated as &quot;echo of falling water&quot; or &quot;sound of water upon the rocks&quot;. Which sounds kind of like static. For a static site generator. Get it? I also liked the image of water going over the falls as one thing then going through a transition as it emerged at the bottom as something else. Plus the name just sounds cool, and the domain was available. It's also very searchable (looking at you <a href="https://code.visualstudio.com/">Visual Studio Code</a>).</p>
 <h3><strong>Not <em>another</em> static site generator; what were you thinking!?</strong></h3>
 <p>Here's the thing: I like static site generators. I've been thinking about this problem for a long time (as in, many years). And while there are <em>a lot</em> of generators out there, none of them really fit with the way I think about the problem. I don't want to follow a prescribed notion of what sort of content I'm creating or follow assumptions about the location of files. I wanted a static <em>content</em> generator that is designed from the ground up to be flexible, even if it means making it slightly more complicated to configure. There are some generators that come close (I'm personally fond of the concepts in <a href="http://www.metalsmith.io/">Metalsmith</a>). I'm also a .NET developer and while there are a couple good static site generators in the .NET ecosystem (<a href="https://github.com/Code52/pretzel">Pretzel</a> and <a href="https://github.com/Sandra/Sandra.Snow">Sandra.Snow</a> come to mind), I certainly don't think we've hit peak generator in that world as we have in, say, JavaScript.</p>
@@ -67,7 +68,7 @@
 <p>The kind that is <em>designed</em> to run synchronously. I'm just as big a fan of the great asynchronous constructs in C# as the next guy, but it's not appropriate for everything. In this case, a conscious descision was made to keep everything synchronous (at least for now). There are a number of reasons for this, but the primary one is that because pipelines and the modules they contain can have impacts on any modules or other pipelines down the line, it's important that the behavior remain predictable. Since there's no way of knowing which modules are going to have an impact on other ones, everything has to be executed in sequence. It's possible that in the future strategies can be derived that will help give clues about what's safe to potentially run concurrently and thus relax this constraint, but for now it was more important to focus on the behavior and additional functionality.</p>
 
 
-            </div>
+                </div>
         
         <hr />
         <div class="container">

@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Execute</title>
+        <title>Wyam - IDocument</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +39,8 @@
               <ul class="nav navbar-nav">
                 
                     <li><a href="/getting-started">Getting Started</a></li>
-                    <li class="active"><a href="/modules">Modules</a></li>
-                    <li><a href="/api">API</a></li>
+                    <li><a href="/modules">Modules</a></li>
+                    <li class="active"><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -53,7 +53,7 @@
         
             <div class="jumbotron jumbotron-title">
     	       <div class="container">
-                   <h1>Execute</h1>
+                   <h1>IDocument</h1>
                </div>
             </div>
         
@@ -62,43 +62,45 @@
                 <div class="row">
                     <div class="col-md-3">                        
                         <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/modules/append">Append</a></li>
-                                <li><a href="/modules/branch">Branch</a></li>
-                                <li><a href="/modules/concat">Concat</a></li>
-                                <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
-                                <li><a href="/modules/content">Content</a></li>
-                                <li><a href="/modules/copyfiles">CopyFiles</a></li>
-                                <li><a href="/modules/documents">Documents</a></li>
-                                <li class="active"><a href="/modules/execute">Execute</a></li>
-                                <li><a href="/modules/frontmatter">FrontMatter</a></li>
-                                <li><a href="/modules/if">If</a></li>
-                                <li><a href="/modules/less">Less</a></li>
-                                <li><a href="/modules/markdown">Markdown</a></li>
-                                <li><a href="/modules/meta">Meta</a></li>
-                                <li><a href="/modules/prepend">Prepend</a></li>
-                                <li><a href="/modules/razor">Razor</a></li>
-                                <li><a href="/modules/readfiles">ReadFiles</a></li>
-                                <li><a href="/modules/replace">Replace</a></li>
-                                <li><a href="/modules/replacein">ReplaceIn</a></li>
-                                <li><a href="/modules/trace">Trace</a></li>
-                                <li><a href="/modules/where">Where</a></li>
-                                <li><a href="/modules/writefiles">WriteFiles</a></li>
-                                <li><a href="/modules/yaml">Yaml</a></li>
+                                <li class="active"><a href="/api/idocument">IDocument</a></li>
+                                <li><a href="/api/idocumentcollection">IDocumentCollection</a></li>
+                                <li><a href="/api/iexecutioncache">IExecutionCache</a></li>
+                                <li><a href="/api/iexecutioncontext">IExecutionContext</a></li>
+                                <li><a href="/api/iindentedtraceevent">IIndentedTraceEvent</a></li>
+                                <li><a href="/api/imetadata">IMetadata</a></li>
+                                <li><a href="/api/imetadata-t">IMetadata&lt;T&gt;</a></li>
+                                <li><a href="/api/imodule">IModule</a></li>
+                                <li><a href="/api/ipipeline">IPipeline</a></li>
+                                <li><a href="/api/ipipelinecollection">IPipelineCollection</a></li>
+                                <li><a href="/api/ireadonlypipeline">IReadOnlyPipeline</a></li>
+                                <li><a href="/api/itrace">ITrace</a></li>
                         </ul>
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>This module lets you execute custom code for each input document. It's a way to customize pipeline execution without having to write an entire module.</p>
-<h1>Usage</h1>
+                        <p>The primary object in Wyam that contains content and metadata for each item as it propagates through the pipeline. Documents are immutable so you must call one of the <code>Clone(...)</code> methods to create a new document. Implements <code>IMetadata</code> and all calls are passed through to the document's internal <code>Metadata</code> instance.</p>
+<h1>Members</h1>
 <hr />
+<h2>Properties</h2>
 <ul>
 <li>
-<p><code>Execute(Func&lt;IDocument, IEnumerable&lt;IDocument&gt;&gt; execute)</code></p>
-<p>This function is evaluated once for every input document. The return value should be an enumerable of output documents for each input document. If you want to execute some code and just pass the documents through, you should return an array with the input document as the single value. Otherwise, use <code>IDocument.Clone(IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code> to create new documents with additional metadata (and the same content) and/or <code>IDocument.Clone(string content, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code> to create new documents with new content and additional metadata.</p>
+<p><code>IMetadata Metadata { get; }</code></p>
+<p>Gets the metadata associated with this document.</p>
 </li>
 <li>
-<p><code>Execute(Func&lt;IDocument, IExecutionContext, IEnumerable&lt;IDocument&gt;&gt; execute)</code></p>
-<p>This function is evaluated once for every input document. The return value should be an enumerable of output documents for each input document. This overload allows you to execute code that requires the <code>IExecutionContext</code> (for example, if it needs to access previous documents or output trace information).</p>
+<p><code>string Content { get; }</code></p>
+<p>Gets the content associated with this document.</p>
+</li>
+</ul>
+<h2>Methods</h2>
+<ul>
+<li>
+<p><code>IDocument Clone(string content, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code></p>
+<p>Clones the current document with new content and additional metadata (all existing metadata is retained).</p>
+</li>
+<li>
+<p><code>IDocument Clone(IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; items = null)</code></p>
+<p>Clones the current document with identical content and additional metadata (all existing metadata is retained).</p>
 </li>
 </ul>
 

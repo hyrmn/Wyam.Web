@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Getting Started</title>
+        <title>Wyam - API</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,9 +38,9 @@
             <div class="collapse navbar-collapse" id="navbar-main">
               <ul class="nav navbar-nav">
                 
-                    <li class="active"><a href="/getting-started">Getting Started</a></li>
+                    <li><a href="/getting-started">Getting Started</a></li>
                     <li><a href="/modules">Modules</a></li>
-                    <li><a href="/api">API</a></li>
+                    <li class="active"><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -53,25 +53,39 @@
         
             <div class="jumbotron jumbotron-title">
     	       <div class="container">
-                   <h1>Getting Started</h1>
+                   <h1>API</h1>
                </div>
             </div>
         
 
                 <div class="container">
-                    
-		<h3><strong><a href="/getting-started/installation">Installation</a></strong></h3>
-			<p>How to install Wyam.</p>
-		<h3><strong><a href="/getting-started/usage">Usage</a></strong></h3>
-			<p>Describes how to run Wyam and the available options.</p>
-		<h3><strong><a href="/getting-started/concepts">Concepts</a></strong></h3>
-			<p>Describes the primary concepts of modules, pipelines, documents, and metadata.</p>
-		<h3><strong><a href="/getting-started/configuration">Configuration</a></strong></h3>
-			<p>Describes the format of the configuration file.</p>
-		<h3><strong><a href="/getting-started/defaults">Defaults</a></strong></h3>
-			<p>The default configuration if you don&#39;t supply one of your own.</p>
-		<h3><strong><a href="/getting-started/examples">Examples</a></strong></h3>
-			<p>Where to find usage examples.</p>
+                    <p>You'll need to access the Wyam interfaces when <a href="/knowledgebase/writing-a-module">writing a module</a> or when <a href="/getting-started/configuration">working with configuration files</a>. The interface definitions reside in the <code>Wyam.Abstractions</code> library, but you'll only need to worry about referencing it if you're developing modules or <a href="/knowledgebase/embedded-use">embedding Wyam</a>.</p> 
+
+
+		<h3><strong><a href="/api/idocument">IDocument</a></strong></h3>
+			<p>The primary object in Wyam that contains content and metadata for each item as it propagates through the pipeline.</p>
+		<h3><strong><a href="/api/idocumentcollection">IDocumentCollection</a></strong></h3>
+			<p>Allows you to get sequences of documents from the current and previous pipelines.</p>
+		<h3><strong><a href="/api/iexecutioncache">IExecutionCache</a></strong></h3>
+			<p>Used by modules to cache data for faster build times.</p>
+		<h3><strong><a href="/api/iexecutioncontext">IExecutionContext</a></strong></h3>
+			<p>Contains all the information about the running execution and pipeline.</p>
+		<h3><strong><a href="/api/iindentedtraceevent">IIndentedTraceEvent</a></strong></h3>
+			<p>Provides an easy way to indent trace messages.</p>
+		<h3><strong><a href="/api/imetadata">IMetadata</a></strong></h3>
+			<p>Contains the metadata for a document.</p>
+		<h3><strong><a href="/api/imetadata-t">IMetadata&lt;T&gt;</a></strong></h3>
+			<p>Contains the metadata for a document converted to a specified type.</p>
+		<h3><strong><a href="/api/imodule">IModule</a></strong></h3>
+			<p>Modules must implement this interface.</p>
+		<h3><strong><a href="/api/ipipeline">IPipeline</a></strong></h3>
+			<p>Contains information about a pipeline.</p>
+		<h3><strong><a href="/api/ipipelinecollection">IPipelineCollection</a></strong></h3>
+			<p>Contains a collection of all configured pipelines.</p>
+		<h3><strong><a href="/api/ireadonlypipeline">IReadOnlyPipeline</a></strong></h3>
+			<p>Contains read-only information about a pipeline.</p>
+		<h3><strong><a href="/api/itrace">ITrace</a></strong></h3>
+			<p>An interface for outputting trace and log messages.</p>
 
                 </div>
         
