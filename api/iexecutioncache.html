@@ -1,19 +1,16 @@
-
-<!DOCTYPE html>
-<html>
-    <head>
+<!DOCTYPE html><html><head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <title>Wyam - IExecutionCache</title>
-        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
-        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator.">
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap.min.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
-        <link href="/Content/master.css" rel="stylesheet" />
+        <link href="/Content/master.css" rel="stylesheet">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -33,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/"><img alt="Wyam" src="/Content/Images/nav-logo.png"></a>
+              <a class="navbar-brand hidden-sm" href="/"><img alt="Wyam" src="/Content/Images/nav-logo.png"></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">
               <ul class="nav navbar-nav">
@@ -42,9 +39,10 @@
                     <li><a href="/modules">Modules</a></li>
                     <li class="active"><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
+                    <li><a href="/community">Community</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
-              <ul class="nav navbar-nav navbar-right">                
+              <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">                
                 <li><a href="https://github.com/Wyamio/Wyam">GitHub</a></li>
               </ul>
             </div>
@@ -75,16 +73,16 @@
                                 <li><a href="/api/ireadonlypipeline">IReadOnlyPipeline</a></li>
                                 <li><a href="/api/itrace">ITrace</a></li>
                         </ul>
-                        <hr class="hidden-md hidden-lg" />
+                        <hr class="hidden-md hidden-lg">
                     </div>
                     <div class="col-md-9">
-                        <p>Used by modules to cache data for faster build times. The cache can be keyed by a custom string or by a specified document (in which case the document content is used as the key). The cache value can be any object. Note that only objects that are not potentially dependent on external mutable state like metadata should be cached. For example, a compiled <a href="/modules/Razor">Razor</a> page class can be cached, but the result of evaluating the Razor code against a given document should not be cached.</p>
+                        <p>Used by modules to cache data for faster build times. The cache can be keyed by a custom string or by a specified document (in which case the document content is used as the key). The cache value can be any object. Note that only objects that are not potentially dependent on external mutable state like metadata should be cached. For example, a compiled <a href="/modules/Razor">Razor</a> page class can be cached, but the result of evaluating the Razor code against a given document should not be cached. Also be sure not to cache anything that itself could be mutated by the pipeline or else you'll get back something different when you fetch it in the next cache hit.</p>
 <h1>Members</h1>
-<hr />
+<hr>
 <h2>Methods</h2>
 <ul>
 <li>
-<p><code>bool ContainsKey(IDocument document)</code></p>
+<p><code>bool ContainsKey(<a href="/api/idocument.html">IDocument</a> document)</code></p>
 <p>Returns <code>true</code> if the cache contains a value for the specified document key.</p>
 </li>
 <li>
@@ -92,7 +90,7 @@
 <p>Returns <code>true</code> if the cache contains a value for the specified string key.</p>
 </li>
 <li>
-<p><code>bool TryGetValue(IDocument document, out object value)</code></p>
+<p><code>bool TryGetValue(<a href="/api/idocument.html">IDocument</a> document, out object value)</code></p>
 <p>Returns <code>true</code> if the cache contains a value for the specified document key and sets <code>value</code> if so.</p>
 </li>
 <li>
@@ -100,7 +98,7 @@
 <p>Returns <code>true</code> if the cache contains a value for the specified string key and sets <code>value</code> if so.</p>
 </li>
 <li>
-<p><code>bool TryGetValue&lt;TValue&gt;(IDocument document, out TValue value)</code></p>
+<p><code>bool TryGetValue<tvalue>(<a href="/api/idocument.html">IDocument</a> document, out TValue value)</tvalue></code></p>
 <p>Returns <code>true</code> if the cache contains a value of type <code>TValue</code> for the specified document key and sets <code>value</code> if so. If the cache contains a value for the specified key but it cannot be cast to the requested type, an <code>InvalidCastException</code> is thrown.</p>
 </li>
 <li>
@@ -108,7 +106,7 @@
 <p>Returns <code>true</code> if the cache contains a value of type <code>TValue</code> for the specified string key and sets <code>value</code> if so. If the cache contains a value for the specified key but it cannot be cast to the requested type, an <code>InvalidCastException</code> is thrown.</p>
 </li>
 <li>
-<p><code>void Set(IDocument document, object value)</code></p>
+<p><code>void Set(<a href="/api/idocument.html">IDocument</a> document, object value)</code></p>
 <p>Sets the provided value for the specified document key.</p>
 </li>
 <li>
@@ -122,11 +120,18 @@
                 </div>
             </div>
         
-        <hr />
+        <hr>
         <div class="container">
-            <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example.</small></p>
+            <div class="row">
+                <div class="col-md-9">
+                    <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example of a reasonably complicated Wyam site (and how easy it is to set up).</small></p>
+                </div>
+                <div class="col-md-3 text-right hidden-xs hidden-sm">                
+                    <a class="btn btn-primary btn-xs" href="https://github.com/Wyamio/Wyam.Web/edit/master/Input/api\iexecutioncache.md"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
+                </div>
+            </div>
         </div>        
-    </body>
+    
     <script>
       $(function () {
         $("#sub-nav").tinyNav({
@@ -142,4 +147,4 @@
       ga('create', 'UA-54470483-4', 'auto');
       ga('send', 'pageview');
     </script>
-</html>
+</body></html>

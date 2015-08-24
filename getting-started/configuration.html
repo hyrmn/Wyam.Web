@@ -1,19 +1,16 @@
-
-<!DOCTYPE html>
-<html>
-    <head>
+<!DOCTYPE html><html><head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <title>Wyam - Configuration</title>
-        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
-        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator.">
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap.min.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
-        <link href="/Content/master.css" rel="stylesheet" />
+        <link href="/Content/master.css" rel="stylesheet">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -33,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/"><img alt="Wyam" src="/Content/Images/nav-logo.png"></a>
+              <a class="navbar-brand hidden-sm" href="/"><img alt="Wyam" src="/Content/Images/nav-logo.png"></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-main">
               <ul class="nav navbar-nav">
@@ -42,9 +39,10 @@
                     <li><a href="/modules">Modules</a></li>
                     <li><a href="/api">API</a></li>
                     <li><a href="/knowledgebase">Knowledgebase</a></li>
+                    <li><a href="/community">Community</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
-              <ul class="nav navbar-nav navbar-right">                
+              <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">                
                 <li><a href="https://github.com/Wyamio/Wyam">GitHub</a></li>
               </ul>
             </div>
@@ -69,7 +67,7 @@
                                 <li><a href="/getting-started/defaults">Defaults</a></li>
                                 <li><a href="/getting-started/examples">Examples</a></li>
                         </ul>
-                        <hr class="hidden-md hidden-lg" />
+                        <hr class="hidden-md hidden-lg">
                     </div>
                     <div class="col-md-9">
                         <p>The command line Wyam application reads a configuration file typically named <code>config.wyam</code> (though you can change that with an argument) that sets up the environment and initializes metadata and pipelines. It consists of three parts, the <em>setup</em>, any <em>declarations</em>, and the <em>configuration</em>, in that order. The setup is separated by a line consisting entirely of one or more equals (<code>===</code>) and the declarations are separated by a line consisting entirely of one or more dashes (<code>---</code>).</p>
@@ -89,17 +87,17 @@
 // ...
 </code></pre>
 <h1>Setup</h1>
-<hr />
+<hr>
 <p>The setup helps establish the Wyam environment and gets evaluated before the rest of the configuration file. It's generally responsible for declaring NuGet packages, assemblies, and namespaces that should be made available to the main configuration body. Any modules that exist in referenced NuGet packages or assemblies will get automatically imported for use in pipelines. Additionally, the objects in NuGet packages and assemblies will be available from the configuration body and any specified namespaces will be brought into scope. Note that while the setup portion of the configuration file is evaluated as C# code just like the configuration body, it only references a small subset of the .NET class library (basically just enough to set things up).</p>
 <h2><a name="nuget"></a>NuGet</h2>
 <p>Wyam can automatically install any NuGet packages you declare in the setup portion of the configuration file. These will then be scanned for modules and be made available to the main configuration body. NuGet packages are configured using the global <code>Packages</code> object and a fluent interface.</p>
 <p><code>Packages.Install(string packageId, string versionSpec = null, bool allowPrereleaseVersions = false, bool allowUnlisted = false)</code> will let you specify a NuGet package to download from the default package source, which is the main NuGet.org feed. <code>Packages.Repository(string packageSource)</code> will let you define alternate package sources (such as an internal NuGet feed or a feed on MyGet). You can then continue to chain additional <code>Install(...)</code> calls as before. For example:</p>
 <pre class="prettyprint"><code>Packages
-    .Install(&quot;Humanizer&quot;)
-    .Install(&quot;Newtonsoft.Json&quot;);
-Packages.Repository(&quot;https://www.myget.org/F/roslyn-nightly/&quot;)
-    .Install(&quot;Microsoft.CodeAnalysis&quot;)
-    .Install(&quot;Microsoft.CodeAnalysis.Scripting&quot;);
+    .Install("Humanizer")
+    .Install("Newtonsoft.Json");
+Packages.Repository("https://www.myget.org/F/roslyn-nightly/")
+    .Install("Microsoft.CodeAnalysis")
+    .Install("Microsoft.CodeAnalysis.Scripting");
 </code></pre>
 <p>From the <code>Install(...)</code> method you can also specify the acceptable package version(s) and whether prerelease and/or unlisted packages should be allowed. The <code>versionSpec</code> argument takes a string that matches the standard NuGet version specifications defined at https://docs.nuget.org/create/versioning</p>
 <p>By default, packages are downloaded to <code>\packages</code>. If you want to change this, set <code>Packages.Path</code> to the relative folder where you want packages to be downloaded. For example, you could set this to a system-wide folder if you have several scripts that share the same packages.</p>
@@ -112,9 +110,9 @@ Packages.Repository(&quot;https://www.myget.org/F/roslyn-nightly/&quot;)
 <h2><a name="assemblies"></a>Assemblies</h2>
 <p>In addition to NuGet packages you can also load assemblies. This is accomplished by using the <code>Assemblies</code> property. You can load all the assemblies in a directory with the <code>LoadDirectory(string path, SearchOption searchOption = SearchOption.AllDirectories)</code> method. The specified directory can either be relative to the active directory or absolute. You can also load a single assembly by location with the <code>LoadFile(string path)</code> method and by full name with the <code>Load(string name)</code> method. For example:</p>
 <pre class="prettyprint"><code>Assemblies
-    .LoadDirectory(@&quot;lib&quot;)
-    .LoadFile(@&quot;foo\bar.dll&quot;)
-    .Load(&quot;SampleAssembly, Version=1.0.2004.0, Culture=neutral, PublicKeyToken=8744b20f8da049e3&quot;);
+    .LoadDirectory(@"lib")
+    .LoadFile(@"foo\bar.dll")
+    .Load("SampleAssembly, Version=1.0.2004.0, Culture=neutral, PublicKeyToken=8744b20f8da049e3");
 </code></pre>
 <p>Keep in mind that system assemblies and others located in the GAC <em>must</em> be loaded by full name (including the version, public key token, etc.).</p>
 <p>By default, the following assemblies are already loaded so you don't need to explicity specify them:</p>
@@ -131,8 +129,8 @@ Packages.Repository(&quot;https://www.myget.org/F/roslyn-nightly/&quot;)
 <h2>Folders</h2>
 <p>You can configure the folders Wyam uses by setting <code>RootFolder</code>, <code>InputFolder</code>, and/or <code>OutputFolder</code> in the setup script.</p>
 <h1><a name="declarations"></a>Declarations</h1>
-<hr />
-<p>The code in your configuration is typically executed inside the context of an &quot;invisible&quot; class and method. This means that you can't bring namespaces into scope, create classes, declare helper methods, etc. If you need to do any of these things, place it above the configuration code and separate it with a line consisting entirely of one or more dashes (<code>---</code>). Any code above this line will be evaluated outside the scope of the configuration method or any class. This means that you can bring namespaces into scope with <code>using</code> statements, declare helper classes, etc. Note that this code is global, so if you want to declare helper methods, they'll have to be placed within a wrapper class.</p>
+<hr>
+<p>The code in your configuration is typically executed inside the context of an "invisible" class and method. This means that you can't bring namespaces into scope, create classes, declare helper methods, etc. If you need to do any of these things, place it above the configuration code and separate it with a line consisting entirely of one or more dashes (<code>---</code>). Any code above this line will be evaluated outside the scope of the configuration method or any class. This means that you can bring namespaces into scope with <code>using</code> statements, declare helper classes, etc. Note that this code is global, so if you want to declare helper methods, they'll have to be placed within a wrapper class.</p>
 <pre class="prettyprint"><code>// Declaration code
 
 using System.IO;
@@ -141,7 +139,7 @@ public static class Helpers
 {
     public string GetWriteExtension()
     {
-        return &quot;.html&quot;;
+        return ".html";
     }
 }
 
@@ -149,8 +147,8 @@ public static class Helpers
 
 // Configuration code
 
-Pipelines.Add(&quot;Markdown&quot;,
-    ReadFiles(&quot;*.md&quot;),
+Pipelines.Add("Markdown",
+    ReadFiles("*.md"),
     FrontMatter(Yaml()),
     Markdown(),
     WriteFiles(Helpers.GetWriteExtension())
@@ -165,45 +163,54 @@ Pipelines.Add(&quot;Markdown&quot;,
 <li><code>System.Diagnostics</code></li>
 </ul>
 <h1>Configuration</h1>
-<hr />
+<hr>
 <h2>Initial Metadata</h2>
 <p>Each pipeline starts with a single document prepopulated with initial metadata you specify in the configuration file. You can use this facility to introduce variables that can influence the way the pipeline behaves. To set initial metadata, just add values to the <code>Metadata</code> property (it's a <code>IDictionary&lt;string, object&gt;</code>). Note that the dictionary values are objects, so you can store simple primitive values or complex structure. For example:</p>
-<pre class="prettyprint"><code>Metadata[&quot;Foo&quot;] = &quot;Bar&quot;;
-Metadata.Add(&quot;Baz&quot;, new KeyValuePair&lt;string, string&gt;(&quot;abc&quot;, &quot;xyz&quot;)); 
+<pre class="prettyprint"><code>Metadata["Foo"] = "Bar";
+Metadata.Add("Baz", new KeyValuePair&lt;string, string&gt;("abc", "xyz")); 
 </code></pre>
 <h2>Pipelines</h2>
 <p>Configuring a pipeline is easy, and Wyam configuration files are designed to be simple and straightforward:</p>
 <pre class="prettyprint"><code>Pipelines.Add(
-    ReadFiles(&quot;*.md&quot;),
+    ReadFiles("*.md"),
     Markdown(),
-    WriteFiles(&quot;.html&quot;)
+    WriteFiles(".html")
 );
 </code></pre>
 <p>However, don't let the simplicity fool you. Wyam configuration files are C# scripts and as such can make use of the full C# language and the entire .NET ecosystem (including the built-in support for NuGet and other assemblies as explained above). One of the core modules even lets you write a delegate right in your configuration file for extreme flexibility.</p>
-<h3>Explicit Module Instantiation</h3>
-<p>Note that you supply the pipeline with new instances of each module. An astute reader will notice that in the example above, modules are being specified with what look like global methods. These methods are just shorthand for the actual module class constructors and this convention can be used for any module within the configuration script. The example configuration above could also have been written as:</p>
-<pre class="prettyprint"><code>Pipelines.Add(
-    new ReadFiles(&quot;*.md&quot;),
-    new Markdown(),
-    new WriteFiles(&quot;.html&quot;)
+<h3>Pipeline Names</h3>
+<p>Pipelines should be given names, which makes them easier to identify in trace messages and also makes them easier to refer to within templates (for example, to get all the documents generated by a previous pipeline). Just pass in the name of a pipeline as the first parameter to the <code>Add(...)</code> method. If no name is provided (as above), then pipelines will implicitly be given the names <code>Pipeline 1</code>, <code>Pipeline 2</code>, etc.</p>
+<pre class="prettyprint"><code>Pipelines.Add("Markdown",
+    ReadFiles("*.md"),
+    FrontMatter(Yaml()),
+    Markdown(),
+    WriteFiles(".html")
 );
 </code></pre>
 <h3>Child Modules</h3>
 <p>Some modules also accept child modules as part of their processing. For example, the <code>FrontMatter</code> module accepts a child module to handle parsing whatever front matter content is found. This way, the same module can be used to recognize front matter without it having to worry about what kind of content the front matter contains (such as YAML or JSON). For example:</p>
-<pre class="prettyprint"><code>Pipelines.Add(
-    ReadFiles(&quot;*.md&quot;),
+<pre class="prettyprint"><code>Pipelines.Add("Markdown",
+    ReadFiles("*.md"),
     FrontMatter(Yaml()),
     Markdown(),
-    WriteFiles(&quot;.html&quot;)
+    WriteFiles(".html")
 );
 </code></pre>
-<h3>Pipeline Names</h3>
-<p>Pipelines can be given names, which makes them easier to identify in trace messages and also makes them easier to refer to within templates (for example, to get all the documents generated by a previous pipeline). Just pass in the name of a pipeline as the first parameter to the <code>Add(...)</code> method. If no name is provided (as above), then pipelines will implicitly be given the names <code>Pipeline 1</code>, <code>Pipeline 2</code>, etc.</p>
-<pre class="prettyprint"><code>Pipelines.Add(&quot;Markdown&quot;,
-    ReadFiles(&quot;*.md&quot;),
+<h3>Skipping Previously Processed Documents</h3>
+<p>If you know that a given pipeline doesn't use data from other pipelines and you'd like to prevent reprocessing of documents after the first pass, you can set the <code>processDocumentsOnce</code> flag. Under the hood, this looks for the first occurrence of a given <code><a href="/api/idocument.html">IDocument</a>.Source</code> and then caches all final result documents that have the same source. On subsequent executions, if a document with a previously seen <code><a href="/api/idocument.html">IDocument</a>.Source</code> is found <em>and it has the same content</em>, that document is removed from the module output and therefore won't get passed to the next module. At the end of the pipeline, all the documents from the first pass that have the same source as the removed one are added back to the result set (so later pipelines can still access them in the documents collection if needed). The <code>processDocumentsOnce</code> flag can be set when creating a pipeline:</p>
+<pre class="prettyprint"><code>Pipelines.Add("Markdown", true,
+    ReadFiles("*.md"),
     FrontMatter(Yaml()),
     Markdown(),
-    WriteFiles(&quot;.html&quot;)
+    WriteFiles(".html")
+);
+</code></pre>
+<h3>Explicit Module Instantiation</h3>
+<p>Note that you supply the pipeline with new instances of each module. An astute reader will notice that in the example above, modules are being specified with what look like global methods. These methods are just shorthand for the actual module class constructors and this convention can be used for any module within the configuration script. The example configuration above could also have been written as:</p>
+<pre class="prettyprint"><code>Pipelines.Add("Markdown",
+    new ReadFiles("*.md"),
+    new Markdown(),
+    new WriteFiles(".html")
 );
 </code></pre>
 <h2>Folders</h2>
@@ -211,33 +218,36 @@ Metadata.Add(&quot;Baz&quot;, new KeyValuePair&lt;string, string&gt;(&quot;abc&q
 <h2>Execution Ordering</h2>
 <p>Be aware that the configuration file only <em>configures</em> the pipelines. Each pipeline is executed in the order in which they were first added after the entire configuration file is evaluated. This means that you can't declare one pipeline, then declare another, and then add a new module to the first pipeline expecting it to reflect what happened in the second one. The second pipeline won't execute until the entire first pipeline is complete, including any modules that were added to it after the second one was declared. If you need to run some modules, switch to a different pipeline, and the perform additional processing on the first set of documents, look into the <a href="/modules/documents">Documents</a> and <a href="/modules/concatdocuments">ConcatDocuments</a> modules.</p>
 <h1>Example</h1>
-<hr />
-<p>The full configuration file for this site is given below as an example:</p>
+<hr>
+<p>The full configuration file for this documentation site is given below as an example:</p>
 <pre class="prettyprint"><code>// Setup code
 
 Packages
-    .Install(&quot;Bootstrap&quot;)
-    .Install(&quot;jQuery&quot;, &quot;[2.1.1]&quot;);
+    .Install("Bootstrap")
+    .Install("jQuery", "[2.1.1]");
     
 ===
-
 // Configuration code
 
-Pipelines.Add(&quot;Content&quot;,
-    ReadFiles(@&quot;*.md&quot;),
+Pipelines.Add("Content",
+    ReadFiles("*.md"),
     FrontMatter(Yaml()),
     Markdown(),
-    Replace(&quot;&lt;pre&gt;&lt;code&gt;&quot;, &quot;&lt;pre class=\&quot;prettyprint\&quot;&gt;&lt;code&gt;&quot;),
+    Replace("&lt;pre&gt;&lt;code&gt;", "&lt;pre class=\"prettyprint\"&gt;&lt;code&gt;"),
     Concat(
-        ReadFiles(@&quot;*.cshtml&quot;).Where(x =&gt; Path.GetFileName(x)[0] != '_'),
+        ReadFiles("*.cshtml").Where(x =&gt; Path.GetFileName(x)[0] != '_'),
         FrontMatter(Yaml())     
     ),
     Razor(),
-    WriteFiles(&quot;.html&quot;) 
+    AutoLink(c =&gt; c.Documents
+        .FromPipeline("Content")
+        .Where(x =&gt; x.String("RelativeFileDir") == "api" &amp;&amp; !string.IsNullOrWhiteSpace(x.String("Title")))
+        .ToDictionary(x =&gt; x.String("Title"), x =&gt; PathHelper.ToRootLink(Path.ChangeExtension(x.String("RelativeFilePath"), ".html")))),
+    WriteFiles(".html")
 );
 
-Pipelines.Add(&quot;Resources&quot;,
-    CopyFiles(@&quot;*&quot;).Where(x =&gt; Path.GetExtension(x) != &quot;.cshtml&quot; &amp;&amp; Path.GetExtension(x) != &quot;.md&quot;)
+Pipelines.Add("Resources",
+    CopyFiles("*").Where(x =&gt; Path.GetExtension(x) != ".cshtml" &amp;&amp; Path.GetExtension(x) != ".md")
 );
 </code></pre>
 
@@ -246,11 +256,18 @@ Pipelines.Add(&quot;Resources&quot;,
                 </div>
             </div>
         
-        <hr />
+        <hr>
         <div class="container">
-            <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example.</small></p>
+            <div class="row">
+                <div class="col-md-9">
+                    <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example of a reasonably complicated Wyam site (and how easy it is to set up).</small></p>
+                </div>
+                <div class="col-md-3 text-right hidden-xs hidden-sm">                
+                    <a class="btn btn-primary btn-xs" href="https://github.com/Wyamio/Wyam.Web/edit/master/Input/getting-started\configuration.md"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
+                </div>
+            </div>
         </div>        
-    </body>
+    
     <script>
       $(function () {
         $("#sub-nav").tinyNav({
@@ -266,4 +283,4 @@ Pipelines.Add(&quot;Resources&quot;,
       ga('create', 'UA-54470483-4', 'auto');
       ga('send', 'pageview');
     </script>
-</html>
+</body></html>

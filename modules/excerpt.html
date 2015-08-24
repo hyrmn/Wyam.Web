@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <title>Wyam - Content</title>
+        <title>Wyam - Excerpt</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator.">
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +51,7 @@
         
             <div class="jumbotron jumbotron-title">
     	       <div class="container">
-                   <h1>Content</h1>
+                   <h1>Excerpt</h1>
                </div>
             </div>
         
@@ -65,10 +65,10 @@
                                 <li><a href="/modules/branch">Branch</a></li>
                                 <li><a href="/modules/concat">Concat</a></li>
                                 <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
-                                <li class="active"><a href="/modules/content">Content</a></li>
+                                <li><a href="/modules/content">Content</a></li>
                                 <li><a href="/modules/copyfiles">CopyFiles</a></li>
                                 <li><a href="/modules/documents">Documents</a></li>
-                                <li><a href="/modules/excerpt">Excerpt</a></li>
+                                <li class="active"><a href="/modules/excerpt">Excerpt</a></li>
                                 <li><a href="/modules/execute">Execute</a></li>
                                 <li><a href="/modules/foreach">ForEach</a></li>
                                 <li><a href="/modules/frontmatter">FrontMatter</a></li>
@@ -90,21 +90,46 @@
                         <hr class="hidden-md hidden-lg">
                     </div>
                     <div class="col-md-9">
-                        <p>Replaces the content of each input document with the string value of the specified content object. In the case where modules are provided, they are executed against an empty initial document and the results are applied to each input document.</p>
+                        <p>Finds the first occurrence of a specified HTML element and stores it's contents as metadata. This is useful for situations like displaying the first paragraph of your most recent blog posts or <a href="/knowledgebase/rss-and-atom-feeds">generating RSS and Atom feeds</a>. By default, this module looks for the first <code>p</code> (paragraph) element and places it's outer HTML content in metadata with a key of <code>Excerpt</code>.</p>
+<p>This module uses <a href="https://github.com/FlorianRappl/AngleSharp">AngleSharp</a>.</p>
 <h1>Usage</h1>
 <hr>
 <ul>
 <li>
-<p><code>Content(object content)</code></p>
-<p>Uses the string value of the specified object as the new content for every input document.</p>
+<p><code>Excerpt()</code></p>
+<p>Creates the module with the default query selector of <code>p</code>.</p>
 </li>
 <li>
-<p><code>Content(Func&lt;<a href="/api/idocument.html">IDocument</a>, object&gt; content)</code></p>
-<p>Uses the string value of the returned object as the new content for each document. This allows you to specify different content for each document depending on the input.</p>
+<p><code>Excerpt(string querySelector)</code></p>
+<p>Specifies an alternate query selector for the content.</p>
 </li>
 <li>
-<p><code>Content(params <a href="/api/imodule.html">IModule</a>[] modules)</code></p>
-<p>The specified modules are executed against an empty initial document and the results are applied to every input document (possibly creating more than one output document for each input document).</p>
+<p><code>AutoLink(Func&lt;<a href="/api/iexecutioncontext.html">IExecutionContext</a>, IDictionary<string, string="">&gt; links)</string,></code></p>
+</li>
+</ul>
+<h2>Fluent Methods</h2>
+<p>Chain these methods together after the constructor to modify behavior.</p>
+<ul>
+<li>
+<p><code>SetQuerySelector(string querySelector)</code></p>
+<p>Allows you to specify an alternate query selector.</p>
+</li>
+<li>
+<p><code>SetMetadataKey(string metadataKey)</code></p>
+<p>Allows you to specify an alternate metadata key.</p>
+</li>
+<li>
+<p><code>SetOuterHtml(bool outerHtml)</code></p>
+<p>Controls whether the inner HTML (not including the containing element's HTML) or outer HTML (including the containing element's HTML) of the first result from the query selector is added to metadata. The default is to return outer HTML content.</p>
+</li>
+</ul>
+<h1>Metadata</h1>
+<hr>
+<p>The following metadata is added to each document.</p>
+<ul>
+<li>
+<p><code>Excerpt</code></p>
+<p>Contains the content of the first result from the query selector (unless an alternate metadata key is specified).</p>
 </li>
 </ul>
 
@@ -120,7 +145,7 @@
                     <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example of a reasonably complicated Wyam site (and how easy it is to set up).</small></p>
                 </div>
                 <div class="col-md-3 text-right hidden-xs hidden-sm">                
-                    <a class="btn btn-primary btn-xs" href="https://github.com/Wyamio/Wyam.Web/edit/master/Input/modules\content.md"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
+                    <a class="btn btn-primary btn-xs" href="https://github.com/Wyamio/Wyam.Web/edit/master/Input/modules\excerpt.md"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
                 </div>
             </div>
         </div>        
