@@ -92,7 +92,123 @@
                         <hr class="hidden-md hidden-lg" />
                     </div>
                     <div class="col-md-9">
-                        <p>This module manipulates images by applying operations such as resizing, darken/lighten, etc. More documentation coming soon, but in the meantime check out <a href="https://github.com/Wyamio/Wyam/blob/develop/Wyam.Modules.Images/Image.cs">the source</a> for more information.</p>
+                        <p>This module manipulates images by applying operations such as resizing, darken/lighten, etc. This module uses <a href="http://imageprocessor.org/">ImageProcessor</a>.</p>
+<p>This image module does not modify your original images in anyway. It will create a copy of your images and produce images in the same image format as the original.</p>
+<p>It relies on other modules such as <code>ReadFiles</code> to read the actual images as input and <code>WriteFiles</code> to write images to disk.</p>
+<pre class="prettyprint"><code>Pipelines.Add(&quot;Images&quot;,
+    ReadFiles(&quot;*&quot;).Where(x =&gt; x.Contains(&quot;images\\&quot;) &amp;&amp; new[] { &quot;.jpg&quot;, &quot;.jpeg&quot;, &quot;.gif&quot;, &quot;.png&quot;}.Contains(Path.GetExtension(x))),
+    Image()
+      .SetJpegQuality(100).Resize(400,209).SetSuffix(&quot;-thumb&quot;),
+    WriteFiles(&quot;*&quot;)
+);
+</code></pre>
+<p>It will produce image with similar file name as the original image with addition of suffix indicating operations that have performed, e.g. <code>hello-world.jpg</code> can result in <code>hello-world-w100.jpg</code>.</p>
+<p>The module allows you to perform more than one set of processing instructions by using the fluent property <code>and</code>.</p>
+<pre class="prettyprint"><code>Pipelines.Add(&quot;Images&quot;,
+    ReadFiles(&quot;*&quot;).Where(x =&gt; x.Contains(&quot;images\\&quot;) &amp;&amp; new[] { &quot;.jpg&quot;, &quot;.jpeg&quot;, &quot;.gif&quot;, &quot;.png&quot;}.Contains(Path.GetExtension(x))),
+    Image()
+      .SetJpegQuality(100).Resize(400,209).SetSuffix(&quot;-thumb&quot;)
+      .And
+      .SetJpegQuality(70).Resize(400*2, 209*2).SetSuffix(&quot;-medium&quot;),
+    WriteFiles(&quot;*&quot;)
+);
+</code></pre>
+<p>Above configuration produces two set of new images, one with <code>-thumb</code> suffix and the other with <code>-medium</code> suffix.</p>
+<h1>Usage</h1>
+<hr />
+<ul>
+<li>
+<p><code>Image()</code></p>
+<p>Create the module.</p>
+</li>
+</ul>
+<h1>Fluent Methods</h1>
+<p>Chain these methods together after constructor to start processing images.</p>
+<ul>
+<li>
+<p><code>Resize(int? width, int? height, AnchorPosition anchor = AnchorPosition.Center)</code></p>
+<p>Resize image to a certain width and height. It will crop the image whenever necessary.</p>
+<p>If <code>width</code> is set to <code>null</code> or <code>0</code>, the image will be resized to its height.</p>
+<p>If <code>height</code> is set to <code>null</code> or <code>0</code>,  the image will be resized to its width.</p>
+<p>If both <code>width</code> and <code>height</code> are specified and set to larger than 0, the image will perform cropping if necessary. The cropping position is determined by <code>anchor</code> with the possible values of <code>AnchorPosition[Center|Top|Bottom|Left|Right|TopLeft|TopRight|BottomLeft|BottomRight]</code>.</p>
+<p>The module will not perform any image resizing if both <code>width</code> and <code>height</code> are set to null.</p>
+<p>If the source image is smaller than the specified <code>width</code> and <code>height</code>, the image will be enlarged.</p>
+</li>
+<li>
+<p><code>Constrain(int width, int height)</code></p>
+<p>If the image is larger than the specified <code>width</code> and <code>height</code>, it will be resized down.</p>
+<p>If the image is smaller than the specified <code>width</code> and <code>height</code>, it will not be resized.</p>
+</li>
+<li>
+<p><code>ApplyFilters(params ImageFilter[] filters)</code></p>
+<p>Apply one or more filters to the image. The available filters are as follows:</p>
+<ul>
+<li>ImageFilter.BlackAndWhite</li>
+<li>ImageFilter.Comic</li>
+<li>ImageFilter.Gotham</li>
+<li>ImageFilter.GreyScale</li>
+<li>ImageFilter.HiSatch</li>
+<li>ImageFilter.Invert</li>
+<li>ImageFilter.Lomograph</li>
+<li>ImageFilter.LoSatch</li>
+<li>ImageFilter.Polaroid</li>
+<li>ImageFilter.Sepia</li>
+</ul>
+<p>These filter values map directly to filters provided by ImageProcessor library. You can see the effects of these filters <a href="http://imageprocessor.org/imageprocessor/imagefactory/filter/">here</a>.</p>
+</li>
+<li>
+<p><code>Brigthen(short percentage)</code></p>
+<p>Brigthen image using percentage from 0 (no processing) to 100.</p>
+</li>
+<li>
+<p><code>Darken(short percentage)</code></p>
+<p>Darken the image using percentage from 0 (no processing) to 100.</p>
+</li>
+<li>
+<p><code>SetOpacity(short percentage)</code></p>
+<p>Set opacity of the image from 0 to 100.</p>
+</li>
+<li>
+<p><code>SetHue (short degrees, bool rotate = false)</code></p>
+<p>Set the hue of the image using 0 to 360 degree values.</p>
+</li>
+<li>
+<p><code>Tint(Color color)</code></p>
+<p>Tint the image with specific color, e.g. <code>SetTint(Color.Aqua)</code>. Please check <a href="https://msdn.microsoft.com/en-us/library/system.drawing.color(v=vs.110).aspx">here</a> for more color values.</p>
+</li>
+<li>
+<p><code>Vignette(Color color)</code></p>
+<p>Apply Vignette processing to the image with specific color, e.g. <code>Vignette(Color.AliceBlue)</code>. Please check <a href="https://msdn.microsoft.com/en-us/library/system.drawing.color(v=vs.110).aspx">here</a> for more color values.</p>
+</li>
+<li>
+<p><code>Saturate(short percentage)</code></p>
+<p>Saturate the image from 0 to 100.</p>
+</li>
+<li>
+<p><code>Desaturate(short percentage)</code></p>
+<p>Desaturate the image from 0 to 100.</p>
+</li>
+<li>
+<p><code>SetContrast(short percentage)</code></p>
+<p>Set the contrast value of the image from the value of -100 to 100.</p>
+</li>
+<li>
+<p><code>SetSuffix(string suffix)</code></p>
+<p>Set the suffix of the generated image, e.g. <code>SetSuffix(&quot;-medium&quot;)</code> will transform original filename <code>hello-world.jpg</code> to <code>hello-world-medium.jpg</code>.</p>
+</li>
+<li>
+<p><code>SetPrefix(string prefix)</code></p>
+<p>Set the prefix of the generated image, e.g. <code>SetPrefix(&quot;medium-&quot;)</code> will transform original filename <code>hello-world.jpg</code> to <code>medium-hello-world.jpg</code>.</p>
+</li>
+<li>
+<p><code>SetJpegQuality(short value)</code></p>
+<p>This setting only applies to JPEG images. It sets the quality of the JPEG output. The possible values are from 0 to 100.</p>
+</li>
+<li>
+<p><code>And</code></p>
+<p>Mark the beginning of another set of processing instructions to be applied to the images.</p>
+</li>
+</ul>
 
 
                     </div>
