@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet">
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -58,38 +59,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/modules/append">Append</a></li>
-                                <li><a href="/modules/autolink">AutoLink</a></li>
-                                <li><a href="/modules/branch">Branch</a></li>
-                                <li><a href="/modules/concat">Concat</a></li>
-                                <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
-                                <li><a href="/modules/content">Content</a></li>
-                                <li><a href="/modules/copyfiles">CopyFiles</a></li>
-                                <li><a href="/modules/documents">Documents</a></li>
-                                <li><a href="/modules/excerpt">Excerpt</a></li>
-                                <li><a href="/modules/execute">Execute</a></li>
-                                <li><a href="/modules/foreach">ForEach</a></li>
-                                <li><a href="/modules/frontmatter">FrontMatter</a></li>
-                                <li><a href="/modules/if">If</a></li>
-                                <li><a href="/modules/image">Image</a></li>
-                                <li><a href="/modules/less">Less</a></li>
-                                <li><a href="/modules/markdown">Markdown</a></li>
-                                <li><a href="/modules/meta">Meta</a></li>
-                                <li><a href="/modules/prepend">Prepend</a></li>
-                                <li><a href="/modules/razor">Razor</a></li>
-                                <li><a href="/modules/readfiles">ReadFiles</a></li>
-                                <li><a href="/modules/replace">Replace</a></li>
-                                <li><a href="/modules/replacein">ReplaceIn</a></li>
-                                <li><a href="/modules/trace">Trace</a></li>
-                                <li><a href="/modules/where">Where</a></li>
-                                <li class="active"><a href="/modules/writefiles">WriteFiles</a></li>
-                                <li><a href="/modules/yaml">Yaml</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>Writes the content of each input document to the file system.</p>
 <p>If the metadata keys <code>WriteFileName</code> (which requires <code>RelativeFileDir</code> to be set, usually by the <a href="/modules/readfiles">ReadFiles</a> module), <code>WriteExtension</code> (which requires <code>RelativeFilePath</code> to be set, usually by the <a href="/modules/readfiles">ReadFiles</a> module) or <code>WritePath</code> are set on an input document, that value will be used instead of what's specified in the module. For example, if you have a bunch of Razor <code>.cshtml</code> files that need to be rendered to <code>.html</code> files but one of them should be output as a <code>.xml</code> file instead, define the <code>WriteExtension</code> metadata value in the <a href="/modules/frontmatter">front matter</a> of the page.</p>
 <h1>Usage</h1>
@@ -104,8 +74,8 @@
 <p>Writes the document content to disk with the specified extension with the same base file name and relative path as the input file. This requires metadata for <code>RelativeFilePath</code> to be set (which is done by default by the <a href="/modules/readfiles">ReadFiles</a> module).</p>
 </li>
 <li>
-<p><code>WriteFiles(Func&lt;<a href="/api/idocument.html">IDocument</a>, string&gt; path)</code></p>
-<p>Uses a function to describe where to write the content of each document. The output of the function should be either a full path to the disk location (including file name) or a path relative to the output folder.</p>
+<p><code>WriteFiles(<a href="/api/documentconfig.html">DocumentConfig</a> path)</code></p>
+<p>Uses a function to describe where to write the content of each document. The return value is expected to be a <code>string</code>. The output of the function should be either a full path to the disk location (including file name) or a path relative to the output folder.</p>
 </li>
 </ul>
 <h2>Fluent Methods</h2>
@@ -114,6 +84,10 @@
 <li>
 <p><code>Where(Func&lt;<a href="/api/idocument.html">IDocument</a>, bool&gt; predicate)</code></p>
 <p>Specifies a predicate that must be satisfied for the file to be written.</p>
+</li>
+<li>
+<p><code>Where(<a href="/api/documentconfig.html">DocumentConfig</a> predicate)</code></p>
+<p>Specifies a predicate that must be satisfied for the file to be written. The return value is expected to be a <code>bool</code>.</p>
 </li>
 </ul>
 <h1>Metadata</h1>
@@ -147,6 +121,170 @@
 </ul>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg">
+                    <div class="col-md-3 col-md-pull-9">        
+                                <div class="subnav-category">Content</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/append">
+                                            Append
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/autolink">
+                                            AutoLink
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/content">
+                                            Content
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/prepend">
+                                            Prepend
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/replace">
+                                            Replace
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/replacein">
+                                            ReplaceIn
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Control</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/branch">
+                                            Branch
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/concat">
+                                            Concat
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/documents">
+                                            Documents
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/foreach">
+                                            ForEach
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/frontmatter">
+                                            FrontMatter
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/groupby">
+                                            GroupBy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/if">
+                                            If
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/orderby">
+                                            OrderBy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/paginate">
+                                            Paginate
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/where">
+                                            Where
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Data Processing</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/image">
+                                            Image
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Extensibility</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/execute">
+                                            Execute
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/trace">
+                                            Trace
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Input/Output</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/copyfiles">
+                                            CopyFiles
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/readfiles">
+                                            ReadFiles
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/modules/writefiles">
+                                            WriteFiles
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Metadata</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/excerpt">
+                                            Excerpt
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/meta">
+                                            Meta
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/yaml">
+                                            Yaml
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Templating</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/less">
+                                            Less
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/markdown">
+                                            Markdown
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/razor">
+                                            Razor
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

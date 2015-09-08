@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet">
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -58,24 +59,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li class="active"><a href="/api/idocument">IDocument</a></li>
-                                <li><a href="/api/idocumentcollection">IDocumentCollection</a></li>
-                                <li><a href="/api/iexecutioncache">IExecutionCache</a></li>
-                                <li><a href="/api/iexecutioncontext">IExecutionContext</a></li>
-                                <li><a href="/api/iindentedtraceevent">IIndentedTraceEvent</a></li>
-                                <li><a href="/api/imetadata">IMetadata</a></li>
-                                <li><a href="/api/imetadata-t">IMetadata&lt;T&gt;</a></li>
-                                <li><a href="/api/imodule">IModule</a></li>
-                                <li><a href="/api/ipipeline">IPipeline</a></li>
-                                <li><a href="/api/ipipelinecollection">IPipelineCollection</a></li>
-                                <li><a href="/api/ireadonlypipeline">IReadOnlyPipeline</a></li>
-                                <li><a href="/api/itrace">ITrace</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>The primary object in Wyam that contains content and metadata for each item as it propagates through the pipeline. Documents are immutable so you must call one of the <code>Clone(...)</code> methods to create a new document. Implements <code><a href="/api/imetadata.html">IMetadata</a></code> and all metadata calls are passed through to the document's internal <code>Metadata</code> instance. Note that both <code>Content</code> and <code>Stream</code> properties are guaranteed not to be <code>null</code>. When a document is created, either a <code>string</code> or a <code>Stream</code> is provided. Whenever the other of the two is requested, the system will convert the current representation for you.</p>
 <h1>Members</h1>
 <hr>
@@ -94,35 +78,110 @@
 <p>Gets the content associated with this document.</p>
 </li>
 <li>
-<p><code>Stream Stream { get; }</code></p>
-<p>Gets a stream for the document content. <strong>Take care not to dispose the returned <code>Stream</code> object as it may be reused later.</strong></p>
+<p><code>Stream GetStream()</code></p>
+<p>Gets a stream for the document content. The retured stream wraps the underlying stream and prevents concurrent access (additional stream requests will block until the first one is finished). <strong>You <em>must</em> dispose the retured stream as quickly as possible to prevent blocking on concurrent access</strong>.</p>
 </li>
 </ul>
 <h2>Methods</h2>
 <ul>
 <li>
-<p><code><a href="/api/idocument.html">IDocument</a> Clone(string source, string content, IEnumerable<keyvaluepair<string, object="">&gt; items = null)</keyvaluepair<string,></code></p>
+<p><code><a href="/api/idocument.html">IDocument</a> Clone(string source, string content, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; metadata = null)</code></p>
 <p>Clones the current document with a new source, new content, and additional metadata (all existing metadata is retained).</p>
 </li>
 <li>
-<p><code><a href="/api/idocument.html">IDocument</a> Clone(string content, IEnumerable<keyvaluepair<string, object="">&gt; items = null)</keyvaluepair<string,></code></p>
+<p><code><a href="/api/idocument.html">IDocument</a> Clone(string content, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; metadata = null)</code></p>
 <p>Clones the current document with new content and additional metadata (all existing metadata is retained).</p>
 </li>
 <li>
-<p><code><a href="/api/idocument.html">IDocument</a> Clone(string source, Stream stream, IEnumerable<keyvaluepair<string, object="">&gt; items = null, bool disposeStream = true)</keyvaluepair<string,></code></p>
+<p><code><a href="/api/idocument.html">IDocument</a> Clone(string source, Stream stream, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; metadata = null, bool disposeStream = true)</code></p>
 <p>Clones the current document with a new source, new stream, and additional metadata (all existing metadata is retained). If <code>disposeStream</code> is true (which it is by default), the provided stream will automatically be disposed when the document is disposed (I.e., the cloned document takes ownership of the stream).</p>
 </li>
 <li>
-<p><code><a href="/api/idocument.html">IDocument</a> Clone(Stream stream, IEnumerable<keyvaluepair<string, object="">&gt; items = null, bool disposeStream = true)</keyvaluepair<string,></code></p>
+<p><code><a href="/api/idocument.html">IDocument</a> Clone(Stream stream, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; metadata = null, bool disposeStream = true)</code></p>
 <p>Clones the current document with a new stream and additional metadata (all existing metadata is retained). If <code>disposeStream</code> is true (which it is by default), the provided stream will automatically be disposed when the document is disposed (I.e., the cloned document takes ownership of the stream).</p>
 </li>
 <li>
-<p><code><a href="/api/idocument.html">IDocument</a> Clone(IEnumerable<keyvaluepair<string, object="">&gt; items = null)</keyvaluepair<string,></code></p>
+<p><code><a href="/api/idocument.html">IDocument</a> Clone(IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt; metadata)</code></p>
 <p>Clones the current document with identical content and additional metadata (all existing metadata is retained).</p>
 </li>
 </ul>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg">
+                    <div class="col-md-3 col-md-pull-9">        
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/api/contextconfig">
+                                            ContextConfig
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/documentconfig">
+                                            DocumentConfig
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/api/idocument">
+                                            IDocument
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/idocumentcollection">
+                                            IDocumentCollection
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iexecutioncache">
+                                            IExecutionCache
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iexecutioncontext">
+                                            IExecutionContext
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iindentedtraceevent">
+                                            IIndentedTraceEvent
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imetadata">
+                                            IMetadata
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imetadata-t">
+                                            IMetadata&lt;T&gt;
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imodule">
+                                            IModule
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ipipeline">
+                                            IPipeline
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ipipelinecollection">
+                                            IPipelineCollection
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ireadonlypipeline">
+                                            IReadOnlyPipeline
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/itrace">
+                                            ITrace
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

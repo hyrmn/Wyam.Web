@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet">
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -58,60 +59,87 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/knowledgebase/continuous-integration">Continuous Integration</a></li>
-                                <li><a href="/knowledgebase/embedded-use">Embedded Use</a></li>
-                                <li><a href="/knowledgebase/helpers">Helpers</a></li>
-                                <li><a href="/knowledgebase/rss-and-atom-feeds">RSS and Atom Feeds</a></li>
-                                <li class="active"><a href="/knowledgebase/writing-a-module">Writing a Module</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>Writing a new module is easy and consists of four steps: creating a class library for your module, adding a module class, implementing a single method, and deploying the library.</p>
 <h1>Create a Library</h1>
+<hr>
 <p>Create a class library for your module and reference the latest <code>Wyam.Common</code> <a href="https://www.nuget.org/packages/Wyam.Common">NuGet package</a>. This includes all of the Wyam interfaces and should be the only package you need to include to extend Wyam.</p>
 <h2>Library Boundaries</h2>
 <p>It is recommended that you aim for library separation based on dependencies. Wyam will eventually be packaged for multiple .NET runtimes and defining module libraries on dependency boundaries should make it easier to port those modules that support alternate platforms.</p>
 <h2>Naming</h2>
 <p>Try to name your modules (and their containing libraries) based on <em>what they do</em> not <em>how they do it</em>. The names should also be short and concise. For example, if you write a module that manipulates Excel files, it should be called "Excel" not "ExcelDotNet" (assuming that was the name of a .NET Excel library) or "ExcelEditor".</p>
 <h1>Create a Module Class</h1>
+<hr>
 <p>Derive your class from <code><a href="/api/imodule.html">IModule</a></code>.</p>
+<p>If your module needs any information, you'll typically get it in the constructor and then save it until execution. If your module needs to collect data at runtime, use either <code><a href="/api/contextconfig.html">ContextConfig</a></code> or <code><a href="/api/documentconfig.html">DocumentConfig</a></code> as an argument in the constructor or fluent method and then evaluate it in your <code>Execute</code> method using <code>Invoke&lt;T&gt;</code>. Because both <code><a href="/api/contextconfig.html">ContextConfig</a></code> and <code><a href="/api/documentconfig.html">DocumentConfig</a></code> return a raw <code>object</code> to make configuration easier, be sure to document somewhere what kind of return type your module expects from these delegates.</p>
 <h1>Implement The Execute Method</h1>
+<hr>
 <p>Implement the single method <code>IEnumerable&lt;<a href="/api/idocument.html">IDocument</a>&gt; Execute(IReadOnlyList&lt;<a href="/api/idocument.html">IDocument</a>&gt; inputs, <a href="/api/iexecutioncontext.html">IExecutionContext</a> context)</code>. Your implementation should accept zero or more <code><a href="/api/idocument.html">IDocument</a></code> inputs and return zero or more <code><a href="/api/idocument.html">IDocument</a></code> outputs. To the extent you need to modify the input documents (which are immutable), use one of the <code><a href="/api/idocument.html">IDocument</a>.Clone(...)</code> methods which return a new <code><a href="/api/idocument.html">IDocument</a></code> with new content and/or additional metadata items.</p>
-<p>Inside your <code>Execute</code> implementation, iterate over the <code><a href="/api/idocument.html">IDocument</a></code> objects that were passed in. To access document content, use <code><a href="/api/idocument.html">IDocument</a>.Stream</code> or <code><a href="/api/idocument.html">IDocument</a>.Content</code>. Using streams is prefered when both reading and cloning documents because it can provide more direct access to the document content. However, you should prefer <code><a href="/api/idocument.html">IDocument</a>.Content</code> over using your own <code>MemoryStream</code> to buffer content from <code><a href="/api/idocument.html">IDocument</a>.Stream</code> if you need access to the content as a string. Also use one of the <code><a href="/api/idocument.html">IDocument</a>.Clone(...)</code> overrides that takes a string instead of cloning with a <code>MemoryStream</code> if you already have the content as a string.</p>
-<h3>Parallel Execution</h3>
+<p>Inside your <code>Execute</code> implementation, iterate over the <code><a href="/api/idocument.html">IDocument</a></code> objects that were passed in. To access document content, use <code><a href="/api/idocument.html">IDocument</a>.GetStream()</code> or <code><a href="/api/idocument.html">IDocument</a>.Content</code>. Using streams is prefered when both reading and cloning documents because it can provide more direct access to the document content. However, you should prefer <code><a href="/api/idocument.html">IDocument</a>.Content</code> over using your own <code>MemoryStream</code> to buffer content from <code><a href="/api/idocument.html">IDocument</a>.GetStream()</code> if you need access to the content as a string. Also use one of the <code><a href="/api/idocument.html">IDocument</a>.Clone(...)</code> overrides that takes a string instead of cloning with a <code>MemoryStream</code> if you already have the content as a string. Also note that if you use <code><a href="/api/idocument.html">IDocument</a>.GetStream()</code> <strong>you must dispose the returned stream</strong>.</p>
+<h2>Parallel Execution</h2>
 <p>For performance reasons, modules are encouraged to perform their operations in parallel if possible. That's why the entire sequence of input documents gets passed to the <code>Execute(...)</code> method instead of just giving the module one at a time. The easiest way to do this is to use <code>.AsParallel()</code> in a LINQ expression or use <code>Parallel.ForEach(...)</code>, but any method is acceptable. Keep in mind that while intra-module operations are allowed to run in parallel, the pipeline is run sequentially on the main thread. This ensures that the order of pipelines and modules remains predictable and consistent.</p>
-<h3>Executing Child Modules</h3>
-<p>If you need to execute child modules from your module, don't call <code><a href="/api/imodule.html">IModule</a>.Execute(...)</code> on each child module. Instead use the <code><a href="/api/iexecutioncontext.html">IExecutionContext</a>.Execute(IEnumerable&lt;<a href="/api/imodule.html">IModule</a>&gt; modules, IEnumerable&lt;<a href="/api/idocument.html">IDocument</a>&gt; inputs)</code> method. It returns the result documents from calling the child module chain (which can then be returned by your own module if needed). If you pass <code>null</code> for <code>inputs</code> a new empty initial document will be used.</p>
-<h3>Other Guidelines</h3>
+<h2>Executing Child Modules</h2>
+<p>If you need to execute child modules from your module, don't call <code><a href="/api/imodule.html">IModule</a>.Execute(...)</code> on each child module. Instead use one of the <code><a href="/api/iexecutioncontext.html">IExecutionContext</a>.Execute(...)</code> methods. They return the result documents from calling the child module chain (which can then be returned by your own module if needed).</p>
+<h2>Other Guidelines</h2>
 <p>Here are a few other guidelines to follow so that your module matches the convention used by the built-in Wyam modules.</p>
 <ul>
 <li>Favor overloaded constructors over optional arguments. This will help avoid versioning problems in the future (see <a href="http://haacked.com/archive/2010/08/10/versioning-issues-with-optional-arguments.aspx/">this blog post</a> for more details).</li>
 <li>Use a fluent interface for setting optional options.</li>
+<li>Make the module null and fault tolerant. That is, if null or other invalid values are supplied as constructor or fluent method arguments, try to work around it by using default values, etc. instead of throwing exceptions.</li>
 </ul>
 <h1>Deployment</h1>
+<hr>
 <p>Compile your library and place it somewhere Wyam will find it. You can manually put it in the Wyam directory (not recommended), tell Wyam to <a href="/getting-started/configuration#assemblies">reference your assemblies</a>, or create a NuGet package and <a href="/getting-started/configuration#nuget">tell Wyam to use it</a>. In all of these deployment scenarios, Wyam will scan the assembly for any modules, find your new module, and make it available.</p>
 <h1>Example</h1>
+<hr>
 <p>As an example, here's the entirety of the <a href="/modules/where">Where</a> module, which filters the documents in the pipeline:</p>
 <pre class="prettyprint"><code>public class Where : IModule
 {
-    private readonly Func&lt;IDocument, bool&gt; _predicate;
+    private readonly DocumentConfig _predicate;
 
-    public Where(Func&lt;IDocument, bool&gt; predicate)
+    public Where(DocumentConfig predicate)
     {
         _predicate = predicate;
     }
 
     public IEnumerable&lt;IDocument&gt; Execute(IReadOnlyList&lt;IDocument&gt; inputs, IExecutionContext context)
     {
-        return inputs.Where(_predicate);
+        return inputs.Where(x =&gt; _predicate.Invoke&lt;bool&gt;(x, context));
     }
 }
 </code></pre>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg">
+                    <div class="col-md-3 col-md-pull-9">        
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/knowledgebase/continuous-integration">
+                                            Continuous Integration
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/embedded-use">
+                                            Embedded Use
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/helpers">
+                                            Helpers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/rss-and-atom-feeds">
+                                            RSS and Atom Feeds
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/knowledgebase/writing-a-module">
+                                            Writing a Module
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

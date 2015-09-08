@@ -9,10 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -60,17 +61,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li class="active"><a href="/knowledgebase/continuous-integration">Continuous Integration</a></li>
-                                <li><a href="/knowledgebase/embedded-use">Embedded Use</a></li>
-                                <li><a href="/knowledgebase/helpers">Helpers</a></li>
-                                <li><a href="/knowledgebase/rss-and-atom-feeds">RSS and Atom Feeds</a></li>
-                                <li><a href="/knowledgebase/writing-a-module">Writing a Module</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg" />
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>It's relatively easy to achieve site deployment nirvana with Wyam, GitHub Pages, and AppVeyor. Follow these instructions to get up and running:</p>
 <ol>
 <li>
@@ -140,6 +131,36 @@ on_success:
 <p>While this guide is for GitHub Pages and AppVeyor, the same process should work pretty much the same way for alternate hosts and/or alternate build servers.</p>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg" />
+                    <div class="col-md-3 col-md-pull-9">        
+                            <ul class="subnav">
+                                    <li class="active">
+                                        <a href="/knowledgebase/continuous-integration">
+                                            Continuous Integration
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/embedded-use">
+                                            Embedded Use
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/helpers">
+                                            Helpers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/rss-and-atom-feeds">
+                                            RSS and Atom Feeds
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/writing-a-module">
+                                            Writing a Module
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

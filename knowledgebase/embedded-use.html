@@ -9,10 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -60,22 +61,42 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/knowledgebase/continuous-integration">Continuous Integration</a></li>
-                                <li class="active"><a href="/knowledgebase/embedded-use">Embedded Use</a></li>
-                                <li><a href="/knowledgebase/helpers">Helpers</a></li>
-                                <li><a href="/knowledgebase/rss-and-atom-feeds">RSS and Atom Feeds</a></li>
-                                <li><a href="/knowledgebase/writing-a-module">Writing a Module</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg" />
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>While Wyam is usually executed from the command line application, this is just a thin wrapper around a core library that you can include in your own applications. The core Wyam library is available on NuGet as <a href="https://www.nuget.org/packages/Wyam.Core">Wyam.Core</a>. Once you've included it in your application, you will need to create an instance of the <code>Wyam.Core.Engine</code> class.</p>
 <p>To configure the engine, you can call <code>Engine.Configure(string configScript = null, bool updatePackages = false)</code> with the optional text of a configuration file, which will be parsed and processed. Alternatively, you can configure the pipelines directly using the property <code>Engine.Pipelines</code>. Note that while all official modules are included in the command line distribution, any module that takes a dependency on other libraries are actually contained in extra NuGet packages and are not part of the Wyam.Core library. This is specifically to keep the core library light and allow you to include only those modules that you will need. <a href="https://www.nuget.org/packages?q=wyam">Search NuGet for &quot;wyam&quot;</a> in order to find additional module libraries. They are all named with the <code>Wyam.Modules.XYZ</code> convention.</p>
 <p>Once the engine is configured, execute it with a call to <code>Engine.Execute()</code>. This will start evaluation of the pipelines and any output messages will be sent to the configured trace endpoints.</p>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg" />
+                    <div class="col-md-3 col-md-pull-9">        
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/knowledgebase/continuous-integration">
+                                            Continuous Integration
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/knowledgebase/embedded-use">
+                                            Embedded Use
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/helpers">
+                                            Helpers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/rss-and-atom-feeds">
+                                            RSS and Atom Feeds
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/writing-a-module">
+                                            Writing a Module
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

@@ -9,10 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -83,7 +84,7 @@
 		<li><a href="/modules/yaml">YAML parser</a></li>
 		<li><a href="/modules/less">Less CSS compiler</a></li>
 		<li><a href="/modules/image">Image manipulation</a></li>
-		<li>Support for multiple templating languages including <a href="/modules/razor">Razor</a></li>
+		<li>Support for multiple templating languages including <a href="/modules/markdown">Markdown</a> and <a href="/modules/razor">Razor</a></li>
 		<li>Integrated <a href="/getting-started/usage">web server</a> for previewing output</li>
 		<li>Integrated <a href="/getting-started/usage">file watching</a> and regeneration</li>
 		<li>Full <a href="/getting-started/configuration#nuget">NuGet support</a></li>
@@ -93,7 +94,7 @@
 	
 	<h1>Usage</h1>
 	<hr />
-	<p>The best way to get started is to <a href="/getting-started/usage">use the command line application</a>:</p>
+	<p><strong><a href="https://github.com/Wyamio/Wyam/releases">Go download the latest version now</a></strong> (look at <em>Downloads</em> under each release). Then unzip the Wyam.zip archive, write some <a href="/modules/markdown">Markdown</a> or <a href="/modules/razor">Razor</a> files, run the following command, and watch the magic happen:</p>
 	<pre>c:\MySite&gt;<strong>Wyam.exe --preview --watch</strong>
 	Loading configuration from c:\MySite\config.wyam.
 	Cleaning output directory c:\MySite\.\Output...
@@ -110,7 +111,7 @@
 	Watching folder c:\MySite\.\Input...
 	Hit any key to exit...	
 	</pre>
-	<p>Read more about <a href="/getting-started/configuration">configuration files</a> and the <a href="/getting-started/usage">available command line arguments</a>.</p>
+	<p>Read more about <a href="/getting-started/configuration">configuration files</a> and the <a href="/getting-started/usage">available command line arguments</a>. Then check out the full list of <a href="/modules">modules</a>.</p>
 </div>        
         <hr />
         <div class="container">

@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet">
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -58,18 +59,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/getting-started/installation">Installation</a></li>
-                                <li><a href="/getting-started/usage">Usage</a></li>
-                                <li class="active"><a href="/getting-started/concepts">Concepts</a></li>
-                                <li><a href="/getting-started/configuration">Configuration</a></li>
-                                <li><a href="/getting-started/defaults">Defaults</a></li>
-                                <li><a href="/getting-started/examples">Examples</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>The primary concepts in Wyam are <em>modules</em>, <em>pipelines</em>, <em>documents</em>, and <em>metadata</em>.</p>
 <h1>Modules</h1>
 <hr>
@@ -111,6 +101,41 @@
 <p>For example, say you have a sequence of documents, some of which contain metadata for the key "Tags". Also, assume that some of the documents with "Tags" metadata contain a single value some contain arrays. If you simply call <code>Documents.ToLookup&lt;string&gt;("Tags")</code> you will get back an <code>ILookup<t, <a="" href="/api/idocument.html">IDocument&gt;</t,></code> keyed by each possible tag string with a sequence of the documents that contain that tag as the value.</p>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg">
+                    <div class="col-md-3 col-md-pull-9">        
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/getting-started/installation">
+                                            Installation
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/getting-started/usage">
+                                            Usage
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/getting-started/concepts">
+                                            Concepts
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/getting-started/configuration">
+                                            Configuration
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/getting-started/defaults">
+                                            Defaults
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/getting-started/examples">
+                                            Examples
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

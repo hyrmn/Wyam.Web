@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet">
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -58,38 +59,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/modules/append">Append</a></li>
-                                <li><a href="/modules/autolink">AutoLink</a></li>
-                                <li><a href="/modules/branch">Branch</a></li>
-                                <li><a href="/modules/concat">Concat</a></li>
-                                <li><a href="/modules/concatdocuments">ConcatDocuments</a></li>
-                                <li><a href="/modules/content">Content</a></li>
-                                <li><a href="/modules/copyfiles">CopyFiles</a></li>
-                                <li><a href="/modules/documents">Documents</a></li>
-                                <li><a href="/modules/excerpt">Excerpt</a></li>
-                                <li><a href="/modules/execute">Execute</a></li>
-                                <li class="active"><a href="/modules/foreach">ForEach</a></li>
-                                <li><a href="/modules/frontmatter">FrontMatter</a></li>
-                                <li><a href="/modules/if">If</a></li>
-                                <li><a href="/modules/image">Image</a></li>
-                                <li><a href="/modules/less">Less</a></li>
-                                <li><a href="/modules/markdown">Markdown</a></li>
-                                <li><a href="/modules/meta">Meta</a></li>
-                                <li><a href="/modules/prepend">Prepend</a></li>
-                                <li><a href="/modules/razor">Razor</a></li>
-                                <li><a href="/modules/readfiles">ReadFiles</a></li>
-                                <li><a href="/modules/replace">Replace</a></li>
-                                <li><a href="/modules/replacein">ReplaceIn</a></li>
-                                <li><a href="/modules/trace">Trace</a></li>
-                                <li><a href="/modules/where">Where</a></li>
-                                <li><a href="/modules/writefiles">WriteFiles</a></li>
-                                <li><a href="/modules/yaml">Yaml</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>Executes the input documents one at a time against the specified child modules. Normally, documents are executed in a breadth-first traversal where all documents are executed against a module before continuing with the next module. This module allows you to conduct a depth-first traversal instead by executing each document one at a time against the child modules before continuing with the next document. It can be especially helpful when trying to control memory usage for large documents such as images because it lets you move the documents through the pipeline one at a time. The aggregate outputs from each sequence of child modules executed against each document will be output.</p>
 <p>For example:</p>
 <pre class="prettyprint"><code>Pipelines.Add("ImageProcessing",
@@ -120,6 +90,170 @@
 </ul>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg">
+                    <div class="col-md-3 col-md-pull-9">        
+                                <div class="subnav-category">Content</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/append">
+                                            Append
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/autolink">
+                                            AutoLink
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/content">
+                                            Content
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/prepend">
+                                            Prepend
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/replace">
+                                            Replace
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/replacein">
+                                            ReplaceIn
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Control</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/branch">
+                                            Branch
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/concat">
+                                            Concat
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/documents">
+                                            Documents
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/modules/foreach">
+                                            ForEach
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/frontmatter">
+                                            FrontMatter
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/groupby">
+                                            GroupBy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/if">
+                                            If
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/orderby">
+                                            OrderBy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/paginate">
+                                            Paginate
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/where">
+                                            Where
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Data Processing</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/image">
+                                            Image
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Extensibility</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/execute">
+                                            Execute
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/trace">
+                                            Trace
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Input/Output</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/copyfiles">
+                                            CopyFiles
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/readfiles">
+                                            ReadFiles
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/writefiles">
+                                            WriteFiles
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Metadata</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/excerpt">
+                                            Excerpt
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/meta">
+                                            Meta
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/yaml">
+                                            Yaml
+                                        </a>
+                                    </li>
+                            </ul>                            
+                                <div class="subnav-category">Templating</div>
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/modules/less">
+                                            Less
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/markdown">
+                                            Markdown
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/razor">
+                                            Razor
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

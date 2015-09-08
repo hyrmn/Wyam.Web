@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet">
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -58,24 +59,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">                        
-                        <ul class="nav nav-pills nav-stacked" id="sub-nav">
-                                <li><a href="/api/idocument">IDocument</a></li>
-                                <li><a href="/api/idocumentcollection">IDocumentCollection</a></li>
-                                <li class="active"><a href="/api/iexecutioncache">IExecutionCache</a></li>
-                                <li><a href="/api/iexecutioncontext">IExecutionContext</a></li>
-                                <li><a href="/api/iindentedtraceevent">IIndentedTraceEvent</a></li>
-                                <li><a href="/api/imetadata">IMetadata</a></li>
-                                <li><a href="/api/imetadata-t">IMetadata&lt;T&gt;</a></li>
-                                <li><a href="/api/imodule">IModule</a></li>
-                                <li><a href="/api/ipipeline">IPipeline</a></li>
-                                <li><a href="/api/ipipelinecollection">IPipelineCollection</a></li>
-                                <li><a href="/api/ireadonlypipeline">IReadOnlyPipeline</a></li>
-                                <li><a href="/api/itrace">ITrace</a></li>
-                        </ul>
-                        <hr class="hidden-md hidden-lg">
-                    </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9 col-md-push-3">
                         <p>Used by modules to cache data for faster build times. The cache can be keyed by a custom string or by a specified document (in which case the document content is used as the key). The cache value can be any object. Note that only objects that are not potentially dependent on external mutable state like metadata should be cached. For example, a compiled <a href="/modules/Razor">Razor</a> page class can be cached, but the result of evaluating the Razor code against a given document should not be cached. Also be sure not to cache anything that itself could be mutated by the pipeline or else you'll get back something different when you fetch it in the next cache hit.</p>
 <h1>Members</h1>
 <hr>
@@ -116,6 +100,81 @@
 </ul>
 
 
+                    </div>
+                    <hr class="hidden-md hidden-lg">
+                    <div class="col-md-3 col-md-pull-9">        
+                            <ul class="subnav">
+                                    <li>
+                                        <a href="/api/contextconfig">
+                                            ContextConfig
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/documentconfig">
+                                            DocumentConfig
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/idocument">
+                                            IDocument
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/idocumentcollection">
+                                            IDocumentCollection
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/api/iexecutioncache">
+                                            IExecutionCache
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iexecutioncontext">
+                                            IExecutionContext
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iindentedtraceevent">
+                                            IIndentedTraceEvent
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imetadata">
+                                            IMetadata
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imetadata-t">
+                                            IMetadata&lt;T&gt;
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imodule">
+                                            IModule
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ipipeline">
+                                            IPipeline
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ipipelinecollection">
+                                            IPipelineCollection
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ireadonlypipeline">
+                                            IReadOnlyPipeline
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/itrace">
+                                            ITrace
+                                        </a>
+                                    </li>
+                            </ul>                            
                     </div>
                 </div>
             </div>

@@ -9,10 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <script src="/Scripts/jquery-2.1.1.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>    
         <script src="/Scripts/tinynav.min.js"></script>        
@@ -59,58 +60,76 @@
         
 
                 <div class="container">
-                    		<h3><strong><a href="/modules/append">Append</a></strong></h3>
-			<p>Appends content to the document.</p>
-		<h3><strong><a href="/modules/autolink">AutoLink</a></strong></h3>
-			<p>Replaces occurrences of specified strings with HTML links.</p>
-		<h3><strong><a href="/modules/branch">Branch</a></strong></h3>
-			<p>Evaluates a sequence of modules without impacting the primary module flow.</p>
-		<h3><strong><a href="/modules/concat">Concat</a></strong></h3>
-			<p>Evaluates a sequence of modules and concats the result documents with the input documents.</p>
-		<h3><strong><a href="/modules/concatdocuments">ConcatDocuments</a></strong></h3>
-			<p>Concatenates pipeline documents with previously processed ones</p>
-		<h3><strong><a href="/modules/content">Content</a></strong></h3>
-			<p>Sets the content of each input document.</p>
-		<h3><strong><a href="/modules/copyfiles">CopyFiles</a></strong></h3>
-			<p>Copies files from one location on disk to another one and sets associated metadata.</p>
-		<h3><strong><a href="/modules/documents">Documents</a></strong></h3>
-			<p>Replaces pipeline documents with previously processed ones</p>
-		<h3><strong><a href="/modules/excerpt">Excerpt</a></strong></h3>
-			<p>Finds the first occurrence of a specified HTML element and stores it&#39;s contents as metadata.</p>
-		<h3><strong><a href="/modules/execute">Execute</a></strong></h3>
-			<p>Executes custom code for each input document.</p>
-		<h3><strong><a href="/modules/foreach">ForEach</a></strong></h3>
-			<p>Executes the input documents one at a time against the specified child modules.</p>
-		<h3><strong><a href="/modules/frontmatter">FrontMatter</a></strong></h3>
-			<p>Extracts the first part of content for each document and sends it to a child module for processing.</p>
-		<h3><strong><a href="/modules/if">If</a></strong></h3>
-			<p>Provides conditional logic for your pipeline.</p>
-		<h3><strong><a href="/modules/image">Image</a></strong></h3>
-			<p>Manipulates images.</p>
-		<h3><strong><a href="/modules/less">Less</a></strong></h3>
-			<p>Compiles Less CSS files to CSS stylesheets.</p>
-		<h3><strong><a href="/modules/markdown">Markdown</a></strong></h3>
-			<p>Parses markdown content and renders it to HTML.</p>
-		<h3><strong><a href="/modules/meta">Meta</a></strong></h3>
-			<p>Adds the specified metadata to each input document.</p>
-		<h3><strong><a href="/modules/prepend">Prepend</a></strong></h3>
-			<p>Prepends content to the document.</p>
-		<h3><strong><a href="/modules/razor">Razor</a></strong></h3>
-			<p>Parses Razor templates and renders them to HTML.</p>
-		<h3><strong><a href="/modules/readfiles">ReadFiles</a></strong></h3>
-			<p>Reads files from disk and sets associated metadata.</p>
-		<h3><strong><a href="/modules/replace">Replace</a></strong></h3>
-			<p>Replaces a search string in the content of each input document with new content.</p>
-		<h3><strong><a href="/modules/replacein">ReplaceIn</a></strong></h3>
-			<p>Replaces a search string in the specified content with the content of an input document.</p>
-		<h3><strong><a href="/modules/trace">Trace</a></strong></h3>
-			<p>Outputs trace messages during execution.</p>
-		<h3><strong><a href="/modules/where">Where</a></strong></h3>
-			<p>Filters the current sequence of modules using a predicate.</p>
-		<h3><strong><a href="/modules/writefiles">WriteFiles</a></strong></h3>
-			<p>Writes document content to disk.</p>
-		<h3><strong><a href="/modules/yaml">Yaml</a></strong></h3>
-			<p>Parses YAML content and stores the result in document metadata.</p>
+                    			<h1>Content</h1>
+			<hr />
+			<h3><strong><a href="/modules/append">Append</a></strong></h3>
+				<p>Appends content to the document.</p>
+			<h3><strong><a href="/modules/autolink">AutoLink</a></strong></h3>
+				<p>Replaces occurrences of specified strings with HTML links.</p>
+			<h3><strong><a href="/modules/content">Content</a></strong></h3>
+				<p>Sets the content of each input document.</p>
+			<h3><strong><a href="/modules/prepend">Prepend</a></strong></h3>
+				<p>Prepends content to the document.</p>
+			<h3><strong><a href="/modules/replace">Replace</a></strong></h3>
+				<p>Replaces a search string in the content of each input document with new content.</p>
+			<h3><strong><a href="/modules/replacein">ReplaceIn</a></strong></h3>
+				<p>Replaces a search string in the specified content with the content of an input document.</p>
+			<h1>Control</h1>
+			<hr />
+			<h3><strong><a href="/modules/branch">Branch</a></strong></h3>
+				<p>Evaluates a sequence of modules without impacting the primary module flow.</p>
+			<h3><strong><a href="/modules/concat">Concat</a></strong></h3>
+				<p>Evaluates a sequence of modules and concats the result documents with the input documents.</p>
+			<h3><strong><a href="/modules/documents">Documents</a></strong></h3>
+				<p>Replaces pipeline documents with previously processed ones</p>
+			<h3><strong><a href="/modules/foreach">ForEach</a></strong></h3>
+				<p>Executes the input documents one at a time against the specified child modules.</p>
+			<h3><strong><a href="/modules/frontmatter">FrontMatter</a></strong></h3>
+				<p>Extracts the first part of content for each document and sends it to a child module for processing.</p>
+			<h3><strong><a href="/modules/groupby">GroupBy</a></strong></h3>
+				<p>Partitions a sequence of documents based on a key.</p>
+			<h3><strong><a href="/modules/if">If</a></strong></h3>
+				<p>Provides conditional logic for your pipeline.</p>
+			<h3><strong><a href="/modules/orderby">OrderBy</a></strong></h3>
+				<p>Orders the input documents based on a key.</p>
+			<h3><strong><a href="/modules/paginate">Paginate</a></strong></h3>
+				<p>Partitions a sequence of documents into equally sized pages.</p>
+			<h3><strong><a href="/modules/where">Where</a></strong></h3>
+				<p>Filters the current sequence of modules using a predicate.</p>
+			<h1>Data Processing</h1>
+			<hr />
+			<h3><strong><a href="/modules/image">Image</a></strong></h3>
+				<p>Manipulates images.</p>
+			<h1>Extensibility</h1>
+			<hr />
+			<h3><strong><a href="/modules/execute">Execute</a></strong></h3>
+				<p>Executes custom code for each input document.</p>
+			<h3><strong><a href="/modules/trace">Trace</a></strong></h3>
+				<p>Outputs trace messages during execution.</p>
+			<h1>Input/Output</h1>
+			<hr />
+			<h3><strong><a href="/modules/copyfiles">CopyFiles</a></strong></h3>
+				<p>Copies files from one location on disk to another one and sets associated metadata.</p>
+			<h3><strong><a href="/modules/readfiles">ReadFiles</a></strong></h3>
+				<p>Reads files from disk and sets associated metadata.</p>
+			<h3><strong><a href="/modules/writefiles">WriteFiles</a></strong></h3>
+				<p>Writes document content to disk.</p>
+			<h1>Metadata</h1>
+			<hr />
+			<h3><strong><a href="/modules/excerpt">Excerpt</a></strong></h3>
+				<p>Finds the first occurrence of a specified HTML element and stores it&#39;s contents as metadata.</p>
+			<h3><strong><a href="/modules/meta">Meta</a></strong></h3>
+				<p>Adds the specified metadata to each input document.</p>
+			<h3><strong><a href="/modules/yaml">Yaml</a></strong></h3>
+				<p>Parses YAML content and stores the result in document metadata.</p>
+			<h1>Templating</h1>
+			<hr />
+			<h3><strong><a href="/modules/less">Less</a></strong></h3>
+				<p>Compiles Less CSS files to CSS stylesheets.</p>
+			<h3><strong><a href="/modules/markdown">Markdown</a></strong></h3>
+				<p>Parses markdown content and renders it to HTML.</p>
+			<h3><strong><a href="/modules/razor">Razor</a></strong></h3>
+				<p>Parses Razor templates and renders them to HTML.</p>
 
                 </div>
         
