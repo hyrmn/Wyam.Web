@@ -77,20 +77,24 @@
 <p>Chain these methods together after the constructor to modify behavior.</p>
 <ul>
 <li>
-<p><code>SearchOption(SearchOption searchOption)</code></p>
+<p><code>WithSearchOption(SearchOption searchOption)</code></p>
 <p>Specifies whether to search all directories or just the top directory.</p>
 </li>
 <li>
-<p><code>AllDirectories()</code></p>
+<p><code>FromAllDirectories()</code></p>
 <p>Specifies that all directories should be searched.</p>
 </li>
 <li>
-<p><code>TopDirectoryOnly()</code></p>
+<p><code>FromTopDirectoryOnly()</code></p>
 <p>Specifies that only the top-level directory should be searched.</p>
 </li>
 <li>
 <p><code>Where(Func&lt;string, bool&gt; predicate)</code></p>
 <p>Specifies a predicate that must be satisfied for the file to be read. The input to the predicate is the full path to the file.</p>
+</li>
+<li>
+<p><code>WithExtensions(params string[] extensions)</code></p>
+<p>Only files with the specified extension(s) will be included. You could also do this with a search pattern in the constructor or with a predicate in the <code>Where(...)</code> method, but this may be more concise in some situations (like when you want to read multiple extensions).</p>
 </li>
 </ul>
 <h1>Metadata</h1>
@@ -158,6 +162,11 @@
                                     <li>
                                         <a href="/modules/content">
                                             Content
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatecontent">
+                                            GenerateContent
                                         </a>
                                     </li>
                                     <li>
@@ -263,6 +272,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/modules/unwrittenfiles">
+                                            UnwrittenFiles
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/modules/writefiles">
                                             WriteFiles
                                         </a>
@@ -273,6 +287,21 @@
                                     <li>
                                         <a href="/modules/excerpt">
                                             Excerpt
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatemeta">
+                                            GenerateMeta
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/htmlquery">
+                                            HtmlQuery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/indx">
+                                            Index
                                         </a>
                                     </li>
                                     <li>

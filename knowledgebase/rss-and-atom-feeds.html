@@ -64,6 +64,7 @@
                     <div class="col-md-9 col-md-push-3">
                         <p>RSS and Atom are both syndication formats designed to publish updates to your website to clients such as feed readers. Most blog platforms have support for one or both, and like many things in Wyam there are multiple ways you can add support for RSS and/or Atom to your own site.</p>
 <h1>SyndicationFeed</h1>
+<hr />
 <p>Perhaps the easiest method is to use the <a href="https://msdn.microsoft.com/en-us/library/system.servicemodel.syndication.syndicationfeed.aspx"><code>SyndicationFeed</code></a> class provided by WCF. It allows you to programmatically build either type of feed and then output it as a string. To get started, you'll need to make sure you include the <code>System.ServiceModel</code> assembly in your configuration file (which must be loaded by full name since it's in the GAC):</p>
 <pre class="prettyprint"><code>Assemblies
     .Load(&quot;System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot;)
@@ -130,6 +131,7 @@
 <li>This code produces an RSS feed using the <code>Rss20FeedFormatter</code> class. Just change this to <code>Atom10FeedFormatter</code> to output an Atom feed instead.</li>
 </ul>
 <h1>Directly</h1>
+<hr />
 <p>If you don't want to use <code>SyndicationFeed</code>, you can always create your feed from scratch using XML. In this case, you would create a Razor page that contains XML content that follows the feed format specification and then use normal Razor code to iterate your items, etc.</p>
 
 
@@ -147,14 +149,14 @@
                                             Embedded Use
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/knowledgebase/helpers">
-                                            Helpers
-                                        </a>
-                                    </li>
                                     <li class="active">
                                         <a href="/knowledgebase/rss-and-atom-feeds">
                                             RSS and Atom Feeds
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/knowledgebase/static-site-resources">
+                                            Static Site Resources
                                         </a>
                                     </li>
                                     <li>

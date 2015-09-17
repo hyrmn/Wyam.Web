@@ -64,7 +64,6 @@
                     <div class="col-md-9 col-md-push-3">
                         <p>Compiles Less CSS files to CSS stylesheets.</p>
 <p>Some Less CSS files aren't intended to be output directly such as those that contain mixins or variables. For this reason, the <a href="/getting-started/defaults">default configuration</a> does not search for all <code>*.less</code> files and compile/output them. You will need to create a <a href="/getting-started/configuration">custom configuration file</a> that indicates exactly which Less CSS files should be compiled and output. For example, here is a pipeline that compiles two Less CSS files, one for Bootstrap (which contains a lot of includes) and a second for custom CSS:</p>
-<p>This module uses <a href="http://www.dotlesscss.org/">DotLess</a>.</p>
 <pre class="prettyprint"><code>Pipelines.Add(&quot;Less&quot;,
   ReadFiles(&quot;master.less&quot;),
   Concat(ReadFiles(&quot;bootstrap.less&quot;)),
@@ -72,6 +71,7 @@
   WriteFiles(&quot;.css&quot;)
 );
 </code></pre>
+<p><strong>This module uses <a href="http://www.dotlesscss.org/">DotLess</a>.</strong></p>
 <h1>Usage</h1>
 <hr />
 <ul>
@@ -100,6 +100,11 @@
                                     <li>
                                         <a href="/modules/content">
                                             Content
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatecontent">
+                                            GenerateContent
                                         </a>
                                     </li>
                                     <li>
@@ -205,6 +210,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/modules/unwrittenfiles">
+                                            UnwrittenFiles
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/modules/writefiles">
                                             WriteFiles
                                         </a>
@@ -215,6 +225,21 @@
                                     <li>
                                         <a href="/modules/excerpt">
                                             Excerpt
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatemeta">
+                                            GenerateMeta
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/htmlquery">
+                                            HtmlQuery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/indx">
+                                            Index
                                         </a>
                                     </li>
                                     <li>

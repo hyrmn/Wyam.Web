@@ -62,8 +62,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-md-push-3">
-                        <p>Finds the first occurrence of a specified HTML element and stores it's contents as metadata. This is useful for situations like displaying the first paragraph of your most recent blog posts or <a href="/knowledgebase/rss-and-atom-feeds">generating RSS and Atom feeds</a>. By default, this module looks for the first <code>p</code> (paragraph) element and places it's outer HTML content in metadata with a key of <code>Excerpt</code>.</p>
-<p>This module uses <a href="https://github.com/FlorianRappl/AngleSharp">AngleSharp</a>.</p>
+                        <p>Finds the first occurrence of a specified HTML element and stores it's contents as metadata. This is useful for situations like displaying the first paragraph of your most recent blog posts or <a href="/knowledgebase/rss-and-atom-feeds">generating RSS and Atom feeds</a>. By default, this module looks for the first <code>p</code> (paragraph) element and places it's outer HTML content in metadata with a key of <code>Excerpt</code>. The content of the original input document is left unchanged.</p>
+<p><strong>This module uses <a href="https://github.com/FlorianRappl/AngleSharp">AngleSharp</a>.</strong></p>
 <h1>Usage</h1>
 <hr />
 <ul>
@@ -80,7 +80,7 @@
 <p>Chain these methods together after the constructor to modify behavior.</p>
 <ul>
 <li>
-<p><code>SetQuerySelector(string querySelector)</code></p>
+<p><code>WithQuerySelector(string querySelector)</code></p>
 <p>Allows you to specify an alternate query selector.</p>
 </li>
 <li>
@@ -88,7 +88,7 @@
 <p>Allows you to specify an alternate metadata key.</p>
 </li>
 <li>
-<p><code>SetOuterHtml(bool outerHtml)</code></p>
+<p><code>GetOuterHtml(bool outerHtml)</code></p>
 <p>Controls whether the inner HTML (not including the containing element's HTML) or outer HTML (including the containing element's HTML) of the first result from the query selector is added to metadata. The default is to return outer HTML content.</p>
 </li>
 </ul>
@@ -121,6 +121,11 @@
                                     <li>
                                         <a href="/modules/content">
                                             Content
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatecontent">
+                                            GenerateContent
                                         </a>
                                     </li>
                                     <li>
@@ -226,6 +231,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/modules/unwrittenfiles">
+                                            UnwrittenFiles
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/modules/writefiles">
                                             WriteFiles
                                         </a>
@@ -236,6 +246,21 @@
                                     <li class="active">
                                         <a href="/modules/excerpt">
                                             Excerpt
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatemeta">
+                                            GenerateMeta
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/htmlquery">
+                                            HtmlQuery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/indx">
+                                            Index
                                         </a>
                                     </li>
                                     <li>

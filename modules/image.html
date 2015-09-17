@@ -62,7 +62,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-md-push-3">
-                        <p>This module manipulates images by applying operations such as resizing, darken/lighten, etc. This module uses <a href="http://imageprocessor.org/">ImageProcessor</a>.</p>
+                        <p>This module manipulates images by applying operations such as resizing, darken/lighten, etc.</p>
 <p>This image module does not modify your original images in anyway. It will create a copy of your images and produce images in the same image format as the original.</p>
 <p>It relies on other modules such as <code>ReadFiles</code> to read the actual images as input and <code>WriteFiles</code> to write images to disk.</p>
 <pre class="prettyprint"><code>Pipelines.Add(&quot;Images&quot;,
@@ -84,6 +84,7 @@
 );
 </code></pre>
 <p>Above configuration produces two set of new images, one with <code>-thumb</code> suffix and the other with <code>-medium</code> suffix.</p>
+<p><strong>This module uses <a href="http://imageprocessor.org/">ImageProcessor</a>.</strong></p>
 <h1>Usage</h1>
 <hr />
 <ul>
@@ -202,6 +203,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/modules/generatecontent">
+                                            GenerateContent
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/modules/prepend">
                                             Prepend
                                         </a>
@@ -304,6 +310,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/modules/unwrittenfiles">
+                                            UnwrittenFiles
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/modules/writefiles">
                                             WriteFiles
                                         </a>
@@ -314,6 +325,21 @@
                                     <li>
                                         <a href="/modules/excerpt">
                                             Excerpt
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatemeta">
+                                            GenerateMeta
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/htmlquery">
+                                            HtmlQuery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/indx">
+                                            Index
                                         </a>
                                     </li>
                                     <li>

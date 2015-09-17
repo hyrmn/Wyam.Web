@@ -91,12 +91,6 @@ Packages.Repository("https://www.myget.org/F/roslyn-nightly/")
 </code></pre>
 <p>From the <code>Install(...)</code> method you can also specify the acceptable package version(s) and whether prerelease and/or unlisted packages should be allowed. The <code>versionSpec</code> argument takes a string that matches the standard NuGet version specifications defined at https://docs.nuget.org/create/versioning</p>
 <p>By default, packages are downloaded to <code>\packages</code>. If you want to change this, set <code>Packages.Path</code> to the relative folder where you want packages to be downloaded. For example, you could set this to a system-wide folder if you have several scripts that share the same packages.</p>
-<p>Note that some commonly-used module libraries are made available in the command line application by default and don't need to be explicitly specified in the configuration file unless you're using the embedded version of Wyam. These are:</p>
-<ul>
-<li><code>Wyam.Modules.Markdown</code></li>
-<li><code>Wyam.Modules.Razor</code></li>
-<li><code>Wyam.Modules.Yaml</code></li>
-</ul>
 <h2><a name="assemblies"></a>Assemblies</h2>
 <p>In addition to NuGet packages you can also load assemblies. This is accomplished by using the <code>Assemblies</code> property. You can load all the assemblies in a directory with the <code>LoadDirectory(string path, SearchOption searchOption = SearchOption.AllDirectories)</code> method. The specified directory can either be relative to the active directory or absolute. You can also load a single assembly by location with the <code>LoadFile(string path)</code> method and by full name with the <code>Load(string name)</code> method. For example:</p>
 <pre class="prettyprint"><code>Assemblies

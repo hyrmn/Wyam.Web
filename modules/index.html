@@ -68,6 +68,8 @@
 				<p>Replaces occurrences of specified strings with HTML links.</p>
 			<h3><strong><a href="/modules/content">Content</a></strong></h3>
 				<p>Sets the content of each input document.</p>
+			<h3><strong><a href="/modules/generatecontent">GenerateContent</a></strong></h3>
+				<p>Procedurally generates content using flexible text templates.</p>
 			<h3><strong><a href="/modules/prepend">Prepend</a></strong></h3>
 				<p>Prepends content to the document.</p>
 			<h3><strong><a href="/modules/replace">Replace</a></strong></h3>
@@ -81,7 +83,7 @@
 			<h3><strong><a href="/modules/concat">Concat</a></strong></h3>
 				<p>Evaluates a sequence of modules and concats the result documents with the input documents.</p>
 			<h3><strong><a href="/modules/documents">Documents</a></strong></h3>
-				<p>Replaces pipeline documents with previously processed ones</p>
+				<p>Inserts documents into the current pipeline, either by replacing pipeline documents with previously processed ones or by creating new ones.</p>
 			<h3><strong><a href="/modules/foreach">ForEach</a></strong></h3>
 				<p>Executes the input documents one at a time against the specified child modules.</p>
 			<h3><strong><a href="/modules/frontmatter">FrontMatter</a></strong></h3>
@@ -112,12 +114,20 @@
 				<p>Copies files from one location on disk to another one and sets associated metadata.</p>
 			<h3><strong><a href="/modules/readfiles">ReadFiles</a></strong></h3>
 				<p>Reads files from disk and sets associated metadata.</p>
+			<h3><strong><a href="/modules/unwrittenfiles">UnwrittenFiles</a></strong></h3>
+				<p>Outputs only those documents that have not yet been written to the file system.</p>
 			<h3><strong><a href="/modules/writefiles">WriteFiles</a></strong></h3>
 				<p>Writes document content to disk.</p>
 			<h1>Metadata</h1>
 			<hr />
 			<h3><strong><a href="/modules/excerpt">Excerpt</a></strong></h3>
 				<p>Finds the first occurrence of a specified HTML element and stores it&#39;s contents as metadata.</p>
+			<h3><strong><a href="/modules/generatemeta">GenerateMeta</a></strong></h3>
+				<p>Procedurally generates metadata using flexible text templates.</p>
+			<h3><strong><a href="/modules/htmlquery">HtmlQuery</a></strong></h3>
+				<p>Powerful querying of HTML content that allows setting new content or metadata based on query results.</p>
+			<h3><strong><a href="/modules/indx">Index</a></strong></h3>
+				<p>Adds a one-based index to every document as metadata.</p>
 			<h3><strong><a href="/modules/meta">Meta</a></strong></h3>
 				<p>Adds the specified metadata to each input document.</p>
 			<h3><strong><a href="/modules/yaml">Yaml</a></strong></h3>

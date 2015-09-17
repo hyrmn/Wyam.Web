@@ -113,6 +113,10 @@
 <p>This attempts to convert <code>value</code> to type <code>T</code> using the same flexible conversion process as used for metadata. You should use this type of conversion as opposed to casting or other type conversion methods to be as lenient as possible.</p>
 </li>
 <li>
+<p><code><a href="/api/idocument.html">IDocument</a> GetNewDocument(IEnumerable<keyvaluepair<string, object="">&gt; metadata = null)</keyvaluepair<string,></code></p>
+<p>Creates a new empty document with the specified metadata.</p>
+</li>
+<li>
 <p><code>IReadOnlyList&lt;<a href="/api/idocument.html">IDocument</a>&gt; Execute(IEnumerable&lt;<a href="/api/imodule.html">IModule</a>&gt; modules, IEnumerable&lt;<a href="/api/idocument.html">IDocument</a>&gt; inputs)</code></p>
 <p>This executes the specified modules with the specified input documents and returns the result documents.</p>
 </li>
@@ -195,6 +199,11 @@
                                     <li>
                                         <a href="/api/itrace">
                                             ITrace
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/pathhelper">
+                                            PathHelper
                                         </a>
                                     </li>
                             </ul>                            

@@ -60,7 +60,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-md-push-3">
-                        <p>This module <em>copies</em> documents from other pipelines and places them into the current pipeline. Note that because this module does not remove the documents from their original pipeline it's likely you will end up with documents that have the same content and metadata in two different pipelines. This module does not include the input documents are part of it's output. If you want to concatenate the result of this module with the input documents, wrap it in the <a href="/modules/concat">Concat</a> module.</p>
+                        <p>This module inserts documents into the current pipeline, either by replacing pipeline documents with previously processed ones or by creating new ones. If getting previously processed documents from another pipeline, this module <em>copies</em> the documents and places them into the current pipeline. Note that because this module does not remove the documents from their original pipeline it's likely you will end up with documents that have the same content and metadata in two different pipelines. This module does not include the input documents as part of it's output. If you want to concatenate the result of this module with the input documents, wrap it with the <a href="/modules/concat">Concat</a> module.</p>
 <h1>Usage</h1>
 <hr>
 <ul>
@@ -79,6 +79,22 @@
 <li>
 <p><code>Documents(<a href="/api/documentconfig.html">DocumentConfig</a> documents)</code></p>
 <p>This will get documents based on each input document. The output will be the aggregate of all returned documents for each input document. The return value is expected to be a <code>IEnumerable&lt;<a href="/api/idocument.html">IDocument</a>&gt;</code>.</p>
+</li>
+<li>
+<p><code>Documents(int count)</code></p>
+<p>This generates <code>count</code> number of new empty documents.</p>
+</li>
+<li>
+<p><code>Documents(params string[] content)</code></p>
+<p>This generates new documents with the specified content.</p>
+</li>
+<li>
+<p><code>Documents(params IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt;[] metadata)</code></p>
+<p>This generates new documents with the specified metadata.</p>
+</li>
+<li>
+<p><code>Documents(params Tuple&lt;string, IEnumerable&lt;KeyValuePair&lt;string, object&gt;&gt;&gt;[] contentAndMetadata)</code></p>
+<p>This generates new documents with the specified content and metadata.</p>
 </li>
 </ul>
 <h2>Fluent Methods</h2>
@@ -109,6 +125,11 @@
                                     <li>
                                         <a href="/modules/content">
                                             Content
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatecontent">
+                                            GenerateContent
                                         </a>
                                     </li>
                                     <li>
@@ -214,6 +235,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/modules/unwrittenfiles">
+                                            UnwrittenFiles
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/modules/writefiles">
                                             WriteFiles
                                         </a>
@@ -224,6 +250,21 @@
                                     <li>
                                         <a href="/modules/excerpt">
                                             Excerpt
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/generatemeta">
+                                            GenerateMeta
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/htmlquery">
+                                            HtmlQuery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/modules/indx">
+                                            Index
                                         </a>
                                     </li>
                                     <li>

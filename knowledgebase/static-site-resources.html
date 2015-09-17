@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Continuous Integration</title>
+        <title>Wyam - Static Site Resources</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +54,7 @@
         
             <div class="jumbotron jumbotron-title">
     	       <div class="container">
-                   <h1>Continuous Integration</h1>
+                   <h1>Static Site Resources</h1>
                </div>
             </div>
         
@@ -62,80 +62,47 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-md-push-3">
-                        <p>It's relatively easy to achieve site deployment nirvana with Wyam, GitHub Pages, and AppVeyor. Follow these instructions to get up and running:</p>
-<ol>
+                        <p>Just because you're running a static site doesn't mean that the experience can't be both rich for your users and easy to host and deploy for you. This is a list of helpful resources we've found - feel free to expand it by suggesting edits using the button at the bottom.</p>
+<h1>Services</h1>
+<hr />
+<p>A lot of third-parties have been filling in for traditional server-side roles with easy to embed JavaScript widgets that run on the client. Here are some of our favorites.</p>
+<ul>
 <li>
-<p>Create a repository for your web site code if you haven't already done so. You should typically structure this with a default <code>Input</code> folder under the root where your web site content will go, but you can adjust these instructions and the call to Wyam if you want to use a different folder name.</p>
+<p><strong><a href="https://disqus.com">Disqus</a></strong>: discussion and comments.</p>
 </li>
 <li>
-<p>You'll probably want to add a <code>.gitignore</code> file that excludes the <code>Output</code> folder, that way you can execute Wyam locally for testing without checking in the results.</p>
-</li>
-</ol>
-<pre class="prettyprint"><code>Output/
-</code></pre>
-<ol start="3">
-<li>
-<p>Set up GitHub Pages for your repository by adding an &quot;orphaned&quot; <code>gh-pages</code> branch (<a href="https://help.github.com/articles/creating-project-pages-manually/">instructions here</a>). You'll need to add an initial file to the new orphaned branch before it'll push to GitHub, a mostly empty text file will work fine.</p>
+<p><strong><a href="https://eager.io/">Eager</a></strong>: platform for easily adding libraries and services to your static site.</p>
 </li>
 <li>
-<p>Switch back to the <code>master</code> branch and add the following <code>appveyor.yml</code> build script. This tells AppVeyor how to download the latest version of Wyam, use it to build your site, switch to the new <code>gh-pages</code> branch, and push the results of the build.</p>
+<p><strong><a href="http://formspree.io/">Formspree</a></strong>: forms via email.</p>
 </li>
-</ol>
-<pre class="prettyprint"><code>branches:
-  only:
-    - master
-    
-environment:
-  access_token:
-    # EDIT the encrypted version of your GitHub access token
-    secure: ABCDEFG...
-
-install:
-  - mkdir ..\Wyam
-  - mkdir ..\Output
-  # Fetch the latest version of Wyam 
-  - &quot;curl -s https://raw.githubusercontent.com/Wyamio/Wyam/master/RELEASE -o ..\\Wyam\\wyamversion.txt&quot;
-  - set /P WYAMVERSION=&lt; ..\Wyam\wyamversion.txt
-  - echo %WYAMVERSION%
-  # Get and unzip the latest version of Wyam
-  - ps: Start-FileDownload &quot;https://github.com/Wyamio/Wyam/releases/download/$env:WYAMVERSION/Wyam.zip&quot; -FileName &quot;..\Wyam\Wyam.zip&quot;
-  - 7z x ..\Wyam\Wyam.zip -o..\Wyam -r
-
-build_script:
-  - ..\Wyam\Wyam.exe --output ..\Output
-
-on_success:
-  # Switch branches to gh-pages, clean the folder, copy everything in from the Wyam output, and commit/push
-  # See http://www.appveyor.com/docs/how-to/git-push for more info
-  - git config --global credential.helper store
-  # EDIT your Git email and name
-  - git config --global user.email &quot;dave@daveaglick.com&quot;
-  - git config --global user.name &quot;Dave Glick&quot;
-  - ps: Add-Content &quot;$env:USERPROFILE\.git-credentials&quot; &quot;https://$($env:access_token):x-oauth-basic@github.com`n&quot;
-  - git checkout gh-pages
-  - git rm -rf .
-  - xcopy ..\Output . /E
-  # EDIT your domain name or remove if not using a custom domain
-  - echo wyam.io &gt; CNAME
-  # EDIT the origin of your repository - have to reset it here because AppVeyor pulls from SSH, but GitHub won't accept SSH pushes
-  - git remote set-url origin https://github.com/Wyamio/Wyam.Web.git
-  - git add -A
-  - git commit -a -m &quot;Commit from AppVeyor&quot;
-  - git push
-
-</code></pre>
-<p>Note that you will need to replace the <code>secure</code> value with your own GitHub access token as <a href="http://www.appveyor.com/docs/how-to/git-push">described here</a>. Also look for the other <code>EDIT</code> comments in the file and change as appropriate.</p>
-<ol start="5">
-<li>Create an account on AppVeyor if you haven't done so and add the GitHub repository as a new project. AppVeyor will pick up commits to the repository, run the build script above, and publish your new site on every commit!</li>
-</ol>
-<p>While this guide is for GitHub Pages and AppVeyor, the same process should work pretty much the same way for alternate hosts and/or alternate build servers.</p>
+<li>
+<p><strong><a href="http://www.krowdify.com/">Krowdify</a></strong>: inline discussion widget similar to Medium.</p>
+</li>
+<li>
+<p><strong><a href="https://snipcart.com/">Snipcart</a></strong>: shopping cart.</p>
+</li>
+<li>
+<p><strong><a href="https://swiftype.com/">Swiftype</a></strong>: site search.</p>
+</li>
+</ul>
+<h1>Hosting</h1>
+<hr />
+<ul>
+<li>
+<p><strong><a href="https://pages.github.com/">GitHub Pages</a></strong>: free static hosting with native support for Jekyll.</p>
+</li>
+<li>
+<p><strong><a href="https://www.netlify.com/">Netlify</a></strong>: dedicated static site hosting with automation, CDN, and native support for many generators.</p>
+</li>
+</ul>
 
 
                     </div>
                     <hr class="hidden-md hidden-lg" />
                     <div class="col-md-3 col-md-pull-9">        
                             <ul class="subnav">
-                                    <li class="active">
+                                    <li>
                                         <a href="/knowledgebase/continuous-integration">
                                             Continuous Integration
                                         </a>
@@ -150,7 +117,7 @@ on_success:
                                             RSS and Atom Feeds
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="active">
                                         <a href="/knowledgebase/static-site-resources">
                                             Static Site Resources
                                         </a>
@@ -172,7 +139,7 @@ on_success:
                     <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example of a reasonably complicated Wyam site (and how easy it is to set up).</small></p>
                 </div>
                 <div class="col-md-3 text-right hidden-xs hidden-sm">                
-                    <a class="btn btn-primary btn-xs" href='https://github.com/Wyamio/Wyam.Web/edit/master/Input/knowledgebase\continuous-integration.md'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
+                    <a class="btn btn-primary btn-xs" href='https://github.com/Wyamio/Wyam.Web/edit/master/Input/knowledgebase\static-site-resources.md'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
                 </div>
             </div>
         </div>        

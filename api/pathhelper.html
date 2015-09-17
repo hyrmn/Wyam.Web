@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - Helpers</title>
+        <title>Wyam - PathHelper</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,8 +40,8 @@
                 
                     <li><a href="/getting-started">Getting Started</a></li>
                     <li><a href="/modules">Modules</a></li>
-                    <li><a href="/api">API</a></li>
-                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
+                    <li class="active"><a href="/api">API</a></li>
+                    <li><a href="/knowledgebase">Knowledgebase</a></li>
                     <li><a href="/community">Community</a></li>
                     <li><a href="/faq">FAQ</a></li>
               </ul>              
@@ -54,7 +54,7 @@
         
             <div class="jumbotron jumbotron-title">
     	       <div class="container">
-                   <h1>Helpers</h1>
+                   <h1>PathHelper</h1>
                </div>
             </div>
         
@@ -62,28 +62,29 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 col-md-push-3">
-                        <p>The <code>Wyam.Common</code> assembly contains several static helper classes that have useful methods.</p>
-<h1>PathHelper</h1>
+                        <p>This is a helper class that contains static methods to make working with paths easier.</p>
+<h1>Members</h1>
 <hr />
+<h2>Methods</h2>
 <ul>
 <li>
-<p><code>string NormalizePath(string path)</code></p>
+<p><code>static string NormalizePath(string path)</code></p>
 <p>Converts both types of slashes in <code>path</code> to <code>Path.DirectorySeparatorChar</code>.</p>
 </li>
 <li>
-<p><code>string ToLink(string path)</code></p>
+<p><code>static string ToLink(string path)</code></p>
 <p>Converts <code>path</code> into a string suitable for use in HTML by replacing forward slashes with backslashes.</p>
 </li>
 <li>
-<p><code>static string ToRootLink(string path)</code></p>
+<p><code>static static string ToRootLink(string path)</code></p>
 <p>Converts <code>path</code> into a string suitable for use in HTML by replacing forward slashes with backslashes and also prepending a backslash.</p>
 </li>
 <li>
-<p><code>string GetRelativePath(string fromPath, string toPath)</code></p>
+<p><code>static string GetRelativePath(string fromPath, string toPath)</code></p>
 <p>This computes a relative path between the supplied paths. If both paths are rooted or they have no common root, the <code>toPath</code> is returned.</p>
 </li>
 <li>
-<p><code>string RemoveExtension(string path)</code></p>
+<p><code>static string RemoveExtension(string path)</code></p>
 <p>This removes the extension from a path or file. It returns the input path if no extension is present.</p>
 </li>
 </ul>
@@ -94,28 +95,78 @@
                     <div class="col-md-3 col-md-pull-9">        
                             <ul class="subnav">
                                     <li>
-                                        <a href="/knowledgebase/continuous-integration">
-                                            Continuous Integration
+                                        <a href="/api/contextconfig">
+                                            ContextConfig
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/knowledgebase/embedded-use">
-                                            Embedded Use
+                                        <a href="/api/documentconfig">
+                                            DocumentConfig
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/idocument">
+                                            IDocument
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/idocumentcollection">
+                                            IDocumentCollection
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iexecutioncache">
+                                            IExecutionCache
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iexecutioncontext">
+                                            IExecutionContext
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/iindentedtraceevent">
+                                            IIndentedTraceEvent
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imetadata">
+                                            IMetadata
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imetadata-t">
+                                            IMetadata&lt;T&gt;
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/imodule">
+                                            IModule
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ipipeline">
+                                            IPipeline
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ipipelinecollection">
+                                            IPipelineCollection
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/ireadonlypipeline">
+                                            IReadOnlyPipeline
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/api/itrace">
+                                            ITrace
                                         </a>
                                     </li>
                                     <li class="active">
-                                        <a href="/knowledgebase/helpers">
-                                            Helpers
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/rss-and-atom-feeds">
-                                            RSS and Atom Feeds
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/writing-a-module">
-                                            Writing a Module
+                                        <a href="/api/pathhelper">
+                                            PathHelper
                                         </a>
                                     </li>
                             </ul>                            
@@ -130,7 +181,7 @@
                     <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example of a reasonably complicated Wyam site (and how easy it is to set up).</small></p>
                 </div>
                 <div class="col-md-3 text-right hidden-xs hidden-sm">                
-                    <a class="btn btn-primary btn-xs" href='https://github.com/Wyamio/Wyam.Web/edit/master/Input/knowledgebase\helpers.md'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
+                    <a class="btn btn-primary btn-xs" href='https://github.com/Wyamio/Wyam.Web/edit/master/Input/api\pathhelper.md'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
                 </div>
             </div>
         </div>        
