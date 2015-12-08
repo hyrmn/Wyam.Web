@@ -3,66 +3,132 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <title>Wyam - RSS and Atom Feeds</title>
         <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
         <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet" />
+        <title>Wyam - RSS and Atom Feeds</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <script src="/Scripts/jquery-2.1.1.min.js"></script>
-        <script src="/Scripts/bootstrap.min.js"></script>    
-        <script src="/Scripts/tinynav.min.js"></script>        
-        <script src="/Scripts/prettify.js"></script>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jquery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
         <!--[if lt IE 9]>
         <script src="/Scripts/html5shiv.min.js"></script>
         <script src="/Scripts/respond.min.js"></script>
         <![endif]-->  
     </head>
-    <body onload="prettyPrint()">        
-        <nav class="navbar navbar-default navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand hidden-sm" href="/"><img alt="Wyam" src="/Content/Images/nav-logo.png"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-main">
-              <ul class="nav navbar-nav">
-                
-                    <li><a href="/getting-started">Getting Started</a></li>
-                    <li><a href="/modules">Modules</a></li>
-                    <li><a href="/api">API</a></li>
-                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
-                    <li><a href="/community">Community</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-              </ul>              
-              <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">                
-                <li><a href="https://github.com/Wyamio/Wyam">GitHub</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        
-            <div class="jumbotron jumbotron-title">
-    	       <div class="container">
-                   <h1>RSS and Atom Feeds</h1>
-               </div>
-            </div>
-        
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-md-push-3">
-                        <p>RSS and Atom are both syndication formats designed to publish updates to your website to clients such as feed readers. Most blog platforms have support for one or both, and like many things in Wyam there are multiple ways you can add support for RSS and/or Atom to your own site.</p>
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>                
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li><a href="/api">API</a></li>
+                                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+	
+				<li>
+				<a href="/knowledgebase/continuous-integration">
+					Continuous Integration
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/embedded-use">
+					Embedded Use
+				</a>
+			</li>
+			<li class="active">
+				<a href="/knowledgebase/rss-and-atom-feeds">
+					RSS and Atom Feeds
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/static-site-resources">
+					Static Site Resources
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/writing-a-module">
+					Writing a Module
+				</a>
+			</li>
+
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+	<section class="content-header">
+		<h1>RSS and Atom Feeds</h1>
+	</section>
+	<section class="content">
+		
+
+
+<p>RSS and Atom are both syndication formats designed to publish updates to your website to clients such as feed readers. Most blog platforms have support for one or both, and like many things in Wyam there are multiple ways you can add support for RSS and/or Atom to your own site.</p>
 <h1>SyndicationFeed</h1>
 <hr />
 <p>Perhaps the easiest method is to use the <a href="https://msdn.microsoft.com/en-us/library/system.servicemodel.syndication.syndicationfeed.aspx"><code>SyndicationFeed</code></a> class provided by WCF. It allows you to programmatically build either type of feed and then output it as a string. To get started, you'll need to make sure you include the <code>System.ServiceModel</code> assembly in your configuration file (which must be loaded by full name since it's in the GAC):</p>
@@ -72,16 +138,16 @@
 <p>Then, create a Razor page and add code similar to the following (this is the actual feed code from <a href="http://daveaglick.com">my blog</a>):</p>
 <pre class="prettyprint"><code>WriteFileName: feed.rss
 ---
-@using System.ServiceModel.Syndication; 
-@using System.IO;
-@using System.Xml;
-@using AngleSharp;
-@using AngleSharp.Parser.Html;
+&#64;using System.ServiceModel.Syndication; 
+&#64;using System.IO;
+&#64;using System.Xml;
+&#64;using AngleSharp;
+&#64;using AngleSharp.Parser.Html;
 
-@{
+&#64;{
     Layout = string.Empty;
     
-    Uri baseUri = new Uri(@&quot;http://daveaglick.com&quot;);  // This is the root URL to your site
+    Uri baseUri = new Uri(&#64;&quot;http://daveaglick.com&quot;);  // This is the root URL to your site
     SyndicationFeed feed = new SyndicationFeed()
     {
         Title = new TextSyndicationContent(&quot;Dave Glick&quot;),  // This should be the name of your site or feed
@@ -121,7 +187,7 @@
 <p>My blog contains a date metadata key <code>Published</code>. You should replace references to it in the code above with whatever your site uses to store the post date.</p>
 </li>
 <li>
-<p>This code uses <a href="https://github.com/FlorianRappl/AngleSharp">AngleSharp</a> to find the <code>div</code> with an <code>id</code> of <code>post-content</code> in each item. In the layout file, this <code>div</code> contains the <code>@RenderBody()</code> call so this code essentially strips out everything but the content. If you want to do the same thing, make sure to include AngleSharp in your configuration file:</p>
+<p>This code uses <a href="https://github.com/FlorianRappl/AngleSharp">AngleSharp</a> to find the <code>div</code> with an <code>id</code> of <code>post-content</code> in each item. In the layout file, this <code>div</code> contains the <code>&#64;RenderBody()</code> call so this code essentially strips out everything but the content. If you want to do the same thing, make sure to include AngleSharp in your configuration file:</p>
 </li>
 </ul>
 <pre class="prettyprint"><code>Packages
@@ -135,65 +201,36 @@
 <p>If you don't want to use <code>SyndicationFeed</code>, you can always create your feed from scratch using XML. In this case, you would create a Razor page that contains XML content that follows the feed format specification and then use normal Razor code to iterate your items, etc.</p>
 
 
-                    </div>
-                    <hr class="hidden-md hidden-lg" />
-                    <div class="col-md-3 col-md-pull-9">        
-                            <ul class="subnav">
-                                    <li>
-                                        <a href="/knowledgebase/continuous-integration">
-                                            Continuous Integration
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/embedded-use">
-                                            Embedded Use
-                                        </a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="/knowledgebase/rss-and-atom-feeds">
-                                            RSS and Atom Feeds
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/static-site-resources">
-                                            Static Site Resources
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/writing-a-module">
-                                            Writing a Module
-                                        </a>
-                                    </li>
-                            </ul>                            
-                    </div>
-                </div>
+	</section>
+                
             </div>
-        
-        <hr />
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example of a reasonably complicated Wyam site (and how easy it is to set up).</small></p>
-                </div>
-                <div class="col-md-3 text-right hidden-xs hidden-sm">                
-                    <a class="btn btn-primary btn-xs" href='https://github.com/Wyamio/Wyam.Web/edit/master/Input/knowledgebase\rss-and-atom-feeds.md'><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
-                </div>
-            </div>
-        </div>        
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
     </body>
-    <script>
-      $(function () {
-        $("#sub-nav").tinyNav({
-            active: 'active'
-        });
-      });
-      
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-54470483-4', 'auto');
-      ga('send', 'pageview');
-    </script>
 </html>

@@ -1,0 +1,289 @@
+body.wyam {
+  background-image: none;
+  background-color: #f4f4f4;
+}
+body.wyam.layout-boxed .top-banner {
+  background-color: #3c8dbc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+}
+body.wyam.layout-boxed.no-gutter .top-banner {
+  height: 50px;
+}
+body.wyam.layout-boxed .wrapper {
+  box-shadow: none;
+  border: none;
+}
+body.wyam.layout-boxed .bottom-wrapper {
+  border: none;
+  background: transparent;
+}
+body.wyam.layout-top-nav .content-wrapper,
+body.wyam.layout-top-nav .main-footer {
+  border-left: none;
+}
+body.wyam.layout-top-nav .main-header > .navbar {
+  /* make space for logo, even when no sidebar */
+  margin-left: 230px;
+}
+@media (max-width: 767px) {
+  body.wyam.layout-top-nav .main-header > .navbar {
+    margin-left: 0;
+  }
+}
+@media (max-width: 767px) {
+  body.wyam.layout-boxed .wrapper {
+    border-left: none;
+    border-right: none;
+  }
+  body.wyam.layout-boxed .main-sidebar {
+    width: 229px;
+  }
+  body.wyam.layout-boxed .wrapper {
+    border-radius: 0;
+  }
+  body.wyam.layout-boxed .content-wrapper,
+  body.wyam.layout-boxed .main-footer {
+    margin-left: -1px;
+  }
+}
+.wyam .main-header {
+  background-color: #3c8dbc;
+}
+.wyam .main-header .navbar {
+  background-color: #3c8dbc;
+}
+.wyam .main-header .navbar .nav > li > a {
+  color: white;
+}
+.wyam .main-header .navbar .nav > li > a:hover,
+.wyam .main-header .navbar .nav > li > a:active,
+.wyam .main-header .navbar .nav > li > a:focus,
+.wyam .main-header .navbar .nav .open > a,
+.wyam .main-header .navbar .nav .open > a:hover,
+.wyam .main-header .navbar .nav .open > a:focus,
+.wyam .main-header .navbar .nav > .active > a {
+  background: rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+}
+.wyam .main-header .navbar .sidebar-toggle {
+  color: white;
+}
+.wyam .main-header .navbar .sidebar-toggle:hover {
+  color: #f6f6f6;
+  background: rgba(0, 0, 0, 0.1);
+}
+.wyam .main-header .navbar .sidebar-toggle {
+  color: white;
+}
+.wyam .main-header .navbar .sidebar-toggle:hover {
+  background-color: #367fa9;
+}
+@media (max-width: 767px) {
+  .wyam .main-header .navbar .dropdown-menu li.divider {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .wyam .main-header .navbar .dropdown-menu li a {
+    color: white;
+  }
+  .wyam .main-header .navbar .dropdown-menu li a:hover {
+    background: #367fa9;
+  }
+}
+.wyam .main-header .logo {
+  background-color: #3c8dbc;
+  color: white;
+  border-bottom: 0 solid transparent;
+}
+.wyam .main-header .logo:hover {
+  background-color: #3b8ab8;
+}
+.wyam .main-header li.user-header {
+  background-color: #3c8dbc;
+}
+.wyam .wrapper {
+  margin-bottom: 30px;
+}
+.wyam .content-header {
+  background: transparent;
+  padding-top: 0;
+}
+.wyam .content-header h1 {
+  font-size: 41px;
+  background-color: #f4f4f4;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+.wyam .content,
+.wyam .content-header {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.wyam .sidebar {
+  padding: 30px 12px 0 12px;
+}
+.wyam .sidebar-menu,
+.wyam .sidebar-menu li,
+.wyam .sidebar-menu li a {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 3px;
+}
+.wyam .sidebar-menu li a {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.wyam .sidebar-menu li.active li.active a {
+  background-color: #3c8dbc;
+  color: white;
+}
+.wyam .sidebar-menu li.divider {
+  padding-top: 15px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 15px;
+}
+.wyam .sidebar-menu li.header {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+}
+.wyam .table-striped tr {
+  background-color: #f9fafc;
+}
+.wyam .table thead tr {
+  background-color: #3c8dbc;
+  color: white;
+}
+.wyam .box {
+  border-top-color: #307095;
+}
+.wyam .wrapper,
+.wyam .main-sidebar,
+.wyam .left-side {
+  background-color: white;
+}
+.wyam .content-wrapper,
+.wyam .main-footer {
+  border-left: 1px solid #d2d6de;
+}
+.wyam .user-panel > .info,
+.wyam .user-panel > .info > a {
+  color: #444444;
+}
+.wyam .sidebar-menu > li {
+  -webkit-transition: border-left-color 0.3s ease;
+  -o-transition: border-left-color 0.3s ease;
+  transition: border-left-color 0.3s ease;
+}
+.wyam .sidebar-menu > li.header {
+  color: #848484;
+  background: white;
+}
+.wyam .sidebar-menu > li > a {
+  border-left: 3px solid transparent;
+  font-weight: 600;
+}
+.wyam .sidebar-menu > li:hover > a,
+.wyam .sidebar-menu > li.active > a {
+  color: black;
+  background: #f8f8f8;
+}
+.wyam .sidebar-menu > li.active {
+  border-left-color: #3c8dbc;
+}
+.wyam .sidebar-menu > li.active > a {
+  font-weight: 600;
+}
+.wyam .sidebar-menu > li > .treeview-menu {
+  background: white;
+}
+.wyam .sidebar a {
+  color: #444444;
+}
+.wyam .sidebar a:hover {
+  text-decoration: none;
+}
+.wyam .treeview-menu > li > a {
+  color: #777777;
+}
+.wyam .treeview-menu > li.active > a,
+.wyam .treeview-menu > li > a:hover {
+  color: black;
+}
+.wyam .treeview-menu > li.active > a {
+  font-weight: 600;
+}
+.wyam .sidebar-form {
+  border-radius: 3px;
+  border: 1px solid #d2d6de;
+  margin: 10px 10px;
+}
+.wyam .sidebar-form input[type="text"],
+.wyam .sidebar-form .btn {
+  box-shadow: none;
+  background-color: white;
+  border: 1px solid transparent;
+  height: 35px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.wyam .sidebar-form input[type="text"] {
+  color: #666666;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+}
+.wyam .sidebar-form input[type="text"]:focus,
+.wyam .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  background-color: white;
+  color: #666666;
+}
+.wyam .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  border-left-color: white;
+}
+.wyam .sidebar-form .btn {
+  color: #999999;
+  border-top-left-radius: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+@media (min-width: 768px) {
+  .wyam.sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu {
+    border-left: 1px solid #d2d6de;
+  }
+}
+.wyam .sidebar-menu > li.header {
+  color: #d2d6de;
+}
+.wyam .sidebar-menu > li.active > a {
+  background-color: #3c8dbc;
+  color: white;
+}
+.wyam .main-header,
+.wyam .main-footer {
+  margin-bottom: 30px;
+}
+.wyam.no-gutter .main-header {
+  margin-bottom: 0px;
+}
+.wyam .main-footer {
+  border-top: none;
+}
+.wyam .bottom-footer {
+  text-align: center;
+}
+.wyam.layout-top-nav .main-header > .logo {
+  background-color: #3c8dbc;
+  color: white;
+  border-bottom: 0 solid transparent;
+}
+.wyam.layout-top-nav .main-header > .logo:hover {
+  background-color: #3b8ab8;
+}

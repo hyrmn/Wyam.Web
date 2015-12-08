@@ -1,97 +1,171 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html>
+    <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <title>Wyam - Writing a Module</title>
-        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator.">
-        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
+        <title>Wyam - Writing a Module</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
-        <link href="/Content/master.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic" rel="stylesheet" type="text/css">
-        <script src="/Scripts/jquery-2.1.1.min.js"></script>
-        <script src="/Scripts/bootstrap.min.js"></script>    
-        <script src="/Scripts/tinynav.min.js"></script>        
-        <script src="/Scripts/prettify.js"></script>
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jquery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
         <!--[if lt IE 9]>
         <script src="/Scripts/html5shiv.min.js"></script>
         <script src="/Scripts/respond.min.js"></script>
         <![endif]-->  
     </head>
-    <body onload="prettyPrint()">        
-        <nav class="navbar navbar-default navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand hidden-sm" href="/"><img alt="Wyam" src="/Content/Images/nav-logo.png"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-main">
-              <ul class="nav navbar-nav">
-                
-                    <li><a href="/getting-started">Getting Started</a></li>
-                    <li><a href="/modules">Modules</a></li>
-                    <li><a href="/api">API</a></li>
-                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
-                    <li><a href="/community">Community</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-              </ul>              
-              <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">                
-                <li><a href="https://github.com/Wyamio/Wyam">GitHub</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        
-            <div class="jumbotron jumbotron-title">
-    	       <div class="container">
-                   <h1>Writing a Module</h1>
-               </div>
-            </div>
-        
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-md-push-3">
-                        <p>Writing a new module is easy and consists of four steps: creating a class library for your module, adding a module class, implementing a single method, and deploying the library.</p>
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>                
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li><a href="/api">API</a></li>
+                                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+	
+				<li>
+				<a href="/knowledgebase/continuous-integration">
+					Continuous Integration
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/embedded-use">
+					Embedded Use
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/rss-and-atom-feeds">
+					RSS and Atom Feeds
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/static-site-resources">
+					Static Site Resources
+				</a>
+			</li>
+			<li class="active">
+				<a href="/knowledgebase/writing-a-module">
+					Writing a Module
+				</a>
+			</li>
+
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+	<section class="content-header">
+		<h1>Writing a Module</h1>
+	</section>
+	<section class="content">
+		
+
+
+<p>Writing a new module is easy and consists of four steps: creating a class library for your module, adding a module class, implementing a single method, and deploying the library.</p>
 <h1>Create a Library</h1>
-<hr>
+<hr />
 <p>Create a class library for your module and reference the latest <code>Wyam.Common</code> <a href="https://www.nuget.org/packages/Wyam.Common">NuGet package</a>. This includes all of the Wyam interfaces and should be the only package you need to include to extend Wyam.</p>
 <h2>Library Boundaries</h2>
 <p>It is recommended that you aim for library separation based on dependencies. Wyam will eventually be packaged for multiple .NET runtimes and defining module libraries on dependency boundaries should make it easier to port those modules that support alternate platforms.</p>
 <h2>Naming</h2>
-<p>Try to name your modules (and their containing libraries) based on <em>what they do</em> not <em>how they do it</em>. The names should also be short and concise. For example, if you write a module that manipulates Excel files, it should be called "Excel" not "ExcelDotNet" (assuming that was the name of a .NET Excel library) or "ExcelEditor".</p>
+<p>Try to name your modules (and their containing libraries) based on <em>what they do</em> not <em>how they do it</em>. The names should also be short and concise. For example, if you write a module that manipulates Excel files, it should be called &quot;Excel&quot; not &quot;ExcelDotNet&quot; (assuming that was the name of a .NET Excel library) or &quot;ExcelEditor&quot;.</p>
 <h1>Create a Module Class</h1>
-<hr>
-<p>Derive your class from <code><a href="/api/imodule.html">IModule</a></code>.</p>
-<p>If your module needs any information, you'll typically get it in the constructor and then save it until execution. If your module needs to collect data at runtime, use either <code><a href="/api/contextconfig.html">ContextConfig</a></code> or <code><a href="/api/documentconfig.html">DocumentConfig</a></code> as an argument in the constructor or fluent method and then evaluate it in your <code>Execute</code> method using <code>Invoke&lt;T&gt;</code>. Because both <code><a href="/api/contextconfig.html">ContextConfig</a></code> and <code><a href="/api/documentconfig.html">DocumentConfig</a></code> return a raw <code>object</code> to make configuration easier, be sure to document somewhere what kind of return type your module expects from these delegates.</p>
+<hr />
+<p>Derive your class from <code>IModule</code>.</p>
+<p>If your module needs any information, you'll typically get it in the constructor and then save it until execution. If your module needs to collect data at runtime, use either <code>ContextConfig</code> or <code>DocumentConfig</code> as an argument in the constructor or fluent method and then evaluate it in your <code>Execute</code> method using <code>Invoke&lt;T&gt;</code>. Because both <code>ContextConfig</code> and <code>DocumentConfig</code> return a raw <code>object</code> to make configuration easier, be sure to document somewhere what kind of return type your module expects from these delegates.</p>
 <h1>Implement The Execute Method</h1>
-<hr>
-<p>Implement the single method <code>IEnumerable&lt;<a href="/api/idocument.html">IDocument</a>&gt; Execute(IReadOnlyList&lt;<a href="/api/idocument.html">IDocument</a>&gt; inputs, <a href="/api/iexecutioncontext.html">IExecutionContext</a> context)</code>. Your implementation should accept zero or more <code><a href="/api/idocument.html">IDocument</a></code> inputs and return zero or more <code><a href="/api/idocument.html">IDocument</a></code> outputs. To the extent you need to modify the input documents (which are immutable), use one of the <code><a href="/api/idocument.html">IDocument</a>.Clone(...)</code> methods which return a new <code><a href="/api/idocument.html">IDocument</a></code> with new content and/or additional metadata items.</p>
-<p>Inside your <code>Execute</code> implementation, iterate over the <code><a href="/api/idocument.html">IDocument</a></code> objects that were passed in. To access document content, use <code><a href="/api/idocument.html">IDocument</a>.GetStream()</code> or <code><a href="/api/idocument.html">IDocument</a>.Content</code>. Using streams is prefered when both reading and cloning documents because it can provide more direct access to the document content. However, you should prefer <code><a href="/api/idocument.html">IDocument</a>.Content</code> over using your own <code>MemoryStream</code> to buffer content from <code><a href="/api/idocument.html">IDocument</a>.GetStream()</code> if you need access to the content as a string. Also use one of the <code><a href="/api/idocument.html">IDocument</a>.Clone(...)</code> overrides that takes a string instead of cloning with a <code>MemoryStream</code> if you already have the content as a string. Also note that if you use <code><a href="/api/idocument.html">IDocument</a>.GetStream()</code> <strong>you must dispose the returned stream</strong>.</p>
+<hr />
+<p>Implement the single method <code>IEnumerable&lt;IDocument&gt; Execute(IReadOnlyList&lt;IDocument&gt; inputs, IExecutionContext context)</code>. Your implementation should accept zero or more <code>IDocument</code> inputs and return zero or more <code>IDocument</code> outputs. To the extent you need to modify the input documents (which are immutable), use one of the <code>IDocument.Clone(...)</code> methods which return a new <code>IDocument</code> with new content and/or additional metadata items.</p>
+<p>Inside your <code>Execute</code> implementation, iterate over the <code>IDocument</code> objects that were passed in. To access document content, use <code>IDocument.GetStream()</code> or <code>IDocument.Content</code>. Using streams is prefered when both reading and cloning documents because it can provide more direct access to the document content. However, you should prefer <code>IDocument.Content</code> over using your own <code>MemoryStream</code> to buffer content from <code>IDocument.GetStream()</code> if you need access to the content as a string. Also use one of the <code>IDocument.Clone(...)</code> overrides that takes a string instead of cloning with a <code>MemoryStream</code> if you already have the content as a string. Also note that if you use <code>IDocument.GetStream()</code> <strong>you must dispose the returned stream</strong>.</p>
 <h2>Parallel Execution</h2>
 <p>For performance reasons, modules are encouraged to perform their operations in parallel if possible. That's why the entire sequence of input documents gets passed to the <code>Execute(...)</code> method instead of just giving the module one at a time. The easiest way to do this is to use <code>.AsParallel()</code> in a LINQ expression or use <code>Parallel.ForEach(...)</code>, but any method is acceptable. Keep in mind that while intra-module operations are allowed to run in parallel, the pipeline is run sequentially on the main thread. This ensures that the order of pipelines and modules remains predictable and consistent.</p>
 <h2>Executing Child Modules</h2>
-<p>If you need to execute child modules from your module, don't call <code><a href="/api/imodule.html">IModule</a>.Execute(...)</code> on each child module. Instead use one of the <code><a href="/api/iexecutioncontext.html">IExecutionContext</a>.Execute(...)</code> methods. They return the result documents from calling the child module chain (which can then be returned by your own module if needed).</p>
+<p>If you need to execute child modules from your module, don't call <code>IModule.Execute(...)</code> on each child module. Instead use one of the <code>IExecutionContext.Execute(...)</code> methods. They return the result documents from calling the child module chain (which can then be returned by your own module if needed).</p>
 <h2>Other Guidelines</h2>
 <p>Here are a few other guidelines to follow so that your module matches the convention used by the built-in Wyam modules.</p>
 <ul>
 <li>Favor overloaded constructors over optional arguments. This will help avoid versioning problems in the future (see <a href="http://haacked.com/archive/2010/08/10/versioning-issues-with-optional-arguments.aspx/">this blog post</a> for more details).</li>
 <li>Use a fluent interface for setting optional options and favor accepted fluent method naming conventions (I.e., use <code>WithSomeOption(...)</code> instead of <code>SetSomeOption(...)</code> unless you're actually setting something external to the module).</li>
+<li>Try to make sure fluent methods are resilient against multiple calls if appropriate. I.e., if a fluent methods defines a set of something, make sure subsequent calls add to the set instead of replacing it. If the fluent method defines a predicate, make sure subsequent calls add conditions to the predicate instead of replacing it.</li>
 <li>Make the module null and fault tolerant. That is, if null or other invalid values are supplied as constructor or fluent method arguments, try to work around it by using default values, etc. instead of throwing exceptions.</li>
+<li>Favor flexibility and try to consider all the possible uses of your module. Even if you don't think anyone would use it in a certain way, try to support as many scenarios as possible.</li>
+<li>Always process the input documents to a module. Don't rely on getting documents from the <code>IExecutionContext</code> except for reference or supplemental information.</li>
+<li>Write tests if possible and include them if submitting your module to the official repository.</li>
+<li>Consider using a <code>public static class</code> called <code>[LibraryName]Keys</code> with <code>public const string</code> members to store your metadata keys if your module generates metadata. This will help avoid the use of &quot;magic strings&quot; in configuration files and templates.</li>
+<li>Document your module using XML code comments. Also use the special <code>category</code> and <code>metadata</code> XML comment elements (the Wyam web site knows how to read these and they power the <a href="/modules">modules</a> page).</li>
 </ul>
 <h1>Deployment</h1>
-<hr>
+<hr />
 <p>Compile your library and place it somewhere Wyam will find it. You can manually put it in the Wyam directory (not recommended), tell Wyam to <a href="/getting-started/configuration#assemblies">reference your assemblies</a>, or create a NuGet package and <a href="/getting-started/configuration#nuget">tell Wyam to use it</a>. In all of these deployment scenarios, Wyam will scan the assembly for any modules, find your new module, and make it available.</p>
 <h1>Example</h1>
-<hr>
+<hr />
 <p>As an example, here's the entirety of the <a href="/modules/where">Where</a> module, which filters the documents in the pipeline:</p>
 <pre class="prettyprint"><code>public class Where : IModule
 {
@@ -110,65 +184,36 @@
 </code></pre>
 
 
-                    </div>
-                    <hr class="hidden-md hidden-lg">
-                    <div class="col-md-3 col-md-pull-9">        
-                            <ul class="subnav">
-                                    <li>
-                                        <a href="/knowledgebase/continuous-integration">
-                                            Continuous Integration
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/embedded-use">
-                                            Embedded Use
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/rss-and-atom-feeds">
-                                            RSS and Atom Feeds
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/knowledgebase/static-site-resources">
-                                            Static Site Resources
-                                        </a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="/knowledgebase/writing-a-module">
-                                            Writing a Module
-                                        </a>
-                                    </li>
-                            </ul>                            
-                    </div>
-                </div>
+	</section>
+                
             </div>
-        
-        <hr>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <p><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a> for a good example of a reasonably complicated Wyam site (and how easy it is to set up).</small></p>
-                </div>
-                <div class="col-md-3 text-right hidden-xs hidden-sm">                
-                    <a class="btn btn-primary btn-xs" href="https://github.com/Wyamio/Wyam.Web/edit/master/Input/knowledgebase\writing-a-module.md"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Page</a>
-                </div>
-            </div>
-        </div>        
-    
-    <script>
-      $(function () {
-        $("#sub-nav").tinyNav({
-            active: 'active'
-        });
-      });
-      
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-54470483-4', 'auto');
-      ga('send', 'pageview');
-    </script>
-</body></html>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
