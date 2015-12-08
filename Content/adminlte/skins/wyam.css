@@ -42,6 +42,10 @@ body.wyam.layout-top-nav .main-header > .navbar {
   body.wyam.layout-boxed .main-sidebar {
     width: 229px;
   }
+  body.wyam.layout-boxed .main-sidebar,
+  body.wyam.layout-boxed .left-side {
+    padding-top: 50px;
+  }
   body.wyam.layout-boxed .wrapper {
     border-radius: 0;
   }
@@ -82,6 +86,12 @@ body.wyam.layout-top-nav .main-header > .navbar {
 .wyam .main-header .navbar .sidebar-toggle:hover {
   background-color: #367fa9;
 }
+.wyam .main-header .navbar .navbar-toggle {
+  font-family: "fontAwesome";
+}
+.wyam .main-header .navbar .navbar-toggle:before {
+  content: "\f0c9";
+}
 @media (max-width: 767px) {
   .wyam .main-header .navbar .dropdown-menu li.divider {
     background-color: rgba(255, 255, 255, 0.1);
@@ -100,6 +110,17 @@ body.wyam.layout-top-nav .main-header > .navbar {
 }
 .wyam .main-header .logo:hover {
   background-color: #3b8ab8;
+}
+@media (max-width: 767px) {
+  .wyam .main-header .logo {
+    position: absolute;
+    top: 0;
+    z-index: 1001;
+    background-color: transparent;
+    width: 230px;
+    left: 50%;
+    margin-left: -115px;
+  }
 }
 .wyam .main-header li.user-header {
   background-color: #3c8dbc;

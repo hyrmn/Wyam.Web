@@ -17,7 +17,7 @@
         <link href="/Content/master.css" rel="stylesheet" />
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <script src="/Scripts/jquery-2.1.4.min.js"></script>
+        <script src="/Scripts/jQuery-2.1.4.min.js"></script>
         <script src="/Scripts/bootstrap.min.js"></script>        
         <script src="/Scripts/app.min.js"></script>         
         <script src="/Scripts/prettify.js"></script>   
@@ -32,19 +32,22 @@
         <div class="top-banner"></div>
         <div class="wrapper">
             <!-- Header -->
-            <header class="main-header">
+            <header class="main-header">   
+                     
                 <a href="/" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
-                </a>                
+                </a>   
+                         
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
-                    
+                                        
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
                         </button>
                     </div>
             
@@ -114,7 +117,7 @@
 		<li>Written in .NET and <a href="/knowledgebase/writing-a-module">easily extensible</a></li>
 		<li><a href="/getting-started/installation">Low ceremony</a> - download a zip file, unzip, and run</li>
 		<li>Flexible <a href="/getting-started/configuration">script-based configuration</a> using the power of the .NET Compiler Platform (Roslyn)</li>
-		<li>Lots of <a href="/modules">modules</a> for things like <a href="/modules/readfiles">reading</a> and <a href="/modules/writefiles">writing</a> files, handling <a href="/modules/frontmatter">frontmatter</a>, and manipulating <a href="/modules/metadata">metadata</a></li>
+		<li>Lots of <a href="/modules">modules</a> for things like <a href="/modules/readfiles">reading</a> and <a href="/modules/writefiles">writing</a> files, handling <a href="/modules/frontmatter">frontmatter</a>, and manipulating <a href="/modules/meta">metadata</a></li>
 		<li><a href="/modules/yaml">YAML parser</a></li>
 		<li><a href="/modules/less">Less CSS compiler</a></li>
 		<li><a href="/modules/image">Image manipulation</a></li>

@@ -77,7 +77,7 @@ dl ol {
     background: none;
   }
   .jumbotron-intro .container {
-    background: url('/Content/Images/intro-bg.png') no-repeat center center;
+    background: url('/Content/images/intro-bg.png') no-repeat center center;
     height: 400px;
   }
 }
@@ -99,7 +99,7 @@ pre.prettyprint {
   margin-bottom: 40px !important;
 }
 .gitter-open-chat-button {
-  background-color: #367fa9;
+  background-color: #3c8dbc;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   letter-spacing: normal;
 }
