@@ -92,7 +92,374 @@
 		<h1>Modules</h1>
 	</section>
 	<section class="content">
-		
+					<h1>Content</h1>
+			<hr />
+			<h2>
+				<strong><a href="/modules/append">Append</a></strong>
+						<small>
+    Appends the specified content to the existing content of each document.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/autolink">AutoLink</a></strong>
+						<small>
+    Replaces occurrences of specified strings with HTML links.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/content">Content</a></strong>
+						<small>
+    Replaces the content of each input document with the string value of the specified content object.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/csvtohtml">CsvToHtml</a></strong>
+						<small>
+    Converts CSV content to HTML tables.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/exceltocsv">ExcelToCsv</a></strong>
+						<small>
+    Transforms Excel content to CSV.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/generatecontent">GenerateContent</a></strong>
+						<small>
+    Procedurally generates content using flexible Rant text templates.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/htmlescape">HtmlEscape</a></strong>
+						<small>
+    Automatically escapes HTML content.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/image">Image</a></strong>
+						<small>
+    This module manipulates images by applying a variety of operations.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/prepend">Prepend</a></strong>
+						<small>
+    Prepends the specified content to the existing content of each document.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/replace">Replace</a></strong>
+						<small>
+    Replaces a search string in the content of each input document with new content.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/replacein">ReplaceIn</a></strong>
+						<small>
+    Replaces a search string in the specified content with the content of input documents.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/searchindex">SearchIndex</a></strong>
+						<small>
+    Generates a JavaScript-based search index from the input documents.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/sitemap">Sitemap</a></strong>
+						<small>
+    Generates a sitemap from the input documents.
+    </small>
+
+			</h2>
+			<h1>Control</h1>
+			<hr />
+			<h2>
+				<strong><a href="/modules/branch">Branch</a></strong>
+						<small>
+    Evaluates the specified modules with each input document as the initial 
+    document and then outputs the original input documents without modification.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/concat">Concat</a></strong>
+						<small>
+    Executes modules and concatenates their output with the input documents.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/concatbranch">ConcatBranch</a></strong>
+						<small>
+    Executes a sequence of modules against the input documents and concatenates their results and the original input.
+    This is similar to <a href="/modules/branch.html">Branch</a> except that the results of the specified modules are concatenated with the
+    original input documents instead of being forgotten.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/documents">Documents</a></strong>
+						<small>
+    Inserts documents into the current pipeline.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/foreach">ForEach</a></strong>
+						<small>
+    Executes the input documents one at a time against the specified child modules.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/frontmatter">FrontMatter</a></strong>
+						<small>
+    Extracts the first part of content for each document and sends it to a child module for processing.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/groupby">GroupBy</a></strong>
+						<small>
+    Splits a sequence of documents into groups based on a specified key function.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/if">If</a></strong>
+						<small>
+    Evaluates a series of child modules for each input document if a specified condition is met. 
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/orderby">OrderBy</a></strong>
+						<small>
+    Orders the input documents based on the specified key function.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/paginate">Paginate</a></strong>
+						<small>
+     Splits a sequence of documents into multiple pages.
+     </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/switch">Switch</a></strong>
+						<small>
+    Executes sequences of modules depending on whether the input document contains a specified value.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/where">Where</a></strong>
+						<small>
+    Filters the current sequence of modules using a predicate.
+    </small>
+
+			</h2>
+			<h1>Extensibility</h1>
+			<hr />
+			<h2>
+				<strong><a href="/modules/execute">Execute</a></strong>
+						<small>
+    Executes custom code for each input document.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/trace">Trace</a></strong>
+						<small>
+    Outputs trace messages during execution.
+    </small>
+
+			</h2>
+			<h1>Input/Output</h1>
+			<hr />
+			<h2>
+				<strong><a href="/modules/copyfiles">CopyFiles</a></strong>
+						<small>
+    Copies the content of files from the file system from one location on disk to another location.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/download">Download</a></strong>
+						<small>
+    Downloads from HTTP and outputs results as documents.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/readfiles">ReadFiles</a></strong>
+						<small>
+    Reads the content of files from the file system into the content of new documents.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/readproject">ReadProject</a></strong>
+						<small>
+    Reads all the source files from a specified msbuild project.
+    Note that this requires the MSBuild tools to be installed (included with Visual Studio).
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/readsolution">ReadSolution</a></strong>
+						<small>
+    Reads all the source files from a specified msbuild solution.
+    Note that this requires the MSBuild tools to be installed (included with Visual Studio).
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/unwrittenfiles">UnwrittenFiles</a></strong>
+						<small>
+    Outputs only those documents that have not yet been written to the file system.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/writefiles">WriteFiles</a></strong>
+						<small>
+    Writes the content of each input document to the file system.
+    </small>
+
+			</h2>
+			<h1>Metadata</h1>
+			<hr />
+			<h2>
+				<strong><a href="/modules/analyzecsharp">AnalyzeCSharp</a></strong>
+						<small>
+    Performs static code analysis on the input documents, outputting a new document for each symbol.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/directorymeta">DirectoryMeta</a></strong>
+						<small>
+    Applies metadata from specified input documents to all input documents based on a directory hierarchy.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/excerpt">Excerpt</a></strong>
+						<small>
+    Finds the first occurrence of a specified HTML element and stores it's contents as metadata.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/filename">FileName</a></strong>
+						<small>
+    Optimizes a specified metadata key as a filename.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/generatemeta">GenerateMeta</a></strong>
+						<small>
+    Procedurally generates metadata using flexible Rant text templates.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/gitcommits">GitCommits</a></strong>
+						<small>
+    Outputs documents and metadata for commits in a Git repository.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/gitcontributors">GitContributors</a></strong>
+						<small>
+    Outputs documents and metadata for contributors in a Git repository.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/htmlquery">HtmlQuery</a></strong>
+						<small>
+    Queries HTML content and creates new documents with content and metadata from the results.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/indx">Index</a></strong>
+						<small>
+    Adds a one-based index to every document as metadata.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/meta">Meta</a></strong>
+						<small>
+    Adds the specified metadata to each input document.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/xmp">Xmp</a></strong>
+						<small>
+    Reads XMP data from the input documents and adds it to the document metadata.  
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/yaml">Yaml</a></strong>
+						<small>
+    Parses YAML content for each input document and stores the result in it's metadata.
+    </small>
+
+			</h2>
+			<h1>Templates</h1>
+			<hr />
+			<h2>
+				<strong><a href="/modules/less">Less</a></strong>
+						<small>
+    Compiles Less CSS files to CSS stylesheets.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/markdown">Markdown</a></strong>
+						<small>
+    Parses markdown content and renders it to HTML.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/razor">Razor</a></strong>
+						<small>
+    Parses, compiles, and renders Razor templates.
+    </small>
+
+			</h2>
+			<h2>
+				<strong><a href="/modules/xslt">Xslt</a></strong>
+						<small>
+    Transforms input documents using a supplied XSLT template.
+    </small>
+
+			</h2>
+
 	</section>
                 
             </div>

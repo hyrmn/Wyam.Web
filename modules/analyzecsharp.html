@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - Modules - AnalyzeCSharp</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jquery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>                
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li class="active"><a href="/modules">Modules</a></li>
+                                    <li><a href="/api">API</a></li>
+                                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+				<li class="header">Content</li>
+			<li>
+				<a href="/modules/append">
+					Append
+				</a>
+			</li>
+			<li>
+				<a href="/modules/autolink">
+					AutoLink
+				</a>
+			</li>
+			<li>
+				<a href="/modules/content">
+					Content
+				</a>
+			</li>
+			<li>
+				<a href="/modules/csvtohtml">
+					CsvToHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/exceltocsv">
+					ExcelToCsv
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatecontent">
+					GenerateContent
+				</a>
+			</li>
+			<li>
+				<a href="/modules/htmlescape">
+					HtmlEscape
+				</a>
+			</li>
+			<li>
+				<a href="/modules/image">
+					Image
+				</a>
+			</li>
+			<li>
+				<a href="/modules/prepend">
+					Prepend
+				</a>
+			</li>
+			<li>
+				<a href="/modules/replace">
+					Replace
+				</a>
+			</li>
+			<li>
+				<a href="/modules/replacein">
+					ReplaceIn
+				</a>
+			</li>
+			<li>
+				<a href="/modules/searchindex">
+					SearchIndex
+				</a>
+			</li>
+			<li>
+				<a href="/modules/sitemap">
+					Sitemap
+				</a>
+			</li>
+			<li class="header">Control</li>
+			<li>
+				<a href="/modules/branch">
+					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/concat">
+					Concat
+				</a>
+			</li>
+			<li>
+				<a href="/modules/concatbranch">
+					ConcatBranch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/documents">
+					Documents
+				</a>
+			</li>
+			<li>
+				<a href="/modules/foreach">
+					ForEach
+				</a>
+			</li>
+			<li>
+				<a href="/modules/frontmatter">
+					FrontMatter
+				</a>
+			</li>
+			<li>
+				<a href="/modules/groupby">
+					GroupBy
+				</a>
+			</li>
+			<li>
+				<a href="/modules/if">
+					If
+				</a>
+			</li>
+			<li>
+				<a href="/modules/orderby">
+					OrderBy
+				</a>
+			</li>
+			<li>
+				<a href="/modules/paginate">
+					Paginate
+				</a>
+			</li>
+			<li>
+				<a href="/modules/switch">
+					Switch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/where">
+					Where
+				</a>
+			</li>
+			<li class="header">Extensibility</li>
+			<li>
+				<a href="/modules/execute">
+					Execute
+				</a>
+			</li>
+			<li>
+				<a href="/modules/trace">
+					Trace
+				</a>
+			</li>
+			<li class="header">Input/Output</li>
+			<li>
+				<a href="/modules/copyfiles">
+					CopyFiles
+				</a>
+			</li>
+			<li>
+				<a href="/modules/download">
+					Download
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readfiles">
+					ReadFiles
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readproject">
+					ReadProject
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readsolution">
+					ReadSolution
+				</a>
+			</li>
+			<li>
+				<a href="/modules/unwrittenfiles">
+					UnwrittenFiles
+				</a>
+			</li>
+			<li>
+				<a href="/modules/writefiles">
+					WriteFiles
+				</a>
+			</li>
+			<li class="header">Metadata</li>
+			<li class="active">
+				<a href="/modules/analyzecsharp">
+					AnalyzeCSharp
+				</a>
+			</li>
+			<li>
+				<a href="/modules/directorymeta">
+					DirectoryMeta
+				</a>
+			</li>
+			<li>
+				<a href="/modules/excerpt">
+					Excerpt
+				</a>
+			</li>
+			<li>
+				<a href="/modules/filename">
+					FileName
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatemeta">
+					GenerateMeta
+				</a>
+			</li>
+			<li>
+				<a href="/modules/gitcommits">
+					GitCommits
+				</a>
+			</li>
+			<li>
+				<a href="/modules/gitcontributors">
+					GitContributors
+				</a>
+			</li>
+			<li>
+				<a href="/modules/htmlquery">
+					HtmlQuery
+				</a>
+			</li>
+			<li>
+				<a href="/modules/indx">
+					Index
+				</a>
+			</li>
+			<li>
+				<a href="/modules/meta">
+					Meta
+				</a>
+			</li>
+			<li>
+				<a href="/modules/xmp">
+					Xmp
+				</a>
+			</li>
+			<li>
+				<a href="/modules/yaml">
+					Yaml
+				</a>
+			</li>
+			<li class="header">Templates</li>
+			<li>
+				<a href="/modules/less">
+					Less
+				</a>
+			</li>
+			<li>
+				<a href="/modules/markdown">
+					Markdown
+				</a>
+			</li>
+			<li>
+				<a href="/modules/razor">
+					Razor
+				</a>
+			</li>
+			<li>
+				<a href="/modules/xslt">
+					Xslt
+				</a>
+			</li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+<section class="content-header">
+	<h1>AnalyzeCSharp</h1>
+</section>
+<section class="content">
+	  
+	
+			<div class="lead">
+    Performs static code analysis on the input documents, outputting a new document for each symbol.
+    </div>
+			<div>
+    This module acts as the basis for code analysis scenarios such as generating source code documentation.
+    All input documents are assumed to contain C# source in their content and are use to create a Roslyn
+    compilation. All symbols (namespaces, types, members, etc.) in the compilation are then recursively 
+    processed and output from this module as documents, one per symbol. The output documents have empty content
+    and all information about the symbol is contained in the metadata. This lets you pass the output documents
+    for each symbol on to a template engine like Razor and generate pages for each symbol by having the
+    template use the document metadata.
+    </div>
+		<h1>Usage</h1>
+		<hr />
+		<ul>			
+				<li><p><strong><code>AnalyzeCSharp()</code></strong></p></li>
+
+		</ul>
+			<h2>Fluent Methods</h2>
+			<p>Chain these methods together after the constructor to modify behavior.</p>
+			<ul>
+					<li>
+								<p><strong><code>WhereNamespaces(bool includeGlobal, params string[] namespaces)</code></strong></p>
+								<p>
+    Limits symbols in the initial result set to those in the specified namespaces.
+    </p>
+								<ul>
+										<li><p><code>includeGlobal</code></p><p>If set to <code>true</code>, symbols in the unnamed global namespace are included.</p></li>
+										<li><p><code>namespaces</code></p><p>The namespaces to include symbols from (if <code>namespaces</code> is <code>null</code>, symbols from all
+    namespaces are included).</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WhereNamespaces(Func&lt;string, bool&gt; predicate)</code></strong></p>
+								<p>
+    Limits symbols in the initial result set to those in the namespaces that satisfy the specified predicate.
+    </p>
+								<ul>
+										<li><p><code>predicate</code></p><p>A predicate that returns true if symbols in the namespace should be included.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WherePublic(bool includeProtected = true)</code></strong></p>
+								<p>
+    Limits symbols in the initial result set to those that are public (and optionally protected)
+    </p>
+								<ul>
+										<li><p><code>includeProtected</code></p><p>If set to <code>true</code>, protected symbols are also included.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WhereSymbol(Func&lt;ISymbol, bool&gt; predicate)</code></strong></p>
+								<p>
+    Controls which symbols are processed as part of the initial result set.
+    </p>
+								<ul>
+										<li><p><code>predicate</code></p><p>A predicate that returns <code>true</code> if the symbol should be included in the initial result set.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WithCssClasses(string tagName, string cssClasses)</code></strong></p>
+								<p>
+    While converting XML documentation to HTML, any tags with the specified name will get the specified CSS class(s).
+    This is helpful to style your XML documentation comment rendering to support the stylesheet of your site.
+    </p>
+								<ul>
+										<li><p><code>tagName</code></p><p>Name of the tag.</p></li>
+										<li><p><code>cssClasses</code></p><p>The CSS classes to set for the specified tag name. Separate multiple CSS classes 
+    with a space (just like you would in HTML).</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WithDocsForImplicitSymbols(bool docsForImplicitSymbols = true)</code></strong></p>
+								<p>
+    By default, XML documentation comments are not parsed and rendered for documents that are not part
+    of the initial result set. This can control that behavior and be used to generate documentation
+    metadata for all documents, regardless if they were part of the initial result set.
+    </p>
+								<ul>
+										<li><p><code>docsForImplicitSymbols</code></p><p>If set to <code>true</code>, documentation metadata is generated for XML comments on all symbols.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WithNamedTypes(Func&lt;INamedTypeSymbol, bool&gt; predicate = null)</code></strong></p>
+								<p>
+    Restricts the initial result set to named type symbols (I.e., classes, interfaces, etc.). Also allows supplying
+    an additional predicate on the named type.
+    </p>
+								<ul>
+										<li><p><code>predicate</code></p><p>A predicate that returns <code>true</code> if the symbol should be included in the initial result set.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WithWritePath(Func&lt;IMetadata, string&gt; writePath)</code></strong></p>
+								<p>
+    This changes the default behavior for the generated <code>WritePath</code> metadata value, which is to place files in a path 
+    with the same name as their containing namespace. Namespace documents will be named "index.html" while other type documents 
+    will get a name equal to their SymbolId. Member documents will get the same name as their containing type plus an 
+    anchor to their SymbolId. Note that the default scheme makes the assumption that members will not have their own files, 
+    if that's not the case a new WritePath function will have to be supplied using this method.
+    </p>
+								<ul>
+										<li><p><code>writePath</code></p><p>A function that takes the metadata for a given symbol and returns a <code>string</code> to 
+    use for the <code>WritePath</code> metadata value.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>WithWritePathPrefix(string prefix)</code></strong></p>
+								<p>
+    This lets you add a prefix to the default <code>WritePath</code> behavior (such as nesting symbol documents inside 
+    a folder like "api/"). This method has no effect if you've supplied a custom <code>WritePath</code> behavior.
+    </p>
+								<ul>
+										<li><p><code>prefix</code></p><p>The prefix to use for each generated <code>WritePath</code>.</p></li>
+								</ul>
+
+					</li>				
+			</ul>
+			<h1>Metadata</h1>
+			<hr />
+			<p>The following metadata is added to each document.</p>
+			<ul>
+					<li>
+						<p>
+
+							<strong><code>[ElementName]Comments</code></strong>: <code>IReadOnlyList&lt;OtherComment&gt;</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      a collection of all custom XML documentation comments with a particular <code>[ElementName]</code> for this symbol with their rendered HTML content and any attributes they contain.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Accessibility</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for type, method, field, event, and property symbols and contains the declared accessibility of the symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>AllInterfaces</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for type symbols and contains a collection of the documents that represent all implemented interfaces. The collection
+      is empty if the type doesn't implement any interfaces.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>BaseType</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      This is available for type symbols and contains a document representing the base type.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>CommentXml</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      the full unprocessed XML documentation comments content for this symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Constructors</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for type symbols and contains a collection of the documents that represent all constructors of the type. The collection
+      is empty if the type doesn't have any explicit constructors.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>ContainingNamespace</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      The document that represents the containing namespace (or null if this symbol is not nested).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>ContainingType</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      This is available for type, method, field, event, property, and parameter symbols and contains a document representing the containing
+      type (or <code>null</code> if no containing type).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>DeclaringType</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      This is available for type parameter symbols and contains a document that represents the declaring type of the type parameter.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>DerivedTypes</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for type symbols and contains a collection of the documents that represent all types derived from the type. The collection
+      is empty if the type doesn't have any derived types.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>DisplayName</code></strong>: <code>string</code>
+						</p>
+							<p>
+      A display name for the symbol. For namespaces, this is the same as <code>QualifiedName</code>. For types, this is
+      the same as <code>FullName</code>.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Example</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      the rendered HTML content from all <code>example</code> XML documentation comments for this symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Exceptions</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      a collection of all <code>exception</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>FullName</code></strong>: <code>string</code>
+						</p>
+							<p>
+      The full name of the symbol. For namespaces, this is the name of the namespace. For types, this includes
+      all generic type parameters.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>ImplementingTypes</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for interface symbols and contains a collection of the documents that represent all types that implement the interface. The collection
+      is empty if no other types implement the interface.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>IsResult</code></strong>: <code>bool</code>
+						</p>
+							<p>
+      By default only certain symbols are processed as part of the initial
+      result set (such as those that match the specified predicate). If this value is <code>true</code>, then this
+      symbol was part of the initial result set. If it is <code>false</code>, the symbol was lazily processed later
+      while fetching related symbols and may not contain the full set of metadata.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Kind</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is the general kind of symbol. For example, the for a namespace this is "Namespace" and for a type this is "NamedType".
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>MemberNamespaces</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for namespace symbols and contains a collection of the documents that represent all member namespaces. The
+      collection is empty if there are no member namespaces.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Members</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for type symbols and contains a collection of the documents that represent all members of the type. The collection
+      is empty if the type doesn't have any members.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>MemberTypes</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for namespace and type symbols and contains a collection of the documents that represent all member types. It only
+      contains direct children (as opposed to all nested types).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Name</code></strong>: <code>string</code>
+						</p>
+							<p>
+      The name of the symbol, or an empty string if the symbol has no name (like the global namespace).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>OverriddenMethod</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      This is available for method symbols and contains a document that represents the method being overridden (or <code>null</code> if no method is overriden by this one).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Parameters</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      This is available for method and property (I.e., indexer) symbols and contains a collection of the documents that represent the parameters of the method or property.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Params</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      a collection of all <code>param</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Permissions</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      a collection of all <code>permission</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>QualifiedName</code></strong>: <code>string</code>
+						</p>
+							<p>
+      The qualified name of the symbol which includes all containing namespaces.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>RelativeFileDir</code></strong>: <code>string</code>
+						</p>
+							<p>
+      Same as the directory of <code>WritePath</code>. This metadata key is available for compatibility with other modules.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>RelativeFilePath</code></strong>: <code>string</code>
+						</p>
+							<p>
+      Same as <code>WritePath</code>. This metadata key is available for compatibility with other modules.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>RelativeFilePathBase</code></strong>: <code>string</code>
+						</p>
+							<p>
+      Same as <code>WritePath</code> without the file extension. This metadata key is available for compatibility with other modules.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Remarks</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      the rendered HTML content from all <code>remarks</code> XML documentation comments for this symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Returns</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      the rendered HTML content from all <code>returns</code> XML documentation comments for this symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>ReturnType</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      This is available for method symbols and contains a document that represents the return type of the method (or <code>null</code> if the method returns <code>void</code>).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>SeeAlso</code></strong>: <code>IReadOnlyList&lt;string&gt;</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      a collection of all <code>seealso</code> XML documentation comments for this symbol with their rendered HTML link (or just name if no link could be generated).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>SpecificKind</code></strong>: <code>string</code>
+						</p>
+							<p>
+      The more specific kind of the symbol ("Class", "Struct", etc.) This is the same as <code>Kind</code> if there is no more specific kind.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Summary</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      the rendered HTML content from all <code>summary</code> XML documentation comments for this symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Symbol</code></strong>: <code>ISymbol</code>
+						</p>
+							<p>
+      The Roslyn <code>ISymbol</code> from which this document is derived.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>SymbolId</code></strong>: <code>string</code>
+						</p>
+							<p>
+      A unique ID that identifies the symbol (can be used for generating folder paths, for example).
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Syntax</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      a generated syntax example for the symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Type</code></strong>: <code>IDocument</code>
+						</p>
+							<p>
+      This is available for field, event, property, and parameter symbols and contains the document that represents the type of the symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>TypeParameters</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
+						</p>
+							<p>
+      This is available for type and method symbols and contains a collection of the documents that represent all generic type parameters of the type or method. The collection
+      is empty if the type or method doesn't have any generic type parameters.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>TypeParams</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      a collection of all <code>typeparam</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>Value</code></strong>: <code>string</code>
+						</p>
+							<p>
+      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
+      the rendered HTML content from all <code>value</code> XML documentation comments for this symbol.
+    </p>
+					</li>
+					<li>
+						<p>
+
+							<strong><code>WritePath</code></strong>: <code>string</code>
+						</p>
+							<p>
+      A write path is generated for each symbol during code analysis and serves several purposes. First, it's
+      used to automatically create hyperlinks for references in XML documentation comments. It can also be used
+      for generating inbound links from other modules or pipelines to a given symbol. Because the WriteFiles module
+      will check for any WritePath metadata values when outputting documents, this metadata also makes writing
+      symbol documents to disk easier (presumably after they've been sent through a templating module).
+    </p>
+					</li>
+			</ul>
+	
+</section>                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

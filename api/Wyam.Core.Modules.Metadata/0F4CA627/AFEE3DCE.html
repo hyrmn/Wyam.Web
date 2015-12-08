@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - API - FileName.WithAllowedCharacters(IEnumerable&lt;string&gt;)Method</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jquery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>                
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li class="active"><a href="/api">API</a></li>
+                                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    	
+	<script src="/Scripts/lunr.min.js"></script>
+	<script src="/Scripts/searchIndex.js"></script>
+	<div class="sidebar-form">
+		<div class="input-group">
+			<input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+			<span class="input-group-btn">
+				<button class="btn btn-flat"><i class="fa fa-search"></i></button>
+			</span>
+		</div>
+	</div>
+	<div id="search-results">
+	</div>
+	<script>
+		function runSearch(query){
+			$("#search-results").empty();			
+			if( query.length < 2 ){
+				return;
+			}			
+			var results = searchModule.search(query);
+			var listHtml = "<ul class='sidebar-menu'>";	
+			listHtml += "<li class='header'>Search Results</li>";	
+			if(results.length == 0 ){
+				listHtml += "<li>No results found</li>";
+			} else {					
+				for(var i = 0; i < results.length; ++i){
+					var res = results[i];
+					listHtml += "<li><a href='" + res.url + "'>" + res.title + "</a></li>";
+				}				
+			}
+			listHtml += "</ul><hr />";				
+			$("#search-results").append(listHtml);
+		}
+
+		$(document).ready(function(){
+			$("#search").on('input propertychange paste', function() {
+				runSearch($("#search").val());
+			});
+		});
+	</script>
+
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+			<li class="header">Namespace</li>
+		<li><a href="/api/Wyam.Core.Modules.Metadata">Wyam<wbr>.Core<wbr>.Modules<wbr>.Metadata</a></li>
+		<li class="header">Type</li>
+		<li><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627">FileName</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Constructors</li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/DF4F51AD.html">FileName<wbr>()<wbr></a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/EE39AE41.html">FileName<wbr>(string)<wbr></a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/BED7BF6C.html">FileName<wbr>(DocumentConfig)<wbr></a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/E8B32B40.html">FileName<wbr>(string, string)<wbr></a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/CFE8EAE9.html">FileName<wbr>(DocumentConfig, string)<wbr></a></li>
+			<li class="header">Method Members</li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/A0D3CB94.html">Execute<wbr>(IReadOnlyList<wbr>&lt;IDocument&gt;<wbr>, IExecutionContext)<wbr></a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/9DE8A139.html">PreservePath<wbr>(bool)<wbr></a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/9B759018.html">PreservePath<wbr>(string)<wbr></a></li>
+				<li class="active"><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627/AFEE3DCE.html">WithAllowedCharacters<wbr>(IEnumerable<wbr>&lt;string&gt;<wbr>)<wbr></a></li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+
+<section class="content-header">
+			<h3><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627">FileName</a>.</h3>
+
+	<h1>WithAllowedCharacters<wbr>(IEnumerable<wbr>&lt;string&gt;<wbr>)<wbr> <small>Method</small></h1>
+	<hr />
+</section>
+<section class="content smaller">
+	  
+			<dl class="dl-horizontal">		
+				<dt>Namespace</dt>
+				<dd><a href="/api/Wyam.Core.Modules.Metadata">Wyam<wbr>.Core<wbr>.Modules<wbr>.Metadata</a></dd>
+			
+				<dt>Containing Type</dt>
+				<dd><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627">FileName</a></dd>		
+			
+		</dl>
+		<hr />	
+
+
+
+	<h1>Summary</h1>
+	<div class="lead">
+    Specifies the characters to allow in the filename.
+    </div>
+
+
+	<h1>Syntax</h1>
+	<pre class="prettyprint">public FileName WithAllowedCharacters(IEnumerable&lt;string&gt; allowedCharacters)</pre>
+
+
+
+
+	<h1>Parameters</h1>
+	<div class="box">
+		<div class="box-body no-padding">
+			<table class="table table-striped table-hover three-cols">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+					<tr>
+						<td>allowedCharacters</td>
+						<td>IEnumerable<wbr>&lt;string&gt;<wbr></td>
+						<td>The allowed characters.</td>
+					</tr>
+			</table>
+		</div>
+	</div>	
+
+
+	<h1>Return Value</h1>
+	<div class="box">
+		<div class="box-body no-padding">
+			<table class="table table-striped table-hover two-cols">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tr>
+					<td><a href="/api/Wyam.Core.Modules.Metadata/0F4CA627">FileName</a></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>	
+
+
+
+
+
+
+
+</section>                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
