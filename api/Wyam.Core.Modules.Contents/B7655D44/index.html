@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - API - RssClass</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jQuery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">   
+                     
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>   
+                         
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                                        
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li class="active"><a href="/api">API</a></li>
+                                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    	
+	<script src="/Scripts/lunr.min.js"></script>
+	<script src="/Scripts/searchIndex.js"></script>
+	<div class="sidebar-form">
+		<div class="input-group">
+			<input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+			<span class="input-group-btn">
+				<button class="btn btn-flat"><i class="fa fa-search"></i></button>
+			</span>
+		</div>
+	</div>
+	<div id="search-results">
+	</div>
+	<script>
+		function runSearch(query){
+			$("#search-results").empty();			
+			if( query.length < 2 ){
+				return;
+			}			
+			var results = searchModule.search(query);
+			var listHtml = "<ul class='sidebar-menu'>";	
+			listHtml += "<li class='header'>Search Results</li>";	
+			if(results.length == 0 ){
+				listHtml += "<li>No results found</li>";
+			} else {					
+				for(var i = 0; i < results.length; ++i){
+					var res = results[i];
+					listHtml += "<li><a href='" + res.url + "'>" + res.title + "</a></li>";
+				}				
+			}
+			listHtml += "</ul><hr />";				
+			$("#search-results").append(listHtml);
+		}
+
+		$(document).ready(function(){
+			$("#search").on('input propertychange paste', function() {
+				runSearch($("#search").val());
+			});
+		});
+	</script>
+
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+			<li class="header">Namespace</li>
+		<li><a href="/api/Wyam.Core.Modules.Contents">Wyam<wbr>.Core<wbr>.Modules<wbr>.Contents</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Class Types</li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/C0CCEA1D">Append</a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/C1CDC3BA">Content</a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/F5ECB8B6">Prepend</a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/2DD99B48">Replace</a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/E8D24D15">ReplaceIn</a></li>
+				<li class="active"><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/A5845747">Sitemap</a></li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/EBCFE23E">SitemapItem</a></li>
+			<li class="header">Enum Types</li>
+				<li class=""><a href="/api/Wyam.Core.Modules.Contents/BD9E3958">ChangeFrequency</a></li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+
+<section class="content-header">
+
+	<h1>Rss <small>Class</small></h1>
+	<hr />
+</section>
+<section class="content smaller">
+	  
+			<dl class="dl-horizontal">		
+				<dt>Namespace</dt>
+				<dd><a href="/api/Wyam.Core.Modules.Contents">Wyam<wbr>.Core<wbr>.Modules<wbr>.Contents</a></dd>
+							
+				<dt>Interfaces</dt>
+				<dd>
+					<ul class="list-inline">
+							<li><a href="/api/Wyam.Common.Modules/09D712E1">IModule</a></li>								
+					</ul>
+				</dd>
+			
+				<dt>Base Type</dt>
+				<dd>object</dd>				
+			
+			
+		</dl>
+		<hr />
+
+
+
+	<h1>Summary</h1>
+	<div class="lead">
+    Creates RSS feed from input documents.
+    </div>
+
+
+	<h1>Syntax</h1>
+	<pre class="prettyprint">public class Rss : IModule</pre>
+
+
+
+		
+			<h1>Constructors</h1>
+			<div class="box">
+				<div class="box-body no-padding">
+					<table class="table table-striped table-hover two-cols">
+						<thead>
+							<tr>
+								<th>Name</th>
+									<th>Summary</th>
+							</tr>
+						</thead>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/780F8BE3.html">Rss<wbr>(string, string, string, string)<wbr></a></td>
+									<td>
+    Creates RSS feed from input documents.
+    </td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		
+
+
+
+		
+			<h1>Methods</h1>
+			<div class="box">
+				<div class="box-body no-padding">
+					<table class="table table-striped table-hover three-cols">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Value</th>
+								<th>Summary</th>
+							</tr>
+						</thead>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/7AAD7E94.html">AssumePermalinks<wbr>()<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></td>
+								<td>
+    Assume that RSS item link is unique and permanent.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/8C1CDA44.html">Execute<wbr>(IReadOnlyList<wbr>&lt;IDocument&gt;<wbr>, IExecutionContext)<wbr></a></td>
+								<td>IEnumerable<wbr>&lt;IDocument&gt;<wbr></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/22B9BE71.html">WithDescriptionMetaKey<wbr>(string)<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/CB2FFBF9.html">WithLanguage<wbr>(string)<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></td>
+								<td>
+    Set feed language.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/8A34584E.html">WithLinkCustomizer<wbr>(Func<wbr>&lt;string, string&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></td>
+								<td>
+    Allows to customize output links.
+    Does not execute when document explicitly
+    defines output URL via RssItemUrl metadata.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/90FDD059.html">WithoutGuid<wbr>()<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></td>
+								<td>
+    Do not append GUIDs to RSS items.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/0BB5F143.html">WithPublicationDateMetaKey<wbr>(string)<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></td>
+								<td>
+    Set metadata key to lookup in documents for RSS item publication date.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44/77F80BE0.html">WithTitleMetaKey<wbr>(string)<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Contents/B7655D44">Rss</a></td>
+								<td>
+    Set metadata key to lookup in documents for RSS item title.
+    </td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		
+
+
+	<h1>Remarks</h1>
+	<div>
+    <p>
+    Implements RSS and Atom feeds. All input documents should have <code>RssTitle</code> and <code>RssDescription</code> metadata
+    because they are required by RSS. You can override these metadata keys via <code>WithTitleMetaKey(string key)</code>
+    and <code>WithDescriptionMetaKey(string key)</code>.
+    </p>
+    <p>
+    This module outputs input files without changes and one another file: the RSS feed.
+    The RSS feed contains <code>RelativeFilePath</code> and <code>IsRssFeed: true</code> metadata keys.
+    Use <code>WriteFiles</code> module inside <code>Branch</code> module without parameters to place file 
+    in appropriate file system location. See example.
+    </p>
+    <p>
+    Options:
+    <ul>
+    <li><span class="description">Use <code>WithoutGuid()</code> to disable generation of unique identifier for each input document. Guid
+    is generated using input document's source location. You may want to disable it if your data is generated
+    on fly.</span></li>
+    <li><span class="description">Optional <code>RssPubDate</code> metadata will be used to specify document's publication date.
+    You can override this metadata key with <code>WithPublicationDateMetaKey(string key)</code>.</span></li>
+    <li><span class="description">Language can be set for feed using <code>WithLanguage(string lang)</code>. Language string must
+    follow these conventions: http://www.rssboard.org/rss-language-codes</span></li>
+    <li><span class="description">Use <code>WithLinkCustomizer</code> to create pretty urls.</span></li>
+    </ul>
+    </p>
+    <p>
+    Some things to know:
+    <ul>
+    <li><span class="description">If publication date for each document is not set, most RSS reader programs will assume
+    that most recent publication is the top most in the output RSS file (that is first input document).</span></li>
+    <li><span class="description">Use <code>OrderBy</code> module to order your documents in right order.</span></li>
+    <li><span class="description">Use a feed validator when generating RSS for first time: https://validator.w3.org/feed/</span></li>
+    <li><span class="description">Only basic tags are defined in this module at this moment, eg. you cannot attach author tag to
+    specify RSS item's author.</span></li>
+    </ul>
+    </p>
+    </div>
+
+
+	<h1>Examples</h1>
+	<div>
+    Input/posts/hello.md:
+    <pre class="prettyprint"><code>
+    ---
+    RssTitle: Hello, world!
+    RssDescription: My first blog post
+    RssPubDate: 10/11/12
+    ---
+    
+    Hello, RSS world!
+    </code></pre>
+    
+    config.wyam:
+    <pre class="prettyprint"><code>
+    Pipelines.Add("Blog posts",
+        ReadFiles("posts/*.md"),
+        FrontMatter(Yaml()),
+        Markdown(),
+        WriteFiles(".html"),
+        Rss(siteRoot: "http://example.org",
+            outputRssFilePath: "posts/feed.rss"
+            feedTitle: "My awesome blog",
+            feedDescription: "Blog about something"
+        ),
+        WriteFiles()
+    );
+    </code></pre>
+    
+    Output/posts/feed.rss:
+    <pre class="prettyprint"><code>
+    &lt;![CDATA[&lt;?xml version = "1.0" encoding="utf-8"?&gt;
+    &lt;rss version = "2.0" xmlns:atom="http://www.w3.org/2005/Atom"&gt;
+      &lt;channel&gt;
+        &lt;title&gt;My awesome blog&lt;/title&gt;
+        &lt;description&gt;Blog about something&lt;/description&gt;
+        &lt;link&gt;http://example.org&lt;/link&gt;
+        &lt;atom:link href = " http://example.org/posts/feed.rss" rel="self" /&gt;
+        &lt;lastBuildDate&gt;Wed, 30 Dec 2015 13:39:16 +0300&lt;/lastBuildDate&gt;
+        &lt;item&gt;
+          &lt;title&gt;Hello, world!&lt;/title&gt;
+          &lt;link&gt;http://example.org/posts/hello.html&lt;/link&gt;
+          &lt;description&gt;My first blog post&lt;/description&gt;
+          &lt;pubDate&gt;Sat, 10 Nov 2012 00:00:00 +0400&lt;/pubDate&gt;
+          &lt;guid isPermaLink = "false"&gt; 81a26807-355a-dbf9-7729-c6601f1d8a2b&lt;/guid&gt;
+        &lt;/item&gt;
+      &lt;/channel&gt;
+    &lt;/rss&gt;
+    </code></pre>
+    </div>
+
+
+
+</section>                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
