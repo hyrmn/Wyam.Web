@@ -100,6 +100,12 @@
 <h3><strong>Not <em>another</em> static site generator; what were you thinking!?</strong></h3>
 <p>Here's the thing: I like static site generators. I've been thinking about this problem for a long time (as in, many years). And while there are <em>a lot</em> of generators out there, none of them really fit with the way I think about the problem. I don't want to follow a prescribed notion of what sort of content I'm creating or follow assumptions about the location of files. I wanted a static <em>content</em> generator that is designed from the ground up to be flexible, even if it means making it slightly more complicated to configure. There are some generators that come close (I'm personally fond of the concepts in <a href="http://www.metalsmith.io/">Metalsmith</a>). I'm also a .NET developer and while there are a couple good static site generators in the .NET ecosystem (<a href="https://github.com/Code52/pretzel">Pretzel</a> and <a href="https://github.com/Sandra/Sandra.Snow">Sandra.Snow</a> come to mind), I certainly don't think we've hit peak generator in that world as we have in, say, JavaScript.</p>
 <p><strong>TL; DR</strong>: I wanted to build one, so I did.</p>
+<h3><strong>How can I set the <code>CurrentCulture</code>?</strong></h3>
+<p>The best way to do this is to add the following to the top of your configuration file in the config section:</p>
+<pre class="prettyprint"><code>System.Globalization.CultureInfo.DefaultThreadCurrentCulture
+    = System.Globalization.CultureInfo.CreateSpecificCulture(&quot;en-US&quot;);
+</code></pre>
+<p>That should set the culture for the primary thread as well as any other threads spawned during the generation process.</p>
 
 
 	</section>

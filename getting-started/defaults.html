@@ -156,7 +156,7 @@
     Markdown(),
     Concat(
         ReadFiles(&quot;*.cshtml&quot;).Where(x =&gt; Path.GetFileName(x)[0] != '_'),
-        FrontMatter(Yaml())     
+        FrontMatter(Yaml())		
     ),
     Razor(),
     WriteFiles(&quot;.html&quot;)
