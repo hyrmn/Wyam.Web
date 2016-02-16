@@ -172,6 +172,10 @@
 
 
 
+	<h1>Summary</h1>
+	<div class="lead">
+    Tests metadata for existence, typing, and supplied assertions.
+    </div>
 
 
 	<h1>Syntax</h1>
@@ -257,8 +261,42 @@
 		
 
 
+	<h1>Remarks</h1>
+	<div>
+    This module performs tests on metadata. It can ensure metadata exists, that it can be converted to the correct type, and that is passes 
+    arbitrary tests (delegates) to ensure validity. Metadata can be specified as optional, in which case, typing and assertion testing
+    will only be run if the metadata exists. If any check fails, this module throws an exception with a descriptive error message then
+    halts further execution.
+    </div>
 
 
+	<h1>Examples</h1>
+	<div>
+    This example will ensure "Title" exists. (It will also perform a type check, but since "object" matches anything, the type check will
+    always succeed.)
+    <pre class="prettyprint"><code>
+    ValidateMeta&lt;object&gt;("Title")
+    </code></pre>
+    
+
+    This example will ensure that if "Date" exists, it can convert to a valid DateTime.
+    <pre class="prettyprint"><code>
+    ValidateMeta&lt;DateTime&gt;("Date")
+       .IsOptional()
+    </code></pre>
+    
+
+    This example will ensure "Age" (1) exists, (2) can convert to an integer, (3) and is greater than 0 and less than 121.
+    If it fails any assertion, the provided error message will be output. (In this case, those two assertions could be rolled
+    into one, but then they would share an error message. Separate assertions allow more specific error messages.) Assertions will
+    be checked in order. Any assertion can assume all previous assertions have passed. Error messages will be appended with
+    the document Source and Id properties to assist in identifying invalid documents.
+    <pre class="prettyprint"><code>
+    ValidateMeta&lt;int&gt;("Age")
+       .WithAssertion(a =&gt; a &gt; 0, "You have to be born.")
+       .WithAssertion(a =&gt; a &lt;= 120, "You are way, way too old.")
+    </code></pre>
+    </div>
 
 
 
