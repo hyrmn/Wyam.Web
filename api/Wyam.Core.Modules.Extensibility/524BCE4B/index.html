@@ -63,7 +63,6 @@
                                     <li class="active"><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -192,15 +191,33 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Core.Modules.Extensibility/524BCE4B/D8C5E8FF.html">Execute<wbr>(ContextConfig)<wbr></a></td>
+								<td><a href="/api/Wyam.Core.Modules.Extensibility/524BCE4B/419CB5DE.html">Execute<wbr>(Action<wbr>&lt;IDocument, IExecutionContext&gt;<wbr>)<wbr></a></td>
+									<td>
+    Specifies a delegate that should be invoked once for each input document.
+    This will return the input documents.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Extensibility/524BCE4B/61A27499.html">Execute<wbr>(Action<wbr>&lt;IExecutionContext&gt;<wbr>)<wbr></a></td>
 									<td>
     Specifies a delegate that should be invoked once for all input documents.
+    This will return the input documents.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core.Modules.Extensibility/524BCE4B/D8C5E8FF.html">Execute<wbr>(ContextConfig)<wbr></a></td>
+									<td>
+    Specifies a delegate that should be invoked once for all input documents. The delegate
+    should return a System.Collections.Generic.IEnumerable`1 or <a href="/api/Wyam.Common.Documents/F359E898">IDocument</a>. If null is returned, this
+    module will return the input documents. If anything else is returned, an exception will be thrown.
     </td>
 							</tr>
 							<tr>
 								<td><a href="/api/Wyam.Core.Modules.Extensibility/524BCE4B/040B8C4E.html">Execute<wbr>(DocumentConfig)<wbr></a></td>
 									<td>
-    Specifies a delegate that should be invoked once for each input document.
+    Specifies a delegate that should be invoked once for each input document. The delegate
+    should return a System.Collections.Generic.IEnumerable`1 or <a href="/api/Wyam.Common.Documents/F359E898">IDocument</a>. If null is returned, this
+    module will return the input documents. If anything else is returned, an exception will be thrown.
     </td>
 							</tr>
 					</table>

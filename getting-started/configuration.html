@@ -63,7 +63,6 @@
                                     <li><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -86,8 +85,8 @@
                         
 	
 				<li>
-				<a href="/getting-started/installation">
-					Installation
+				<a href="/getting-started/obtaining">
+					Obtaining
 				</a>
 			</li>
 			<li>
@@ -134,7 +133,7 @@
 		
 
 
-<p>The command line Wyam application reads a configuration file typically named <code>config.wyam</code> (though you can change that with an argument) that sets up the environment and initializes metadata and pipelines. It consists of three parts, the <em>setup</em>, any <em>declarations</em>, and the <em>configuration</em>, in that order. The setup is separated by a line consisting entirely of one or more equals (<code>===</code>) and the declarations are separated by a line consisting entirely of one or more dashes (<code>---</code>).</p>
+<p>The command line Wyam application reads a configuration file typically named <code>config.wyam</code> (though you can change that with an argument) that sets up the environment and initializes metadata and pipelines. It consists of three parts, the <em>setup</em>, any <em>declarations</em>, and the <em>body</em>, in that order. The setup is separated by a line consisting entirely of one or more equals (<code>===</code>) and the declarations are separated by a line consisting entirely of one or more dashes (<code>---</code>).</p>
 <p>The sections of the configuration file are evaluated as C# code, so you can make use of the full C# language and the entire .NET ecosystem. However, it's not necessary to know C# to write Wyam configuration files. The syntax has been carefully crafted to be usable by anyone no matter their level of programming experience.</p>
 <p>A configuration file looks like this:</p>
 <pre class="prettyprint"><code>// Setup code (optional)
@@ -147,7 +146,7 @@
 
 ---
 
-// Configuration code (required)
+// Body code (required)
 // ...
 </code></pre>
 <h1>Setup</h1>
@@ -155,7 +154,7 @@
 <p>The setup helps establish the Wyam environment and gets evaluated before the rest of the configuration file. It's generally responsible for declaring NuGet packages, assemblies, and namespaces that should be made available to the main configuration body. Any modules that exist in referenced NuGet packages or assemblies will get automatically imported for use in pipelines. Additionally, the objects in NuGet packages and assemblies will be available from the configuration body and any specified namespaces will be brought into scope. Note that while the setup portion of the configuration file is evaluated as C# code just like the configuration body, it only references a small subset of the .NET class library (basically just enough to set things up).</p>
 <h2><a name="nuget"></a>NuGet</h2>
 <p>Wyam can automatically install any NuGet packages you declare in the setup portion of the configuration file. These will then be scanned for modules and be made available to the main configuration body. NuGet packages are configured using the global <code>Packages</code> object and a fluent interface.</p>
-<p><code>Packages.Install(string packageId, string versionSpec = null, bool allowPrereleaseVersions = false, bool allowUnlisted = false)</code> will let you specify a NuGet package to download from the default package source, which is the main NuGet.org feed. <code>Packages.Repository(string packageSource)</code> will let you define alternate package sources (such as an internal NuGet feed or a feed on MyGet). You can then continue to chain additional <code>Install(...)</code> calls as before. For example:</p>
+<p><code>Packages.Install(string packageId, string versionSpec = null, bool allowPrereleaseVersions = false, bool allowUnlisted = false)</code> will let you specify a NuGet package to download from the default package source, which is the main NuGet.org feed. <code>Packages.Repository(string packageSource)</code> will let you define alternate package sources (such as an internal NuGet feed or a feed on MyGet). You can then continue to chain additional <code>Install()</code> calls as before. For example:</p>
 <pre class="prettyprint"><code>Packages
     .Install(&quot;Humanizer&quot;)
     .Install(&quot;Newtonsoft.Json&quot;);
@@ -163,7 +162,7 @@ Packages.Repository(&quot;https://www.myget.org/F/roslyn-nightly/&quot;)
     .Install(&quot;Microsoft.CodeAnalysis&quot;)
     .Install(&quot;Microsoft.CodeAnalysis.Scripting&quot;);
 </code></pre>
-<p>From the <code>Install(...)</code> method you can also specify the acceptable package version(s) and whether prerelease and/or unlisted packages should be allowed. The <code>versionSpec</code> argument takes a string that matches the standard NuGet version specifications defined at https://docs.nuget.org/create/versioning</p>
+<p>From the <code>Install()</code> method you can also specify the acceptable package version(s) and whether prerelease and/or unlisted packages should be allowed. The <code>versionSpec</code> argument takes a string that matches the standard NuGet version specifications defined at https://docs.nuget.org/create/versioning</p>
 <p>By default, packages are downloaded to <code>\packages</code>. If you want to change this, set <code>Packages.Path</code> to the relative folder where you want packages to be downloaded. For example, you could set this to a system-wide folder if you have several scripts that share the same packages.</p>
 <h2><a name="assemblies"></a>Assemblies</h2>
 <p>In addition to NuGet packages you can also load assemblies. This is accomplished by using the <code>Assemblies</code> property. You can load all the assemblies in a directory with the <code>LoadDirectory(string path, SearchOption searchOption = SearchOption.AllDirectories)</code> method. The specified directory can either be relative to the active directory or absolute. You can also load a single assembly by location with the <code>LoadFile(string path)</code> method and by full name with the <code>Load(string name)</code> method. For example:</p>
@@ -220,12 +219,12 @@ Pipelines.Add(&quot;Markdown&quot;,
 <li><code>System.IO</code></li>
 <li><code>System.Diagnostics</code></li>
 </ul>
-<h1>Configuration</h1>
+<h1><a name="body"></a>Body</h1>
 <hr />
 <h2>Initial Metadata</h2>
-<p>Each pipeline starts with a single document prepopulated with initial metadata you specify in the configuration file. You can use this facility to introduce variables that can influence the way the pipeline behaves. To set initial metadata, just add values to the <code>Metadata</code> property (it's a <code>IDictionary&lt;string, object&gt;</code>). Note that the dictionary values are objects, so you can store simple primitive values or complex structure. For example:</p>
-<pre class="prettyprint"><code>Metadata[&quot;Foo&quot;] = &quot;Bar&quot;;
-Metadata.Add(&quot;Baz&quot;, new KeyValuePair&lt;string, string&gt;(&quot;abc&quot;, &quot;xyz&quot;)); 
+<p>Each pipeline starts with a single document prepopulated with initial metadata you specify in the configuration file. You can use this facility to introduce variables that can influence the way the pipeline behaves. To set initial metadata, just add values to the <code>InitialMetadata</code> property (it's of type <code>IInitialMetadata</code> which implements <code>IDictionary&lt;string, object&gt;</code>). Note that the dictionary values are objects, so you can store simple primitive values or complex structure. For example:</p>
+<pre class="prettyprint"><code>InitialMetadata[&quot;Foo&quot;] = &quot;Bar&quot;;
+InitialMetadata.Add(&quot;Baz&quot;, new KeyValuePair&lt;string, string&gt;(&quot;abc&quot;, &quot;xyz&quot;)); 
 </code></pre>
 <h2>Pipelines</h2>
 <p>Configuring a pipeline is easy, and Wyam configuration files are designed to be simple and straightforward:</p>
@@ -237,7 +236,7 @@ Metadata.Add(&quot;Baz&quot;, new KeyValuePair&lt;string, string&gt;(&quot;abc&q
 </code></pre>
 <p>However, don't let the simplicity fool you. Wyam configuration files are C# scripts and as such can make use of the full C# language and the entire .NET ecosystem (including the built-in support for NuGet and other assemblies as explained above). One of the core modules even lets you write a delegate right in your configuration file for extreme flexibility.</p>
 <h3>Pipeline Names</h3>
-<p>Pipelines should be given names, which makes them easier to identify in trace messages and also makes them easier to refer to within templates (for example, to get all the documents generated by a previous pipeline). Just pass in the name of a pipeline as the first parameter to the <code>Add(...)</code> method. If no name is provided (as above), then pipelines will implicitly be given the names <code>Pipeline 1</code>, <code>Pipeline 2</code>, etc.</p>
+<p>Pipelines should be given names, which makes them easier to identify in trace messages and also makes them easier to refer to within templates (for example, to get all the documents generated by a previous pipeline). Just pass in the name of a pipeline as the first parameter to the <code>Add()</code> method. If no name is provided (as above), then pipelines will implicitly be given the names <code>Pipeline 1</code>, <code>Pipeline 2</code>, etc.</p>
 <pre class="prettyprint"><code>Pipelines.Add(&quot;Markdown&quot;,
 	ReadFiles(&quot;*.md&quot;),
     FrontMatter(Yaml()),
@@ -304,7 +303,7 @@ Packages
 	.Install(&quot;jQuery&quot;, &quot;[2.1.1]&quot;);
 	
 ===
-// Configuration code
+// Body code
 
 Pipelines.Add(&quot;Content&quot;,
 	ReadFiles(&quot;*.md&quot;),

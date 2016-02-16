@@ -63,7 +63,6 @@
                                     <li><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -84,7 +83,12 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         
-				<li class="header">Content</li>
+				<li>
+				<a href="/modules/validatemeta">
+					ValidateMeta&lt;T&gt;
+				</a>
+			</li>
+			<li class="header">Content</li>
 			<li>
 				<a href="/modules/append">
 					Append
@@ -108,6 +112,11 @@
 			<li>
 				<a href="/modules/exceltocsv">
 					ExcelToCsv
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatecloudsearchdata">
+					GenerateCloudSearchData
 				</a>
 			</li>
 			<li>
@@ -202,6 +211,16 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/merge">
+					Merge
+				</a>
+			</li>
+			<li>
+				<a href="/modules/modulecollection">
+					ModuleCollection
+				</a>
+			</li>
+			<li>
 				<a href="/modules/orderby">
 					OrderBy
 				</a>
@@ -214,6 +233,11 @@
 			<li>
 				<a href="/modules/switch">
 					Switch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/take">
+					Take
 				</a>
 			</li>
 			<li>
@@ -241,6 +265,11 @@
 			<li>
 				<a href="/modules/download">
 					Download
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readapplicationinput">
+					ReadApplicationInput
 				</a>
 			</li>
 			<li class="active">
@@ -272,6 +301,11 @@
 			<li>
 				<a href="/modules/analyzecsharp">
 					AnalyzeCSharp
+				</a>
+			</li>
+			<li>
+				<a href="/modules/copymeta">
+					CopyMeta
 				</a>
 			</li>
 			<li>
@@ -381,9 +415,10 @@
     Reads the content of files from the file system into the content of new documents.
     </div>
 			<div>
-    For each output document, several metadata values are set with information about the file. Note 
-    that this module is best at the beginning of a pipeline because it will be executed once 
-    for each input document, even if you only specify a search path. If you want to add 
+    For each output document, several metadata values are set with information about the file. This module will
+    be executed once and input documents will be ignored if a search path is specified. Otherwise, if a delegate
+    is specified the module will be executed once per input document and the resulting output documents will be
+    aggregated. In either case, the input documents will not be returned as output of this module. If you want to add 
     additional files to a current pipeline, you should enclose your ReadFiles modules with <a href="/modules/concat.html">Concat</a>.
     </div>
 		<h1>Usage</h1>

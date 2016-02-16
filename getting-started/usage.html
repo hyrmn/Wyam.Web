@@ -63,7 +63,6 @@
                                     <li><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -86,8 +85,8 @@
                         
 	
 				<li>
-				<a href="/getting-started/installation">
-					Installation
+				<a href="/getting-started/obtaining">
+					Obtaining
 				</a>
 			</li>
 			<li class="active">
@@ -140,61 +139,46 @@
 <p>Or:</p>
 <pre class="prettyprint"><code>Wyam.exe C:\MySite
 </code></pre>
-<p>There are also a number of arguments that allow you to control execution:</p>
-<ul>
-<li>
-<p><code>--config file</code></p>
-<p>Configuration file other than the default <code>config.wyam</code>.</p>
-</li>
-<li>
-<p><code>--input path</code></p>
-<p>The path to input files, can be absolute or relative to the current folder.</p>
-</li>
-<li>
-<p><code>--output path</code></p>
-<p>The path to output files, can be absolute or relative to the current folder.</p>
-</li>
-<li>
-<p><code>--noclean</code></p>
-<p>By default the output folder is cleaned on every execution and <em>all</em> files in the folder and all subfolders are deleted. This argument lets you prevent the cleaning and will keep all files in the output folder. Keep in mind that generated files will still get overwritten on every execution.</p>
-</li>
-<li>
-<p><code>--nocache</code></p>
-<p>This turns off the caching mechanism for all modules. It results in a lower memory footprint at the expense of much slower build times.</p>
-</li>
-<li>
-<p><code>--update-packages</code></p>
-<p>By default, local packages will be used if available and if they satisfy the version specification given in the config file. Use this flag to check the NuGet server for more recent versions of each package and update them if applicable.</p>
-</li>
-<li>
-<p><code>--watch</code></p>
-<p>Watch the input folder for any changes. If any are found, the content is regenerated. Because of the flexible nature of Wyam modules it is impossible to tell which input files impact which output files, so all pipelines have to be rerun from scratch. Specifying this argument will keep Wyam running until a key is pressed.</p>
-</li>
-<li>
-<p><code>--preview [port] [force-ext]</code></p>
-<p>Starts the embedded preview web server on the specified port (or on port 5080 if no port is specified). Be default, the web server has a routing rule for extensionless URLs (that is, if you go to <code>/about</code> and a file <code>/about.html</code> or <code>/about.htm</code> exists, it will be served). To turn this behavior off and force the use of file extensions, specify <code>force-ext</code>. Note that to match the extensionless routing behavior on your web server, some additional configuration may be required. Specifying this argument will keep Wyam running until a key is pressed.</p>
-</li>
-<li>
-<p><code>--output-scripts</code></p>
-<p>Outputs the config scripts after they've been processed for further debugging or to see exactly what gets evaluated when your configuration runs.</p>
-</li>
-<li>
-<p><code>--log [logfile]</code></p>
-<p>Log all trace messages to a log file. You can specify the log file with <code>logfile</code> or the file <code>wyam-[datetime].txt</code> will be used if one isn't specified.</p>
-</li>
-<li>
-<p><code>--verbose</code></p>
-<p>Turn on &quot;verbose mode&quot; and will generate additional trace message useful for debugging.</p>
-</li>
-<li>
-<p><code>--pause</code></p>
-<p>Pause execution at the start of the program until a key is pressed and is useful for attaching a debugger or synchronizing with other applications.</p>
-</li>
-<li>
-<p><code>--help</code></p>
-<p>Prints out a list of the available command line arguments.</p>
-</li>
-</ul>
+<p>There are also a number of arguments that allow you to control execution (use <code>--help</code> or <code>-?</code> to see them):</p>
+<pre class="prettyprint"><code>usage:  [-w] [-p [arg]] [--force-ext] [--preview-root &lt;arg&gt;] [-i &lt;arg&gt;]
+        [--verify-config] [-o &lt;arg&gt;] [-c &lt;arg&gt;] [-u] [--output-scripts]
+        [--noclean] [--nocache] [-v] [--pause] [-l [arg]] [--] &lt;root&gt;
+
+    -w, --watch              Watches the input folder for any changes.
+    -p, --preview [arg]      Start the preview web server on the
+                             specified port (default is 5080).
+    --force-ext              Force the use of extensions in the preview
+                             web server (by default, extensionless URLs
+                             may be used).
+    --preview-root &lt;arg&gt;     The path to the root of the preview server,
+                             if not the output folder.
+    -i, --input &lt;arg&gt;        The path of input files, can be absolute or
+                             relative to the current folder.
+    --verify-config          Compile the configuration but do not
+                             execute.
+    -o, --output &lt;arg&gt;       The path to output files, can be absolute
+                             or relative to the current folder.
+    -c, --config &lt;arg&gt;       Configuration file (by default, config.wyam
+                             is used).
+    -u, --update-packages    Check the NuGet server for more recent
+                             versions of each package and update them if
+                             applicable.
+    --output-scripts         Outputs the config scripts after they've
+                             been processed for further debugging.
+    --noclean                Prevents cleaning of the output path on
+                             each execution.
+    --nocache                Prevents caching information during
+                             execution (less memory usage but slower
+                             execution).
+    -v, --verbose            Turns on verbose output showing additional
+                             trace message useful for debugging.
+    --pause                  Pause execution at the start of the program
+                             until a key is pressed (useful for
+                             attaching a debugger).
+    -l, --log [arg]          Log all trace messages to the specified log
+                             file (by default, wyam-[datetime].txt).
+    &lt;root&gt;                   The folder (or config file) to use.
+</code></pre>
 
 
 	</section>

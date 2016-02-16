@@ -63,7 +63,6 @@
                                     <li class="active"><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -130,6 +129,8 @@
 			<li class="header">Class Types</li>
 				<li class="active"><a href="/api/Wyam.Core/E0F89CF7">Engine</a></li>
 				<li class=""><a href="/api/Wyam.Core/FFC0A751">TypeHelper</a></li>
+			<li class="header">Interface Types</li>
+				<li class=""><a href="/api/Wyam.Core/574198EE">IEngine</a></li>
 
 
                     </ul>
@@ -156,6 +157,7 @@
 				<dt>Interfaces</dt>
 				<dd>
 					<ul class="list-inline">
+							<li><a href="/api/Wyam.Core/574198EE">IEngine</a></li>								
 							<li>IDisposable</li>								
 					</ul>
 				</dd>
@@ -172,7 +174,7 @@
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public class Engine : IDisposable</pre>
+	<pre class="prettyprint">public class Engine : IEngine, IDisposable</pre>
 
 
 
@@ -210,12 +212,17 @@
 							</tr>
 						</thead>
 							<tr>
+								<td><a href="/api/Wyam.Core/E0F89CF7/2830761C.html">ApplicationInput</a></td>
+								<td>string</td>
+								<td></td>
+							</tr>
+							<tr>
 								<td><a href="/api/Wyam.Core/E0F89CF7/39ED4DE6.html">Assemblies</a></td>
 								<td>IEnumerable<wbr>&lt;Assembly&gt;<wbr></td>
 								<td></td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Core/E0F89CF7/9A3686C3.html">CleanOutputFolderOnExecute</a></td>
+								<td><a href="/api/Wyam.Core/E0F89CF7/90233444.html">CleanOutputPathOnExecute</a></td>
 								<td>bool</td>
 								<td></td>
 							</tr>
@@ -225,18 +232,28 @@
 								<td></td>
 							</tr>
 							<tr>
+								<td><a href="/api/Wyam.Core/E0F89CF7/2955F42F.html">DocumentFactory</a></td>
+								<td><a href="/api/Wyam.Common.Documents/4B1BCC2A">IDocumentFactory</a></td>
+								<td></td>
+							</tr>
+							<tr>
 								<td><a href="/api/Wyam.Core/E0F89CF7/FE82BBB1.html">Documents</a></td>
 								<td><a href="/api/Wyam.Common.Documents/DAA0881A">IDocumentCollection</a></td>
 								<td></td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Core/E0F89CF7/B417101D.html">InputFolder</a></td>
-								<td>string</td>
+								<td><a href="/api/Wyam.Core/E0F89CF7/EF972F57.html">FileSystem</a></td>
+								<td><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></td>
 								<td></td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Core/E0F89CF7/0C147C28.html">Metadata</a></td>
-								<td>IDictionary<wbr>&lt;string, object&gt;<wbr></td>
+								<td><a href="/api/Wyam.Core/E0F89CF7/3EF9762A.html">InitialMetadata</a></td>
+								<td><a href="/api/Wyam.Common.Meta/EBFD89F4">IInitialMetadata</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core/E0F89CF7/B417101D.html">InputFolder</a></td>
+								<td>string</td>
 								<td></td>
 							</tr>
 							<tr>
@@ -269,11 +286,6 @@
 								<td>string</td>
 								<td></td>
 							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Core/E0F89CF7/556DC7FA.html">Trace</a></td>
-								<td><a href="/api/Wyam.Common.Tracing/79C28BC6">ITrace</a></td>
-								<td></td>
-							</tr>
 					</table>
 				</div>
 			</div>
@@ -292,12 +304,17 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Core/E0F89CF7/1DF652F8.html">CleanOutputFolder<wbr>()<wbr></a></td>
+								<td><a href="/api/Wyam.Core/E0F89CF7/DED5297C.html">CleanOutputPath<wbr>()<wbr></a></td>
 								<td>void</td>
 								<td></td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Core/E0F89CF7/082BDF55.html">Configure<wbr>(string, bool, string, bool)<wbr></a></td>
+								<td><a href="/api/Wyam.Core/E0F89CF7/F32DE779.html">Configure<wbr>(IFile, bool, bool)<wbr></a></td>
+								<td>void</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/Wyam.Core/E0F89CF7/BFFD9D83.html">Configure<wbr>(string, bool)<wbr></a></td>
 								<td>void</td>
 								<td></td>
 							</tr>

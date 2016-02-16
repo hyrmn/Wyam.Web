@@ -63,7 +63,6 @@
                                     <li class="active"><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -149,6 +148,7 @@
 							<li class=""><a href="/api/Wyam.Core.Caching">Wyam<wbr>.Core<wbr>.Caching</a></li>
 							<li class=""><a href="/api/Wyam.Core.Configuration">Wyam<wbr>.Core<wbr>.Configuration</a></li>
 							<li class=""><a href="/api/Wyam.Core.Documents">Wyam<wbr>.Core<wbr>.Documents</a></li>
+							<li class=""><a href="/api/Wyam.Core.IO">Wyam<wbr>.Core<wbr>.IO</a></li>
 							<li class=""><a href="/api/Wyam.Core.Meta">Wyam<wbr>.Core<wbr>.Meta</a></li>
 							<li class=""><a href="/api/Wyam.Core.Modules">Wyam<wbr>.Core<wbr>.Modules</a></li>
 							<li class=""><a href="/api/Wyam.Core.Modules.Contents">Wyam<wbr>.Core<wbr>.Modules<wbr>.Contents</a></li>
@@ -160,6 +160,7 @@
 							<li class=""><a href="/api/Wyam.Core.NuGet">Wyam<wbr>.Core<wbr>.NuGet</a></li>
 							<li class=""><a href="/api/Wyam.Core.Pipelines">Wyam<wbr>.Core<wbr>.Pipelines</a></li>
 							<li class=""><a href="/api/Wyam.Core.Tracing">Wyam<wbr>.Core<wbr>.Tracing</a></li>
+							<li class=""><a href="/api/Wyam.Core.Util">Wyam<wbr>.Core<wbr>.Util</a></li>
 
 				</ul>
 			</li>
@@ -167,6 +168,7 @@
 				<a href="#">Wyam.Modules...<i class="fa fa-angle-left pull-right"></i></a>
 				<ul class="treeview-menu">
 					<li class=""><a href="/api/Wyam.Modules">Wyam<wbr>.Modules</a></li>
+							<li class=""><a href="/api/Wyam.Modules.AmazonWebServices">Wyam<wbr>.Modules<wbr>.AmazonWebServices</a></li>
 							<li class="active"><a href="/api/Wyam.Modules.CodeAnalysis">Wyam<wbr>.Modules<wbr>.CodeAnalysis</a></li>
 							<li class=""><a href="/api/Wyam.Modules.Git">Wyam<wbr>.Modules<wbr>.Git</a></li>
 							<li class=""><a href="/api/Wyam.Modules.GitHub">Wyam<wbr>.Modules<wbr>.GitHub</a></li>
@@ -185,6 +187,7 @@
 				</ul>
 			</li>
 			<li class=""><a href="/api/Wyam.Owin">Wyam<wbr>.Owin</a></li>
+			<li class=""><a href="/api/Wyam.Testing">Wyam<wbr>.Testing</a></li>
       
 
                     </ul>
@@ -232,14 +235,20 @@
 							<tr>
 								<td><a href="/api/Wyam.Modules.CodeAnalysis/1D61ABA3">ReadProject</a></td>
 									<td>
-    Reads all the source files from a specified msbuild project.
+    Reads all the source files from a specified msbuild project. 
+    This module will be executed once and input documents will be ignored if a search path is 
+    specified. Otherwise, if a delegate is specified the module will be executed once per input 
+    document and the resulting output documents will be aggregated.
     Note that this requires the MSBuild tools to be installed (included with Visual Studio).
     </td>
 							</tr>
 							<tr>
 								<td><a href="/api/Wyam.Modules.CodeAnalysis/CC920BBB">ReadSolution</a></td>
 									<td>
-    Reads all the source files from a specified msbuild solution.
+    Reads all the source files from a specified msbuild solution. 
+    This module will be executed once and input documents will be ignored if a search path is 
+    specified. Otherwise, if a delegate is specified the module will be executed once per input 
+    document and the resulting output documents will be aggregated.
     Note that this requires the MSBuild tools to be installed (included with Visual Studio).
     </td>
 							</tr>
@@ -247,6 +256,9 @@
 								<td><a href="/api/Wyam.Modules.CodeAnalysis/65BD630E">ReadWorkspace</a></td>
 									<td>
     Reads an MSBuild solution or project file and returns all referenced source files as documents.
+    This module will be executed once and input documents will be ignored if a search path is 
+    specified. Otherwise, if a delegate is specified the module will be executed once per input 
+    document and the resulting output documents will be aggregated.
     Note that this requires the MSBuild tools to be installed (included with Visual Studio).
     See https://github.com/dotnet/roslyn/issues/212 and https://roslyn.codeplex.com/workitem/218.
     </td>

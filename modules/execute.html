@@ -63,7 +63,6 @@
                                     <li><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -84,7 +83,12 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         
-				<li class="header">Content</li>
+				<li>
+				<a href="/modules/validatemeta">
+					ValidateMeta&lt;T&gt;
+				</a>
+			</li>
+			<li class="header">Content</li>
 			<li>
 				<a href="/modules/append">
 					Append
@@ -108,6 +112,11 @@
 			<li>
 				<a href="/modules/exceltocsv">
 					ExcelToCsv
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatecloudsearchdata">
+					GenerateCloudSearchData
 				</a>
 			</li>
 			<li>
@@ -202,6 +211,16 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/merge">
+					Merge
+				</a>
+			</li>
+			<li>
+				<a href="/modules/modulecollection">
+					ModuleCollection
+				</a>
+			</li>
+			<li>
 				<a href="/modules/orderby">
 					OrderBy
 				</a>
@@ -214,6 +233,11 @@
 			<li>
 				<a href="/modules/switch">
 					Switch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/take">
+					Take
 				</a>
 			</li>
 			<li>
@@ -241,6 +265,11 @@
 			<li>
 				<a href="/modules/download">
 					Download
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readapplicationinput">
+					ReadApplicationInput
 				</a>
 			</li>
 			<li>
@@ -272,6 +301,11 @@
 			<li>
 				<a href="/modules/analyzecsharp">
 					AnalyzeCSharp
+				</a>
+			</li>
+			<li>
+				<a href="/modules/copymeta">
+					CopyMeta
 				</a>
 			</li>
 			<li>
@@ -387,22 +421,48 @@
 		<hr />
 		<ul>			
 					<li>
-								<p><strong><code>Execute(ContextConfig execute)</code></strong></p>
+								<p><strong><code>Execute(Action&lt;IDocument, IExecutionContext&gt; execute)</code></strong></p>
 								<p>
-    Specifies a delegate that should be invoked once for all input documents.
+    Specifies a delegate that should be invoked once for each input document.
+    This will return the input documents.
     </p>
 								<ul>
-										<li><p><code>execute</code></p><p>A delegate to invoke that should return a IEnumerable%lt;IDocument&gt;.</p></li>
+										<li><p><code>execute</code></p><p>A delegate to invoke that should return a System.Collections.Generic.IEnumerable`1.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>Execute(Action&lt;IExecutionContext&gt; execute)</code></strong></p>
+								<p>
+    Specifies a delegate that should be invoked once for all input documents.
+    This will return the input documents.
+    </p>
+								<ul>
+										<li><p><code>execute</code></p><p>A delegate to invoke that should return a System.Collections.Generic.IEnumerable`1.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>Execute(ContextConfig execute)</code></strong></p>
+								<p>
+    Specifies a delegate that should be invoked once for all input documents. The delegate
+    should return a System.Collections.Generic.IEnumerable`1 or Wyam.Common.Documents.IDocument. If null is returned, this
+    module will return the input documents. If anything else is returned, an exception will be thrown.
+    </p>
+								<ul>
+										<li><p><code>execute</code></p><p>A delegate to invoke that should return a System.Collections.Generic.IEnumerable`1.</p></li>
 								</ul>
 
 					</li>				
 					<li>
 								<p><strong><code>Execute(DocumentConfig execute)</code></strong></p>
 								<p>
-    Specifies a delegate that should be invoked once for each input document.
+    Specifies a delegate that should be invoked once for each input document. The delegate
+    should return a System.Collections.Generic.IEnumerable`1 or Wyam.Common.Documents.IDocument. If null is returned, this
+    module will return the input documents. If anything else is returned, an exception will be thrown.
     </p>
 								<ul>
-										<li><p><code>execute</code></p><p>A delegate to invoke that should return a IEnumerable%lt;IDocument&gt;.</p></li>
+										<li><p><code>execute</code></p><p>A delegate to invoke that should return a System.Collections.Generic.IEnumerable`1.</p></li>
 								</ul>
 
 					</li>				

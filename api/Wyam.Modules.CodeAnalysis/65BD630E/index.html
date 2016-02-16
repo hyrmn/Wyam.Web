@@ -63,7 +63,6 @@
                                     <li class="active"><a href="/api">API</a></li>
                                     <li><a href="/knowledgebase">Knowledgebase</a></li>
                                     <li><a href="/community">Community</a></li>
-                                    <li><a href="/faq">FAQ</a></li>
 
                         </ul>       
                     </div>
@@ -162,6 +161,7 @@
 				<dd>
 					<ul class="list-inline">
 							<li><a href="/api/Wyam.Common.Modules/09D712E1">IModule</a></li>								
+							<li><a href="/api/Wyam.Common.Modules/5997E918">IAsNewDocuments</a></li>								
 					</ul>
 				</dd>
 			
@@ -171,8 +171,8 @@
 				<dt>Derived Types</dt>
 				<dd>
 					<ul class="list-inline">
-							<li><a href="/api/Wyam.Modules.CodeAnalysis/CC920BBB">ReadSolution</a></li>								
 							<li><a href="/api/Wyam.Modules.CodeAnalysis/1D61ABA3">ReadProject</a></li>								
+							<li><a href="/api/Wyam.Modules.CodeAnalysis/CC920BBB">ReadSolution</a></li>								
 					</ul>
 				</dd>			
 			
@@ -184,13 +184,16 @@
 	<h1>Summary</h1>
 	<div class="lead">
     Reads an MSBuild solution or project file and returns all referenced source files as documents.
+    This module will be executed once and input documents will be ignored if a search path is 
+    specified. Otherwise, if a delegate is specified the module will be executed once per input 
+    document and the resulting output documents will be aggregated.
     Note that this requires the MSBuild tools to be installed (included with Visual Studio).
     See https://github.com/dotnet/roslyn/issues/212 and https://roslyn.codeplex.com/workitem/218.
     </div>
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public abstract class ReadWorkspace : IModule</pre>
+	<pre class="prettyprint">public abstract class ReadWorkspace : IModule, IAsNewDocuments</pre>
 
 
 
