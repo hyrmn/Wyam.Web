@@ -14,6 +14,7 @@
         <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -22,6 +23,7 @@
         <script src="/Scripts/app.min.js"></script>         
         <script src="/Scripts/prettify.js"></script>   
         <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
         <!--[if lt IE 9]>
         <script src="/Scripts/html5shiv.min.js"></script>
         <script src="/Scripts/respond.min.js"></script>
@@ -179,6 +181,9 @@
                              file (by default, wyam-[datetime].txt).
     &lt;root&gt;                   The folder (or config file) to use.
 </code></pre>
+<h1>Paths</h1>
+<p>The paths that Wyam uses can be specified on the command line. This includes the <code>--input</code> path(s) where Wyam will look for files, the <code>--output</code> path where Wyam will place the output of modules like <a href="/modules/writefiles">WriteFiles</a>, the <code>--config</code> file path where Wyam will look for a configuration file, and the root path that Wyam considers the base path for all other relative paths. By default, the root path is set to the path from where Wyam is executed. You may want to specify a different base path (for example, if running from a build script or as part of a larger process). In this case, just supply an alternate absolute path at the end of the command line. This new root path will be the base for all other relative paths including input and output paths. This is a good way to ensure consistency regardless of which path Wyam is run from.</p>
+<p>Note that these paths can also be specified from within the <a href="/getting-started/configuration#setup">setup portion of your configuration script</a>. From there you can set <code>FileSystem.OutputPath</code> or <code>FileSystem.RootPath</code> or call <code>FileSystem.InputPaths.Add()</code>.</p>
 
 
 	</section>
@@ -198,6 +203,11 @@
         <div class="github-button">
             <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
         </div>
+        <script>
+            $(document).load(function() {
+                mermaid.initialize();
+            });
+        </script>
         <script>
             ((window.gitter = {}).chat = {}).options = {
                 room: 'wyamio/wyam'

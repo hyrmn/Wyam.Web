@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - Module Inputs vs. Outputs</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jQuery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">   
+                     
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>   
+                         
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                                        
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li><a href="/api">API</a></li>
+                                    <li class="active"><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+	
+				<li>
+				<a href="/knowledgebase/continuous-integration">
+					Continuous Integration
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/custom_document_types">
+					Custom Document Types
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/embedded-use">
+					Embedded Use
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/executing-in-a-unit-test">
+					Executing In A Unit Test
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/how-to-set-the-currentculture">
+					How To Set The CurrentCulture
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/tools-package">
+					How To Use The Tools Package
+				</a>
+			</li>
+			<li class="active">
+				<a href="/knowledgebase/module-inputs-vs-outputs">
+					Module Inputs vs. Outputs
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/rss-and-atom-feeds">
+					RSS and Atom Feeds
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/some-background">
+					Some Background
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/static-site-resources">
+					Static Site Resources
+				</a>
+			</li>
+			<li>
+				<a href="/knowledgebase/writing-a-module">
+					Writing a Module
+				</a>
+			</li>
+
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+	<section class="content-header">
+		<h1>Module Inputs vs. Outputs</h1>
+	</section>
+	<section class="content">
+		
+
+
+<p>Modules in Wyam treat inputs and outputs in different ways. Some modules just &quot;pass-through&quot; the documents that are input, some transform them in some way and output the results, and some exhibit more complex behavior. Some modules even exhibit different behavior depending on how the module was configured. The behavior can get especially confusing when considering some modules evaluate child modules which also output documents. In these cases, there are different behaviors for how the input documents and the result documents from the child modules are combined. The way inputs, outputs, and child module results are related can generally be described as a few different patterns and even though these probably don't cover the way <em>every</em> module works, they should help you understand the concepts involved.</p>
+<h1><a name="pass-through"></a>Pass-Through</h1>
+<p>These modules just take the input documents and pass them on as the outputs:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->O1(I1)
+        Module-->O2(I2)
+</div>
+<h1><a name="transformation"></a>Transformation</h1>
+<p>These modules apply some sort of transformation to the input documents and output one result for each input:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->O1("O1 (from I1)")
+        Module-->O2("O2 (from I2)")
+</div>
+<h1><a name="aggregation"></a>Aggregation</h1>
+<p>These modules take multiple input documents and combine them into a single output document:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->O1("O1 (from I1 + I2)")
+</div>
+<h1><a name="splitting"></a>Splitting</h1>
+<p>This is the opposite behavior of aggregation. These modules split each input document into multiple output documents:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->O1A("O1A (from I1)")
+        Module-->O1B("O1B (from I1)")
+        Module-->O2A("O2A (from I2)")
+        Module-->O2B("O2B (from I2)")
+</div>
+<h1><a name="concatenation"></a>Concatenation</h1>
+<p>In this case, output documents that are independent from the input documents are output, but instead of replacing the input document they are concatenated with them:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->O1(I1)
+        Module-->O2(I2)
+        Module-->O3(O1)
+        Module-->O4(O2)
+</div>
+<p>Note that the new documents may come from a sequence of child modules:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->Children["Module(s)"]
+        subgraph Child Modules
+            Children-->C1(C1)
+            Children-->C2(C2)
+        end
+        Module-->O1(I1)
+        Module-->O2(I2)
+        Module-->O3(C1)
+        Module-->O4(C2)
+</div>
+<h1><a name="replacement"></a>Replacement</h1>
+<p>These modules just replace the entire input set of documents with a different output set:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->O1(O1)
+        Module-->O2(O2)
+</div>
+<p>Note that the new documents may come from a sequence of child modules:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->Children["Module(s)"]
+        subgraph Child Modules
+            Children-->C1(C1)
+            Children-->C2(C2)
+        end
+        Module-->O1(C1)
+        Module-->O2(C2)
+</div>
+<p>Further, some modules support a <code>ForEachDocument()</code> method that runs the entire set of child modules <em>for each input document</em>:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->Children1["Module(s)"]
+        Module-->Children2["Module(s)"]
+        subgraph Child Modules with I2
+            Children2-->C2A(C2A)
+            Children2-->C2B(C2B)
+        end
+        subgraph Child Modules with I1
+            Children1-->C1A(C1A)
+            Children1-->C1B(C1B)
+        end
+        Module-->O1(C1A)
+        Module-->O2(C1B)
+        Module-->O3(C2A)
+        Module-->O4(C2B)
+</div>
+<h1><a name="combination"></a>Combination</h1>
+<p>This pattern describes the combination of one or more input documents with the outputs from child modules:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->Children["Module(s)"]
+        subgraph Child Modules
+            Children-->C1(C1)
+            Children-->C2(C2)
+        end
+        Module-->O1("O1 (from I1 + C1)")
+        Module-->O2("O2 (from I1 + C2)")
+        Module-->O3("O3 (from I2 + C1)")
+        Module-->O4("O4 (from I2 + C2)")
+</div>
+<p>As described above, some modules support a <code>ForEachDocument()</code> method that runs the entire set of child modules <em>for each input document</em>:</p>
+<div class="mermaid">
+    graph TD
+        I1(I1)-->Module
+        I2(I2)-->Module
+        Module-->Children1["Module(s)"]
+        Module-->Children2["Module(s)"]
+        subgraph Child Modules with I2
+            Children2-->C2A(C2A)
+            Children2-->C2B(C2B)
+        end
+        subgraph Child Modules with I1
+            Children1-->C1A(C1A)
+            Children1-->C1B(C1B)
+        end
+        Module-->O1("O1 (from I1 + C1A)")
+        Module-->O2("O2 (from I1 + C1B)")
+        Module-->O3("O3 (from I2 + C2A)")
+        Module-->O4("O4 (from I2 + C2B)")
+</div>
+
+
+	</section>
+                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            $(document).load(function() {
+                mermaid.initialize();
+            });
+        </script>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

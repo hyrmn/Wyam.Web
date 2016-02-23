@@ -93,6 +93,19 @@ pre.prettyprint {
   border-color: #dddddd;
   background-color: #f3f3f3;
 }
+/* Mermaid */
+
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+  fill: #b1d1e4;
+  stroke: #1f4860;
+}
+.cluster rect {
+  fill: #f3f3f3 !important;
+  stroke: #dddddd !important;
+}
 /* For Gitter and GitHub */
 
 .bottom-footer {

@@ -14,6 +14,7 @@
         <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
         <link href="/Content/prettify.css" rel="stylesheet">
         <link href="/Content/github.css" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.css" rel="stylesheet">
         <link href="/Content/master.css" rel="stylesheet" />
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -22,6 +23,7 @@
         <script src="/Scripts/app.min.js"></script>         
         <script src="/Scripts/prettify.js"></script>   
         <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
         <!--[if lt IE 9]>
         <script src="/Scripts/html5shiv.min.js"></script>
         <script src="/Scripts/respond.min.js"></script>
@@ -149,7 +151,7 @@
 // Body code (required)
 // ...
 </code></pre>
-<h1>Setup</h1>
+<h1><a name="setup"></a>Setup</h1>
 <hr />
 <p>The setup helps establish the Wyam environment and gets evaluated before the rest of the configuration file. It's generally responsible for declaring NuGet packages, assemblies, and namespaces that should be made available to the main configuration body. Any modules that exist in referenced NuGet packages or assemblies will get automatically imported for use in pipelines. Additionally, the objects in NuGet packages and assemblies will be available from the configuration body and any specified namespaces will be brought into scope. Note that while the setup portion of the configuration file is evaluated as C# code just like the configuration body, it only references a small subset of the .NET class library (basically just enough to set things up).</p>
 <h2><a name="nuget"></a>NuGet</h2>
@@ -355,6 +357,11 @@ Pipelines.Add(&quot;Resources&quot;,
         <div class="github-button">
             <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
         </div>
+        <script>
+            $(document).load(function() {
+                mermaid.initialize();
+            });
+        </script>
         <script>
             ((window.gitter = {}).chat = {}).options = {
                 room: 'wyamio/wyam'
