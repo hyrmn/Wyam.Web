@@ -201,17 +201,17 @@
 <p>As an example, here's the entirety of the <a href="/modules/where">Where</a> module, which filters the documents in the pipeline:</p>
 <pre class="prettyprint"><code>public class Where : IModule
 {
-	private readonly DocumentConfig _predicate;
+    private readonly DocumentConfig _predicate;
 
-	public Where(DocumentConfig predicate)
-	{
-		_predicate = predicate;
-	}
+    public Where(DocumentConfig predicate)
+    {
+        _predicate = predicate;
+    }
 
-	public IEnumerable&lt;IDocument&gt; Execute(IReadOnlyList&lt;IDocument&gt; inputs, IExecutionContext context)
-	{
-		return inputs.Where(x =&gt; _predicate.Invoke&lt;bool&gt;(x, context));
-	}
+    public IEnumerable&lt;IDocument&gt; Execute(IReadOnlyList&lt;IDocument&gt; inputs, IExecutionContext context)
+    {
+        return inputs.Where(x =&gt; _predicate.Invoke&lt;bool&gt;(x, context));
+    }
 }
 </code></pre>
 

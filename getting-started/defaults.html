@@ -154,10 +154,10 @@
 <pre class="prettyprint"><code>Pipelines.Add(&quot;Content&quot;,
     ReadFiles(&quot;*.md&quot;),
     FrontMatter(Yaml()),
-    Markdown(),
+    Markdown().EscapeAt(true),
     Concat(
         ReadFiles(&quot;*.cshtml&quot;).Where(x =&gt; Path.GetFileName(x)[0] != '_'),
-        FrontMatter(Yaml())		
+        FrontMatter(Yaml())
     ),
     Razor(),
     WriteFiles(&quot;.html&quot;)
