@@ -192,13 +192,13 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Modules.Markdown/A8BAA13A/210648D0.html">Markdown<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Modules.Markdown/A8BAA13A/210648D0">Markdown<wbr>()<wbr></a></td>
 									<td>
     Processes Markdown in the content of the document.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Modules.Markdown/A8BAA13A/D0D18F5E.html">Markdown<wbr>(string, string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Modules.Markdown/A8BAA13A/D0D18F5E">Markdown<wbr>(string, string)<wbr></a></td>
 									<td>
     Processes Markdown in the metadata of the document. The rendered HTML will be placed
     </td>
@@ -223,7 +223,7 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Modules.Markdown/A8BAA13A/03ACC23E.html">EscapeAt<wbr>(bool)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Modules.Markdown/A8BAA13A/03ACC23E">EscapeAt<wbr>(bool)<wbr></a></td>
 								<td><a href="/api/Wyam.Modules.Markdown/A8BAA13A">Markdown</a></td>
 								<td>
     Specifies whether the <code>@</code> symbol should be escaped (the default is <code>true</code>).
@@ -233,7 +233,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Modules.Markdown/A8BAA13A/D14B50E5.html">Execute<wbr>(IReadOnlyList<wbr>&lt;IDocument&gt;<wbr>, IExecutionContext)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Modules.Markdown/A8BAA13A/A1174A81">Execute<wbr>(IReadOnlyList<wbr>&lt;IDocument&gt;<wbr>, IExecutionContext)<wbr></a></td>
 								<td>IEnumerable<wbr>&lt;IDocument&gt;<wbr></td>
 								<td></td>
 							</tr>
@@ -246,6 +246,8 @@
 	<h1>Remarks</h1>
 	<div>
     Parses markdown content in each input document and outputs documents with rendered HTML content.
+    Note that @ (at) symbols will be automatically escaped for better compatibility with downstream
+    Razor modules. Use the <code>EscapeAt()</code> fluent method to modify this behavior.
     </div>
 
 

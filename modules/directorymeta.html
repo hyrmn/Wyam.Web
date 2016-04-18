@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -420,7 +450,7 @@
     <p>
     This module allows you to specify certain documents that contain common metadata for all other
     documents in the same directory (and optionally nested directories). It assumes that all input documents
-    are generated from the file system (for example, from the <a href="/modules/readfiles.html">ReadFiles</a> module). In other words,
+    are generated from the file system (for example, from the <a href="/modules/readfiles">ReadFiles</a> module). In other words,
     both the documents that contain the common metadata and the documents to which the common metadata should
     be applied should be passed as inputs to this module.
     </p>
@@ -464,14 +494,14 @@
     Specifies a file name to use as common metadata using a delegate so that the common metadata document can be specific to the input document.
     </p>
 								<ul>
-										<li><p><code>metadataFileName</code></p><p>A delegate that returns a <code>string</code> with the name of the metadata file.</p></li>
+										<li><p><code>metadataFileName</code></p><p>A delegate that returns a <code>bool</code> indicating if the current document contains the metadata you want to use.</p></li>
 										<li><p><code>inherited</code></p><p>If set to <code>true</code>, metadata from documents with this file name will be inherited by documents in nested directories.</p></li>
 										<li><p><code>replace</code></p><p>If set to <code>true</code>, metadata from this document will replace any existing metadata on the target document.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>WithMetadataFile(string metadataFileName, bool inherited = false, bool replace = false)</code></strong></p>
+								<p><strong><code>WithMetadataFile(FilePath metadataFileName, bool inherited = false, bool replace = false)</code></strong></p>
 								<p>
     Specifies a file name to use as common metadata.
     </p>

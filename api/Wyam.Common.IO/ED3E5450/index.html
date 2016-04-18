@@ -129,19 +129,22 @@
 		<li><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Class Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/712BD29F">DirectoryEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/2CA442EA">FileEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>
 				<li class="active"><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/43DC142F">PathCollection<wbr>&lt;TPath&gt;<wbr></a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/3A8E38EE">PathComparer</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/A3AE1875">PathHelper</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/D84F401B">SafeIOHelper</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/5FDE4AAC">PathEqualityComparer</a></li>
 			<li class="header">Interface Types</li>
-				<li class=""><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/6E3AD006">IFileProvider</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/4B5BECA2">IFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8E17CFD1">IFileSystem</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/57C3E2C2">IFileSystemInfo</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
 
 
                     </ul>
@@ -165,6 +168,14 @@
 				<dt>Namespace</dt>
 				<dd><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></dd>
 							
+				<dt>Interfaces</dt>
+				<dd>
+					<ul class="list-inline">
+							<li>IComparable<wbr>&lt;NormalizedPath&gt;<wbr></li>								
+							<li>IComparable</li>								
+							<li>IEquatable<wbr>&lt;NormalizedPath&gt;<wbr></li>								
+					</ul>
+				</dd>
 			
 				<dt>Base Type</dt>
 				<dd>object</dd>				
@@ -172,8 +183,8 @@
 				<dt>Derived Types</dt>
 				<dd>
 					<ul class="list-inline">
-							<li><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>								
 							<li><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>								
+							<li><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>								
 					</ul>
 				</dd>			
 			
@@ -189,7 +200,8 @@
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public abstract class NormalizedPath</pre>
+	<pre class="prettyprint">public abstract class NormalizedPath : IComparable&lt;NormalizedPath&gt;, IComparable, 
+    IEquatable&lt;NormalizedPath&gt;</pre>
 
 
 
@@ -205,9 +217,16 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/ED3E5450/1A5BD8F2.html">NormalizedPath<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/EF0F79D4">NormalizedPath<wbr>(string, bool?)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a> class.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/F0AA0ACF">NormalizedPath<wbr>(string, string, bool?)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a> class
+    with the given provider.
     </td>
 							</tr>
 					</table>
@@ -229,21 +248,35 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/ED3E5450/4676E504.html">FullPath</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/4676E504">FullPath</a></td>
 								<td>string</td>
 								<td>
     Gets the full path.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/ED3E5450/4DEA95EF.html">IsRelative</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/C2AB1127">IsAbsolute</a></td>
+								<td>bool</td>
+								<td>
+    Gets or sets a value indicating whether this path is absolute.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/4DEA95EF">IsRelative</a></td>
 								<td>bool</td>
 								<td>
     Gets a value indicating whether this path is relative.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/ED3E5450/F68A0B46.html">Segments</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/432201F2">Provider</a></td>
+								<td>string</td>
+								<td>
+    Gets the provider for this path.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/F68A0B46">Segments</a></td>
 								<td></td>
 								<td>
     Gets the segments making up the path.
@@ -267,7 +300,27 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/ED3E5450/75688289.html">ToString<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/821209CE">CompareTo<wbr>(NormalizedPath)<wbr></a></td>
+								<td>int</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/7A3C4CC0">CompareTo<wbr>(object)<wbr></a></td>
+								<td>int</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/86C2D2CC">Equals<wbr>(object)<wbr></a></td>
+								<td>bool</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/D636843C">GetHashCode<wbr>()<wbr></a></td>
+								<td>int</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/75688289">ToString<wbr>()<wbr></a></td>
 								<td>string</td>
 								<td>
     Returns a System.String that represents this path.

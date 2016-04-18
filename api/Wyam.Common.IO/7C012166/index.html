@@ -129,19 +129,22 @@
 		<li><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Class Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/712BD29F">DirectoryEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/2CA442EA">FileEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/43DC142F">PathCollection<wbr>&lt;TPath&gt;<wbr></a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/3A8E38EE">PathComparer</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/A3AE1875">PathHelper</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/D84F401B">SafeIOHelper</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/5FDE4AAC">PathEqualityComparer</a></li>
 			<li class="header">Interface Types</li>
-				<li class=""><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></li>
 				<li class="active"><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/6E3AD006">IFileProvider</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/4B5BECA2">IFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8E17CFD1">IFileSystem</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/57C3E2C2">IFileSystemInfo</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
 
 
                     </ul>
@@ -168,12 +171,18 @@
 				<dt>Interfaces</dt>
 				<dd>
 					<ul class="list-inline">
-							<li><a href="/api/Wyam.Common.IO/57C3E2C2">IFileSystemInfo</a></li>								
+							<li><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>								
 					</ul>
 				</dd>
 			
 			
 			
+				<dt>Implementing Types</dt>
+				<dd>
+					<ul class="list-inline">
+							<li><a href="/api/Wyam.Testing.IO/333D27D5">TestDirectory</a></li>								
+					</ul>
+				</dd>				
 		</dl>
 		<hr />
 
@@ -181,12 +190,13 @@
 
 	<h1>Summary</h1>
 	<div class="lead">
-    Represents a directory.
+    Represents a directory. Not all implementations will support all
+    available methods and may throw System.NotSupportedException.
     </div>
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public interface IDirectory : IFileSystemInfo</pre>
+	<pre class="prettyprint">public interface IDirectory : IFileSystemEntry</pre>
 
 
 
@@ -205,7 +215,7 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/7C012166/220DCDCD.html">Path</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/7C012166/220DCDCD">Path</a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
 								<td>
     Gets the path to the directory.
@@ -229,35 +239,44 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/7C012166/24D979C7.html">Create<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/7C012166/24D979C7">Create<wbr>()<wbr></a></td>
 								<td>void</td>
 								<td>
     Creates the directory.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/7C012166/400D5774.html">Delete<wbr>(bool)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/7C012166/400D5774">Delete<wbr>(bool)<wbr></a></td>
 								<td>void</td>
 								<td>
     Deletes the directory.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/7C012166/2A3159CD.html">GetDirectories<wbr>(string, SearchOption)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/7C012166/F4090661">GetDirectories<wbr>(SearchOption)<wbr></a></td>
 								<td>IEnumerable<wbr>&lt;IDirectory&gt;<wbr></td>
 								<td>
     Gets directories matching the specified filter and scope.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/7C012166/F0CD002F.html">GetFile<wbr>(FilePath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/7C012166/947E0847">GetDirectory<wbr>(DirectoryPath)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></td>
 								<td>
-    Gets a file by combining it's path with the current directory's path.
+    Gets a directory by combining it's path with the current directory's path.
+    The specified directory path must be relative.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/7C012166/613DA1EC.html">GetFiles<wbr>(string, SearchOption)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/7C012166/F0CD002F">GetFile<wbr>(FilePath)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></td>
+								<td>
+    Gets a file by combining it's path with the current directory's path.
+    The specified file path must be relative.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/7C012166/6DC28B47">GetFiles<wbr>(SearchOption)<wbr></a></td>
 								<td>IEnumerable<wbr>&lt;IFile&gt;<wbr></td>
 								<td>
     Gets files matching the specified filter and scope.

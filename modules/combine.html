@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - Modules - Combine</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jQuery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">   
+                     
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>   
+                         
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                                        
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li class="active"><a href="/modules">Modules</a></li>
+                                    <li><a href="/api">API</a></li>
+                                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+				<li class="header">Content</li>
+			<li>
+				<a href="/modules/append">
+					Append
+				</a>
+			</li>
+			<li>
+				<a href="/modules/autolink">
+					AutoLink
+				</a>
+			</li>
+			<li>
+				<a href="/modules/content">
+					Content
+				</a>
+			</li>
+			<li>
+				<a href="/modules/csvtohtml">
+					CsvToHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/exceltocsv">
+					ExcelToCsv
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatecloudsearchdata">
+					GenerateCloudSearchData
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatecontent">
+					GenerateContent
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatejson">
+					GenerateJson
+				</a>
+			</li>
+			<li>
+				<a href="/modules/htmlescape">
+					HtmlEscape
+				</a>
+			</li>
+			<li>
+				<a href="/modules/image">
+					Image
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/prepend">
+					Prepend
+				</a>
+			</li>
+			<li>
+				<a href="/modules/replace">
+					Replace
+				</a>
+			</li>
+			<li>
+				<a href="/modules/replacein">
+					ReplaceIn
+				</a>
+			</li>
+			<li>
+				<a href="/modules/rss">
+					Rss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/searchindex">
+					SearchIndex
+				</a>
+			</li>
+			<li>
+				<a href="/modules/sitemap">
+					Sitemap
+				</a>
+			</li>
+			<li class="header">Control</li>
+			<li>
+				<a href="/modules/branch">
+					Branch
+				</a>
+			</li>
+			<li class="active">
+				<a href="/modules/combine">
+					Combine
+				</a>
+			</li>
+			<li>
+				<a href="/modules/concat">
+					Concat
+				</a>
+			</li>
+			<li>
+				<a href="/modules/concatbranch">
+					ConcatBranch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/documents">
+					Documents
+				</a>
+			</li>
+			<li>
+				<a href="/modules/foreach">
+					ForEach
+				</a>
+			</li>
+			<li>
+				<a href="/modules/frontmatter">
+					FrontMatter
+				</a>
+			</li>
+			<li>
+				<a href="/modules/groupby">
+					GroupBy
+				</a>
+			</li>
+			<li>
+				<a href="/modules/if">
+					If
+				</a>
+			</li>
+			<li>
+				<a href="/modules/merge">
+					Merge
+				</a>
+			</li>
+			<li>
+				<a href="/modules/modulecollection">
+					ModuleCollection
+				</a>
+			</li>
+			<li>
+				<a href="/modules/orderby">
+					OrderBy
+				</a>
+			</li>
+			<li>
+				<a href="/modules/paginate">
+					Paginate
+				</a>
+			</li>
+			<li>
+				<a href="/modules/switch">
+					Switch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/take">
+					Take
+				</a>
+			</li>
+			<li>
+				<a href="/modules/where">
+					Where
+				</a>
+			</li>
+			<li class="header">Extensibility</li>
+			<li>
+				<a href="/modules/execute">
+					Execute
+				</a>
+			</li>
+			<li>
+				<a href="/modules/trace">
+					Trace
+				</a>
+			</li>
+			<li class="header">Input/Output</li>
+			<li>
+				<a href="/modules/copyfiles">
+					CopyFiles
+				</a>
+			</li>
+			<li>
+				<a href="/modules/download">
+					Download
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readapplicationinput">
+					ReadApplicationInput
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readfiles">
+					ReadFiles
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readproject">
+					ReadProject
+				</a>
+			</li>
+			<li>
+				<a href="/modules/readsolution">
+					ReadSolution
+				</a>
+			</li>
+			<li>
+				<a href="/modules/unwrittenfiles">
+					UnwrittenFiles
+				</a>
+			</li>
+			<li>
+				<a href="/modules/writefiles">
+					WriteFiles
+				</a>
+			</li>
+			<li class="header">Metadata</li>
+			<li>
+				<a href="/modules/analyzecsharp">
+					AnalyzeCSharp
+				</a>
+			</li>
+			<li>
+				<a href="/modules/copymeta">
+					CopyMeta
+				</a>
+			</li>
+			<li>
+				<a href="/modules/directorymeta">
+					DirectoryMeta
+				</a>
+			</li>
+			<li>
+				<a href="/modules/excerpt">
+					Excerpt
+				</a>
+			</li>
+			<li>
+				<a href="/modules/filename">
+					FileName
+				</a>
+			</li>
+			<li>
+				<a href="/modules/generatemeta">
+					GenerateMeta
+				</a>
+			</li>
+			<li>
+				<a href="/modules/gitcommits">
+					GitCommits
+				</a>
+			</li>
+			<li>
+				<a href="/modules/gitcontributors">
+					GitContributors
+				</a>
+			</li>
+			<li>
+				<a href="/modules/github">
+					GitHub
+				</a>
+			</li>
+			<li>
+				<a href="/modules/htmlquery">
+					HtmlQuery
+				</a>
+			</li>
+			<li>
+				<a href="/modules/indx">
+					Index
+				</a>
+			</li>
+			<li>
+				<a href="/modules/json">
+					Json
+				</a>
+			</li>
+			<li>
+				<a href="/modules/meta">
+					Meta
+				</a>
+			</li>
+			<li>
+				<a href="/modules/validatemeta">
+					ValidateMeta&lt;T&gt;
+				</a>
+			</li>
+			<li>
+				<a href="/modules/xmp">
+					Xmp
+				</a>
+			</li>
+			<li>
+				<a href="/modules/yaml">
+					Yaml
+				</a>
+			</li>
+			<li class="header">Templates</li>
+			<li>
+				<a href="/modules/less">
+					Less
+				</a>
+			</li>
+			<li>
+				<a href="/modules/markdown">
+					Markdown
+				</a>
+			</li>
+			<li>
+				<a href="/modules/razor">
+					Razor
+				</a>
+			</li>
+			<li>
+				<a href="/modules/xslt">
+					Xslt
+				</a>
+			</li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+<section class="content-header">
+	<h1>Combine</h1>
+</section>
+<section class="content">
+	  
+	
+			<div class="lead">
+    Combines all of the input documents into a single output document.
+    </div>
+			<div>
+    The first input document serves as the basis for the combine operation. The content of every
+    following input document is appended to the existing combined content, and the metadata of
+    every following document replaces that of the previous documents (any metadata for which
+    keys don't exist in the following documents is retained). A single output document with
+    the combined content and metadata is output.
+    </div>
+		<h1>Usage</h1>
+		<hr />
+		<ul>			
+				<li><p><strong><code>Combine()</code></strong></p></li>
+
+		</ul>
+	
+</section>                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            $(document).load(function() {
+                mermaid.initialize();
+            });
+        </script>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

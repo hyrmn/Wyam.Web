@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - API - IExecutionContext.GetLink(NormalizedPath, string, DirectoryPath, bool, bool) Method</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jQuery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">   
+                     
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>   
+                         
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                                        
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li class="active"><a href="/api">API</a></li>
+                                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    	
+	<script src="/Scripts/lunr.min.js"></script>
+	<script src="/Scripts/searchIndex.js"></script>
+	<div class="sidebar-form">
+		<div class="input-group">
+			<input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+			<span class="input-group-btn">
+				<button class="btn btn-flat"><i class="fa fa-search"></i></button>
+			</span>
+		</div>
+	</div>
+	<div id="search-results">
+	</div>
+	<script>
+		function runSearch(query){
+			$("#search-results").empty();			
+			if( query.length < 2 ){
+				return;
+			}			
+			var results = searchModule.search(query);
+			var listHtml = "<ul class='sidebar-menu'>";	
+			listHtml += "<li class='header'>Search Results</li>";	
+			if(results.length == 0 ){
+				listHtml += "<li>No results found</li>";
+			} else {					
+				for(var i = 0; i < results.length; ++i){
+					var res = results[i];
+					listHtml += "<li><a href='" + res.url + "'>" + res.title + "</a></li>";
+				}				
+			}
+			listHtml += "</ul><hr />";				
+			$("#search-results").append(listHtml);
+		}
+
+		$(document).ready(function(){
+			$("#search").on('input propertychange paste', function() {
+				runSearch($("#search").val());
+			});
+		});
+	</script>
+
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+			<li class="header">Namespace</li>
+		<li><a href="/api/Wyam.Common.Execution">Wyam<wbr>.Common<wbr>.Execution</a></li>
+		<li class="header">Type</li>
+		<li><a href="/api/Wyam.Common.Execution/29BCB760">IExecutionContext</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Property Members</li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/152A8FCE">ApplicationInput</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/246D35A5">Assemblies</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/96F5D2A0">Documents</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/AB80E1ED">ExecutionCache</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/F2175714">FileSystem</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/73AD957F">GlobalMetadata</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/34208FE0">Module</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/45853863">Namespaces</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/1ACDE872">Pipeline</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/32C39B96">RawConfigAssembly</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/06B451EA">Settings</a></li>
+			<li class="header">Method Members</li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/55FF7743">Execute<wbr>(IEnumerable<wbr>&lt;IModule&gt;<wbr>, IEnumerable<wbr>&lt;IDocument&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/1DD6A97B">Execute<wbr>(IEnumerable<wbr>&lt;IModule&gt;<wbr>, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/20B453CE">Execute<wbr>(IEnumerable<wbr>&lt;IModule&gt;<wbr>, IEnumerable<wbr>&lt;MetadataItem&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/5797EAF5">GetDocument<wbr>()<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/775B035F">GetDocument<wbr>(FilePath, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/D3D5BED5">GetDocument<wbr>(string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/CEA1F1B5">GetDocument<wbr>(FilePath, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/E47CFB3B">GetDocument<wbr>(Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/81A9D817">GetDocument<wbr>(IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/4321786A">GetDocument<wbr>(IDocument, FilePath, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/73E58D47">GetDocument<wbr>(IDocument, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/3404B9E1">GetDocument<wbr>(IDocument, FilePath, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/A6A6978B">GetDocument<wbr>(IDocument, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/47B3744C">GetDocument<wbr>(IDocument, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/0ED52383">GetLink<wbr>(IMetadata, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/585C021A">GetLink<wbr>(IMetadata, string, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/C355D189">GetLink<wbr>(NormalizedPath, bool)<wbr></a></li>
+				<li class="active"><a href="/api/api/Wyam.Common.Execution/29BCB760/56070589">GetLink<wbr>(NormalizedPath, string, DirectoryPath, bool, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.Execution/29BCB760/C8F79243">TryConvert<wbr>&lt;T&gt;<wbr><wbr>(object, T)<wbr></a></li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+
+<section class="content-header">
+			<h3><a href="/api/Wyam.Common.Execution/29BCB760">IExecutionContext</a>.</h3>
+
+	<h1>GetLink<wbr>(NormalizedPath, string, DirectoryPath, bool, bool)<wbr> <small>Method</small></h1>
+	<hr />
+</section>
+<section class="content smaller">
+	  
+			<dl class="dl-horizontal">		
+				<dt>Namespace</dt>
+				<dd><a href="/api/Wyam.Common.Execution">Wyam<wbr>.Common<wbr>.Execution</a></dd>
+			
+				<dt>Containing Type</dt>
+				<dd><a href="/api/Wyam.Common.Execution/29BCB760">IExecutionContext</a></dd>		
+			
+		</dl>
+		<hr />	
+
+
+
+	<h1>Summary</h1>
+	<div class="lead">
+    Converts the path into a string appropriate for use as a link, overriding one or more 
+    settings from the <a href="/api/Wyam.Common.Configuration/231ED196">IReadOnlySettings</a>.
+    </div>
+
+
+	<h1>Syntax</h1>
+	<pre class="prettyprint">string GetLink(NormalizedPath path, string host, DirectoryPath root, bool hideIndexPages, bool hideExtensions)</pre>
+
+
+
+
+	<h1>Parameters</h1>
+	<div class="box">
+		<div class="box-body no-padding">
+			<table class="table table-striped table-hover three-cols">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+					<tr>
+						<td>path</td>
+						<td><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></td>
+						<td>The path to generate a link for.</td>
+					</tr>
+					<tr>
+						<td>host</td>
+						<td>string</td>
+						<td>The host to use for the link.</td>
+					</tr>
+					<tr>
+						<td>root</td>
+						<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
+						<td>The root of the link. The value of this parameter is prepended to the path.</td>
+					</tr>
+					<tr>
+						<td>hideIndexPages</td>
+						<td>bool</td>
+						<td>If set to <code>true</code>, "index.htm" and "index.html" file
+    names will be hidden.</td>
+					</tr>
+					<tr>
+						<td>hideExtensions</td>
+						<td>bool</td>
+						<td>If set to <code>true</code>, extensions will be hidden.</td>
+					</tr>
+			</table>
+		</div>
+	</div>	
+
+
+	<h1>Return Value</h1>
+	<div class="box">
+		<div class="box-body no-padding">
+			<table class="table table-striped table-hover two-cols">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>string</td>
+					<td>
+    A string representation of the path suitable for a web link with the specified
+    root and hidden file name or extension.
+    </td>
+				</tr>
+			</table>
+		</div>
+	</div>	
+
+
+
+
+
+
+
+</section>
+                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            $(document).load(function() {
+                mermaid.initialize();
+            });
+        </script>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

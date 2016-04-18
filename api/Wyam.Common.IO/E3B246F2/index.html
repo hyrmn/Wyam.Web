@@ -129,19 +129,22 @@
 		<li><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Class Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/712BD29F">DirectoryEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/2CA442EA">FileEqualityComparer</a></li>
 				<li class="active"><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/43DC142F">PathCollection<wbr>&lt;TPath&gt;<wbr></a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/3A8E38EE">PathComparer</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/A3AE1875">PathHelper</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/D84F401B">SafeIOHelper</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/5FDE4AAC">PathEqualityComparer</a></li>
 			<li class="header">Interface Types</li>
-				<li class=""><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/6E3AD006">IFileProvider</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/4B5BECA2">IFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8E17CFD1">IFileSystem</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/57C3E2C2">IFileSystemInfo</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
 
 
                     </ul>
@@ -165,6 +168,14 @@
 				<dt>Namespace</dt>
 				<dd><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></dd>
 							
+				<dt>Interfaces</dt>
+				<dd>
+					<ul class="list-inline">
+							<li>IComparable<wbr>&lt;NormalizedPath&gt;<wbr></li>								
+							<li>IComparable</li>								
+							<li>IEquatable<wbr>&lt;NormalizedPath&gt;<wbr></li>								
+					</ul>
+				</dd>
 			
 				<dt>Base Type</dt>
 				<dd><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></dd>				
@@ -182,7 +193,8 @@
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public sealed class FilePath : NormalizedPath</pre>
+	<pre class="prettyprint">public sealed class FilePath : NormalizedPath, IComparable&lt;NormalizedPath&gt;, IComparable, 
+    IEquatable&lt;NormalizedPath&gt;</pre>
 
 
 
@@ -198,9 +210,33 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/6B06D615.html">FilePath<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/6B06D615">FilePath<wbr>(string)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class.
+    The path will be considered absolute if the underlying OS file system
+    considers it absolute.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/35033DAF">FilePath<wbr>(string, bool)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class..
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/D153D38D">FilePath<wbr>(string, string)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
+    with the specified provider.
+    The path will be considered absolute if the underlying OS file system
+    considers it absolute.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/48CD469E">FilePath<wbr>(string, string, bool)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
+    with the specified provider.
     </td>
 							</tr>
 					</table>
@@ -222,7 +258,35 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/6F3A9AFD.html">HasExtension</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/936450BE">Directory</a></td>
+								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
+								<td>
+    Gets the directory part of the path.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/3E1D9F67">Extension</a></td>
+								<td>string</td>
+								<td>
+    Gets the file extension (including the preceding ".").
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/8666B7D6">FileName</a></td>
+								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
+								<td>
+    Gets the filename.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/D946FFB0">FileNameWithoutExtension</a></td>
+								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
+								<td>
+    Gets the filename without it's extension.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/6F3A9AFD">HasExtension</a></td>
 								<td>bool</td>
 								<td>
     Gets a value indicating whether this path has a file extension.
@@ -246,59 +310,31 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/16D5AC05.html">AppendExtension<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/16D5AC05">AppendExtension<wbr>(string)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
     Appends a file extension to the path.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/00973A29.html">ChangeExtension<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/00973A29">ChangeExtension<wbr>(string)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
     Changes the file extension of the path.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/E5F53DAD.html">Collapse<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/E5F53DAD">Collapse<wbr>()<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
     Collapses a <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> containing ellipses.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/5302F4D2.html">FromString<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/5302F4D2">FromString<wbr>(string)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
     Performs a conversion from System.String to <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a>.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/1ABD2FD0.html">GetDirectory<wbr>()<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
-								<td>
-    Gets the directory part of the path.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/B7C4E009.html">GetExtension<wbr>()<wbr></a></td>
-								<td>string</td>
-								<td>
-    Gets the file extension.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/2FA75A62.html">GetFilename<wbr>()<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
-								<td>
-    Gets the filename.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2/9E3C3FC4.html">GetFilenameWithoutExtension<wbr>()<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
-								<td>
-    Gets the filename without it's extension.
     </td>
 							</tr>
 					</table>

@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -513,7 +543,7 @@
 
 					</li>				
 					<li>
-								<p><strong><code>WithWritePath(Func&lt;IMetadata, string&gt; writePath)</code></strong></p>
+								<p><strong><code>WithWritePath(Func&lt;IMetadata, FilePath&gt; writePath)</code></strong></p>
 								<p>
     This changes the default behavior for the generated <code>WritePath</code> metadata value, which is to place files in a path 
     with the same name as their containing namespace. Namespace documents will be named "index.html" while other type documents 
@@ -522,16 +552,17 @@
     if that's not the case a new WritePath function will have to be supplied using this method.
     </p>
 								<ul>
-										<li><p><code>writePath</code></p><p>A function that takes the metadata for a given symbol and returns a <code>string</code> to 
+										<li><p><code>writePath</code></p><p>A function that takes the metadata for a given symbol and returns a <code>FilePath</code> to 
     use for the <code>WritePath</code> metadata value.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>WithWritePathPrefix(string prefix)</code></strong></p>
+								<p><strong><code>WithWritePathPrefix(DirectoryPath prefix)</code></strong></p>
 								<p>
     This lets you add a prefix to the default <code>WritePath</code> behavior (such as nesting symbol documents inside 
-    a folder like "api/"). This method has no effect if you've supplied a custom <code>WritePath</code> behavior.
+    a folder like "api/"). Whatever you supply will be combined with the <code>WritePath</code>. This method has no 
+    effect if you've supplied a custom <code>WritePath</code> behavior.
     </p>
 								<ul>
 										<li><p><code>prefix</code></p><p>The prefix to use for each generated <code>WritePath</code>.</p></li>
@@ -799,7 +830,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFileDir</code></strong>: <code>string</code>
+							<strong><code>RelativeFileDir</code></strong>: <code>DirectoryPath</code>
 						</p>
 							<p>
       Same as the directory of <code>WritePath</code>. This metadata key is available for compatibility with other modules.
@@ -808,7 +839,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFilePath</code></strong>: <code>string</code>
+							<strong><code>RelativeFilePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>
       Same as <code>WritePath</code>. This metadata key is available for compatibility with other modules.
@@ -817,7 +848,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFilePathBase</code></strong>: <code>string</code>
+							<strong><code>RelativeFilePathBase</code></strong>: <code>FilePath</code>
 						</p>
 							<p>
       Same as <code>WritePath</code> without the file extension. This metadata key is available for compatibility with other modules.
@@ -951,7 +982,7 @@
 					<li>
 						<p>
 
-							<strong><code>WritePath</code></strong>: <code>string</code>
+							<strong><code>WritePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>
       A write path is generated for each symbol during code analysis and serves several purposes. First, it's

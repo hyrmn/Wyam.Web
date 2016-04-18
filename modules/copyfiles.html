@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -414,7 +444,7 @@
 	  
 	
 			<div class="lead">
-    Copies the content of files from the file system from one location on disk to another location.
+    Copies the content of files from one path on to another path.
     </div>
 			<div>
     For each output document, several metadata values are set with information about the file. 
@@ -427,28 +457,29 @@
 		<hr />
 		<ul>			
 					<li>
-								<p><strong><code>CopyFiles(DocumentConfig sourcePath)</code></strong></p>
+								<p><strong><code>CopyFiles(DocumentConfig patterns)</code></strong></p>
 								<p>
-    Copies all files that match the specified path. This allows you to specify different search paths depending on the input document.
+    Copies all files that match the specified globbing patterns and/or absolute paths. This allows you to specify different 
+    patterns and/or paths depending on the input document.
     When this constructor is used, the module is evaluated once for every input document, which may result in copying the same file
     more than once (and may also result in IO conflicts since copying is typically done in parallel). It is recommended you only
     specify a function-based source path if there will be no overlap between the path returned from each input document.
     </p>
 								<ul>
-										<li><p><code>sourcePath</code></p><p>A delegate that returns a <code>string</code> with the desired search path.</p></li>
+										<li><p><code>patterns</code></p><p>A delegate that returns one or more globbing patterns and/or absolute paths.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>CopyFiles(string searchPattern)</code></strong></p>
+								<p><strong><code>CopyFiles(params string[] patterns)</code></strong></p>
 								<p>
-    Copies all files that match the specified search pattern. When this constructor is used, the module is evaluated only once against
-    an empty input document. This makes it possible to string multiple CopyFiles modules together in one pipeline. Keep in mind that the
-    result of the pipeline in this case will be documents representing the files copied only by the last CopyFiles module in the pipeline
-    (since the output documents of the previous CopyFiles modules will have been consumed by the last one).
+    Copies all files that match the specified globbing patterns and/or absolute paths. When this constructor is used, the module is 
+    evaluated only once against empty input document. This makes it possible to string multiple CopyFiles modules together in one pipeline. 
+    Keep in mind that the result of the whole pipeline in this case will be documents representing the files copied only by the last CopyFiles 
+    module in the pipeline (since the output documents of the previous CopyFiles modules will have been consumed by the last one).
     </p>
 								<ul>
-										<li><p><code>searchPattern</code></p><p>The search pattern to use.</p></li>
+										<li><p><code>patterns</code></p><p>The globbing patterns and/or absolute paths to read.</p></li>
 								</ul>
 
 					</li>				
@@ -458,27 +489,12 @@
 			<p>Chain these methods together after the constructor to modify behavior.</p>
 			<ul>
 					<li>
-								<p><strong><code>FromAllDirectories()</code></strong></p>
-								<p>
-    Specifies that all directories should be searched.
-    </p>
-
-					</li>				
-					<li>
-								<p><strong><code>FromTopDirectoryOnly()</code></strong></p>
-								<p>
-    Specifies that only the top-level directory should be searched.
-    </p>
-
-					</li>				
-					<li>
-								<p><strong><code>To(Func&lt;string, string&gt; destinationPath)</code></strong></p>
+								<p><strong><code>To(Func&lt;IFile, FilePath&gt; destinationPath)</code></strong></p>
 								<p>
     Specifies an alternate destination path for each file (by default files are copied to their 
-    same relative path in the output directory). The input to the function is the full source 
-    file path (including file name) and the output should be the full file path (including 
-    file name) of the destination file. If the delegate returns <code>null</code> for a particular
-    file, that file will not be copied.
+    same relative path in the output directory). The output of the function should be the full 
+    file path (including file name) of the destination file. If the delegate returns 
+    <code>null</code> for a particular file, that file will not be copied.
     </p>
 								<ul>
 										<li><p><code>destinationPath</code></p><p>A delegate that specifies an alternate destination.</p></li>
@@ -486,34 +502,12 @@
 
 					</li>				
 					<li>
-								<p><strong><code>Where(Func&lt;string, bool&gt; predicate)</code></strong></p>
+								<p><strong><code>Where(Func&lt;IFile, bool&gt; predicate)</code></strong></p>
 								<p>
-    Specifies a predicate that must be satisfied for the file to be 
-    copied. The input to the predicate is the full path to the source file.
+    Specifies a predicate that must be satisfied for the file to be copied.
     </p>
 								<ul>
 										<li><p><code>predicate</code></p><p>A predicate that returns <code>true</code> if the file should be copied.</p></li>
-								</ul>
-
-					</li>				
-					<li>
-								<p><strong><code>WithoutExtensions(params string[] withoutExtensions)</code></strong></p>
-								<p>
-    Specifies that files with the given extensions should not be copied. This allows you to exclude certain
-    file type from the copy operation.
-    </p>
-								<ul>
-										<li><p><code>withoutExtensions</code></p><p>The extensions to exclude.</p></li>
-								</ul>
-
-					</li>				
-					<li>
-								<p><strong><code>WithSearchOption(SearchOption searchOption)</code></strong></p>
-								<p>
-    Specifies whether to search all directories or just the top directory.
-    </p>
-								<ul>
-										<li><p><code>searchOption</code></p><p>The search option to use.</p></li>
 								</ul>
 
 					</li>				
@@ -525,14 +519,14 @@
 					<li>
 						<p>
 
-							<strong><code>DestinationFilePath</code></strong>: <code>string</code>
+							<strong><code>DestinationFilePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full path (including file name) of the destination file.</p>
 					</li>
 					<li>
 						<p>
 
-							<strong><code>SourceFilePath</code></strong>: <code>string</code>
+							<strong><code>SourceFilePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full path (including file name) of the source file.</p>
 					</li>

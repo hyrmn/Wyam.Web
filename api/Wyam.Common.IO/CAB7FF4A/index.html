@@ -129,19 +129,22 @@
 		<li><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Class Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/712BD29F">DirectoryEqualityComparer</a></li>
 				<li class="active"><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/2CA442EA">FileEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/43DC142F">PathCollection<wbr>&lt;TPath&gt;<wbr></a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/3A8E38EE">PathComparer</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/A3AE1875">PathHelper</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/D84F401B">SafeIOHelper</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/5FDE4AAC">PathEqualityComparer</a></li>
 			<li class="header">Interface Types</li>
-				<li class=""><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/6E3AD006">IFileProvider</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/4B5BECA2">IFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8E17CFD1">IFileSystem</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/57C3E2C2">IFileSystemInfo</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
 
 
                     </ul>
@@ -165,6 +168,14 @@
 				<dt>Namespace</dt>
 				<dd><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></dd>
 							
+				<dt>Interfaces</dt>
+				<dd>
+					<ul class="list-inline">
+							<li>IComparable<wbr>&lt;NormalizedPath&gt;<wbr></li>								
+							<li>IComparable</li>								
+							<li>IEquatable<wbr>&lt;NormalizedPath&gt;<wbr></li>								
+					</ul>
+				</dd>
 			
 				<dt>Base Type</dt>
 				<dd><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></dd>				
@@ -182,7 +193,8 @@
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public sealed class DirectoryPath : NormalizedPath</pre>
+	<pre class="prettyprint">public sealed class DirectoryPath : NormalizedPath, IComparable&lt;NormalizedPath&gt;, IComparable, 
+    IEquatable&lt;NormalizedPath&gt;</pre>
 
 
 
@@ -198,9 +210,33 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A/7A474536.html">DirectoryPath<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/7A474536">DirectoryPath<wbr>(string)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class.
+    The path will be considered absolute if the underlying OS file system
+    considers it absolute.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/1EB71A48">DirectoryPath<wbr>(string, bool)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/DF7F4A12">DirectoryPath<wbr>(string, string)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class
+    with the specified provider.
+    The path will be considered absolute if the underlying OS file system
+    considers it absolute.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/80A81719">DirectoryPath<wbr>(string, string, bool)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class
+    with the specified provider.
     </td>
 							</tr>
 					</table>
@@ -209,6 +245,36 @@
 		
 
 
+		
+			<h1>Properties</h1>
+			<div class="box">
+				<div class="box-body no-padding">
+					<table class="table table-striped table-hover three-cols">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Value</th>
+								<th>Summary</th>
+							</tr>
+						</thead>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/C52E1278">Name</a></td>
+								<td>string</td>
+								<td>
+    Gets the name of the directory.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/079332B6">Parent</a></td>
+								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
+								<td>
+    Gets the parent path.
+    </td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		
 
 		
 			<h1>Methods</h1>
@@ -223,47 +289,57 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A/42604812.html">Collapse<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/42604812">Collapse<wbr>()<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
 								<td>
     Collapses a <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> containing ellipses.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A/588F46A3.html">Combine<wbr>(DirectoryPath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/588F46A3">Combine<wbr>(DirectoryPath)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
 								<td>
     Combines the current path with another <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a>.
-    The provided <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> must be relative.
+    If the provided <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> is not relative, then it is returned.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A/D183B267.html">CombineFile<wbr>(FilePath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/D183B267">CombineFile<wbr>(FilePath)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
     Combines the current path with a <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a>.
-    The provided <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> must be relative.
+    If the provided <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> is not relative, then it is returned.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A/F1F220ED.html">FromString<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/F1F220ED">FromString<wbr>(string)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
 								<td>
     Performs a conversion from System.String to <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a>.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A/8055FC4C.html">GetDirectoryName<wbr>()<wbr></a></td>
-								<td>string</td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/E3D20F9F">GetFilePath<wbr>(FilePath)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
-    Gets the name of the directory.
+    Combines the current path with the file name of a <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a>. The current file provider
+    is maintained.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/CAB7FF4A/E3D20F9F.html">GetFilePath<wbr>(FilePath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/CC115B50">GetRelativePath<wbr>(DirectoryPath)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
+								<td>
+    Get the relative path to another directory. If this path and the target path
+    do not share the same provider, the target path is returned.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/C87DC7A4">GetRelativePath<wbr>(FilePath)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
-    Combines the current path with the file name of a <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a>.
+    Get the relative path to another file. If this path and the target path
+    do not share the same provider, the target path is returned.
     </td>
 							</tr>
 					</table>

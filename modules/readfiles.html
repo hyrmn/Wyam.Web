@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -418,31 +448,32 @@
     </div>
 			<div>
     For each output document, several metadata values are set with information about the file. This module will
-    be executed once and input documents will be ignored if a search path is specified. Otherwise, if a delegate
-    is specified the module will be executed once per input document and the resulting output documents will be
+    be executed once and input documents will be ignored if search patterns are specified. Otherwise, if a delegate
+    is specified, the module will be executed once per input document and the resulting output documents will be
     aggregated. In either case, the input documents will not be returned as output of this module. If you want to add 
-    additional files to a current pipeline, you should enclose your ReadFiles modules with <a href="/modules/concat.html">Concat</a>.
+    additional files to a current pipeline, you should enclose your ReadFiles modules with <a href="/modules/concat">Concat</a>.
     </div>
 		<h1>Usage</h1>
 		<hr />
 		<ul>			
 					<li>
-								<p><strong><code>ReadFiles(DocumentConfig path)</code></strong></p>
+								<p><strong><code>ReadFiles(DocumentConfig patterns)</code></strong></p>
 								<p>
-    Reads all files that match the specified path. This allows you to specify different search paths depending on the input.
+    Reads all files that match the specified globbing patterns and/or absolute paths. This allows you to 
+    specify different patterns and/or paths depending on the input.
     </p>
 								<ul>
-										<li><p><code>path</code></p><p>A delegate that returns a <code>string</code> with the search path.</p></li>
+										<li><p><code>patterns</code></p><p>A delegate that returns one or more globbing patterns and/or absolute paths.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>ReadFiles(string searchPattern)</code></strong></p>
+								<p><strong><code>ReadFiles(params string[] patterns)</code></strong></p>
 								<p>
-    Reads all files that match the specified search pattern.
+    Reads all files that match the specified globbing patterns and/or absolute paths.
     </p>
 								<ul>
-										<li><p><code>searchPattern</code></p><p>The search pattern to use.</p></li>
+										<li><p><code>patterns</code></p><p>The globbing patterns and/or absolute paths to read.</p></li>
 								</ul>
 
 					</li>				
@@ -452,47 +483,12 @@
 			<p>Chain these methods together after the constructor to modify behavior.</p>
 			<ul>
 					<li>
-								<p><strong><code>FromAllDirectories()</code></strong></p>
+								<p><strong><code>Where(Func&lt;IFile, bool&gt; predicate)</code></strong></p>
 								<p>
-    Specifies that all directories should be searched.
-    </p>
-
-					</li>				
-					<li>
-								<p><strong><code>FromTopDirectoryOnly()</code></strong></p>
-								<p>
-    Specifies that only the top-level directory should be searched.
-    </p>
-
-					</li>				
-					<li>
-								<p><strong><code>Where(Func&lt;string, bool&gt; predicate)</code></strong></p>
-								<p>
-    Specifies a predicate that must be satisfied for the file to be 
-    copied. The input to the predicate is the full path to the source file.
+    Specifies a predicate that must be satisfied for the file to be read.
     </p>
 								<ul>
-										<li><p><code>predicate</code></p><p>A predicate that returns <code>true</code> if the file should be copied.</p></li>
-								</ul>
-
-					</li>				
-					<li>
-								<p><strong><code>WithExtensions(params string[] extensions)</code></strong></p>
-								<p>
-    Specifies that only files with the given extensions should be read.
-    </p>
-								<ul>
-										<li><p><code>extensions</code></p><p>The extensions to include.</p></li>
-								</ul>
-
-					</li>				
-					<li>
-								<p><strong><code>WithSearchOption(SearchOption searchOption)</code></strong></p>
-								<p>
-    Specifies whether to search all directories or just the top directory.
-    </p>
-								<ul>
-										<li><p><code>searchOption</code></p><p>The search option to use.</p></li>
+										<li><p><code>predicate</code></p><p>A predicate that returns <code>true</code> if the file should be read.</p></li>
 								</ul>
 
 					</li>				
@@ -504,7 +500,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFileDir</code></strong>: <code>string</code>
+							<strong><code>RelativeFileDir</code></strong>: <code>DirectoryPath</code>
 						</p>
 							<p>The relative directory of the file 
     from the Wyam input folder.</p>
@@ -512,7 +508,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFilePath</code></strong>: <code>string</code>
+							<strong><code>RelativeFilePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The relative path to the file (including file name)
     from the Wyam input folder.</p>
@@ -520,7 +516,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFilePathBase</code></strong>: <code>string</code>
+							<strong><code>RelativeFilePathBase</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The relative path to the file (including file name)
     from the Wyam input folder without the file extension.</p>
@@ -528,7 +524,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileBase</code></strong>: <code>string</code>
+							<strong><code>SourceFileBase</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The file name without any extension. Equivalent 
     to <code>Path.GetFileNameWithoutExtension(SourceFilePath)</code>.</p>
@@ -536,7 +532,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileDir</code></strong>: <code>string</code>
+							<strong><code>SourceFileDir</code></strong>: <code>DirectoryPath</code>
 						</p>
 							<p>The full absolute directory of the file. 
     Equivalent to <code>Path.GetDirectoryName(SourceFilePath).</code></p>
@@ -552,7 +548,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileName</code></strong>: <code>string</code>
+							<strong><code>SourceFileName</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full file name. Equivalent 
     to <code>Path.GetFileName(SourceFilePath)</code>.</p>
@@ -560,14 +556,14 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFilePath</code></strong>: <code>string</code>
+							<strong><code>SourceFilePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full absolute path of the file (including file name).</p>
 					</li>
 					<li>
 						<p>
 
-							<strong><code>SourceFilePathBase</code></strong>: <code>string</code>
+							<strong><code>SourceFilePathBase</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full absolute path of the file (including file name) 
     without the file extension.</p>
@@ -575,7 +571,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileRoot</code></strong>: <code>string</code>
+							<strong><code>SourceFileRoot</code></strong>: <code>DirectoryPath</code>
 						</p>
 							<p>The absolute root search path without any nested directories 
     (I.e., the path that was searched, and possibly descended, for the given pattern).</p>

@@ -194,41 +194,14 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.Documents/4B1BCC2A/5D4C00CC.html">GetDocument<wbr>(IExecutionContext)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Documents/4B1BCC2A/2D101AA8">GetDocument<wbr>(IExecutionContext)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
 								<td>
     Gets a new document with default initial metadata.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Documents/4B1BCC2A/359C31E2.html">GetDocument<wbr>(IExecutionContext, IDocument, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
-								<td>
-    Clones the specified source document with identical content and additional metadata (all existing metadata is retained)
-    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.Documents/4B1BCC2A/4D8EC568.html">GetDocument<wbr>(IExecutionContext, IDocument, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
-								<td>
-    Clones the specified source document with a new content stream, and additional metadata (all existing metadata is retained)
-    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
-    If <span name="disposeStream" class="paramref">disposeStream</span> is true (which it is by default), the provided 
-    System.IO.Stream will automatically be disposed when the document is disposed (I.e., the 
-    document takes ownership of the System.IO.Stream).
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.Documents/4B1BCC2A/F55D49D3.html">GetDocument<wbr>(IExecutionContext, IDocument, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
-								<td>
-    Clones the specified source document with new content and additional metadata (all existing metadata is retained)
-    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.Documents/4B1BCC2A/1207086A.html">GetDocument<wbr>(IExecutionContext, IDocument, string, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Documents/4B1BCC2A/60847176">GetDocument<wbr>(IExecutionContext, IDocument, FilePath, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
 								<td>
     Clones the specified source document with a new source, new content stream, and additional metadata (all existing metadata is retained)
@@ -239,10 +212,37 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Documents/4B1BCC2A/094B501A.html">GetDocument<wbr>(IExecutionContext, IDocument, string, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Documents/4B1BCC2A/01FEC7AB">GetDocument<wbr>(IExecutionContext, IDocument, FilePath, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
 								<td>
     Clones the specified source document with a new source, new content, and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Documents/4B1BCC2A/F9C2C80B">GetDocument<wbr>(IExecutionContext, IDocument, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with identical content and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Documents/4B1BCC2A/030D74E9">GetDocument<wbr>(IExecutionContext, IDocument, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with a new content stream, and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    If <span name="disposeStream" class="paramref">disposeStream</span> is true (which it is by default), the provided 
+    System.IO.Stream will automatically be disposed when the document is disposed (I.e., the 
+    document takes ownership of the System.IO.Stream).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Documents/4B1BCC2A/ADA6464D">GetDocument<wbr>(IExecutionContext, IDocument, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with new content and additional metadata (all existing metadata is retained)
     or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
     </td>
 							</tr>

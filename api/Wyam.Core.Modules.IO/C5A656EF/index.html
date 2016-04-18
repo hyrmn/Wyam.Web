@@ -199,15 +199,16 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/3805055B.html">ReadFiles<wbr>(DocumentConfig)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Core.Modules.IO/C5A656EF/3805055B">ReadFiles<wbr>(DocumentConfig)<wbr></a></td>
 									<td>
-    Reads all files that match the specified path. This allows you to specify different search paths depending on the input.
+    Reads all files that match the specified globbing patterns and/or absolute paths. This allows you to 
+    specify different patterns and/or paths depending on the input.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/9206C80C.html">ReadFiles<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Core.Modules.IO/C5A656EF/D1541FF1">ReadFiles<wbr>(string[])<wbr></a></td>
 									<td>
-    Reads all files that match the specified search pattern.
+    Reads all files that match the specified globbing patterns and/or absolute paths.
     </td>
 							</tr>
 					</table>
@@ -230,44 +231,15 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/AE02354C.html">Execute<wbr>(IReadOnlyList<wbr>&lt;IDocument&gt;<wbr>, IExecutionContext)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Core.Modules.IO/C5A656EF/DE5E2F28">Execute<wbr>(IReadOnlyList<wbr>&lt;IDocument&gt;<wbr>, IExecutionContext)<wbr></a></td>
 								<td>IEnumerable<wbr>&lt;IDocument&gt;<wbr></td>
 								<td></td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/7A0A8F41.html">FromAllDirectories<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Core.Modules.IO/C5A656EF/90F0E7DF">Where<wbr>(Func<wbr>&lt;IFile, bool&gt;<wbr>)<wbr></a></td>
 								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF">ReadFiles</a></td>
 								<td>
-    Specifies that all directories should be searched.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/6A0A98EE.html">FromTopDirectoryOnly<wbr>()<wbr></a></td>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF">ReadFiles</a></td>
-								<td>
-    Specifies that only the top-level directory should be searched.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/A6F710E8.html">Where<wbr>(Func<wbr>&lt;string, bool&gt;<wbr>)<wbr></a></td>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF">ReadFiles</a></td>
-								<td>
-    Specifies a predicate that must be satisfied for the file to be 
-    copied. The input to the predicate is the full path to the source file.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/A41F8743.html">WithExtensions<wbr>(string[])<wbr></a></td>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF">ReadFiles</a></td>
-								<td>
-    Specifies that only files with the given extensions should be read.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF/F346AA99.html">WithSearchOption<wbr>(SearchOption)<wbr></a></td>
-								<td><a href="/api/Wyam.Core.Modules.IO/C5A656EF">ReadFiles</a></td>
-								<td>
-    Specifies whether to search all directories or just the top directory.
+    Specifies a predicate that must be satisfied for the file to be read.
     </td>
 							</tr>
 					</table>
@@ -279,8 +251,8 @@
 	<h1>Remarks</h1>
 	<div>
     For each output document, several metadata values are set with information about the file. This module will
-    be executed once and input documents will be ignored if a search path is specified. Otherwise, if a delegate
-    is specified the module will be executed once per input document and the resulting output documents will be
+    be executed once and input documents will be ignored if search patterns are specified. Otherwise, if a delegate
+    is specified, the module will be executed once per input document and the resulting output documents will be
     aggregated. In either case, the input documents will not be returned as output of this module. If you want to add 
     additional files to a current pipeline, you should enclose your ReadFiles modules with <a href="/api/Wyam.Core.Modules.Control/7374D090">Concat</a>.
     </div>

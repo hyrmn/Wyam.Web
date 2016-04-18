@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - API - IExecutionContext Interface</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jQuery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">   
+                     
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>   
+                         
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                                        
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li class="active"><a href="/api">API</a></li>
+                                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    	
+	<script src="/Scripts/lunr.min.js"></script>
+	<script src="/Scripts/searchIndex.js"></script>
+	<div class="sidebar-form">
+		<div class="input-group">
+			<input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+			<span class="input-group-btn">
+				<button class="btn btn-flat"><i class="fa fa-search"></i></button>
+			</span>
+		</div>
+	</div>
+	<div id="search-results">
+	</div>
+	<script>
+		function runSearch(query){
+			$("#search-results").empty();			
+			if( query.length < 2 ){
+				return;
+			}			
+			var results = searchModule.search(query);
+			var listHtml = "<ul class='sidebar-menu'>";	
+			listHtml += "<li class='header'>Search Results</li>";	
+			if(results.length == 0 ){
+				listHtml += "<li>No results found</li>";
+			} else {					
+				for(var i = 0; i < results.length; ++i){
+					var res = results[i];
+					listHtml += "<li><a href='" + res.url + "'>" + res.title + "</a></li>";
+				}				
+			}
+			listHtml += "</ul><hr />";				
+			$("#search-results").append(listHtml);
+		}
+
+		$(document).ready(function(){
+			$("#search").on('input propertychange paste', function() {
+				runSearch($("#search").val());
+			});
+		});
+	</script>
+
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+			<li class="header">Namespace</li>
+		<li><a href="/api/Wyam.Common.Execution">Wyam<wbr>.Common<wbr>.Execution</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Interface Types</li>
+				<li class="active"><a href="/api/Wyam.Common.Execution/29BCB760">IExecutionContext</a></li>
+				<li class=""><a href="/api/Wyam.Common.Execution/BE745D22">IPipeline</a></li>
+				<li class=""><a href="/api/Wyam.Common.Execution/13816118">IPipelineCollection</a></li>
+				<li class=""><a href="/api/Wyam.Common.Execution/A4192BB8">IReadOnlyPipeline</a></li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+
+<section class="content-header">
+
+	<h1>IExecutionContext <small>Interface</small></h1>
+	<hr />
+</section>
+<section class="content smaller">
+	  
+			<dl class="dl-horizontal">		
+				<dt>Namespace</dt>
+				<dd><a href="/api/Wyam.Common.Execution">Wyam<wbr>.Common<wbr>.Execution</a></dd>
+							
+			
+			
+			
+		</dl>
+		<hr />
+
+
+
+
+
+	<h1>Syntax</h1>
+	<pre class="prettyprint">public interface IExecutionContext</pre>
+
+
+
+
+
+		
+			<h1>Properties</h1>
+			<div class="box">
+				<div class="box-body no-padding">
+					<table class="table table-striped table-hover three-cols">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Value</th>
+								<th>Summary</th>
+							</tr>
+						</thead>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/152A8FCE">ApplicationInput</a></td>
+								<td>string</td>
+								<td>
+    Gets any input that was passed to the application (for example, on stdin via piping).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/246D35A5">Assemblies</a></td>
+								<td>IEnumerable<wbr>&lt;Assembly&gt;<wbr></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/96F5D2A0">Documents</a></td>
+								<td><a href="/api/Wyam.Common.Documents/DAA0881A">IDocumentCollection</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/AB80E1ED">ExecutionCache</a></td>
+								<td><a href="/api/Wyam.Common.Caching/17C8DD70">IExecutionCache</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/F2175714">FileSystem</a></td>
+								<td><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/73AD957F">GlobalMetadata</a></td>
+								<td><a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/34208FE0">Module</a></td>
+								<td><a href="/api/Wyam.Common.Modules/09D712E1">IModule</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/45853863">Namespaces</a></td>
+								<td>IEnumerable<wbr>&lt;string&gt;<wbr></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/1ACDE872">Pipeline</a></td>
+								<td><a href="/api/Wyam.Common.Execution/A4192BB8">IReadOnlyPipeline</a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/32C39B96">RawConfigAssembly</a></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/06B451EA">Settings</a></td>
+								<td><a href="/api/Wyam.Common.Configuration/231ED196">IReadOnlySettings</a></td>
+								<td></td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		
+
+		
+			<h1>Methods</h1>
+			<div class="box">
+				<div class="box-body no-padding">
+					<table class="table table-striped table-hover three-cols">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Value</th>
+								<th>Summary</th>
+							</tr>
+						</thead>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/55FF7743">Execute<wbr>(IEnumerable<wbr>&lt;IModule&gt;<wbr>, IEnumerable<wbr>&lt;IDocument&gt;<wbr>)<wbr></a></td>
+								<td>IReadOnlyList<wbr>&lt;IDocument&gt;<wbr></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/1DD6A97B">Execute<wbr>(IEnumerable<wbr>&lt;IModule&gt;<wbr>, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td>IReadOnlyList<wbr>&lt;IDocument&gt;<wbr></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/20B453CE">Execute<wbr>(IEnumerable<wbr>&lt;IModule&gt;<wbr>, IEnumerable<wbr>&lt;MetadataItem&gt;<wbr>)<wbr></a></td>
+								<td>IReadOnlyList<wbr>&lt;IDocument&gt;<wbr></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/5797EAF5">GetDocument<wbr>()<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Gets a new document with default initial metadata.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/CEA1F1B5">GetDocument<wbr>(FilePath, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Gets a new document with the specified source, content stream, and metadata (in addition to the default initial metadata).
+    If <span name="disposeStream" class="paramref">disposeStream</span> is true (which it is by default), the provided 
+    System.IO.Stream will automatically be disposed when the document is disposed (I.e., the 
+    document takes ownership of the System.IO.Stream).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/775B035F">GetDocument<wbr>(FilePath, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Gets a new document with the specified source, content, and metadata (in addition to the default initial metadata).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/3404B9E1">GetDocument<wbr>(IDocument, FilePath, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with a new source, new content stream, and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    If <span name="disposeStream" class="paramref">disposeStream</span> is true (which it is by default), the provided 
+    System.IO.Stream will automatically be disposed when the document is disposed (I.e., the 
+    document takes ownership of the System.IO.Stream).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/4321786A">GetDocument<wbr>(IDocument, FilePath, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with a new source, new content, and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/47B3744C">GetDocument<wbr>(IDocument, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with identical content and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/A6A6978B">GetDocument<wbr>(IDocument, Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with a new content stream, and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    If <span name="disposeStream" class="paramref">disposeStream</span> is true (which it is by default), the provided 
+    System.IO.Stream will automatically be disposed when the document is disposed (I.e., the 
+    document takes ownership of the System.IO.Stream).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/73E58D47">GetDocument<wbr>(IDocument, string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Clones the specified source document with new content and additional metadata (all existing metadata is retained)
+    or gets a new document if the source document is null or ModuleExtensions.AsNewDocuments&lt;TModule&gt;(TModule) was called on the module.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/81A9D817">GetDocument<wbr>(IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Gets a new document with the specified metadata (in addition to the default initial metadata).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/E47CFB3B">GetDocument<wbr>(Stream, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>, bool)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Gets a new document with the specified content stream and metadata (in addition to the default initial metadata).
+    If <span name="disposeStream" class="paramref">disposeStream</span> is true (which it is by default), the provided 
+    System.IO.Stream will automatically be disposed when the document is disposed (I.e., the 
+    document takes ownership of the System.IO.Stream).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/D3D5BED5">GetDocument<wbr>(string, IEnumerable<wbr>&lt;KeyValuePair<wbr>&lt;string, object&gt;<wbr>&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
+								<td>
+    Gets a new document with the specified content and metadata (in addition to the default initial metadata).
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/0ED52383">GetLink<wbr>(IMetadata, bool)<wbr></a></td>
+								<td>string</td>
+								<td>
+    Gets a link for the specified metadata (typically a document) using the 
+    "RelativeFilePath" metadata value and the default settings from the
+    <a href="/api/Wyam.Common.Configuration/231ED196">IReadOnlySettings</a>. This version should be used inside modules to ensure
+    consistent link generation. Note that you can optionally include the host or not depending
+    on if you want to generate host-specific links. By default, the host is not included so that
+    sites work the same on any server including the preview server.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/585C021A">GetLink<wbr>(IMetadata, string, bool)<wbr></a></td>
+								<td>string</td>
+								<td>
+    Gets a link for the specified metadata (typically a document) using the 
+    specified metadata value (by default, "RelativeFilePath") and the default settings from the
+    <a href="/api/Wyam.Common.Configuration/231ED196">IReadOnlySettings</a>. This version should be used inside modules to ensure
+    consistent link generation. Note that you can optionally include the host or not depending
+    on if you want to generate host-specific links. By default, the host is not included so that
+    sites work the same on any server including the preview server.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/C355D189">GetLink<wbr>(NormalizedPath, bool)<wbr></a></td>
+								<td>string</td>
+								<td>
+    Converts the specified path into a string appropriate for use as a link using default settings from the
+    <a href="/api/Wyam.Common.Configuration/231ED196">IReadOnlySettings</a>. This version should be used inside modules to ensure
+    consistent link generation. Note that you can optionally include the host or not depending
+    on if you want to generate host-specific links. By default, the host is not included so that
+    sites work the same on any server including the preview server.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/56070589">GetLink<wbr>(NormalizedPath, string, DirectoryPath, bool, bool)<wbr></a></td>
+								<td>string</td>
+								<td>
+    Converts the path into a string appropriate for use as a link, overriding one or more 
+    settings from the <a href="/api/Wyam.Common.Configuration/231ED196">IReadOnlySettings</a>.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Execution/29BCB760/C8F79243">TryConvert<wbr>&lt;T&gt;<wbr><wbr>(object, T)<wbr></a></td>
+								<td>bool</td>
+								<td></td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		
+
+
+
+
+
+
+
+</section>
+                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            $(document).load(function() {
+                mermaid.initialize();
+            });
+        </script>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

@@ -163,8 +163,7 @@ body.wyam.layout-top-nav .main-header > .navbar {
   padding-bottom: 6px;
 }
 .wyam .sidebar-menu li.active li.active a {
-  background-color: #3c8dbc;
-  color: white;
+  color: #3c8dbc;
 }
 .wyam .sidebar-menu li.divider {
   padding-top: 15px;

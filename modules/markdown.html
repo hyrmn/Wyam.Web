@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -418,6 +448,8 @@
     </div>
 			<div>
     Parses markdown content in each input document and outputs documents with rendered HTML content.
+    Note that @ (at) symbols will be automatically escaped for better compatibility with downstream
+    Razor modules. Use the <code>EscapeAt()</code> fluent method to modify this behavior.
     </div>
 		<h1>Usage</h1>
 		<hr />

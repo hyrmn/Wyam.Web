@@ -129,19 +129,22 @@
 		<li><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Class Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/712BD29F">DirectoryEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/2CA442EA">FileEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/43DC142F">PathCollection<wbr>&lt;TPath&gt;<wbr></a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/3A8E38EE">PathComparer</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/A3AE1875">PathHelper</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/D84F401B">SafeIOHelper</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/5FDE4AAC">PathEqualityComparer</a></li>
 			<li class="header">Interface Types</li>
-				<li class=""><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/6E3AD006">IFileProvider</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/4B5BECA2">IFileProviderCollection</a></li>
 				<li class="active"><a href="/api/Wyam.Common.IO/8E17CFD1">IFileSystem</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/57C3E2C2">IFileSystemInfo</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
 
 
                     </ul>
@@ -165,28 +168,24 @@
 				<dt>Namespace</dt>
 				<dd><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></dd>
 							
-			
-			
-			
-				<dt>Implementing Types</dt>
+				<dt>Interfaces</dt>
 				<dd>
 					<ul class="list-inline">
-							<li><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></li>								
+							<li><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>								
 					</ul>
-				</dd>				
+				</dd>
+			
+			
+			
 		</dl>
 		<hr />
 
 
 
-	<h1>Summary</h1>
-	<div class="lead">
-    Represents a file system.
-    </div>
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public interface IFileSystem</pre>
+	<pre class="prettyprint">public interface IFileSystem : IReadOnlyFileSystem</pre>
 
 
 
@@ -205,46 +204,32 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/540AF0EB.html">InputPaths</a></td>
-								<td>IReadOnlyList<wbr>&lt;DirectoryPath&gt;<wbr></td>
+								<td><a href="/api/api/Wyam.Common.IO/8E17CFD1/20B60210">FileProviders</a></td>
+								<td><a href="/api/Wyam.Common.IO/4B5BECA2">IFileProviderCollection</a></td>
 								<td>
-    Gets the input paths. These are searched in reverse order for
-    files and directories. For example, given input paths "A", "B",
-    and "C" in that order, "C" will be checked for a requested file 
-    or directory first, and then if it doesn't exist in "C", "B" 
-    will be checked, and then "A". If none of the input paths contain
-    the requested file or directory, the last input path (in this case, 
-    "C") will be used as the location of the requested non-existent file
-    or directory. If you attempt to create it at this point, it will be
-    created under path "C".
+    Gets the file providers.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/0B15840F.html">IsCaseSensitive</a></td>
-								<td>bool</td>
+								<td><a href="/api/api/Wyam.Common.IO/8E17CFD1/540AF0EB">InputPaths</a></td>
+								<td>PathCollection<wbr>&lt;DirectoryPath&gt;<wbr></td>
 								<td>
-    Gets a value indicating whether the file system is case sensitive.
+    Gets the input paths collection which can be used
+    to add or remove input paths.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/6DB77CDF.html">OutputPath</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/8E17CFD1/6DB77CDF">OutputPath</a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
 								<td>
-    Gets the output path.
+    Gets or sets the output path.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/9DEDDCA0.html">PathComparer</a></td>
-								<td><a href="/api/Wyam.Common.IO/3A8E38EE">PathComparer</a></td>
-								<td>
-    Gets the default path comparer for this file system.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/3D1098EC.html">RootPath</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/8E17CFD1/3D1098EC">RootPath</a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
 								<td>
-    Gets the root path.
+    Gets or sets the root path.
     </td>
 							</tr>
 					</table>
@@ -252,99 +237,6 @@
 			</div>
 		
 
-		
-			<h1>Methods</h1>
-			<div class="box">
-				<div class="box-body no-padding">
-					<table class="table table-striped table-hover three-cols">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Value</th>
-								<th>Summary</th>
-							</tr>
-						</thead>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/06985579.html">GetDirectory<wbr>(DirectoryPath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></td>
-								<td>
-    Gets an absolute directory.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/15202EF9.html">GetFile<wbr>(FilePath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></td>
-								<td>
-    Gets an absolute file.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/4822BC9A.html">GetInputDirectories<wbr>()<wbr></a></td>
-								<td>IReadOnlyList<wbr>&lt;IDirectory&gt;<wbr></td>
-								<td>
-    Gets all absolute input directories.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/BEC87DC9.html">GetInputDirectory<wbr>(DirectoryPath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></td>
-								<td>
-    Gets a directory representing an input.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/0640D279.html">GetInputFile<wbr>(FilePath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></td>
-								<td>
-    Gets a file representing an input.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/F728B22C.html">GetOutputDirectory<wbr>()<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></td>
-								<td>
-    Gets the absolute output directory.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/DA1EA5CE.html">GetOutputDirectory<wbr>(DirectoryPath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></td>
-								<td>
-    Gets a directory representing an output.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/4CF133BC.html">GetOutputFile<wbr>(FilePath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></td>
-								<td>
-    Gets a file representing an output.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/82B4C255.html">GetRootDirectory<wbr>()<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></td>
-								<td>
-    Gets the absolute directory.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/743A04B4.html">GetRootDirectory<wbr>(DirectoryPath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></td>
-								<td>
-    Gets a directory representing a root directory.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.IO/8E17CFD1/B0578BFD.html">GetRootFile<wbr>(FilePath)<wbr></a></td>
-								<td><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></td>
-								<td>
-    Gets a file representing a root file.
-    </td>
-							</tr>
-					</table>
-				</div>
-			</div>
-		
 
 
 

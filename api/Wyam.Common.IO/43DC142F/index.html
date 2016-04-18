@@ -129,19 +129,22 @@
 		<li><a href="/api/Wyam.Common.IO">Wyam<wbr>.Common<wbr>.IO</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Class Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/712BD29F">DirectoryEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/2CA442EA">FileEqualityComparer</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></li>
 				<li class="active"><a href="/api/Wyam.Common.IO/43DC142F">PathCollection<wbr>&lt;TPath&gt;<wbr></a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/3A8E38EE">PathComparer</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/A3AE1875">PathHelper</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/D84F401B">SafeIOHelper</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/5FDE4AAC">PathEqualityComparer</a></li>
 			<li class="header">Interface Types</li>
-				<li class=""><a href="/api/Wyam.Common.IO/9B36FE1D">IConfigurableFileSystem</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/7C012166">IDirectory</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/62D4421F">IFile</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/6E3AD006">IFileProvider</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/4B5BECA2">IFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8E17CFD1">IFileSystem</a></li>
-				<li class=""><a href="/api/Wyam.Common.IO/57C3E2C2">IFileSystemInfo</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
+				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
 
 
                     </ul>
@@ -226,15 +229,15 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/A14D9958.html">PathCollection<wbr>(IEnumerable<wbr>&lt;TPath&gt;<wbr>, PathComparer)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/93B74761">PathCollection<wbr>()<wbr></a></td>
 									<td>
-    Initializes a new instance of the DirectoryPathCollection class.
+    Initializes a new path collection.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/9A1CBA65.html">PathCollection<wbr>(PathComparer)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/42CABA39">PathCollection<wbr>(IEnumerable<wbr>&lt;TPath&gt;<wbr>)<wbr></a></td>
 									<td>
-    Initializes a new instance of the DirectoryPathCollection class.
+    Initializes a new path collection.
     </td>
 							</tr>
 					</table>
@@ -256,14 +259,14 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/F45AA8C6.html">Count</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/F45AA8C6">Count</a></td>
 								<td>int</td>
 								<td>
     Gets the number of directories in the collection.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/A3544443.html">this[int]</a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/A3544443">this[int]</a></td>
 								<td><a href="/api/Wyam.Common.IO/43DC142F#typeparam-TPath">TPath</a></td>
 								<td>
     Gets or sets the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> at the specified index.
@@ -287,70 +290,70 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/BDCFE9AB.html">Add<wbr>(TPath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/BDCFE9AB">Add<wbr>(TPath)<wbr></a></td>
 								<td>bool</td>
 								<td>
     Adds the specified path to the collection.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/A96F5B2A.html">AddRange<wbr>(IEnumerable<wbr>&lt;TPath&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/A96F5B2A">AddRange<wbr>(IEnumerable<wbr>&lt;TPath&gt;<wbr>)<wbr></a></td>
 								<td>void</td>
 								<td>
     Adds the specified paths to the collection.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/41347123.html">Clear<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/41347123">Clear<wbr>()<wbr></a></td>
 								<td>void</td>
 								<td>
     Clears all paths from the collection.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/CA9EA8C1.html">Contains<wbr>(TPath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/CA9EA8C1">Contains<wbr>(TPath)<wbr></a></td>
 								<td>bool</td>
 								<td>
     Determines whether the collection contains the specified path.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/2DE6FAFD.html">GetEnumerator<wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/2DE6FAFD">GetEnumerator<wbr>()<wbr></a></td>
 								<td>IEnumerator<wbr>&lt;TPath&gt;<wbr></td>
 								<td>
     Returns an enumerator that iterates through the collection.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/184C2D41.html">IndexOf<wbr>(TPath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/184C2D41">IndexOf<wbr>(TPath)<wbr></a></td>
 								<td>int</td>
 								<td>
     Returns the index of the specified path.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/51B2D664.html">Insert<wbr>(int, TPath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/51B2D664">Insert<wbr>(int, TPath)<wbr></a></td>
 								<td>bool</td>
 								<td>
     Inserts the path at the specified index.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/34F891AA.html">Remove<wbr>(TPath)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/34F891AA">Remove<wbr>(TPath)<wbr></a></td>
 								<td>bool</td>
 								<td>
     Removes the specified path.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/B74C837F.html">RemoveAt<wbr>(int)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/B74C837F">RemoveAt<wbr>(int)<wbr></a></td>
 								<td>void</td>
 								<td>
     Removes the path at the specified index.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.IO/43DC142F/CC633EC8.html">RemoveRange<wbr>(IEnumerable<wbr>&lt;TPath&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/43DC142F/CC633EC8">RemoveRange<wbr>(IEnumerable<wbr>&lt;TPath&gt;<wbr>)<wbr></a></td>
 								<td>void</td>
 								<td>
     Removes the specified paths from the collection.

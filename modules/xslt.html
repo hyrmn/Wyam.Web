@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -432,7 +462,17 @@
     on the input document.
     </p>
 								<ul>
-										<li><p><code>xsltPath</code></p><p>A delegate that should return the path of the XSLT file to use.</p></li>
+										<li><p><code>xsltPath</code></p><p>A delegate that should return a Wyam.Common.IO.FilePath with the XSLT file to use.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>Xslt(FilePath xsltPath)</code></strong></p>
+								<p>
+    Transforms input documents using a specified XSLT file from the file system.
+    </p>
+								<ul>
+										<li><p><code>xsltPath</code></p><p>The path of the XSLT file to use.</p></li>
 								</ul>
 
 					</li>				
@@ -444,16 +484,6 @@
     </p>
 								<ul>
 										<li><p><code>modules</code></p><p>Modules that should output a single document containing the XSLT template in it's content.</p></li>
-								</ul>
-
-					</li>				
-					<li>
-								<p><strong><code>Xslt(string xsltPath)</code></strong></p>
-								<p>
-    Transforms input documents using a specified XSLT file from the file system.
-    </p>
-								<ul>
-										<li><p><code>xsltPath</code></p><p>The path of the XSLT file to use.</p></li>
 								</ul>
 
 					</li>				

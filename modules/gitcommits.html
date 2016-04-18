@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -441,12 +471,12 @@
 
 					</li>				
 					<li>
-								<p><strong><code>GitCommits(string repositoryLocation)</code></strong></p>
+								<p><strong><code>GitCommits(DirectoryPath repositoryPath)</code></strong></p>
 								<p>
     Gets commits from the repository the specified path is a part of.
     </p>
 								<ul>
-										<li><p><code>repositoryLocation</code></p><p>The repository location.</p></li>
+										<li><p><code>repositoryPath</code></p><p>The repository path.</p></li>
 								</ul>
 
 					</li>				
@@ -525,7 +555,7 @@
 					<li>
 						<p>
 
-							<strong><code>Entries</code></strong>: <code>IReadOnlyDictionary&lt;string, string&gt;</code>
+							<strong><code>Entries</code></strong>: <code>IReadOnlyDictionary&lt;FilePath, string&gt;</code>
 						</p>
 							<p>
     All commit entries. The key is the path of the file and the value is the status of the file within the commit.

@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -475,7 +505,7 @@
         Markdown(),
         WriteFiles(".html"),
         Rss(siteRoot: "http://example.org",
-            outputRssFilePath: "posts/feed.rss"
+            outputRssFilePath: "posts/feed.rss",
             feedTitle: "My awesome blog",
             feedDescription: "Blog about something"
         ),
@@ -485,20 +515,20 @@
     
     Output/posts/feed.rss:
     <pre class="prettyprint"><code>
-    &lt;![CDATA[&lt;?xml version = "1.0" encoding="utf-8"?&gt;
-    &lt;rss version = "2.0" xmlns:atom="http://www.w3.org/2005/Atom"&gt;
+    &lt;![CDATA[&lt;?xml version="1.0" encoding="utf-8"?&gt;
+    &lt;rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"&gt;
       &lt;channel&gt;
         &lt;title&gt;My awesome blog&lt;/title&gt;
         &lt;description&gt;Blog about something&lt;/description&gt;
         &lt;link&gt;http://example.org&lt;/link&gt;
-        &lt;atom:link href = " http://example.org/posts/feed.rss" rel="self" /&gt;
+        &lt;atom:link href=" http://example.org/posts/feed.rss" rel="self" /&gt;
         &lt;lastBuildDate&gt;Wed, 30 Dec 2015 13:39:16 +0300&lt;/lastBuildDate&gt;
         &lt;item&gt;
           &lt;title&gt;Hello, world!&lt;/title&gt;
           &lt;link&gt;http://example.org/posts/hello.html&lt;/link&gt;
           &lt;description&gt;My first blog post&lt;/description&gt;
           &lt;pubDate&gt;Sat, 10 Nov 2012 00:00:00 +0400&lt;/pubDate&gt;
-          &lt;guid isPermaLink = "false"&gt; 81a26807-355a-dbf9-7729-c6601f1d8a2b&lt;/guid&gt;
+          &lt;guid isPermaLink="false"&gt; 81a26807-355a-dbf9-7729-c6601f1d8a2b&lt;/guid&gt;
         &lt;/item&gt;
       &lt;/channel&gt;
     &lt;/rss&gt;
@@ -508,13 +538,26 @@
 		<hr />
 		<ul>			
 					<li>
-								<p><strong><code>Rss(string siteRoot, string outputRssFilePath, string feedTitle, string feedDescription)</code></strong></p>
+								<p><strong><code>Rss(string siteUri, FilePath rssPath, string feedTitle, string feedDescription)</code></strong></p>
 								<p>
     Creates RSS feed from input documents.
     </p>
 								<ul>
-										<li><p><code>siteRoot</code></p><p>Site root URL (example: "http://mysite.com").</p></li>
-										<li><p><code>outputRssFilePath</code></p><p>Relative output location where generated RSS feed will be placed on server. (example: "blog/feed.rss").</p></li>
+										<li><p><code>siteUri</code></p><p>The full URI of the site, including hostname (example: "http://mysite.com/blog/").</p></li>
+										<li><p><code>rssPath</code></p><p>Relative output location where generated RSS feed will be placed on server. (example: "feeds/feed.rss").</p></li>
+										<li><p><code>feedTitle</code></p><p>Title of the RSS feed.</p></li>
+										<li><p><code>feedDescription</code></p><p>Description of the RSS feed.</p></li>
+								</ul>
+
+					</li>				
+					<li>
+								<p><strong><code>Rss(Uri siteUri, FilePath rssPath, string feedTitle, string feedDescription)</code></strong></p>
+								<p>
+    Creates RSS feed from input documents.
+    </p>
+								<ul>
+										<li><p><code>siteUri</code></p><p>The full URI of the site, including hostname (example: "http://mysite.com/blog/").</p></li>
+										<li><p><code>rssPath</code></p><p>Relative output location where generated RSS feed will be placed on server. (example: "feeds/feed.rss").</p></li>
 										<li><p><code>feedTitle</code></p><p>Title of the RSS feed.</p></li>
 										<li><p><code>feedDescription</code></p><p>Description of the RSS feed.</p></li>
 								</ul>
@@ -534,6 +577,9 @@
 					</li>				
 					<li>
 								<p><strong><code>WithDescriptionMetaKey(string key)</code></strong></p>
+								<p>
+    Set metadata key to lookup in documents for RSS item description.
+    </p>
 
 					</li>				
 					<li>
@@ -554,14 +600,14 @@
 
 					</li>				
 					<li>
-								<p><strong><code>WithLinkCustomizer(Func&lt;string, string&gt; customizer)</code></strong></p>
+								<p><strong><code>WithLinkCustomizer(Func&lt;FilePath, FilePath&gt; customizer)</code></strong></p>
 								<p>
     Allows to customize output links.
     Does not execute when document explicitly
     defines output URL via RssItemUrl metadata.
     </p>
 								<ul>
-										<li><p><code>customizer</code></p><p></p></li>
+										<li><p><code>customizer</code></p><p>A delegate that takes and returns a Wyam.Common.IO.FilePath.</p></li>
 								</ul>
 
 					</li>				
@@ -594,16 +640,16 @@
 					<li>
 						<p>
 
-							<strong><code>RssPath</code></strong>: <code>string</code>
+							<strong><code>RelativeFilePath</code></strong>: <code>FilePath</code>
 						</p>
-							<p>Absolute path to output RSS file on server.</p>
+							<p>Relative path to the output RSS file.</p>
 					</li>
 					<li>
 						<p>
 
-							<strong><code>WritePath</code></strong>: <code>string</code>
+							<strong><code>WritePath</code></strong>: <code>FilePath</code>
 						</p>
-							<p>Path where RSS file will be written via WriteFiles module.</p>
+							<p>Relative path to the output RSS file (primarily to support the WriteFiles module).</p>
 					</li>
 			</ul>
 	

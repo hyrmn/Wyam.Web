@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -432,12 +462,12 @@
     Reads the solution file at the specified path. This allows you to specify a different solution file depending on the input.
     </p>
 								<ul>
-										<li><p><code>path</code></p><p>A delegate that returns a <code>string</code> with the solution file path.</p></li>
+										<li><p><code>path</code></p><p>A delegate that returns a <code>FilePath</code> with the solution file path.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>ReadSolution(string path)</code></strong></p>
+								<p><strong><code>ReadSolution(FilePath path)</code></strong></p>
 								<p>
     Reads the solution file at the specified path.
     </p>
@@ -452,7 +482,7 @@
 			<p>Chain these methods together after the constructor to modify behavior.</p>
 			<ul>
 					<li>
-								<p><strong><code>WhereFile(Func&lt;string, bool&gt; predicate)</code></strong></p>
+								<p><strong><code>WhereFile(Func&lt;IFile, bool&gt; predicate)</code></strong></p>
 								<p>
     Filters the source code file based on path.
     </p>
@@ -489,7 +519,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFileDir</code></strong>: <code>string</code>
+							<strong><code>RelativeFileDir</code></strong>: <code>DirectoryPath</code>
 						</p>
 							<p>The relative directory of the file 
     from the Wyam input folder.</p>
@@ -497,7 +527,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFilePath</code></strong>: <code>string</code>
+							<strong><code>RelativeFilePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The relative path to the file (including file name)
     from the Wyam input folder.</p>
@@ -505,7 +535,7 @@
 					<li>
 						<p>
 
-							<strong><code>RelativeFilePathBase</code></strong>: <code>string</code>
+							<strong><code>RelativeFilePathBase</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The relative path to the file (including file name)
     from the Wyam input folder without the file extension.</p>
@@ -513,7 +543,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileBase</code></strong>: <code>string</code>
+							<strong><code>SourceFileBase</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The file name without any extension. Equivalent 
     to <code>Path.GetFileNameWithoutExtension(SourceFilePath)</code>.</p>
@@ -521,7 +551,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileDir</code></strong>: <code>string</code>
+							<strong><code>SourceFileDir</code></strong>: <code>DirectoryPath</code>
 						</p>
 							<p>The full absolute directory of the file. 
     Equivalent to <code>Path.GetDirectoryName(SourceFilePath).</code></p>
@@ -537,7 +567,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileName</code></strong>: <code>string</code>
+							<strong><code>SourceFileName</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full file name. Equivalent 
     to <code>Path.GetFileName(SourceFilePath)</code>.</p>
@@ -545,14 +575,14 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFilePath</code></strong>: <code>string</code>
+							<strong><code>SourceFilePath</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full absolute path of the file (including file name).</p>
 					</li>
 					<li>
 						<p>
 
-							<strong><code>SourceFilePathBase</code></strong>: <code>string</code>
+							<strong><code>SourceFilePathBase</code></strong>: <code>FilePath</code>
 						</p>
 							<p>The full absolute path of the file (including file name) 
     without the file extension.</p>
@@ -560,7 +590,7 @@
 					<li>
 						<p>
 
-							<strong><code>SourceFileRoot</code></strong>: <code>string</code>
+							<strong><code>SourceFileRoot</code></strong>: <code>DirectoryPath</code>
 						</p>
 							<p>The absolute root search path without any nested directories 
     (I.e., the path that was searched, and possibly descended, for the given pattern).</p>

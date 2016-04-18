@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -463,38 +493,38 @@
 		<hr />
 		<ul>			
 					<li>
-								<p><strong><code>SearchIndex(DocumentConfig searchIndexItem, string stopwordsFilename = null, bool enableStemming = false)</code></strong></p>
+								<p><strong><code>SearchIndex(DocumentConfig searchIndexItem, FilePath stopwordsPath = null, bool enableStemming = false)</code></strong></p>
 								<p>
     Creates the search index by using a delegate that returns a <code>SearchIndexItem</code> instance for each input document.
     </p>
 								<ul>
 										<li><p><code>searchIndexItem</code></p><p>A delegate that should return a <code>SearchIndexItem</code>.</p></li>
-										<li><p><code>stopwordsFilename</code></p><p>A file to use that contains a set of stopwords.</p></li>
+										<li><p><code>stopwordsPath</code></p><p>A file to use that contains a set of stopwords.</p></li>
 										<li><p><code>enableStemming</code></p><p>If set to <code>true</code>, stemming is enabled.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>SearchIndex(string stopwordsFilename = null, bool enableStemming = false)</code></strong></p>
+								<p><strong><code>SearchIndex(FilePath stopwordsPath = null, bool enableStemming = false)</code></strong></p>
 								<p>
     Creates the search index by looking for a <code>SearchIndexItem</code> metadata key in each input document that 
     contains a <code>SearchIndexItem</code> instance.
     </p>
 								<ul>
-										<li><p><code>stopwordsFilename</code></p><p>A file to use that contains a set of stopwords.</p></li>
+										<li><p><code>stopwordsPath</code></p><p>A file to use that contains a set of stopwords.</p></li>
 										<li><p><code>enableStemming</code></p><p>If set to <code>true</code>, stemming is enabled.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>SearchIndex(string searchIndexItemMetadataKey, string stopwordsFilename = null, bool enableStemming = false)</code></strong></p>
+								<p><strong><code>SearchIndex(string searchIndexItemMetadataKey, FilePath stopwordsPath = null, bool enableStemming = false)</code></strong></p>
 								<p>
     Creates the search index by looking for a specified metadata key in each input document that 
     contains a <code>SearchIndexItem</code> instance.
     </p>
 								<ul>
 										<li><p><code>searchIndexItemMetadataKey</code></p><p>The metadata key that contains the <code>SearchIndexItem</code> instance.</p></li>
-										<li><p><code>stopwordsFilename</code></p><p>A file to use that contains a set of stopwords.</p></li>
+										<li><p><code>stopwordsPath</code></p><p>A file to use that contains a set of stopwords.</p></li>
 										<li><p><code>enableStemming</code></p><p>If set to <code>true</code>, stemming is enabled.</p></li>
 								</ul>
 

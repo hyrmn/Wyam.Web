@@ -128,18 +128,18 @@
 			<li class="header">Namespace</li>
 		<li><a href="/api/Wyam.Common.Meta">Wyam<wbr>.Common<wbr>.Meta</a></li>
 		<li role="separator" class="divider"></li>
-			<li class="header">Struct Types</li>
-				<li class=""><a href="/api/Wyam.Common.Meta/260DE2D4">MetadataItem</a></li>
-			<li class="header">Interface Types</li>
-				<li class="active"><a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a></li>
-				<li class=""><a href="/api/Wyam.Common.Meta/58B9208C">IMetadata<wbr>&lt;T&gt;<wbr></a></li>
-				<li class=""><a href="/api/Wyam.Common.Meta/0BFBB658">IMetadataValue</a></li>
-				<li class=""><a href="/api/Wyam.Common.Meta/9214B751">ISimpleMetadata</a></li>
 			<li class="header">Class Types</li>
 				<li class=""><a href="/api/Wyam.Common.Meta/B2F39640">CachedDelegateMetadataValue</a></li>
 				<li class=""><a href="/api/Wyam.Common.Meta/4854B78E">DelegateMetadataValue</a></li>
 				<li class=""><a href="/api/Wyam.Common.Meta/70AE72AB">Keys</a></li>
 				<li class=""><a href="/api/Wyam.Common.Meta/FBA8D7C9">MetadataItems</a></li>
+			<li class="header">Interface Types</li>
+				<li class="active"><a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a></li>
+				<li class=""><a href="/api/Wyam.Common.Meta/58B9208C">IMetadata<wbr>&lt;T&gt;<wbr></a></li>
+				<li class=""><a href="/api/Wyam.Common.Meta/AD3B6C7E">IMetadataDictionary</a></li>
+				<li class=""><a href="/api/Wyam.Common.Meta/0BFBB658">IMetadataValue</a></li>
+			<li class="header">Struct Types</li>
+				<li class=""><a href="/api/Wyam.Common.Meta/260DE2D4">MetadataItem</a></li>
 
 
                     </ul>
@@ -178,7 +178,9 @@
 				<dt>Implementing Types</dt>
 				<dd>
 					<ul class="list-inline">
+							<li><a href="/api/Wyam.Common.Meta/AD3B6C7E">IMetadataDictionary</a></li>								
 							<li><a href="/api/Wyam.Core.Documents/C4B39379">CustomDocument</a></li>								
+							<li><a href="/api/Wyam.Testing.Documents/E2E28DED">TestDocument</a></li>								
 							<li><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></li>								
 					</ul>
 				</dd>				
@@ -216,7 +218,15 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/AC0B5A07.html">Document<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/C0217D06">DirectoryPath<wbr>(string, DirectoryPath)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
+								<td>
+    Gets the value for the specified key converted to a <a href="/api/api/Wyam.Common.Meta/1D453919/C0217D06">DirectoryPath(string, DirectoryPath)</a>. This method never throws an exception. It will
+    return the specified default value if the key is not found or if the string value can't be converted to a <a href="/api/api/Wyam.Common.Meta/1D453919/C0217D06">DirectoryPath(string, DirectoryPath)</a>.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/AC0B5A07">Document<wbr>(string)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.Documents/F359E898">IDocument</a></td>
 								<td>
     Gets the value for the specified key converted to a <a href="/api/Wyam.Common.Documents/F359E898">IDocument</a>. This method never throws an exception. 
@@ -224,7 +234,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/15B303CF.html">Documents<wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/15B303CF">Documents<wbr>(string)<wbr></a></td>
 								<td>IReadOnlyList<wbr>&lt;IDocument&gt;<wbr></td>
 								<td>
     Gets the value for the specified key converted to a System.Collections.Generic.IReadOnlyList`1. This method never throws an exception. 
@@ -232,7 +242,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/2E414741.html">Dynamic<wbr>(string, object)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/2E414741">Dynamic<wbr>(string, object)<wbr></a></td>
 								<td></td>
 								<td>
     Gets the value associated with the specified key as a dynamic object. This is equivalent
@@ -240,7 +250,15 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/C339F122.html">Get<wbr>(string, object)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/388D6B35">FilePath<wbr>(string, FilePath)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
+								<td>
+    Gets the value for the specified key converted to a <a href="/api/api/Wyam.Common.Meta/1D453919/388D6B35">FilePath(string, FilePath)</a>. This method never throws an exception. It will
+    return the specified default value if the key is not found or if the string value can't be converted to a <a href="/api/api/Wyam.Common.Meta/1D453919/388D6B35">FilePath(string, FilePath)</a>.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/C339F122">Get<wbr>(string, object)<wbr></a></td>
 								<td>object</td>
 								<td>
     Gets the value for the specified key. This method never throws an exception. It will return the specified 
@@ -248,7 +266,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/12363CB2.html">Get<wbr>&lt;T&gt;<wbr><wbr>(string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/12363CB2">Get<wbr>&lt;T&gt;<wbr><wbr>(string)<wbr></a></td>
 								<td>T</td>
 								<td>
     Gets the value for the specified key converted to the specified type. 
@@ -257,7 +275,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/B96FCB8B.html">Get<wbr>&lt;T&gt;<wbr><wbr>(string, T)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/B96FCB8B">Get<wbr>&lt;T&gt;<wbr><wbr>(string, T)<wbr></a></td>
 								<td>T</td>
 								<td>
     Gets the value for the specified key. This method never throws an exception. It will return the specified 
@@ -265,16 +283,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/51099D0A.html">Link<wbr>(string, string, bool)<wbr></a></td>
-								<td>string</td>
-								<td>
-    Gets the value for the specified key converted to a link. This method never throws an exception. It will return the specified
-    default value if the key is not found. The difference between this and getting a plain string is that forward-slashes are
-    replaced with back-slashes to create valid links from file system paths and other strings.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/23CC31DA.html">List<wbr>&lt;T&gt;<wbr><wbr>(string, IReadOnlyList<wbr>&lt;T&gt;<wbr>)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/23CC31DA">List<wbr>&lt;T&gt;<wbr><wbr>(string, IReadOnlyList<wbr>&lt;T&gt;<wbr>)<wbr></a></td>
 								<td>IReadOnlyList<wbr>&lt;T&gt;<wbr></td>
 								<td>
     Gets the value for the specified key converted to a System.Collections.Generic.IReadOnlyList`1. This method never throws an exception. It will return the specified 
@@ -282,14 +291,14 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/723723DD.html">MetadataAs<wbr>&lt;T&gt;<wbr><wbr>()<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/723723DD">MetadataAs<wbr>&lt;T&gt;<wbr><wbr>()<wbr></a></td>
 								<td>IMetadata<wbr>&lt;T&gt;<wbr></td>
 								<td>
     Presents metadata values as a specific type (see <a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a>).
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/Wyam.Common.Meta/1D453919/040EC266.html">String<wbr>(string, string)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.Meta/1D453919/040EC266">String<wbr>(string, string)<wbr></a></td>
 								<td>string</td>
 								<td>
     Gets the value for the specified key converted to a string. This method never throws an exception. It will return the specified 

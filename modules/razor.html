@@ -137,6 +137,31 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/minifycss">
+					MinifyCss
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyhtml">
+					MinifyHtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyjs">
+					MinifyJs
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxhtml">
+					MinifyXhtml
+				</a>
+			</li>
+			<li>
+				<a href="/modules/minifyxml">
+					MinifyXml
+				</a>
+			</li>
+			<li>
 				<a href="/modules/prepend">
 					Prepend
 				</a>
@@ -170,6 +195,11 @@
 			<li>
 				<a href="/modules/branch">
 					Branch
+				</a>
+			</li>
+			<li>
+				<a href="/modules/combine">
+					Combine
 				</a>
 			</li>
 			<li>
@@ -588,13 +618,13 @@ Pipelines.Add("Content",
     function reverts back to the default ViewStart search behavior for that document.
     </p>
 								<ul>
-										<li><p><code>path</code></p><p>A delegate that should return the ViewStart path as a <code>string</code>, 
+										<li><p><code>path</code></p><p>A delegate that should return the ViewStart path as a <code>FilePath</code>, 
     or <code>null</code> for the default ViewStart search behavior.</p></li>
 								</ul>
 
 					</li>				
 					<li>
-								<p><strong><code>WithViewStart(string path)</code></strong></p>
+								<p><strong><code>WithViewStart(FilePath path)</code></strong></p>
 								<p>
     Specifies an alternate ViewStart file to use for all Razor pages processed by this module.
     </p>
