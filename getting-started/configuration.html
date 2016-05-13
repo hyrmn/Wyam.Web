@@ -112,6 +112,11 @@
 				</a>
 			</li>
 			<li>
+				<a href="/getting-started/deployment">
+					Deployment
+				</a>
+			</li>
+			<li>
 				<a href="/getting-started/examples">
 					Examples
 				</a>
@@ -150,7 +155,7 @@
 </code></pre>
 <h1><a name="Preprocessor"></a>Preprocessor Directives</h1>
 <hr />
-<p>Preprocessor directives establish the Wyam environment and get evaluated before the rest of the configuration file. They're typically responsible for declaring things like NuGet packages and assemblies. Every preprocessor directive starts with <code>#</code> at the beginning of a line and extend for the rest of the line. The following directives are available (the current set of directives can always be seen by calling <code>wyam.exe --help-directives</code>).</p>
+<p>Preprocessor directives establish the Wyam environment and get evaluated before the rest of the configuration file. They're typically responsible for declaring things like NuGet packages and assemblies. Every preprocessor directive starts with <code>#</code> at the beginning of a line and extend for the rest of the line. The following directives are available (the current set of directives can always be seen by calling <code>wyam --help-directives</code>).</p>
 <pre class="prettyprint"><code>Adds a reference to an assembly by name.:
 #assembly-name, #an
     &lt;assembly&gt;    The assembly to load by name.

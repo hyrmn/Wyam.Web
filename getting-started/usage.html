@@ -112,6 +112,11 @@
 				</a>
 			</li>
 			<li>
+				<a href="/getting-started/deployment">
+					Deployment
+				</a>
+			</li>
+			<li>
 				<a href="/getting-started/examples">
 					Examples
 				</a>
@@ -135,11 +140,11 @@
 		
 
 
-<p>You typically run Wyam using the command line application <code>Wyam.exe</code>. If you don't specify any arguments, the root folder will be set to the current folder and if a file named <code>config.wyam</code> is found, it will be used as the configuration file. You can also specify a root folder that's different than the current folder after the <code>Wyam.exe</code> command. For example:</p>
-<pre class="prettyprint"><code>Wyam.exe
+<p>You typically run Wyam using the command line application <code>wyam</code>. If you don't specify any arguments, the root folder will be set to the current folder and if a file named <code>config.wyam</code> is found, it will be used as the configuration file. You can also specify a root folder that's different than the current folder after the <code>wyam</code> command. For example:</p>
+<pre class="prettyprint"><code>wyam
 </code></pre>
 <p>Or:</p>
-<pre class="prettyprint"><code>Wyam.exe C:\MySite
+<pre class="prettyprint"><code>wyam C:\MySite
 </code></pre>
 <p>There are also a number of arguments that allow you to control execution (use <code>--help</code> or <code>-?</code> to see them):</p>
 <pre class="prettyprint"><code>usage:  [--help-directives] [-w] [-p [arg]] [--force-ext]                                 
@@ -237,10 +242,10 @@
     &lt;package&gt;                The package to install.
 </code></pre>
 <p>Note that some of the options such as <code>--nuget</code> are &quot;nested&quot; and must be contained in quotes if they contain options of their own (and any inner quotes must be escaped). For example, the following command will load a Nuget package named <code>Foo.Bar</code>:</p>
-<pre class="prettyprint"><code>Wyam.exe --nuget Foo.Bar 
+<pre class="prettyprint"><code>wyam --nuget Foo.Bar 
 </code></pre>
 <p>However, if you want to specify any additional options for the <code>--nuget</code> option, you need to surround the whole value in quotes:</p>
-<pre class="prettyprint"><code>Wyam.exe --nuget &quot;Foo.Bar -p&quot; 
+<pre class="prettyprint"><code>wyam --nuget &quot;Foo.Bar -p&quot; 
 </code></pre>
 <h1>Paths</h1>
 <p>The paths that Wyam uses can be specified on the command line. This includes the <code>--input</code> path(s) where Wyam will look for files, the <code>--output</code> path where Wyam will place the output of modules like <a href="/modules/writefiles">WriteFiles</a>, the <code>--config</code> file path where Wyam will look for a configuration file, and the root path that Wyam considers the base path for all other relative paths. By default, the root path is set to the path from where Wyam is executed. You may want to specify a different base path (for example, if running from a build script or as part of a larger process). In this case, just supply an alternate absolute path at the end of the command line. This new root path will be the base for all other relative paths including input and output paths. This is a good way to ensure consistency regardless of which path Wyam is run from.</p>
