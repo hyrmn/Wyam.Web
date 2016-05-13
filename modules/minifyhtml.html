@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>MinifyHtml</h1>
+    <h1>
+		MinifyHtml
+					<small><span class="label label-default">Wyam.Modules.Minification</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -449,6 +453,12 @@
 			<div>
     This module takes the HTML content and uses minification to reduce the output.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Minification</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Minification</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 			<h1>Examples</h1>
 			<hr />
 			<div>
@@ -458,7 +468,7 @@
         FrontMatter(Yaml()),
         Markdown(),
         Razor(),
-        HtmlMinify(),
+        MinifyHtml(),
         WriteFiles(".html")
     );
     </code></pre>
@@ -474,7 +484,7 @@
 								<ul>
 										<li><p><code>useEmptyMinificationSettings</code></p><p>
     Boolean to specify whether to use empty minification settings.
-    Default value is <pre class="prettyprint"><code>false</code></pre>, this will use commonly accepted settings.
+    Default value is <code>false</code>, this will use commonly accepted settings.
     </p></li>
 								</ul>
 
@@ -489,13 +499,13 @@
 								<p>
     Render mode of HTML empty tag. Can take the following values:
     <ul>
-    <li><span class="description"><pre class="prettyprint"><code>NoSlash</code></pre>.Without slash(for example, <pre class="prettyprint"><code>&lt;br&gt;</code></pre>).</span></li>
-    <li><span class="description"><pre class="prettyprint"><code>Slash</code></pre>.With slash(for example, <pre class="prettyprint"><code>&lt;br/&gt;</code></pre>).</span></li>
-    <li><span class="description"><pre class="prettyprint"><code>SpaceAndSlash</code></pre>.With space and slash(for example, <pre class="prettyprint"><code>&lt;br /&gt;</code></pre>).</span></li>
+    <li><span class="description"><code>NoSlash</code>.Without slash(for example, <code>&lt;br&gt;</code>).</span></li>
+    <li><span class="description"><code>Slash</code>.With slash(for example, <code>&lt;br/&gt;</code>).</span></li>
+    <li><span class="description"><code>SpaceAndSlash</code>.With space and slash(for example, <code>&lt;br /&gt;</code>).</span></li>
     </ul>
     </p>
 								<ul>
-										<li><p><code>emptyTagRenderMode</code></p><p>Enum type WebMarkupMin.Core.HtmlEmptyTagRenderMode; default value is <pre class="prettyprint"><code>HtmlEmptyTagRenderMode.NoSlash</code></pre></p></li>
+										<li><p><code>emptyTagRenderMode</code></p><p>Enum type WebMarkupMin.Core.HtmlEmptyTagRenderMode; default value is <code>HtmlEmptyTagRenderMode.NoSlash</code></p></li>
 								</ul>
 
 					</li>				
@@ -505,27 +515,27 @@
     Flag for whether to remove all HTML comments, except conditional, noindex, KnockoutJS containerless comments and AngularJS comment directives.
     </p>
 								<ul>
-										<li><p><code>removeHtmlComments</code></p><p>Default value is <pre class="prettyprint"><code>true</code></pre>.</p></li>
+										<li><p><code>removeHtmlComments</code></p><p>Default value is <code>true</code>.</p></li>
 								</ul>
 
 					</li>				
 					<li>
 								<p><strong><code>RemoveOptionalEndTags(bool removeOptionalEndTags = true)</code></strong></p>
 								<p>
-    Flag for whether to remove optional end tags (<pre class="prettyprint"><code>html</code></pre>, <pre class="prettyprint"><code>head</code></pre>, <pre class="prettyprint"><code>body</code></pre>, <pre class="prettyprint"><code>p</code></pre>, <pre class="prettyprint"><code>li</code></pre>, <pre class="prettyprint"><code>dt</code></pre>, <pre class="prettyprint"><code>dd</code></pre>, <pre class="prettyprint"><code>rt</code></pre>, <pre class="prettyprint"><code>rp</code></pre>, <pre class="prettyprint"><code>optgroup</code></pre>, <pre class="prettyprint"><code>option</code></pre>, <pre class="prettyprint"><code>colgroup</code></pre>, <pre class="prettyprint"><code>thead</code></pre>, <pre class="prettyprint"><code>tfoot</code></pre>, <pre class="prettyprint"><code>tbody</code></pre>, <pre class="prettyprint"><code>tr</code></pre>, <pre class="prettyprint"><code>th</code></pre> and <pre class="prettyprint"><code>td</code></pre>).
+    Flag for whether to remove optional end tags (<code>html</code>, <code>head</code>, <code>body</code>, <code>p</code>, <code>li</code>, <code>dt</code>, <code>dd</code>, <code>rt</code>, <code>rp</code>, <code>optgroup</code>, <code>option</code>, <code>colgroup</code>, <code>thead</code>, <code>tfoot</code>, <code>tbody</code>, <code>tr</code>, <code>th</code> and <code>td</code>).
     </p>
 								<ul>
-										<li><p><code>removeOptionalEndTags</code></p><p>Default value is <pre class="prettyprint"><code>true</code></pre>.</p></li>
+										<li><p><code>removeOptionalEndTags</code></p><p>Default value is <code>true</code>.</p></li>
 								</ul>
 
 					</li>				
 					<li>
 								<p><strong><code>RemoveTagsWithoutContent(bool removeTagsWithoutContent = false)</code></strong></p>
 								<p>
-    Flag for whether to remove tags without content, except for <pre class="prettyprint"><code>textarea</code></pre>, <pre class="prettyprint"><code>tr</code></pre>, <pre class="prettyprint"><code>th</code></pre> and <pre class="prettyprint"><code>td</code></pre> tags, and tags with <pre class="prettyprint"><code>class</code></pre>, <pre class="prettyprint"><code>id</code></pre>, <pre class="prettyprint"><code>name</code></pre>, <pre class="prettyprint"><code>role</code></pre>, <pre class="prettyprint"><code>src</code></pre> and <pre class="prettyprint"><code>data-*</code></pre> attributes.
+    Flag for whether to remove tags without content, except for <code>textarea</code>, <code>tr</code>, <code>th</code> and <code>td</code> tags, and tags with <code>class</code>, <code>id</code>, <code>name</code>, <code>role</code>, <code>src</code> and <code>data-*</code> attributes.
     </p>
 								<ul>
-										<li><p><code>removeTagsWithoutContent</code></p><p>Default value is <pre class="prettyprint"><code>false</code></pre>.</p></li>
+										<li><p><code>removeTagsWithoutContent</code></p><p>Default value is <code>false</code>.</p></li>
 								</ul>
 
 					</li>				

@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>GitHub</h1>
+    <h1>
+		GitHub
+					<small><span class="label label-default">Wyam.Modules.GitHub</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -453,6 +457,12 @@
     and requires you to provide functions that fetch whatever data you need. Each request will be sent for each input
     document.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.GitHub</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.GitHub</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 		<h1>Usage</h1>
 		<hr />
 		<ul>			

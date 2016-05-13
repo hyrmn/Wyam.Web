@@ -237,14 +237,14 @@
 								<td><a href="/api/api/Wyam.Modules.Minification/3EBD92E0/DF6C5AD2">RemoveTagsWithoutContent<wbr>(bool)<wbr></a></td>
 								<td><a href="/api/Wyam.Modules.Minification/3EBD92E0">MinifyXhtml</a></td>
 								<td>
-    Flag for whether to remove tags without content, except for <pre class="prettyprint"><code>textarea</code></pre>, <pre class="prettyprint"><code>tr</code></pre>, <pre class="prettyprint"><code>th</code></pre> and <pre class="prettyprint"><code>td</code></pre> tags, and tags with <pre class="prettyprint"><code>class</code></pre>, <pre class="prettyprint"><code>id</code></pre>, <pre class="prettyprint"><code>name</code></pre>, <pre class="prettyprint"><code>role</code></pre>, <pre class="prettyprint"><code>src</code></pre> and <pre class="prettyprint"><code>data-*</code></pre> attributes.
+    Flag for whether to remove tags without content, except for <code>textarea</code>, <code>tr</code>, <code>th</code> and <code>td</code> tags, and tags with <code>class</code>, <code>id</code>, <code>name</code>, <code>role</code>, <code>src</code> and <code>data-*</code> attributes.
     </td>
 							</tr>
 							<tr>
 								<td><a href="/api/api/Wyam.Modules.Minification/3EBD92E0/F5F72D6D">RenderEmptyTagsWithSpace<wbr>(bool)<wbr></a></td>
 								<td><a href="/api/Wyam.Modules.Minification/3EBD92E0">MinifyXhtml</a></td>
 								<td>
-    Flag for whether to allow the inserting space before slash in empty tags (for example, <pre class="prettyprint"><code>true</code></pre> - <pre class="prettyprint"><code><br /></code></pre>; <pre class="prettyprint"><code>false</code></pre> - <pre class="prettyprint"><code><br /></code></pre>).
+    Flag for whether to allow the inserting space before slash in empty tags (for example, <code>true</code> - <code><br /></code>; <code>false</code> - <code><br /></code>).
     </td>
 							</tr>
 							<tr>
@@ -274,7 +274,7 @@
         FrontMatter(Yaml()),
         Markdown(),
         Razor(),
-        XhtmlMinify(),
+        MinifyXhtml(),
         WriteFiles(".html")
     );
     </code></pre>

@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>SearchIndex</h1>
+    <h1>
+		SearchIndex
+					<small><span class="label label-default">Wyam.Modules.SearchIndex</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -451,6 +455,12 @@
     Each input document should either specify the <code>SearchIndexItem</code> metadata key or a delegate that returns a <code>SearchIndexItem</code>
     instance.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.SearchIndex</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.SearchIndex</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 			<h1>Examples</h1>
 			<hr />
 			<div>

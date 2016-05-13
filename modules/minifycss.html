@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>MinifyCss</h1>
+    <h1>
+		MinifyCss
+					<small><span class="label label-default">Wyam.Modules.Minification</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -449,13 +453,19 @@
 			<div>
     This module takes the CSS content and uses minification to reduce the output.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Minification</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Minification</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 			<h1>Examples</h1>
 			<hr />
 			<div>
     <pre class="prettyprint"><code>
     Pipelines.Add("CSS",
         ReadFiles("*.css"),
-        CssMinify(),
+        MinifyCss(),
         WriteFiles(".css")
     );
     </code></pre>
@@ -470,7 +480,7 @@
     </p>
 								<ul>
 										<li><p><code>isInlineCode</code></p><p>
-    Boolean to specify whether the content has inline CSS code. Default value is <pre class="prettyprint"><code>false</code></pre>.
+    Boolean to specify whether the content has inline CSS code. Default value is <code>false</code>.
     </p></li>
 								</ul>
 
@@ -486,7 +496,7 @@
     Flag for whether the content has inline CSS code.
     </p>
 								<ul>
-										<li><p><code>isInlineCode</code></p><p>Default value is <pre class="prettyprint"><code>true</code></pre>.</p></li>
+										<li><p><code>isInlineCode</code></p><p>Default value is <code>true</code>.</p></li>
 								</ul>
 
 					</li>				

@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>Less</h1>
+    <h1>
+		Less
+					<small><span class="label label-default">Wyam.Modules.Less</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -449,6 +453,12 @@
 			<div>
     The content of the input document is compiled to CSS and the content of the output document contains the compiled CSS stylesheet.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Less</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Less</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 			<h1>Examples</h1>
 			<hr />
 			<div>

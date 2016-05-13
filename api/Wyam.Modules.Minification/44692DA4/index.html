@@ -250,7 +250,7 @@
     <pre class="prettyprint"><code>
     Pipelines.Add("CSS",
         ReadFiles("*.css"),
-        CssMinify(),
+        MinifyCss(),
         WriteFiles(".css")
     );
     </code></pre>

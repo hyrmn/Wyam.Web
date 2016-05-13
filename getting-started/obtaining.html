@@ -92,13 +92,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="/getting-started/usage">
-					Usage
+				<a href="/getting-started/concepts">
+					Concepts
 				</a>
 			</li>
 			<li>
-				<a href="/getting-started/concepts">
-					Concepts
+				<a href="/getting-started/usage">
+					Usage
 				</a>
 			</li>
 			<li>
@@ -109,11 +109,6 @@
 			<li>
 				<a href="/getting-started/io">
 					I/O
-				</a>
-			</li>
-			<li>
-				<a href="/getting-started/defaults">
-					Defaults
 				</a>
 			</li>
 			<li>
@@ -140,14 +135,29 @@
 		
 
 
-<h1>Executable</h1>
-<p>To download Wyam, visit the <a href="https://github.com/Wyamio/Wyam/releases">Releases</a> page and download the most recent zip archive. Then unzip it into a folder of your choice. That's it. You may also want to add the folder where you unzipped Wyam to your path, but that step is optional.</p>
+<p>There are several ways to download and install Wyam depending on which platform you're using and how much automation and control you want.</p>
+<h1>Zip File</h1>
+<p>To download Wyam as a zip file, visit the <a href="https://github.com/Wyamio/Wyam/releases">Releases</a> page and download the most recent archive. Then unzip it into a folder of your choice. That's it. You may also want to add the folder where you unzipped Wyam to your path, but that step is optional.</p>
 <p><strong>Note that you may also need to right-click the zip file after download and select &quot;Unblock&quot; in the Security section of the properties dialog, otherwise you could get strange errors when using the application.</strong></p>
-<p>Wyam will also be added to Chocolatey soon.</p>
+<h1>Windows Installer</h1>
+<p>To download Wyam as an installable Windows application, visit the <a href="https://github.com/Wyamio/Wyam/releases">Releases</a> page and download the most recent <code>Setup.exe</code>. That will install Wyam along with a utility application called Wyam.Windows. It will also add Wyam to the Programs and Features control panel and create a Wyam.Windows Start Menu group. It also creates a shortcut that opens a command prompt with the current version of Wyam in the path.</p>
+<p>Note that when you install Wyam from the installer, it is placed on your system at <code>%LocalAppData%\Wyam</code> (on most systems this is located at <code>C:\Users\username\AppData\Local\Wyam</code>).</p>
+<p>The Wyam.Windows application contains some helpful commands to configure and control your environment:</p>
+<pre class="prettyprint"><code>usage:  &lt;command&gt; [&lt;args&gt;]
+
+    update         Update to the latest version.
+    add-path       Add the installation path to the PATH system
+                   environment variable.
+    remove-path    Remove the installation path from the PATH system
+                   environment variable.
+</code></pre>
+<p>Of particular note, run <code>wyam.windows.exe update</code> to perform an update of Wyam to the latest version.</p>
 <h1>Tools Package</h1>
-<p>Wyam is also available as a tools package for inclusion in build systems (such as the excellent <a href="http://cakebuild.net/">Cake</a>, which powers the Wyam build). You can <a href="https://www.nuget.org/packages/Wyam/0.11.2-beta">find the tools package on NuGet</a>.</p>
+<p>Wyam is also available as a tools package for inclusion in build systems (such as the excellent <a href="http://cakebuild.net/">Cake</a>, which powers the Wyam build). You can <a href="https://www.nuget.org/packages/Wyam">find the tools package on NuGet</a>.</p>
+<h1>Chocolatey</h1>
+<p>Wyam will be added to Chocolatey soon, see <a href="https://github.com/Wyamio/Wyam/issues/95">issue #95</a> for more details.</p>
 <h1>Libraries</h1>
-<p>If you're developing addins or you want to embed Wyam in your own applications you can use <a href="https://www.nuget.org/packages/Wyam.Common">Wyam.Common</a> (for developing addins) and <a href="https://www.nuget.org/packages/Wyam.Core">Wyam.Core</a> (for embedding the engine) on NuGet. If you're embedding Wyam and your configuration requires other libraries that aren't included in Wyam.Core, you may also have to <a href="https://www.nuget.org/packages?q=wyam">search NuGet for related Wyam libraries</a> and add those too.</p>
+<p>If you're developing addins or you want to embed Wyam in your own applications you can use <a href="https://www.nuget.org/packages/Wyam.Common">Wyam.Common</a> for developing addins and <a href="https://www.nuget.org/packages/Wyam.Core">Wyam.Core</a> for embedding the engine. These are both available as packages on NuGet. If you're embedding Wyam and your configuration requires other libraries (such as modules), you may also have to <a href="https://www.nuget.org/packages?q=wyam">search NuGet for related Wyam libraries</a> and add those too.</p>
 <h1>Development Builds</h1>
 <p>You can also get the most recent builds at the MyGet feed: <a href="https://www.myget.org/feed/Packages/wyam">https://www.myget.org/feed/Packages/wyam</a>.</p>
 

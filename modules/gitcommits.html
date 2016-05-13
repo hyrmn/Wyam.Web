@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>GitCommits</h1>
+    <h1>
+		GitCommits
+					<small><span class="label label-default">Wyam.Modules.Git</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -460,6 +464,12 @@
     (including those that didn't have commit information).
     </p>
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Git</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Git</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 		<h1>Usage</h1>
 		<hr />
 		<ul>			

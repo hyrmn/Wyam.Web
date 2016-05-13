@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>GenerateJson</h1>
+    <h1>
+		GenerateJson
+					<small><span class="label label-default">Wyam.Modules.Json</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -450,6 +454,12 @@
     Generates JSON for a specified object (which can come from document metadata or elsewhere)
     and stores it as new content for each input document or in each document's metadata.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Json</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Json</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 		<h1>Usage</h1>
 		<hr />
 		<ul>			

@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>MinifyXml</h1>
+    <h1>
+		MinifyXml
+					<small><span class="label label-default">Wyam.Modules.Minification</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -449,6 +453,12 @@
 			<div>
     This module takes the XML content and uses minification to reduce the output.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Minification</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Minification</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 			<h1>Examples</h1>
 			<hr />
 			<div>
@@ -458,12 +468,12 @@
         FrontMatter(Yaml()),
         Markdown(),
         WriteFiles(".html"),
-        Rss(siteRoot: "http://example.org",
-            outputRssFilePath: "posts/feed.rss",
+        Rss(siteUri: "http://example.org",
+            rssPath: new FilePath("posts/feed.rss"),
             feedTitle: "My awesome blog",
             feedDescription: "Blog about something"
         ),
-        XmlMinify(),
+        MinifyXml(),
         WriteFiles()
     );
     </code></pre>
@@ -479,7 +489,7 @@
 								<ul>
 										<li><p><code>useEmptyMinificationSettings</code></p><p>
     Boolean to specify whether to use empty minification settings.
-    Default value is <pre class="prettyprint"><code>false</code></pre>, this will use commonly accepted settings.
+    Default value is <code>false</code>, this will use commonly accepted settings.
     </p></li>
 								</ul>
 
@@ -495,7 +505,7 @@
     Flag for whether to remove all XML comments.
     </p>
 								<ul>
-										<li><p><code>removeXmlComments</code></p><p>Default value is <pre class="prettyprint"><code>true</code></pre>.</p></li>
+										<li><p><code>removeXmlComments</code></p><p>Default value is <code>true</code>.</p></li>
 								</ul>
 
 					</li>				

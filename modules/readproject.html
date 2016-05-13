@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>ReadProject</h1>
+    <h1>
+		ReadProject
+					<small><span class="label label-default">Wyam.Modules.CodeAnalysis</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -453,6 +457,12 @@
 			<div>
     The output of this module is similar to executing the ReadFiles module on all source files in the project.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.CodeAnalysis</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.CodeAnalysis</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 		<h1>Usage</h1>
 		<hr />
 		<ul>			

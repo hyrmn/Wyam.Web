@@ -260,12 +260,12 @@
         FrontMatter(Yaml()),
         Markdown(),
         WriteFiles(".html"),
-        Rss(siteRoot: "http://example.org",
-            outputRssFilePath: "posts/feed.rss",
+        Rss(siteUri: "http://example.org",
+            rssPath: new FilePath("posts/feed.rss"),
             feedTitle: "My awesome blog",
             feedDescription: "Blog about something"
         ),
-        XmlMinify(),
+        MinifyXml(),
         WriteFiles()
     );
     </code></pre>

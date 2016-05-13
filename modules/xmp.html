@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>Xmp</h1>
+    <h1>
+		Xmp
+					<small><span class="label label-default">Wyam.Modules.Xmp</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -450,6 +454,12 @@
     The <code>SourceFilePath</code> metadata key of each input document will be used to 
     locate any sidecar files.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Xmp</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Xmp</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 		<h1>Usage</h1>
 		<hr />
 		<ul>			

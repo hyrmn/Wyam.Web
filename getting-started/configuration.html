@@ -92,13 +92,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="/getting-started/usage">
-					Usage
+				<a href="/getting-started/concepts">
+					Concepts
 				</a>
 			</li>
 			<li>
-				<a href="/getting-started/concepts">
-					Concepts
+				<a href="/getting-started/usage">
+					Usage
 				</a>
 			</li>
 			<li class="active">
@@ -109,11 +109,6 @@
 			<li>
 				<a href="/getting-started/io">
 					I/O
-				</a>
-			</li>
-			<li>
-				<a href="/getting-started/defaults">
-					Defaults
 				</a>
 			</li>
 			<li>
@@ -140,13 +135,10 @@
 		
 
 
-<p>The command line Wyam application reads a configuration file typically named <code>config.wyam</code> (though you can change that with an argument) that sets up the environment and initializes metadata and pipelines. It consists of three parts, the <em>setup</em>, any <em>declarations</em>, and the <em>body</em>, in that order. The setup is separated by a line consisting entirely of one or more equals (<code>===</code>) and the declarations are separated by a line consisting entirely of one or more dashes (<code>---</code>).</p>
-<p>The sections of the configuration file are evaluated as C# code, so you can make use of the full C# language and the entire .NET ecosystem. However, it's not necessary to know C# to write Wyam configuration files. The syntax has been carefully crafted to be usable by anyone no matter their level of programming experience.</p>
+<p>The command line Wyam application reads a configuration file typically named <code>config.wyam</code> (though you can change that with an argument) that sets up the environment and configures the pipelines. It consists of two sections: The <em>declaration</em> section and the <em>body</em>, in that order. The declaration section is optional and is separated by a line consisting entirely of one or more dashes (<code>---</code>). Preprocessor directives can also appear anywhere in the configuration file, though they are always evaluated before processing the rest of the file (by convention they're usually at the top of the file).</p>
+<p>The sections of the configuration file are evaluated as C# code, so you can make use of the full C# language and the entire .NET ecosystem. However, it's not necessary to know C# to write Wyam configuration files. The syntax has been carefully crafted to be usable by anyone no matter their level of programming experience. Some extra pre-processing is also done to the file to make certain code easier to write (which actually makes the syntax a superset of C#, though this extra magic is entirely optional).</p>
 <p>A configuration file looks like this:</p>
-<pre class="prettyprint"><code>// Setup code (optional)
-// ...
-
-===
+<pre class="prettyprint"><code>// Preprocessor directives (optional)
 
 // Declaration code (optional)
 // ...
@@ -156,31 +148,47 @@
 // Body code (required)
 // ...
 </code></pre>
-<h1><a name="setup"></a>Setup</h1>
+<h1><a name="Preprocessor"></a>Preprocessor Directives</h1>
 <hr />
-<p>The setup helps establish the Wyam environment and gets evaluated before the rest of the configuration file. It's generally responsible for declaring NuGet packages, assemblies, and namespaces that should be made available to the main configuration body. Any modules that exist in referenced NuGet packages or assemblies will get automatically imported for use in pipelines. Additionally, the objects in NuGet packages and assemblies will be available from the configuration body and any specified namespaces will be brought into scope. Note that while the setup portion of the configuration file is evaluated as C# code just like the configuration body, it only references a small subset of the .NET class library (basically just enough to set things up).</p>
-<h2><a name="nuget"></a>NuGet</h2>
-<p>Wyam can automatically install any NuGet packages you declare in the setup portion of the configuration file. These will then be scanned for modules and be made available to the main configuration body. NuGet packages are configured using the global <code>Packages</code> object and a fluent interface.</p>
-<p><code>Packages.Install(string packageId, string versionSpec = null, bool allowPrereleaseVersions = false, bool allowUnlisted = false)</code> will let you specify a NuGet package to download from the default package source, which is the main NuGet.org feed. <code>Packages.Repository(string packageSource)</code> will let you define alternate package sources (such as an internal NuGet feed or a feed on MyGet). You can then continue to chain additional <code>Install()</code> calls as before. For example:</p>
-<pre class="prettyprint"><code>Packages
-    .Install(&quot;Humanizer&quot;)
-    .Install(&quot;Newtonsoft.Json&quot;);
+<p>Preprocessor directives establish the Wyam environment and get evaluated before the rest of the configuration file. They're typically responsible for declaring things like NuGet packages and assemblies. Every preprocessor directive starts with <code>#</code> at the beginning of a line and extend for the rest of the line. The following directives are available (the current set of directives can always be seen by calling <code>wyam.exe --help-directives</code>).</p>
+<pre class="prettyprint"><code>Adds a reference to an assembly by name.:
+#assembly-name, #an
+    &lt;assembly&gt;    The assembly to load by name.
 
-Packages.Repository(&quot;https://www.myget.org/F/roslyn-nightly/&quot;)
-    .Install(&quot;Microsoft.CodeAnalysis&quot;)
-    .Install(&quot;Microsoft.CodeAnalysis.Scripting&quot;);
+Adds a reference to an assembly by file name or globbing pattern.:
+#assembly, #a
+    &lt;assembly&gt;    The assembly to load by file or globbing pattern.
+
+Specifies an additional package source to use.:
+#nuget-source, #ns
+    &lt;source&gt;    The package source to add.
+
+Adds a NuGet package (downloading and installing it if needed).:
+#nuget, #n
+    -p, --prerelease         Specifies that prerelease packages are
+                             allowed.
+    -u, --unlisted           Specifies that unlisted packages are
+                             allowed.
+    -v, --version &lt;arg&gt;      Specifies the version of the package to
+                             use.
+    -s, --source &lt;arg&gt;...    Specifies the package source(s) to get the
+                             package from.
+    -e, --exclusive          Indicates that only the specified package
+                             source(s) should be used to find the
+                             package.
+    &lt;package&gt;                The package to install.
 </code></pre>
-<p>From the <code>Install()</code> method you can also specify the acceptable package version(s) and whether prerelease and/or unlisted packages should be allowed. The <code>versionSpec</code> argument takes a string that matches the standard NuGet version specifications defined at https://docs.nuget.org/create/versioning</p>
-<p>By default, packages are downloaded to <code>\packages</code>. If you want to change this, set <code>Packages.Path</code> to the relative folder where you want packages to be downloaded. For example, you could set this to a system-wide folder if you have several scripts that share the same packages.</p>
+<h2><a name="nuget"></a>NuGet Packages</h2>
+<p>Any NuGet packages you specify in preprocessor directives are installed and then scanned for modules which are made available to the main configuration body.</p>
+<p>Note that many modules require their package to be installed before they can be used. For example, to make use of the <a href="/modules/markdown">Markdown</a> module, you must install the <code>Wyam.Modules.Markdown</code> package. To do this, you would add the following to your configuration file (the <code>-p</code> indicates this is a prerelease package, which currently applies to all the Wyam packages):</p>
+<pre class="prettyprint"><code>#n -p Wyam.Modules.Markdown
+</code></pre>
+<p>You can also specify the special <code>Wyam.Modules.All</code> package which will download all of the official Wyam module packages at once:</p>
+<pre class="prettyprint"><code>#n -p Wyam.Modules.All
+</code></pre>
 <h2><a name="assemblies"></a>Assemblies</h2>
-<p>In addition to NuGet packages you can also load assemblies. This is accomplished by using the <code>Assemblies</code> property. You can load all the assemblies in a directory with the <code>LoadDirectory(string path, SearchOption searchOption = SearchOption.AllDirectories)</code> method. The specified directory can either be relative to the active directory or absolute. You can also load a single assembly by location with the <code>LoadFile(string path)</code> method and by full name with the <code>Load(string name)</code> method. For example:</p>
-<pre class="prettyprint"><code>Assemblies
-    .LoadDirectory(&#64;&quot;lib&quot;)
-    .LoadFile(&#64;&quot;foo\bar.dll&quot;)
-    .Load(&quot;SampleAssembly, Version=1.0.2004.0, Culture=neutral, PublicKeyToken=8744b20f8da049e3&quot;);
-</code></pre>
-<p>Keep in mind that system assemblies and others located in the GAC <em>must</em> be loaded by full name (including the version, public key token, etc.).</p>
-<p>By default, the following assemblies are already loaded so you don't need to explicity specify them:</p>
+<p>In addition to NuGet packages you can also load assemblies. You can load all the assemblies in a directory by using a <a href="/getting-started/io#globbing">globbing pattern</a> with the <code>#assembly</code> directive, or by specifying a relative or absolute path to the assembly. You can also load assemblies by name with the <code>#assembly-name</code> directive. Keep in mind that system assemblies and others located in the GAC <em>must</em> be loaded by full name (including the version, public key token, etc.).</p>
+<p>By default, the following assemblies are already loaded so you don't need to explicitly specify them:</p>
 <ul>
 <li><code>System</code></li>
 <li><code>System.Collections.Generic</code></li>
@@ -190,9 +198,6 @@ Packages.Repository(&quot;https://www.myget.org/F/roslyn-nightly/&quot;)
 <li><code>System.IO</code></li>
 <li><code>System.Diagnostics</code></li>
 </ul>
-<p>Also note that all assemblies from the directory containing the Wyam executable (and all subdirectories) will also be scanned for module assemblies.</p>
-<h2>Folders</h2>
-<p>You can configure the folders Wyam uses by setting <code>RootFolder</code>, <code>InputFolder</code>, and/or <code>OutputFolder</code> in the setup script.</p>
 <h1><a name="declarations"></a>Declarations</h1>
 <hr />
 <p>The code in your configuration is typically executed inside the context of an &quot;invisible&quot; class and method. This means that you can't bring namespaces into scope, create classes, declare helper methods, etc. If you need to do any of these things, place it above the configuration code and separate it with a line consisting entirely of one or more dashes (<code>---</code>). Any code above this line will be evaluated outside the scope of the configuration method or any class. This means that you can bring namespaces into scope with <code>using</code> statements, declare helper classes, etc. Note that this code is global, so if you want to declare helper methods, they'll have to be placed within a wrapper class.</p>
@@ -298,52 +303,8 @@ InitialMetadata.Add(&quot;Baz&quot;, new KeyValuePair&lt;string, string&gt;(&quo
 <p>will be expanded to:</p>
 <pre class="prettyprint"><code>Foo((&#64;doc, &#64;ctx) =&gt; &#64;doc[&#64;ctx.InputFolder])
 </code></pre>
-<h2>Folders</h2>
-<p>You can access the folders Wyam uses by getting <code>RootFolder</code>, <code>InputFolder</code>, and/or <code>OutputFolder</code> in the configuration script.</p>
 <h2>Execution Ordering</h2>
 <p>Be aware that the configuration file only <em>configures</em> the pipelines. Each pipeline is executed in the order in which they were first added after the entire configuration file is evaluated. This means that you can't declare one pipeline, then declare another, and then add a new module to the first pipeline expecting it to reflect what happened in the second one. The second pipeline won't execute until the entire first pipeline is complete, including any modules that were added to it after the second one was declared. If you need to run some modules, switch to a different pipeline, and the perform additional processing on the first set of documents, look into the <a href="/modules/documents">Documents</a> module.</p>
-<h1>Example</h1>
-<hr />
-<p>The full configuration file for this documentation site is given below as an example:</p>
-<pre class="prettyprint"><code>// Setup code
-Packages
-    .Install(&quot;Twitter.Bootstrap.Less&quot;, &quot;[3.3.5]&quot;)
-    .Install(&quot;jQuery&quot;, &quot;[2.1.1]&quot;);
-    
-===
-// Body code
-
-Pipelines.Add(&quot;Content&quot;,
-    ReadFiles(&quot;*.md&quot;),
-    FrontMatter(Yaml()),
-    Markdown(),
-    Replace(&quot;&lt;pre&gt;&lt;code&gt;&quot;, &quot;&lt;pre class=\&quot;prettyprint\&quot;&gt;&lt;code&gt;&quot;),
-    Concat(
-        ReadFiles(&quot;*.cshtml&quot;).Where(x =&gt; Path.GetFileName(x)[0] != '_'),
-        FrontMatter(Yaml())        
-    ),
-    Razor(),
-    AutoLink(c =&gt; c.Documents
-        .FromPipeline(&quot;Content&quot;)
-        .Where(x =&gt; x.String(&quot;RelativeFileDir&quot;) == &quot;api&quot; &amp;&amp; !string.IsNullOrWhiteSpace(x.String(&quot;Title&quot;)))
-        .ToDictionary(x =&gt; x.String(&quot;Title&quot;), x =&gt; PathHelper.ToRootLink(Path.ChangeExtension(x.String(&quot;RelativeFilePath&quot;), &quot;.html&quot;)))),
-    WriteFiles(&quot;.html&quot;)
-);
-
-Pipelines.Add(&quot;Less&quot;,
-    ReadFiles(&quot;master.less&quot;),
-    Concat(ReadFiles(&quot;bootstrap.less&quot;)),
-    Less(),
-    WriteFiles(&quot;.css&quot;)
-);
-
-Pipelines.Add(&quot;Resources&quot;,
-    CopyFiles(&quot;*&quot;).Where(x =&gt; 
-        Path.GetExtension(x) != &quot;.cshtml&quot; 
-        &amp;&amp; Path.GetExtension(x) != &quot;.md&quot;
-        &amp;&amp; Path.GetExtension(x) != &quot;.less&quot;)
-);
-</code></pre>
 
 
 	</section>

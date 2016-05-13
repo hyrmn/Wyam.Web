@@ -438,7 +438,11 @@
 
 
 <section class="content-header">
-	<h1>MinifyXhtml</h1>
+    <h1>
+		MinifyXhtml
+					<small><span class="label label-default">Wyam.Modules.Minification</span></small>
+
+	</h1>
 </section>
 <section class="content">
 	  
@@ -449,6 +453,12 @@
 			<div>
     This module takes the XHTML content and uses minification to reduce the output.
     </div>
+			<h1>Package</h1>
+			<hr />
+			<div>This module exists in the <strong>Wyam.Modules.Minification</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.Minification</code></pre>
+			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
 			<h1>Examples</h1>
 			<hr />
 			<div>
@@ -458,7 +468,7 @@
         FrontMatter(Yaml()),
         Markdown(),
         Razor(),
-        XhtmlMinify(),
+        MinifyXhtml(),
         WriteFiles(".html")
     );
     </code></pre>
@@ -474,7 +484,7 @@
 								<ul>
 										<li><p><code>useEmptyMinificationSettings</code></p><p>
     Boolean to specify whether to use empty minification settings.
-    Default value is <pre class="prettyprint"><code>false</code></pre>, this will use commonly accepted settings.
+    Default value is <code>false</code>, this will use commonly accepted settings.
     </p></li>
 								</ul>
 
@@ -490,27 +500,27 @@
     Flag for whether to remove all HTML comments, except conditional, noindex, KnockoutJS containerless comments and AngularJS comment directives.
     </p>
 								<ul>
-										<li><p><code>removeHtmlComments</code></p><p>Default value is <pre class="prettyprint"><code>true</code></pre>.</p></li>
+										<li><p><code>removeHtmlComments</code></p><p>Default value is <code>true</code>.</p></li>
 								</ul>
 
 					</li>				
 					<li>
 								<p><strong><code>RemoveTagsWithoutContent(bool removeTagsWithoutContent = false)</code></strong></p>
 								<p>
-    Flag for whether to remove tags without content, except for <pre class="prettyprint"><code>textarea</code></pre>, <pre class="prettyprint"><code>tr</code></pre>, <pre class="prettyprint"><code>th</code></pre> and <pre class="prettyprint"><code>td</code></pre> tags, and tags with <pre class="prettyprint"><code>class</code></pre>, <pre class="prettyprint"><code>id</code></pre>, <pre class="prettyprint"><code>name</code></pre>, <pre class="prettyprint"><code>role</code></pre>, <pre class="prettyprint"><code>src</code></pre> and <pre class="prettyprint"><code>data-*</code></pre> attributes.
+    Flag for whether to remove tags without content, except for <code>textarea</code>, <code>tr</code>, <code>th</code> and <code>td</code> tags, and tags with <code>class</code>, <code>id</code>, <code>name</code>, <code>role</code>, <code>src</code> and <code>data-*</code> attributes.
     </p>
 								<ul>
-										<li><p><code>removeTagsWithoutContent</code></p><p>Default value is <pre class="prettyprint"><code>false</code></pre>.</p></li>
+										<li><p><code>removeTagsWithoutContent</code></p><p>Default value is <code>false</code>.</p></li>
 								</ul>
 
 					</li>				
 					<li>
 								<p><strong><code>RenderEmptyTagsWithSpace(bool renderEmptyTagsWithSpace = true)</code></strong></p>
 								<p>
-    Flag for whether to allow the inserting space before slash in empty tags (for example, <pre class="prettyprint"><code>true</code></pre> - <pre class="prettyprint"><code><br /></code></pre>; <pre class="prettyprint"><code>false</code></pre> - <pre class="prettyprint"><code><br /></code></pre>).
+    Flag for whether to allow the inserting space before slash in empty tags (for example, <code>true</code> - <code><br /></code>; <code>false</code> - <code><br /></code>).
     </p>
 								<ul>
-										<li><p><code>renderEmptyTagsWithSpace</code></p><p>Default value is <pre class="prettyprint"><code>true</code></pre>.</p></li>
+										<li><p><code>renderEmptyTagsWithSpace</code></p><p>Default value is <code>true</code>.</p></li>
 								</ul>
 
 					</li>				
