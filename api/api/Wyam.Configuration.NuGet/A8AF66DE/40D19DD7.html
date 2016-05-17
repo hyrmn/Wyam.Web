@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <title>Wyam - API - PackageInstaller.AddPackage(string, IReadOnlyList&lt;string&gt;, string, bool, bool, bool) Method</title>
+        <title>Wyam - API - PackageInstaller.AddPackage(string, IReadOnlyList&lt;string&gt;, string, bool, bool, bool, bool) Method</title>
         <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
         <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
         <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
@@ -135,7 +135,7 @@
 				<li class=""><a href="/api/api/Wyam.Configuration.NuGet/A8AF66DE/74843E05">UpdatePackages</a></li>
 				<li class=""><a href="/api/api/Wyam.Configuration.NuGet/A8AF66DE/B2937128">UseLocal</a></li>
 			<li class="header">Method Members</li>
-				<li class="active"><a href="/api/api/Wyam.Configuration.NuGet/A8AF66DE/91B16D7A">AddPackage<wbr>(string, IReadOnlyList<wbr>&lt;string&gt;<wbr>, string, bool, bool, bool)<wbr></a></li>
+				<li class="active"><a href="/api/api/Wyam.Configuration.NuGet/A8AF66DE/40D19DD7">AddPackage<wbr>(string, IReadOnlyList<wbr>&lt;string&gt;<wbr>, string, bool, bool, bool, bool)<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Configuration.NuGet/A8AF66DE/08914233">AddPackageSource<wbr>(string)<wbr></a></li>
 
 
@@ -152,7 +152,7 @@
 <section class="content-header">
 			<h3><a href="/api/Wyam.Configuration.NuGet/A8AF66DE">PackageInstaller</a>.</h3>
 
-	<h1>AddPackage<wbr>(string, IReadOnlyList<wbr>&lt;string&gt;<wbr>, string, bool, bool, bool)<wbr> <small>Method</small></h1>
+	<h1>AddPackage<wbr>(string, IReadOnlyList<wbr>&lt;string&gt;<wbr>, string, bool, bool, bool, bool)<wbr> <small>Method</small></h1>
 	<hr />
 </section>
 <section class="content smaller">
@@ -172,7 +172,7 @@
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public void AddPackage(string packageId, IReadOnlyList&lt;string&gt; packageSources, string versionSpec, bool allowPrereleaseVersions, bool allowUnlisted, bool exclusive)</pre>
+	<pre class="prettyprint">public void AddPackage(string packageId, IReadOnlyList&lt;string&gt; packageSources, string versionSpec, bool getLatest, bool allowPrereleaseVersions, bool allowUnlisted, bool exclusive)</pre>
 
 
 
@@ -201,6 +201,11 @@
 					<tr>
 						<td>versionSpec</td>
 						<td>string</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>getLatest</td>
+						<td>bool</td>
 						<td></td>
 					</tr>
 					<tr>

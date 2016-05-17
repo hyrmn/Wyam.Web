@@ -147,98 +147,100 @@
 <pre class="prettyprint"><code>wyam C:\MySite
 </code></pre>
 <p>There are also a number of arguments that allow you to control execution (use <code>--help</code> or <code>-?</code> to see them):</p>
-<pre class="prettyprint"><code>usage:  [--help-directives] [-w] [-p [arg]] [--force-ext]                                 
-        [--preview-root &lt;arg&gt;] [-i &lt;arg&gt;...] [-o &lt;arg&gt;] [-c &lt;arg&gt;] [-u]                   
-        [--use-local-packages] [--packages-path &lt;arg&gt;] [--output-script]                  
-        [--verify-config] [--noclean] [--nocache] [-v] [--pause]                          
-        [--meta &lt;arg&gt;...] [-l [arg]] [--assembly-name &lt;arg&gt;...]                           
-        [--assembly &lt;arg&gt;...] [--nuget-source &lt;arg&gt;...]                                   
-        [--nuget &lt;arg&gt;...] [--] &lt;root&gt;                                                    
-                                                                                          
-    --help-directives           Displays help for the various                             
-                                preprocessor directives.                                  
-    -w, --watch                 Watches the input folder for any                          
-                                changes.                                                  
-    -p, --preview [arg]         Start the preview web server on the                       
-                                specified port (default is 5080).                         
-    --force-ext                 Force the use of extensions in the                        
-                                preview web server (by default,                           
-                                extensionless URLs may be used).                          
-    --preview-root &lt;arg&gt;        The path to the root of the preview                       
-                                server, if not the output folder.                         
-    -i, --input &lt;arg&gt;...        The path(s) of input files, can be                        
-                                absolute or relative to the current                       
-                                folder.                                                   
-    -o, --output &lt;arg&gt;          The path to output files, can be                          
-                                absolute or relative to the current                       
-                                folder.                                                   
-    -c, --config &lt;arg&gt;          Configuration file (by default,                           
-                                config.wyam is used).                                     
-    -u, --update-packages       Check the NuGet server for more recent                    
-                                versions of each package and update them                  
-                                if applicable.                                            
-    --use-local-packages        Toggles the use of a local NuGet                          
-                                packages folder.                                          
-    --packages-path &lt;arg&gt;       The packages path to use (only if                         
-                                use-local is true).                                       
-    --output-script             Outputs the config script after it's                      
-                                been processed for further debugging.                     
-    --verify-config             Compile the configuration but do not                      
-                                execute.                                                  
-    --noclean                   Prevents cleaning of the output path on                   
-                                each execution.                                           
-    --nocache                   Prevents caching information during                       
-                                execution (less memory usage but slower                   
-                                execution).                                               
-    -v, --verbose               Turns on verbose output showing                           
-                                additional trace message useful for                       
-                                debugging.                                                
-    --pause                     Pause execution at the start of the                       
-                                program until a key is pressed (useful                    
-                                for attaching a debugger).                                
-    --meta &lt;arg&gt;...             Specifies global metadata which can be                    
-                                accessed from the engine or config file                   
-                                (--meta key=value).                                       
-    -l, --log [arg]             Log all trace messages to the specified                   
-                                log file (by default,                                     
-                                wyam-[datetime].txt).                                     
-    --assembly-name &lt;arg&gt;...    Adds a reference to an assembly by name.                  
-                                See below for syntax details.                             
-    --assembly &lt;arg&gt;...         Adds a reference to an assembly by file                   
-                                name or globbing pattern. See below for                   
-                                syntax details.                                           
-    --nuget-source &lt;arg&gt;...     Specifies an additional package source                    
-                                to use. See below for syntax details.                     
-    --nuget &lt;arg&gt;...            Adds a NuGet package (downloading and                     
-                                installing it if needed). See below for                   
-                                syntax details.                                           
-    &lt;root&gt;                      The folder (or config file) to use.                       
-                                                                                          
---assembly-name usage:                                                                    
-                                                                                          
-    &lt;assembly&gt;    The assembly to load by name.                                           
-                                                                                          
---assembly usage:                                                                         
-                                                                                          
-    &lt;assembly&gt;    The assembly to load by file or globbing pattern.                       
-                                                                                          
---nuget-source usage:                                                                     
-                                                                                          
-    &lt;source&gt;    The package source to add.                                                
-                                                                                          
---nuget usage:                                                                            
-                                                                                          
-    -p, --prerelease         Specifies that prerelease packages are                       
-                             allowed.                                                     
-    -u, --unlisted           Specifies that unlisted packages are                         
-                             allowed.                                                     
-    -v, --version &lt;arg&gt;      Specifies the version of the package to                      
-                             use.                                                         
-    -s, --source &lt;arg&gt;...    Specifies the package source(s) to get the                   
-                             package from.                                                
-    -e, --exclusive          Indicates that only the specified package                    
-                             source(s) should be used to find the                         
-                             package.                                                     
+<pre class="prettyprint"><code>usage:  [--help-directives] [-w] [-p [arg]] [--force-ext]
+        [--preview-root &lt;arg&gt;] [-i &lt;arg&gt;...] [-o &lt;arg&gt;] [-c &lt;arg&gt;] [-u]
+        [--use-local-packages] [--packages-path &lt;arg&gt;] [--output-script]
+        [--verify-config] [--noclean] [--nocache] [-v] [--pause]
+        [--meta &lt;arg&gt;...] [-l [arg]] [--assembly-name &lt;arg&gt;...]
+        [--assembly &lt;arg&gt;...] [--nuget-source &lt;arg&gt;...]
+        [--nuget &lt;arg&gt;...] [--] &lt;root&gt;
+
+    --help-directives           Displays help for the various
+                                preprocessor directives.
+    -w, --watch                 Watches the input folder for any
+                                changes.
+    -p, --preview [arg]         Start the preview web server on the
+                                specified port (default is 5080).
+    --force-ext                 Force the use of extensions in the
+                                preview web server (by default,
+                                extensionless URLs may be used).
+    --preview-root &lt;arg&gt;        The path to the root of the preview
+                                server, if not the output folder.
+    -i, --input &lt;arg&gt;...        The path(s) of input files, can be
+                                absolute or relative to the current
+                                folder.
+    -o, --output &lt;arg&gt;          The path to output files, can be
+                                absolute or relative to the current
+                                folder.
+    -c, --config &lt;arg&gt;          Configuration file (by default,
+                                config.wyam is used).
+    -u, --update-packages       Check the NuGet server for more recent
+                                versions of each package and update them
+                                if applicable.
+    --use-local-packages        Toggles the use of a local NuGet
+                                packages folder.
+    --packages-path &lt;arg&gt;       The packages path to use (only if
+                                use-local is true).
+    --output-script             Outputs the config script after it's
+                                been processed for further debugging.
+    --verify-config             Compile the configuration but do not
+                                execute.
+    --noclean                   Prevents cleaning of the output path on
+                                each execution.
+    --nocache                   Prevents caching information during
+                                execution (less memory usage but slower
+                                execution).
+    -v, --verbose               Turns on verbose output showing
+                                additional trace message useful for
+                                debugging.
+    --pause                     Pause execution at the start of the
+                                program until a key is pressed (useful
+                                for attaching a debugger).
+    --meta &lt;arg&gt;...             Specifies global metadata which can be
+                                accessed from the engine or config file
+                                (--meta key=value).
+    -l, --log [arg]             Log all trace messages to the specified
+                                log file (by default,
+                                wyam-[datetime].txt).
+    --assembly-name &lt;arg&gt;...    Adds a reference to an assembly by name.
+                                See below for syntax details.
+    --assembly &lt;arg&gt;...         Adds a reference to an assembly by file
+                                name or globbing pattern. See below for
+                                syntax details.
+    --nuget-source &lt;arg&gt;...     Specifies an additional package source
+                                to use. See below for syntax details.
+    --nuget &lt;arg&gt;...            Adds a NuGet package (downloading and
+                                installing it if needed). See below for
+                                syntax details.
+    &lt;root&gt;                      The folder (or config file) to use.
+
+--assembly-name usage:
+
+    &lt;assembly&gt;    The assembly to load by name.
+
+--assembly usage:
+
+    &lt;assembly&gt;    The assembly to load by file or globbing pattern.
+
+--nuget-source usage:
+
+    &lt;source&gt;    The package source to add.
+
+--nuget usage:
+
+    -p, --prerelease         Specifies that prerelease packages are
+                             allowed.
+    -u, --unlisted           Specifies that unlisted packages are
+                             allowed.
+    -v, --version &lt;arg&gt;      Specifies the version of the package to
+                             use.
+    -l, --latest             Specifies that the latest available version
+                             of the package should always be used.
+    -s, --source &lt;arg&gt;...    Specifies the package source(s) to get the
+                             package from.
+    -e, --exclusive          Indicates that only the specified package
+                             source(s) should be used to find the
+                             package.
     &lt;package&gt;                The package to install.
 </code></pre>
 <p>Note that some of the options such as <code>--nuget</code> are &quot;nested&quot; and must be contained in quotes if they contain options of their own (and any inner quotes must be escaped). For example, the following command will load a Nuget package named <code>Foo.Bar</code>:</p>

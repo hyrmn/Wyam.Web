@@ -164,7 +164,17 @@
 <h1>Libraries</h1>
 <p>If you're developing addins or you want to embed Wyam in your own applications you can use <a href="https://www.nuget.org/packages/Wyam.Common">Wyam.Common</a> for developing addins and <a href="https://www.nuget.org/packages/Wyam.Core">Wyam.Core</a> for embedding the engine. These are both available as packages on NuGet. If you're embedding Wyam and your configuration requires other libraries (such as modules), you may also have to <a href="https://www.nuget.org/packages?q=wyam">search NuGet for related Wyam libraries</a> and add those too.</p>
 <h1>Development Builds</h1>
-<p>You can also get the most recent builds at the MyGet feed: <a href="https://www.myget.org/feed/Packages/wyam">https://www.myget.org/feed/Packages/wyam</a>.</p>
+<p>You can also get the most recent builds at the MyGet feed:</p>
+<p>NuGet V3 clients (VS 2015, Wyam): <a href="https://www.myget.org/F/wyam/api/v3/index.json">https://www.myget.org/F/wyam/api/v3/index.json</a></p>
+<p>NuGet V2 clients (VS 2013, Cake): <a href="https://www.myget.org/F/wyam/api/v2">https://www.myget.org/F/wyam/api/v2</a></p>
+<p>To make Cake use the development feed, change the directives at the top of the Cake build script to:</p>
+<pre class="prettyprint"><code>#tool nuget:https://www.myget.org/F/wyam/api/v2?package=Wyam&amp;prerelease
+#addin nuget:https://www.myget.org/F/wyam/api/v2?package=Cake.Wyam&amp;prerelease
+</code></pre>
+<p>Note that you'll also need to delete the existing &quot;tools\Wyam&quot; and &quot;tools\Addins\Cake.Wyam&quot; folders if they exist (otherwise Cake will just use the existing packages and won't download the new packages).</p>
+<p>To use the development feed inside a Wyam configuration file for a particular module, specify it like this:</p>
+<pre class="prettyprint"><code>#n Wyam.Modules.Markdown -s https://www.myget.org/F/wyam/api/v3/index.json -l -p
+</code></pre>
 
 
 	</section>
