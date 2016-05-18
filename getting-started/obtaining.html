@@ -169,10 +169,9 @@
 <p>NuGet V2 clients (VS 2013, Cake): <a href="https://www.myget.org/F/wyam/api/v2">https://www.myget.org/F/wyam/api/v2</a></p>
 <p>To make Cake use the development feed, change the directives at the top of the Cake build script to:</p>
 <pre class="prettyprint"><code>#tool nuget:https://www.myget.org/F/wyam/api/v2?package=Wyam&amp;prerelease
-#addin nuget:?package=Cake.Common
 #addin nuget:https://www.myget.org/F/wyam/api/v2?package=Cake.Wyam&amp;prerelease
 </code></pre>
-<p>Note that you'll also need to delete the existing &quot;tools\Wyam&quot; and &quot;tools\Addins\Cake.Wyam&quot; folders if they exist (otherwise Cake will just use the existing packages and won't download the new packages). Also note that the <code>#addin</code> directive for <code>Cake.Common</code> needs to come before the one for <code>Cake.Wyam</code> to ensure the Cake common library is downloaded from the standard NuGet feed before downloading <code>Cake.Wyam</code> from the Wyam development feed as shown above.</p>
+<p>Note that you'll also need to delete the existing &quot;tools\Wyam&quot; and &quot;tools\Addins\Cake.Wyam&quot; folders if they exist (otherwise Cake will just use the existing packages and won't download the new packages).</p>
 <p>To use the development feed inside a Wyam configuration file for a particular module, specify it like this:</p>
 <pre class="prettyprint"><code>#n Wyam.Modules.Markdown -s https://www.myget.org/F/wyam/api/v3/index.json -l -p
 </code></pre>
