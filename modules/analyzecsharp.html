@@ -258,6 +258,11 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/sidecar">
+					Sidecar
+				</a>
+			</li>
+			<li>
 				<a href="/modules/switch">
 					Switch
 				</a>
@@ -391,6 +396,11 @@
 				</a>
 			</li>
 			<li>
+				<a href="/modules/tree">
+					Tree
+				</a>
+			</li>
+			<li>
 				<a href="/modules/validatemeta">
 					ValidateMeta&lt;T&gt;
 				</a>
@@ -440,7 +450,7 @@
 <section class="content-header">
     <h1>
 		AnalyzeCSharp
-					<small><span class="label label-default">Wyam.Modules.CodeAnalysis</span></small>
+					<small><span class="label label-default">Wyam.CodeAnalysis</span></small>
 
 	</h1>
 </section>
@@ -461,10 +471,10 @@
     </div>
 			<h1>Package</h1>
 			<hr />
-			<div>This module exists in the <strong>Wyam.Modules.CodeAnalysis</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
-			<pre class="prettyprint"><code>#n -p Wyam.Modules.CodeAnalysis</code></pre>
+			<div>This module exists in the <strong>Wyam.CodeAnalysis</strong> package which is not part of the core distribution. Add the following preprocessor directive to your <a href="/getting-started/configuration">configuration file</a> to use it:</div>
+			<pre class="prettyprint"><code>#n -p Wyam.CodeAnalysis</code></pre>
 			<div>Alternativly, you can add all modules at once with the following preprocessor directive:</div>
-			<pre class="prettyprint"><code>#n -p Wyam.Modules.All</code></pre>
+			<pre class="prettyprint"><code>#n -p Wyam.All</code></pre>
 		<h1>Usage</h1>
 		<hr />
 		<ul>			
@@ -579,429 +589,6 @@
 								</ul>
 
 					</li>				
-			</ul>
-			<h1>Metadata</h1>
-			<hr />
-			<p>The following metadata is added to each document.</p>
-			<ul>
-					<li>
-						<p>
-
-							<strong><code>[ElementName]Comments</code></strong>: <code>IReadOnlyList&lt;OtherComment&gt;</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      a collection of all custom XML documentation comments with a particular <code>[ElementName]</code> for this symbol with their rendered HTML content and any attributes they contain.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Accessibility</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for type, method, field, event, and property symbols and contains the declared accessibility of the symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>AllInterfaces</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for type symbols and contains a collection of the documents that represent all implemented interfaces. The collection
-      is empty if the type doesn't implement any interfaces.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>BaseType</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      This is available for type symbols and contains a document representing the base type.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>CommentXml</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      the full unprocessed XML documentation comments content for this symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Constructors</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for type symbols and contains a collection of the documents that represent all constructors of the type. The collection
-      is empty if the type doesn't have any explicit constructors.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>ContainingNamespace</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      The document that represents the containing namespace (or null if this symbol is not nested).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>ContainingType</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      This is available for type, method, field, event, property, and parameter symbols and contains a document representing the containing
-      type (or <code>null</code> if no containing type).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>DeclaringType</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      This is available for type parameter symbols and contains a document that represents the declaring type of the type parameter.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>DerivedTypes</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for type symbols and contains a collection of the documents that represent all types derived from the type. The collection
-      is empty if the type doesn't have any derived types.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>DisplayName</code></strong>: <code>string</code>
-						</p>
-							<p>
-      A display name for the symbol. For namespaces, this is the same as <code>QualifiedName</code>. For types, this is
-      the same as <code>FullName</code>.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Example</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      the rendered HTML content from all <code>example</code> XML documentation comments for this symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Exceptions</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      a collection of all <code>exception</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>FullName</code></strong>: <code>string</code>
-						</p>
-							<p>
-      The full name of the symbol. For namespaces, this is the name of the namespace. For types, this includes
-      all generic type parameters.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>ImplementingTypes</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for interface symbols and contains a collection of the documents that represent all types that implement the interface. The collection
-      is empty if no other types implement the interface.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>IsResult</code></strong>: <code>bool</code>
-						</p>
-							<p>
-      By default only certain symbols are processed as part of the initial
-      result set (such as those that match the specified predicate). If this value is <code>true</code>, then this
-      symbol was part of the initial result set. If it is <code>false</code>, the symbol was lazily processed later
-      while fetching related symbols and may not contain the full set of metadata.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Kind</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is the general kind of symbol. For example, the for a namespace this is "Namespace" and for a type this is "NamedType".
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>MemberNamespaces</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for namespace symbols and contains a collection of the documents that represent all member namespaces. The
-      collection is empty if there are no member namespaces.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Members</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for type symbols and contains a collection of the documents that represent all members of the type. The collection
-      is empty if the type doesn't have any members.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>MemberTypes</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for namespace and type symbols and contains a collection of the documents that represent all member types. It only
-      contains direct children (as opposed to all nested types).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Name</code></strong>: <code>string</code>
-						</p>
-							<p>
-      The name of the symbol, or an empty string if the symbol has no name (like the global namespace).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>OverriddenMethod</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      This is available for method symbols and contains a document that represents the method being overridden (or <code>null</code> if no method is overriden by this one).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Parameters</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      This is available for method and property (I.e., indexer) symbols and contains a collection of the documents that represent the parameters of the method or property.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Params</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      a collection of all <code>param</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Permissions</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      a collection of all <code>permission</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>QualifiedName</code></strong>: <code>string</code>
-						</p>
-							<p>
-      The qualified name of the symbol which includes all containing namespaces.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>RelativeFileDir</code></strong>: <code>DirectoryPath</code>
-						</p>
-							<p>
-      Same as the directory of <code>WritePath</code>. This metadata key is available for compatibility with other modules.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>RelativeFilePath</code></strong>: <code>FilePath</code>
-						</p>
-							<p>
-      Same as <code>WritePath</code>. This metadata key is available for compatibility with other modules.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>RelativeFilePathBase</code></strong>: <code>FilePath</code>
-						</p>
-							<p>
-      Same as <code>WritePath</code> without the file extension. This metadata key is available for compatibility with other modules.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Remarks</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      the rendered HTML content from all <code>remarks</code> XML documentation comments for this symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Returns</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      the rendered HTML content from all <code>returns</code> XML documentation comments for this symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>ReturnType</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      This is available for method symbols and contains a document that represents the return type of the method (or <code>null</code> if the method returns <code>void</code>).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>SeeAlso</code></strong>: <code>IReadOnlyList&lt;string&gt;</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      a collection of all <code>seealso</code> XML documentation comments for this symbol with their rendered HTML link (or just name if no link could be generated).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>SpecificKind</code></strong>: <code>string</code>
-						</p>
-							<p>
-      The more specific kind of the symbol ("Class", "Struct", etc.) This is the same as <code>Kind</code> if there is no more specific kind.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Summary</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      the rendered HTML content from all <code>summary</code> XML documentation comments for this symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Symbol</code></strong>: <code>ISymbol</code>
-						</p>
-							<p>
-      The Roslyn <code>ISymbol</code> from which this document is derived.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>SymbolId</code></strong>: <code>string</code>
-						</p>
-							<p>
-      A unique ID that identifies the symbol (can be used for generating folder paths, for example).
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Syntax</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      a generated syntax example for the symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Type</code></strong>: <code>IDocument</code>
-						</p>
-							<p>
-      This is available for field, event, property, and parameter symbols and contains the document that represents the type of the symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>TypeParameters</code></strong>: <code>IReadOnlyList&lt;IDocument&gt;</code>
-						</p>
-							<p>
-      This is available for type and method symbols and contains a collection of the documents that represent all generic type parameters of the type or method. The collection
-      is empty if the type or method doesn't have any generic type parameters.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>TypeParams</code></strong>: <code>IReadOnlyList&lt;ReferenceComment&gt;</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      a collection of all <code>typeparam</code> XML documentation comments for this symbol with their name, link, and/or rendered HTML content.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>Value</code></strong>: <code>string</code>
-						</p>
-							<p>
-      This is available for documents in the initial result set (<code>IsResult</code> is <code>true</code>) and contains
-      the rendered HTML content from all <code>value</code> XML documentation comments for this symbol.
-    </p>
-					</li>
-					<li>
-						<p>
-
-							<strong><code>WritePath</code></strong>: <code>FilePath</code>
-						</p>
-							<p>
-      A write path is generated for each symbol during code analysis and serves several purposes. First, it's
-      used to automatically create hyperlinks for references in XML documentation comments. It can also be used
-      for generating inbound links from other modules or pipelines to a given symbol. Because the WriteFiles module
-      will check for any WritePath metadata values when outputting documents, this metadata also makes writing
-      symbol documents to disk easier (presumably after they've been sent through a templating module).
-    </p>
-					</li>
 			</ul>
 	
 </section>                

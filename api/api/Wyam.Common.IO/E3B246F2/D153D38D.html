@@ -132,9 +132,12 @@
 		<li role="separator" class="divider"></li>
 			<li class="header">Constructors</li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/6B06D615">FilePath<wbr>(string)<wbr></a></li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/35033DAF">FilePath<wbr>(string, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/6758B347">FilePath<wbr>(string, PathKind)<wbr></a></li>
 				<li class="active"><a href="/api/api/Wyam.Common.IO/E3B246F2/D153D38D">FilePath<wbr>(string, string)<wbr></a></li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/48CD469E">FilePath<wbr>(string, string, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/39793A08">FilePath<wbr>(string, string, PathKind)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/EE8EEB46">FilePath<wbr>(Uri, string)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/8FF3BDFE">FilePath<wbr>(Uri, string, PathKind)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/3580FEE1">FilePath<wbr>(Uri)<wbr></a></li>
 			<li class="header">Property Members</li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/936450BE">Directory</a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/3E1D9F67">Extension</a></li>
@@ -147,6 +150,7 @@
 				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/00973A29">ChangeExtension<wbr>(string)<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/E5F53DAD">Collapse<wbr>()<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/5302F4D2">FromString<wbr>(string)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/E3B246F2/DDE3F579">FromUri<wbr>(Uri)<wbr></a></li>
 
 
                     </ul>
@@ -182,14 +186,14 @@
 	<h1>Summary</h1>
 	<div class="lead">
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
-    with the specified provider.
+    with the specified file provider.
     The path will be considered absolute if the underlying OS file system
     considers it absolute.
     </div>
 
 
 	<h1>Syntax</h1>
-	<pre class="prettyprint">public FilePath(string provider, string path)</pre>
+	<pre class="prettyprint">public FilePath(string fileProvider, string path)</pre>
 
 
 
@@ -206,9 +210,9 @@
 					</tr>
 				</thead>
 					<tr>
-						<td>provider</td>
+						<td>fileProvider</td>
 						<td>string</td>
-						<td>The provider.</td>
+						<td>The file provider.</td>
 					</tr>
 					<tr>
 						<td>path</td>

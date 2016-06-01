@@ -166,6 +166,20 @@
 
 
 <p>The 0.12.x series of releases is a chance to &quot;reset&quot; some things that worked well when this was just a smaller project but need to change as Wyam serves more use cases. These changes will set the project up for a number of new features in the 0.13.x releases such as recipes and themes.</p>
+<h1><a name="0.12.4"></a>0.12.4</h1>
+<p>This release included some changes to NuGet packages to better handle additional extension points down the road (such as recipes, themes, file providers, etc.):</p>
+<ul>
+<li>The ability to specify a <a href="/getting-started/configuration#nuget">NuGet version range</a> is back. This is good news for constraining which versions of packages are used in your build in order to make them consistent and repeatable. Unfortunately, it's also a breaking change because the <a href="https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files">NuGet version range convention</a> specifies that specific versions be enclosed in <code>[</code> and <code>]</code> brackets. Wyam had been using an unadorned number for specific versions, which now indicates that version <em>or anything higher</em>.
+<ul>
+<li>If you specify specific versions for any NuGet packages, surround the version with <code>[</code> and <code>]</code> to maintain the existing behavior.</li>
+</ul>
+</li>
+<li>In order to better represent that Wyam extension packages may contain other extensions beyond modules, all of the Wyam packages have been renamed from <code>Wyam.Modules.*</code> to <code>Wyam.*</code>. For example, Markdown support can now be found in <code>Wyam.Markdown</code>.
+<ul>
+<li>Change all of your NuGet package names to the new name without the <code>.Modules</code> component.</li>
+</ul>
+</li>
+</ul>
 <h1><a name="0.12.1"></a>0.12.1</h1>
 <hr />
 <p>The major breaking change in 0.12.1 is that every module is no longer included with the core distribution. This was necessary because as the number of modules has increased, the distribution size has as well, and it was getting to the point that the core distribution was becoming larger than desired for simple use cases. You will now need to declare any non-core modules using preprocessor directives in your configuration file:</p>

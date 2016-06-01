@@ -145,6 +145,8 @@
 				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
+			<li class="header">Enum Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/B9B7F85C">PathKind</a></li>
 
 
                     </ul>
@@ -218,7 +220,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/35033DAF">FilePath<wbr>(string, bool)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/6758B347">FilePath<wbr>(string, PathKind)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class..
     </td>
@@ -227,16 +229,39 @@
 								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/D153D38D">FilePath<wbr>(string, string)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
-    with the specified provider.
+    with the specified file provider.
     The path will be considered absolute if the underlying OS file system
     considers it absolute.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/48CD469E">FilePath<wbr>(string, string, bool)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/39793A08">FilePath<wbr>(string, string, PathKind)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
-    with the specified provider.
+    with the specified file provider.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/3580FEE1">FilePath<wbr>(Uri)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
+    with the specified file provider and/or path.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/EE8EEB46">FilePath<wbr>(Uri, string)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
+    with the specified file provider.
+    The path will be considered absolute if the underlying OS file system
+    considers it absolute.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/8FF3BDFE">FilePath<wbr>(Uri, string, PathKind)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a> class
+    with the specified file provider.
     </td>
 							</tr>
 					</table>
@@ -340,6 +365,13 @@
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
     Performs a conversion from System.String to <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a>.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/E3B246F2/DDE3F579">FromUri<wbr>(Uri)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
+								<td>
+    Performs a conversion from Uri to <a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a>.
     </td>
 							</tr>
 					</table>

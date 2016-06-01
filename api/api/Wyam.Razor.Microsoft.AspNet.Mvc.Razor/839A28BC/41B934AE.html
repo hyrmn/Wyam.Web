@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="description" content="Wyam is a simple to use, highly modular, and extremely configurable static content generator." />
+        <meta name="keywords" content="static content generator,static site generator,static site,HTML,web development,.NET,C#,Razor,Markdown,YAML" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <title>Wyam - API - IRazorPage.RenderBodyDelegate Property</title>
+        <link href="/Content/bootstrap-less/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/adminlte/AdminLTE.css" rel="stylesheet" />
+        <link href="/Content/adminlte/skins/wyam.css" rel="stylesheet" />
+        <link href="/Content/prettify.css" rel="stylesheet">
+        <link href="/Content/github.css" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.css" rel="stylesheet">
+        <link href="/Content/master.css" rel="stylesheet" />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="/Scripts/jQuery-2.1.4.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>        
+        <script src="/Scripts/app.min.js"></script>         
+        <script src="/Scripts/prettify.js"></script>   
+        <script src="/Scripts/jquery.slimscroll.min.js"></script>
+        <script src="https://cdn.rawgit.com/knsv/mermaid/0.5.8/dist/mermaid.min.js"></script>
+        <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <![endif]-->  
+    </head>
+
+    <body class="hold-transition wyam layout-boxed  " onload="prettyPrint()">    
+        <div class="top-banner"></div>
+        <div class="wrapper">
+            <!-- Header -->
+            <header class="main-header">   
+                     
+                <a href="/" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><img src="/Content/images/nav-logo.png"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/Content/images/nav-logo.png"></span>
+                </a>   
+                         
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                        <a href="#" class="sidebar-toggle visible-xs-block" data-toggle="offcanvas" role="button">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-right"></i>
+                        </a>
+                                        
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle side menu</span>
+                            <i class="fa fa-chevron-circle-down"></i>
+                        </button>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">                            
+                                    <li><a href="/getting-started">Getting Started</a></li>
+                                    <li><a href="/modules">Modules</a></li>
+                                    <li class="active"><a href="/api">API</a></li>
+                                    <li><a href="/knowledgebase">Knowledgebase</a></li>
+                                    <li><a href="/community">Community</a></li>
+
+                        </ul>       
+                    </div>
+                    <!-- /.navbar-collapse -->
+                
+                    <!-- Navbar Right Menu -->
+                    
+                </nav>
+            </header>
+            
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar ">
+                <section class="sidebar smaller">                    
+                    	
+	<script src="/Scripts/lunr.min.js"></script>
+	<script src="/Scripts/searchIndex.js"></script>
+	<div class="sidebar-form">
+		<div class="input-group">
+			<input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+			<span class="input-group-btn">
+				<button class="btn btn-flat"><i class="fa fa-search"></i></button>
+			</span>
+		</div>
+	</div>
+	<div id="search-results">
+	</div>
+	<script>
+		function runSearch(query){
+			$("#search-results").empty();			
+			if( query.length < 2 ){
+				return;
+			}			
+			var results = searchModule.search(query);
+			var listHtml = "<ul class='sidebar-menu'>";	
+			listHtml += "<li class='header'>Search Results</li>";	
+			if(results.length == 0 ){
+				listHtml += "<li>No results found</li>";
+			} else {					
+				for(var i = 0; i < results.length; ++i){
+					var res = results[i];
+					listHtml += "<li><a href='" + res.url + "'>" + res.title + "</a></li>";
+				}				
+			}
+			listHtml += "</ul><hr />";				
+			$("#search-results").append(listHtml);
+		}
+
+		$(document).ready(function(){
+			$("#search").on('input propertychange paste', function() {
+				runSearch($("#search").val());
+			});
+		});
+	</script>
+
+                    <!-- search form -->
+                    
+                    
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+			<li class="header">Namespace</li>
+		<li><a href="/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor">Wyam<wbr>.Razor<wbr>.Microsoft<wbr>.AspNet<wbr>.Mvc<wbr>.Razor</a></li>
+		<li class="header">Type</li>
+		<li><a href="/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC">IRazorPage</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Property Members</li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/0D3EB0EF">IsLayoutBeingRendered</a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/075E4518">IsPartial</a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/F54B074F">Layout</a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/7B6C6AE0">Path</a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/7272F126">PreviousSectionWriters</a></li>
+				<li class="active"><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/41B934AE">RenderBodyDelegate</a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/84DBFC54">SectionWriters</a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/C426065C">ViewContext</a></li>
+			<li class="header">Method Members</li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/14F7F1B8">BeginContext<wbr>(int, int, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/E26FCBF9">DefineSection<wbr>(string, RenderAsyncDelegate)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/6E04DDA3">EndContext<wbr>()<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/201A2DF6">EnsureRenderedBodyOrSections<wbr>()<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/0700B8B4">ExecuteAsync<wbr>()<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/33AB434B">Href<wbr>(string)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/A87E045F">Write<wbr>(object)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/6281CC45">WriteAttribute<wbr>(string, PositionTagged<wbr>&lt;string&gt;<wbr>, PositionTagged<wbr>&lt;string&gt;<wbr>, AttributeValue[])<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/4B318B3F">WriteAttributeTo<wbr>(TextWriter, string, PositionTagged<wbr>&lt;string&gt;<wbr>, PositionTagged<wbr>&lt;string&gt;<wbr>, AttributeValue[])<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/850520F9">WriteLiteral<wbr>(object)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/52A6062F">WriteLiteralTo<wbr>(TextWriter, object)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC/3F7E77AD">WriteTo<wbr>(TextWriter, object)<wbr></a></li>
+
+
+                    </ul>
+                </section>                
+            </aside>
+            
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                
+
+
+
+<section class="content-header">
+			<h3><a href="/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC">IRazorPage</a>.</h3>
+
+	<h1>RenderBodyDelegate <small>Property</small></h1>
+	<hr />
+</section>
+<section class="content smaller">
+	  
+			<dl class="dl-horizontal">		
+				<dt>Namespace</dt>
+				<dd><a href="/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor">Wyam<wbr>.Razor<wbr>.Microsoft<wbr>.AspNet<wbr>.Mvc<wbr>.Razor</a></dd>
+			
+				<dt>Containing Type</dt>
+				<dd><a href="/api/Wyam.Razor.Microsoft.AspNet.Mvc.Razor/839A28BC">IRazorPage</a></dd>		
+			
+		</dl>
+		<hr />	
+
+
+
+	<h1>Summary</h1>
+	<div class="lead">
+    Gets or sets the action invoked to render the body.
+    </div>
+
+
+	<h1>Syntax</h1>
+	<pre class="prettyprint">Action&lt;TextWriter&gt; RenderBodyDelegate { get; set; }</pre>
+
+
+
+
+	<h1>Value</h1>
+	<div class="box">
+		<div class="box-body no-padding">
+			<table class="table table-striped table-hover two-cols">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>Action<wbr>&lt;TextWriter&gt;<wbr></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>	
+
+
+
+
+
+
+
+</section>
+                
+            </div>
+            
+            
+            <!-- Footer -->
+            <footer class="main-footer">
+            </footer>
+            
+            
+        </div>
+        <div class="wrapper bottom-wrapper">
+            <footer class="bottom-footer"><small>Wyam is crafted by <a href="http://www.daveaglick.com">Dave Glick</a> and <a href="https://github.com/Wyamio/Wyam/graphs/contributors">other awesome contributors</a>. <a href="https://github.com/Wyamio/Wyam">Code on GitHub</a>. This site was entirely generated by Wyam. Check out <a href="https://github.com/Wyamio/Wyam.Web">the site code on GitHub</a>.</small></footer>
+        </div>
+        <div class="github-button">
+            <a href="https://github.com/Wyamio/Wyam"><i class="fa fa-github"></i> GitHub</a>
+        </div>
+        <script>
+            $(document).load(function() {
+                mermaid.initialize();
+            });
+        </script>
+        <script>
+            ((window.gitter = {}).chat = {}).options = {
+                room: 'wyamio/wyam'
+            };
+        </script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+        <script>            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');            
+            ga('create', 'UA-54470483-4', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>

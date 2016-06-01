@@ -132,9 +132,12 @@
 		<li role="separator" class="divider"></li>
 			<li class="header">Constructors</li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/7A474536">DirectoryPath<wbr>(string)<wbr></a></li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/1EB71A48">DirectoryPath<wbr>(string, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/6CB0F014">DirectoryPath<wbr>(string, PathKind)<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/DF7F4A12">DirectoryPath<wbr>(string, string)<wbr></a></li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/80A81719">DirectoryPath<wbr>(string, string, bool)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/D5B03915">DirectoryPath<wbr>(string, string, PathKind)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/48F11D27">DirectoryPath<wbr>(Uri, string)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/1EE97BA7">DirectoryPath<wbr>(Uri, string, PathKind)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/A572DD80">DirectoryPath<wbr>(Uri)<wbr></a></li>
 			<li class="header">Property Members</li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/C52E1278">Name</a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/079332B6">Parent</a></li>
@@ -144,6 +147,7 @@
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/588F46A3">Combine<wbr>(DirectoryPath)<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/D183B267">CombineFile<wbr>(FilePath)<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/F1F220ED">FromString<wbr>(string)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/D49B075B">FromUri<wbr>(Uri)<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/E3D20F9F">GetFilePath<wbr>(FilePath)<wbr></a></li>
 				<li class="active"><a href="/api/api/Wyam.Common.IO/CAB7FF4A/CC115B50">GetRelativePath<wbr>(DirectoryPath)<wbr></a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/CAB7FF4A/C87DC7A4">GetRelativePath<wbr>(FilePath)<wbr></a></li>
@@ -182,7 +186,7 @@
 	<h1>Summary</h1>
 	<div class="lead">
     Get the relative path to another directory. If this path and the target path
-    do not share the same provider, the target path is returned.
+    do not share the same file provider, the target path is returned.
     </div>
 
 

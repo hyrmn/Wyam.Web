@@ -267,12 +267,13 @@
 
 	<h1>Remarks</h1>
 	<div>
-    Documents are immutable so you must call one of the <code>Clone</code> methods to create a new document. 
-    Implements <a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a> and all metadata calls are passed through to the document's internal 
-    <a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a> instance (exposed via the <a href="/api/api/Wyam.Common.Documents/F359E898/23B667B2">Metadata</a> property). Note that both the 
-    <a href="/api/api/Wyam.Common.Documents/F359E898/B37DBEEF">Content</a> property and the result of the <a href="/api/api/Wyam.Common.Documents/F359E898/5B82D8DF">GetStream()</a> method are guaranteed not 
-    to be null. When a document is created, either a string or a System.IO.Stream is provided. Whenever 
-    the other of the two is requested, the system will convert the current representation for you.
+    Documents are immutable so you must call one of the <code>GetDocument</code> methods of <a href="/api/Wyam.Common.Documents/4B1BCC2A">IDocumentFactory</a> 
+    to create a new document. Implements <a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a> and all metadata calls are passed through
+    to the document's internal <a href="/api/Wyam.Common.Meta/1D453919">IMetadata</a> instance (exposed via the <a href="/api/api/Wyam.Common.Documents/F359E898/23B667B2">Metadata</a>
+    property). Note that both the <a href="/api/api/Wyam.Common.Documents/F359E898/B37DBEEF">Content</a> property and the result of the <a href="/api/api/Wyam.Common.Documents/F359E898/5B82D8DF">GetStream()</a>
+    method are guaranteed not to be null. When a document is created, either a string or a System.IO.Stream
+    is provided. Whenever the other of the two is requested, the system will convert the current representation
+    for you.
     </div>
 
 

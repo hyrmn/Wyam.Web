@@ -186,12 +186,22 @@ Adds a NuGet package (downloading and installing it if needed).:
     &lt;package&gt;                The package to install.
 </code></pre>
 <h2><a name="nuget"></a>NuGet Packages</h2>
-<p>Any NuGet packages you specify in preprocessor directives are installed and then scanned for modules which are made available to the main configuration body. By default, Wyam will attempt to match requested packages with those on disk and will use the disk-based package when available. To force it to use a specific version (and download and install it if necessary), use the <code>--version &lt;version&gt;</code> flag. To force it to always download and install the latest available version on the package feed, use the <code>--latest</code> flag.</p>
-<p>Note that many modules require their package to be installed before they can be used. For example, to make use of the <a href="/modules/markdown">Markdown</a> module, you must install the <code>Wyam.Modules.Markdown</code> package. To do this, you would add the following to your configuration file (the <code>-p</code> indicates this is a prerelease package, which currently applies to all the Wyam packages):</p>
-<pre class="prettyprint"><code>#n -p Wyam.Modules.Markdown
+<p>Any NuGet packages you specify in preprocessor directives are installed and then scanned for modules which are made available to the main configuration body. By default, Wyam will attempt to match requested packages with those on disk and will use the disk-based package when available. To force it to use a specific version or version range (and download and install it if necessary), use the <code>--version &lt;version&gt;</code> flag. To force it to always download and install the latest available version on the package feed, use the <code>--latest</code> flag, which will always result in a call to the configured source(s).</p>
+<p>Wyam follows the same conventions as NuGet with regards to <a href="https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files">specifying version ranges</a>. Specifically, the following summarizes how to specify version ranges:</p>
+<pre class="prettyprint"><code>1.0  = 1.0 ≤ x
+(,1.0]  = x ≤ 1.0
+(,1.0)  = x &lt; 1.0
+[1.0] = x == 1.0
+(1.0) = invalid
+(1.0,) = 1.0 &lt; x
+(1.0,2.0) = 1.0 &lt; x &lt; 2.0
+[1.0,2.0] = 1.0 ≤ x ≤ 2.0
 </code></pre>
-<p>You can also specify the special <code>Wyam.Modules.All</code> package which will download all of the official Wyam module packages at once:</p>
-<pre class="prettyprint"><code>#n -p Wyam.Modules.All
+<p>Note that many modules require their package to be installed before they can be used. For example, to make use of the <a href="/modules/markdown">Markdown</a> module, you must install the <code>Wyam.Markdown</code> package. To do this, you would add the following to your configuration file (the <code>-p</code> indicates this is a prerelease package, which currently applies to all the Wyam packages):</p>
+<pre class="prettyprint"><code>#n -p Wyam.Markdown
+</code></pre>
+<p>You can also specify the special <code>Wyam.All</code> package which will download all of the official Wyam module packages at once:</p>
+<pre class="prettyprint"><code>#n -p Wyam.All
 </code></pre>
 <h2><a name="assemblies"></a>Assemblies</h2>
 <p>In addition to NuGet packages you can also load assemblies. You can load all the assemblies in a directory by using a <a href="/getting-started/io#globbing">globbing pattern</a> with the <code>#assembly</code> directive, or by specifying a relative or absolute path to the assembly. You can also load assemblies by name with the <code>#assembly-name</code> directive. Keep in mind that system assemblies and others located in the GAC <em>must</em> be loaded by full name (including the version, public key token, etc.).</p>

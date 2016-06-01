@@ -145,6 +145,8 @@
 				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
+			<li class="header">Enum Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/B9B7F85C">PathKind</a></li>
 
 
                     </ul>
@@ -183,8 +185,8 @@
 				<dt>Derived Types</dt>
 				<dd>
 					<ul class="list-inline">
-							<li><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>								
 							<li><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></li>								
+							<li><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></li>								
 					</ul>
 				</dd>			
 			
@@ -217,13 +219,27 @@
 							</tr>
 						</thead>
 							<tr>
-								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/EF0F79D4">NormalizedPath<wbr>(string, bool?)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/FDDE160D">NormalizedPath<wbr>(string, PathKind)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a> class.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/F0AA0ACF">NormalizedPath<wbr>(string, string, bool?)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/8508F1EB">NormalizedPath<wbr>(string, string, PathKind)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a> class
+    with the given provider.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/6A16EA9A">NormalizedPath<wbr>(Uri)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a> class. The new path
+    will be absolute if the specified URI is absolute, otherwise it will be relative.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/5F75818C">NormalizedPath<wbr>(Uri, string, PathKind)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a> class
     with the given provider.
@@ -248,6 +264,16 @@
 							</tr>
 						</thead>
 							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/97E6EAAC">FileProvider</a></td>
+								<td>Uri</td>
+								<td>
+    Gets the file provider for this path. If this is a relative path,
+    the file provider will always be <code>null</code>. If this is an absolute
+    path and the file provider is <code>null</code> it indicates the path
+    is not intended for use with an actual file provider.
+    </td>
+							</tr>
+							<tr>
 								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/4676E504">FullPath</a></td>
 								<td>string</td>
 								<td>
@@ -269,16 +295,12 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/432201F2">Provider</a></td>
-								<td>string</td>
-								<td>
-    Gets the provider for this path.
-    </td>
-							</tr>
-							<tr>
 								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/52E0BF06">Root</a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
-								<td></td>
+								<td>
+    Gets the root of this path or "." if this is a relative path
+    or there is no root.
+    </td>
 							</tr>
 							<tr>
 								<td><a href="/api/api/Wyam.Common.IO/ED3E5450/F68A0B46">Segments</a></td>

@@ -131,15 +131,17 @@
 		<li><a href="/api/Wyam.Common.IO/ED3E5450">NormalizedPath</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Constructors</li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/EF0F79D4">NormalizedPath<wbr>(string, bool?)<wbr></a></li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/F0AA0ACF">NormalizedPath<wbr>(string, string, bool?)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/FDDE160D">NormalizedPath<wbr>(string, PathKind)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/8508F1EB">NormalizedPath<wbr>(string, string, PathKind)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/5F75818C">NormalizedPath<wbr>(Uri, string, PathKind)<wbr></a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/6A16EA9A">NormalizedPath<wbr>(Uri)<wbr></a></li>
 			<li class="header">Field Members</li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/54439DDF">AbstractProvider</a></li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/D906C8FA">DefaultFileProvider</a></li>
 			<li class="header">Property Members</li>
+				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/97E6EAAC">FileProvider</a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/4676E504">FullPath</a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/C2AB1127">IsAbsolute</a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/4DEA95EF">IsRelative</a></li>
-				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/432201F2">Provider</a></li>
 				<li class="active"><a href="/api/api/Wyam.Common.IO/ED3E5450/52E0BF06">Root</a></li>
 				<li class=""><a href="/api/api/Wyam.Common.IO/ED3E5450/F68A0B46">Segments</a></li>
 			<li class="header">Method Members</li>
@@ -180,6 +182,11 @@
 
 
 
+	<h1>Summary</h1>
+	<div class="lead">
+    Gets the root of this path or "." if this is a relative path
+    or there is no root.
+    </div>
 
 
 	<h1>Syntax</h1>
@@ -200,7 +207,9 @@
 				</thead>
 				<tr>
 					<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
-					<td></td>
+					<td>
+    The root of this path.
+    </td>
 				</tr>
 			</table>
 		</div>

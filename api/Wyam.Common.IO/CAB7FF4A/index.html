@@ -145,6 +145,8 @@
 				<li class=""><a href="/api/Wyam.Common.IO/82F6282B">IFileSystemEntry</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/8C0DBDFE">IReadOnlyFileProviderCollection</a></li>
 				<li class=""><a href="/api/Wyam.Common.IO/89D2273D">IReadOnlyFileSystem</a></li>
+			<li class="header">Enum Types</li>
+				<li class=""><a href="/api/Wyam.Common.IO/B9B7F85C">PathKind</a></li>
 
 
                     </ul>
@@ -218,7 +220,7 @@
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/1EB71A48">DirectoryPath<wbr>(string, bool)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/6CB0F014">DirectoryPath<wbr>(string, PathKind)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class.
     </td>
@@ -227,16 +229,39 @@
 								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/DF7F4A12">DirectoryPath<wbr>(string, string)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class
-    with the specified provider.
+    with the specified file provider.
     The path will be considered absolute if the underlying OS file system
     considers it absolute.
     </td>
 							</tr>
 							<tr>
-								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/80A81719">DirectoryPath<wbr>(string, string, bool)<wbr></a></td>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/D5B03915">DirectoryPath<wbr>(string, string, PathKind)<wbr></a></td>
 									<td>
     Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class
-    with the specified provider.
+    with the specified file provider.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/A572DD80">DirectoryPath<wbr>(Uri)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class
+    with the specified file provider and/or path.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/48F11D27">DirectoryPath<wbr>(Uri, string)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class
+    with the specified file provider.
+    The path will be considered absolute if the underlying OS file system
+    considers it absolute.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/1EE97BA7">DirectoryPath<wbr>(Uri, string, PathKind)<wbr></a></td>
+									<td>
+    Initializes a new instance of the <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a> class
+    with the specified file provider.
     </td>
 							</tr>
 					</table>
@@ -274,7 +299,10 @@
 							<tr>
 								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/F75B7F59">RootRelative</a></td>
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
-								<td></td>
+								<td>
+    Gets current path relative to it's root. If this is already a relative
+    path or there is no root path, this just returns the current path.
+    </td>
 							</tr>
 					</table>
 				</div>
@@ -324,6 +352,13 @@
     </td>
 							</tr>
 							<tr>
+								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/D49B075B">FromUri<wbr>(Uri)<wbr></a></td>
+								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
+								<td>
+    Performs a conversion from Uri to <a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a>.
+    </td>
+							</tr>
+							<tr>
 								<td><a href="/api/api/Wyam.Common.IO/CAB7FF4A/E3D20F9F">GetFilePath<wbr>(FilePath)<wbr></a></td>
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
@@ -336,7 +371,7 @@
 								<td><a href="/api/Wyam.Common.IO/CAB7FF4A">DirectoryPath</a></td>
 								<td>
     Get the relative path to another directory. If this path and the target path
-    do not share the same provider, the target path is returned.
+    do not share the same file provider, the target path is returned.
     </td>
 							</tr>
 							<tr>
@@ -344,7 +379,7 @@
 								<td><a href="/api/Wyam.Common.IO/E3B246F2">FilePath</a></td>
 								<td>
     Get the relative path to another file. If this path and the target path
-    do not share the same provider, the target path is returned.
+    do not share the same file provider, the target path is returned.
     </td>
 							</tr>
 					</table>
