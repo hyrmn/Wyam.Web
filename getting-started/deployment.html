@@ -143,7 +143,7 @@
 <p>One of the many benefits of static generation is that the end result is a collection of final files. By default, Wyam places the result of your build in the <code>output</code> folder. You can manually deploy your site by simply uploading these files to your host.</p>
 <h1>Using Cake</h1>
 <hr />
-<p>For more advanced deployment scenarios Wyam includes an official <a href="http://cakebuild.net/">Cake Build</a> addin called <a href="https://www.nuget.org/packages/Cake.Wyam">Cake.Wyam</a>. This allows you to integrate Wyam into a more general Cake-based build and deployment process. To use it, yuo must include the appropriate <code>#tool</code> and <code>#addin</code> directive at the top of your Cake script (to load the Wyam engine and the Cake addin respectively). Note that you'll need to use the special URI syntax below since Wyam packages are still prerelease (due to having dependencies on other prerelease packages).</p>
+<p>For more advanced deployment scenarios Wyam includes an official <a href="http://cakebuild.net/">Cake Build</a> addin called <a href="https://www.nuget.org/packages/Cake.Wyam">Cake.Wyam</a>. This allows you to integrate Wyam into a more general Cake-based build and deployment process. To use it, you must include the appropriate <code>#tool</code> and <code>#addin</code> directive at the top of your Cake script (to load the Wyam engine and the Cake addin respectively). Note that you'll need to use the special URI syntax below since Wyam packages are still prerelease (due to having dependencies on other prerelease packages).</p>
 <pre class="prettyprint"><code>#tool nuget:?package=Wyam&amp;prerelease
 #addin nuget:?package=Cake.Wyam&amp;prerelease
 

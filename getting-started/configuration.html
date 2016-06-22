@@ -283,6 +283,17 @@ InitialMetadata.Add(&quot;Baz&quot;, new KeyValuePair&lt;string, string&gt;(&quo
     WriteFiles(&quot;.html&quot;)
 );
 </code></pre>
+<h3>Fluent Methods</h3>
+<p>Some modules allow method chaining to extend or modify their behavior. For example, the <code>OrderBy</code> module allows you to chain a call to <code>ThenBy()</code> if you would like to sort by multiple inputs. Or, you chain a call to <code>Descending()</code> if you would like to reverse the order.</p>
+<pre class="prettyprint"><code>Pipelines.Add(&quot;Markdown&quot;,
+    ReadFiles(&quot;*.md&quot;),
+    FrontMatter(Yaml()),
+    OrderBy(&#64;doc.Get&lt;DateTime&gt;(&quot;Published&quot;))
+        .ThenBy(&#64;doc[&quot;Title&quot;])
+        .Descending(),
+    WriteFiles(&quot;.html&quot;)
+);
+</code></pre>
 <h3>Skipping Previously Processed Documents</h3>
 <p>If you know that a given pipeline doesn't use data from other pipelines and you'd like to prevent reprocessing of documents after the first pass, you can set the <code>processDocumentsOnce</code> flag. Under the hood, this looks for the first occurrence of a given <code>IDocument.Source</code> and then caches all final result documents that have the same source. On subsequent executions, if a document with a previously seen <code>IDocument.Source</code> is found <em>and it has the same content</em>, that document is removed from the module output and therefore won't get passed to the next module. At the end of the pipeline, all the documents from the first pass that have the same source as the removed one are added back to the result set (so later pipelines can still access them in the documents collection if needed). The <code>processDocumentsOnce</code> flag can be set when creating a pipeline:</p>
 <pre class="prettyprint"><code>Pipelines.Add(&quot;Markdown&quot;, true,
